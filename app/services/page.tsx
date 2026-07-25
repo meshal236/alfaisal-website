@@ -10,16 +10,6 @@ const COPY = {
       "خدمات تقنية متخصصة تغطي البنية التحتية الرقمية والفيزيائية — من الذكاء الاصطناعي التطبيقي إلى الشبكات وأنظمة المراقبة، لعملاء من الأفراد والشركات والقطاع الحكومي.",
     services: [
       {
-        mono: "AI AGENTS",
-        title: "إعداد وتفعيل وكلاء الذكاء الاصطناعي المستقلين",
-        desc: "بناء وتفعيل وربط وكيل ذكاء اصطناعي مستقل خاص بك، مزوّد بجميع المهارات والوكلاء الفرعيين اللازمة لمهامك، مع ربطه بقنوات التواصل التي تستخدمها فعليًا — تلغرام والواتساب وغيرها. الوكيل يُربط باشتراكاتك في خدمات النماذج مثل ChatGPT وAnthropic، أو يُشغّل بالكامل محليًا دون الاعتماد على أي مزود خارجي. الاستضافة والبنية التحتية تبقى بالكامل على جانب العميل.",
-      },
-      {
-        mono: "SURVEILLANCE",
-        title: "توريد وتركيب أنظمة المراقبة (DVR / NVR)",
-        desc: "توريد وتركيب أنظمة كاميرات المراقبة بتقنيتي DVR وNVR، بعلامات تجارية موثوقة مثل Hikvision وDahua، مع تصميم يناسب طبيعة الموقع ومتطلبات التغطية. الخدمة متاحة للأفراد والشركات والجهات الحكومية، من التركيب الأولي إلى الإعداد والتهيئة الكاملة.",
-      },
-      {
         mono: "NETWORKING",
         title: "تمديد كابلات الشبكات والألياف الضوئية",
         desc: "تمديد وتأسيس بنية الكابلات الهيكلية للشبكات، من كابلات النحاس (CAT6 · CAT6A وما فوق) إلى كابلات الألياف الضوئية، وفق أفضل ممارسات التمديد والاختبار لضمان أداء واستقرار الشبكة. الخدمة متاحة للأفراد والشركات والقطاع الحكومي.",
@@ -33,6 +23,16 @@ const COPY = {
         mono: "Professional services",
         title: "تفعيل وإعداد أنظمة الشبكات",
         desc: "تفعيل وضبط وتهيئة أنظمة الشبكات وإعداد نقاط الوصول والأجهزة وتقسيم الشبكات وسياسات الوصول وضبط إعدادات الأداء والأمان لضمان تشغيل مستقر وآمن.",
+      },
+      {
+        mono: "SURVEILLANCE",
+        title: "توريد وتركيب أنظمة المراقبة (DVR / NVR)",
+        desc: "توريد وتركيب أنظمة كاميرات المراقبة بتقنيتي DVR وNVR، بعلامات تجارية موثوقة مثل Hikvision وDahua، مع تصميم يناسب طبيعة الموقع ومتطلبات التغطية. الخدمة متاحة للأفراد والشركات والجهات الحكومية، من التركيب الأولي إلى الإعداد والتهيئة الكاملة.",
+      },
+      {
+        mono: "AI AGENTS",
+        title: "إعداد وتفعيل وكلاء الذكاء الاصطناعي المستقلين",
+        desc: "بناء وتفعيل وربط وكيل ذكاء اصطناعي مستقل خاص بك، مزوّد بجميع المهارات والوكلاء الفرعيين اللازمة لمهامك، مع ربطه بقنوات التواصل التي تستخدمها فعليًا — تلغرام والواتساب وغيرها. الوكيل يُربط باشتراكاتك في خدمات النماذج مثل ChatGPT وAnthropic، أو يُشغّل بالكامل محليًا دون الاعتماد على أي مزود خارجي. الاستضافة والبنية التحتية تبقى بالكامل على جانب العميل.",
       },
       {
         mono: "CONSULTING",
@@ -49,16 +49,6 @@ const COPY = {
       "Specialized technical services spanning digital and physical infrastructure — from applied AI to networking and surveillance systems, for individuals, businesses, and government clients.",
     services: [
       {
-        mono: "AI AGENTS",
-        title: "Independent AI Agent Setup & Deployment",
-        desc: "Building, activating, and connecting your own independent AI agent, equipped with all the skills and sub-agents your workflow requires, and linked to the channels you actually use — Telegram, WhatsApp, and others. The agent connects to your existing subscriptions with model providers like ChatGPT and Anthropic, or runs fully locally with no external dependency. Hosting and infrastructure remain entirely on the client's side.",
-      },
-      {
-        mono: "SURVEILLANCE",
-        title: "CCTV Surveillance Systems (DVR / NVR)",
-        desc: "Supply and installation of DVR and NVR surveillance camera systems from trusted brands such as Hikvision and Dahua, designed around the site's layout and coverage requirements. Available for individuals, businesses, and government entities — from initial installation through full setup and configuration.",
-      },
-      {
         mono: "NETWORKING",
         title: "Network & Fiber Optic Cabling",
         desc: "Structured cabling installation for networks, from copper cabling (CAT6 · CAT6A and above) to fiber optic runs, following best-practice installation and testing standards for network performance and stability. Available for individuals, businesses, and the government sector.",
@@ -72,6 +62,16 @@ const COPY = {
         mono: "Professional services",
         title: "Network Systems Activation & Configuration",
         desc: "Activating, configuring, and tuning existing network systems — setting up access points and devices, network segmentation and access policies, and performance and security settings — for stable, secure operation without new installation.",
+      },
+      {
+        mono: "SURVEILLANCE",
+        title: "CCTV Surveillance Systems (DVR / NVR)",
+        desc: "Supply and installation of DVR and NVR surveillance camera systems from trusted brands such as Hikvision and Dahua, designed around the site's layout and coverage requirements. Available for individuals, businesses, and government entities — from initial installation through full setup and configuration.",
+      },
+      {
+        mono: "AI AGENTS",
+        title: "Independent AI Agent Setup & Deployment",
+        desc: "Building, activating, and connecting your own independent AI agent, equipped with all the skills and sub-agents your workflow requires, and linked to the channels you actually use — Telegram, WhatsApp, and others. The agent connects to your existing subscriptions with model providers like ChatGPT and Anthropic, or runs fully locally with no external dependency. Hosting and infrastructure remain entirely on the client's side.",
       },
       {
         mono: "CONSULTING",
