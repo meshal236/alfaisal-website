@@ -25,6 +25,16 @@ const COPY = {
         desc: "تمديد وتأسيس بنية الكابلات الهيكلية للشبكات، من كابلات النحاس (CAT6 · CAT6A وما فوق) إلى كابلات الألياف الضوئية، وفق أفضل ممارسات التمديد والاختبار لضمان أداء واستقرار الشبكة. الخدمة متاحة للأفراد والشركات والقطاع الحكومي.",
       },
       {
+        mono: "WIRELESS",
+        title: "توريد وتركيب أنظمة الشبكات السلكية واللاسلكية",
+        desc: "توريد وتركيب حلول الشبكات السلكية واللاسلكية (Wi-Fi)، مع تقوية الإشارة ومعالجة النقاط الضعيفة عبر نقاط وصول (Access Points) أو أنظمة Mesh، لضمان تغطية كاملة وثابتة لكل مساحات الموقع. الخدمة متاحة للأفراد والشركات والقطاع الحكومي.",
+      },
+      {
+        mono: "ACTIVATION",
+        title: "تفعيل وإعداد أنظمة الشبكات",
+        desc: "تفعيل وضبط وتهيئة أنظمة الشبكات القائمة — إعداد نقاط الوصول والأجهزة، تقسيم الشبكات وسياسات الوصول، وضبط إعدادات الأداء والأمان — لضمان تشغيل مستقر وآمن دون الحاجة لتركيب جديد.",
+      },
+      {
         mono: "CONSULTING",
         title: "استشارات تقنية للبنية التحتية",
         desc: "استشارات فنية متخصصة في البنية التحتية التقنية للشركات والجهات الحكومية — من تقييم البيئة الحالية وتحديد نقاط الضعف، إلى تصميم حلول وخطط تطوير عملية تراعي الميزانية ومتطلبات التشغيل.",
@@ -52,6 +62,16 @@ const COPY = {
         mono: "NETWORKING",
         title: "Network & Fiber Optic Cabling",
         desc: "Structured cabling installation for networks, from copper cabling (CAT6 · CAT6A and above) to fiber optic runs, following best-practice installation and testing standards for network performance and stability. Available for individuals, businesses, and the government sector.",
+      },
+      {
+        mono: "WIRELESS",
+        title: "Wired & Wireless Network Systems Supply & Installation",
+        desc: "Supply and installation of wired and wireless (Wi-Fi) network solutions, with signal boosting and dead-zone remediation via access points or mesh systems, ensuring complete and consistent coverage across every area of the site. Available for individuals, businesses, and the government sector.",
+      },
+      {
+        mono: "ACTIVATION",
+        title: "Network Systems Activation & Configuration",
+        desc: "Activating, configuring, and tuning existing network systems — setting up access points and devices, network segmentation and access policies, and performance and security settings — for stable, secure operation without new installation.",
       },
       {
         mono: "CONSULTING",
