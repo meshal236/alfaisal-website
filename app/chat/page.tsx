@@ -1,24 +1,188 @@
 "use client";
 
+import { useState, useRef, useEffect } from "react";
+import { useChat } from "@ai-sdk/react";
+import { DefaultChatTransport } from "ai";
 import { useLanguage } from "@/lib/language-context";
 
-type Tool = {
-  name: string;
-  url: string;
-  models: string;
-  tipAr: string;
-  tipEn: string;
+type Tab = "embed" | "engine" | "directory";
+
+const COPY = {
+  ar: {
+    eyebrow: "AI TOOLS",
+    heading: "أدوات ومحرك الذكاء الاصطناعي",
+    tabs: { embed: "أدوات مدمجة", engine: "محرك المحادثة", directory: "دليل الخدمات" },
+  },
+  en: {
+    eyebrow: "AI TOOLS",
+    heading: "AI tools & chat engine",
+    tabs: { embed: "Embedded tools", engine: "Chat engine", directory: "Service directory" },
+  },
 };
 
-type Category = {
-  key: string;
-  ar: string;
-  en: string;
-  tag: string;
-  tools: Tool[];
+/* ── Tab 1: embedded small tools (iframe, no new tab) ─────────── */
+const EMBED_TOOLS = [
+  { name: "sur.pollinations.ai", url: "https://sur.pollinations.ai/" },
+  { name: "umint-ai.hf.space", url: "https://umint-ai.hf.space/" },
+  { name: "mirexa.vercel.app", url: "https://mirexa.vercel.app/" },
+  { name: "freegpt.es", url: "https://freegpt.es/" },
+  { name: "heck.ai", url: "https://heck.ai" },
+];
+
+const EMBED_COPY = {
+  ar: {
+    intro: "أدوات صغيرة تفتح مباشرة داخل هذي الصفحة، بدون تبويب جديد — اختر أداة من القائمة.",
+    note: "لو ظهر الإطار فارغًا، فهذا يعني أن الخدمة غيّرت سياستها ومنعت التضمين من طرفها — جرّب أداة ثانية.",
+  },
+  en: {
+    intro: "Small tools that load directly inside this page, no new tab — pick one from the list.",
+    note: "If the frame appears blank, that service changed its policy and blocked embedding on its end — try another tool.",
+  },
 };
 
-const CATEGORIES: Category[] = [
+function EmbedPanel({ lang }: { lang: "ar" | "en" }) {
+  const [tool, setTool] = useState(EMBED_TOOLS[0]);
+  const t = EMBED_COPY[lang];
+  return (
+    <div>
+      <p className="tools-intro">{t.intro}</p>
+      <select
+        className="embed-select"
+        value={tool.url}
+        onChange={(e) => setTool(EMBED_TOOLS.find((x) => x.url === e.target.value)!)}
+      >
+        {EMBED_TOOLS.map((x) => (
+          <option key={x.url} value={x.url}>
+            {x.name}
+          </option>
+        ))}
+      </select>
+      <div className="embed-frame-wrap">
+        <iframe key={tool.url} src={tool.url} title={tool.name} />
+      </div>
+      <p className="embed-note">{t.note}</p>
+    </div>
+  );
+}
+
+/* ── Tab 2: real chat engine (Vercel AI Gateway) ──────────────── */
+const MODELS = [
+  { id: "deepseek/deepseek-v4-flash", label: "DeepSeek V4 Flash" },
+  { id: "alibaba/qwen3.6-27b", label: "Qwen 3.6 27B" },
+  { id: "google/gemma-4-31b-it", label: "Gemma 4 31B" },
+  { id: "xiaomi/mimo-v2.5", label: "MiMo 2.5" },
+  { id: "zai/glm-5.1", label: "GLM 5.1" },
+  { id: "moonshotai/kimi-k2.6", label: "Kimi K2.6" },
+];
+
+const ENGINE_COPY = {
+  ar: {
+    modelAria: "اختيار النموذج",
+    emptyGlyph: "م",
+    emptyText: "اسأل عن أي شيء — بنية تحتية، شبكات، ذكاء اصطناعي، أو أي موضوع آخر.",
+    error: "حدث خطأ في الاتصال — جرّب نموذجًا آخر من القائمة أو أعد المحاولة.",
+    placeholder: "اكتب رسالتك…",
+    send: "إرسال",
+    you: "YOU",
+    ai: "AI",
+  },
+  en: {
+    modelAria: "Select model",
+    emptyGlyph: "M",
+    emptyText: "Ask about anything — infrastructure, networking, AI, or any other topic.",
+    error: "Something went wrong connecting to the model — try another one from the list or retry.",
+    placeholder: "Type your message…",
+    send: "Send",
+    you: "YOU",
+    ai: "AI",
+  },
+};
+
+function EnginePanel({ lang }: { lang: "ar" | "en" }) {
+  const t = ENGINE_COPY[lang];
+  const [model, setModel] = useState(MODELS[0].id);
+  const [input, setInput] = useState("");
+  const logRef = useRef<HTMLDivElement>(null);
+
+  const { messages, sendMessage, status, error } = useChat({
+    transport: new DefaultChatTransport({ api: "/api/chat" }),
+  });
+
+  const busy = status === "submitted" || status === "streaming";
+
+  useEffect(() => {
+    logRef.current?.scrollTo({ top: logRef.current.scrollHeight });
+  }, [messages]);
+
+  const submit = () => {
+    const text = input.trim();
+    if (!text || busy) return;
+    setInput("");
+    sendMessage({ text }, { body: { model } });
+  };
+
+  return (
+    <div className="chat-shell" style={{ padding: 0, minHeight: 560 }}>
+      <div className="chat-top">
+        <select
+          className="model-select"
+          value={model}
+          onChange={(e) => setModel(e.target.value)}
+          aria-label={t.modelAria}
+        >
+          {MODELS.map((m) => (
+            <option key={m.id} value={m.id}>
+              {m.label}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <div className="chat-log" ref={logRef}>
+        {messages.length === 0 && !error && (
+          <div className="chat-empty">
+            <span className="glyph">{t.emptyGlyph}</span>
+            <p>{t.emptyText}</p>
+          </div>
+        )}
+        {messages.map((m) => (
+          <div key={m.id} className={`msg ${m.role === "user" ? "user" : "ai"}`}>
+            <span className="msg-role">{m.role === "user" ? t.you : t.ai}</span>
+            {m.parts.map((part, i) =>
+              part.type === "text" ? <span key={i}>{part.text}</span> : null
+            )}
+          </div>
+        ))}
+        {error && <div className="chat-error">{t.error}</div>}
+      </div>
+
+      <div className="chat-form">
+        <textarea
+          className="chat-input"
+          rows={1}
+          placeholder={t.placeholder}
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && !e.shiftKey) {
+              e.preventDefault();
+              submit();
+            }
+          }}
+        />
+        <button className="chat-send" onClick={submit} disabled={busy || !input.trim()}>
+          {busy ? "…" : t.send}
+        </button>
+      </div>
+    </div>
+  );
+}
+
+/* ── Tab 3: directory of strong services (new tab links) ──────── */
+type DirTool = { name: string; url: string; models: string; tipAr: string; tipEn: string };
+type DirCategory = { key: string; ar: string; en: string; tag: string; tools: DirTool[] };
+
+const DIRECTORY: DirCategory[] = [
   {
     key: "chat",
     ar: "واجهات محادثة",
@@ -76,35 +240,23 @@ const CATEGORIES: Category[] = [
   },
 ];
 
-const COPY = {
+const DIR_COPY = {
   ar: {
-    eyebrow: "AI TOOLS",
-    heading: "أدوات ذكاء اصطناعي مجانية",
-    intro:
-      "دليل مختصر لأفضل خدمات الذكاء الاصطناعي المجانية التي لا تحتاج تسجيل دخول أو حساب — افتح الرابط واستخدمها مباشرة.",
+    intro: "الخدمات القوية والمعروفة — تفتح بتبويب جديد لأنها تمنع التضمين داخل صفحات أخرى.",
     note: "الخدمات ومزودوها خارج نطاق تحكمي، وقد تتغير حدودها أو تتوقف دون إشعار — القائمة مبنية على مستودع zebbern/no-cost-ai مفتوح المصدر.",
     source: "المصدر: zebbern/no-cost-ai",
   },
   en: {
-    eyebrow: "AI TOOLS",
-    heading: "Free AI tools",
-    intro:
-      "A short guide to the best free AI services that need no signup or account — open the link and use it directly.",
+    intro: "The strong, well-known services — they open in a new tab because they block embedding in other pages.",
     note: "These services and their providers are outside my control, and limits may change or stop without notice — list based on the open-source zebbern/no-cost-ai repository.",
     source: "Source: zebbern/no-cost-ai",
   },
 };
 
-export default function ChatPage() {
-  const { lang } = useLanguage();
-  const t = COPY[lang];
-
+function DirectoryPanel({ lang }: { lang: "ar" | "en" }) {
+  const t = DIR_COPY[lang];
   return (
-    <main className="section">
-      <div className="section-head">
-        <span className="mono">{t.eyebrow}</span>
-        <h2>{t.heading}</h2>
-      </div>
+    <div>
       <p className="tools-intro">{t.intro}</p>
       <p className="tools-note">
         {t.note}{" "}
@@ -112,8 +264,7 @@ export default function ChatPage() {
           {t.source}
         </a>
       </p>
-
-      {CATEGORIES.map((cat) => (
+      {DIRECTORY.map((cat) => (
         <div className="tool-category" key={cat.key}>
           <div className="tool-category-head">
             <span className="mono">{cat.tag}</span>
@@ -121,26 +272,50 @@ export default function ChatPage() {
           </div>
           <div className="tool-grid">
             {cat.tools.map((tool) => (
-              <a
-                key={tool.url}
-                href={tool.url}
-                target="_blank"
-                rel="noreferrer"
-                className="tool-card"
-              >
+              <a key={tool.url} href={tool.url} target="_blank" rel="noreferrer" className="tool-card">
                 <div className="tool-card-name">
                   {tool.name}
                   <span className="arrow">↗</span>
                 </div>
                 <div className="tool-card-models">{tool.models}</div>
-                <div className="tool-card-tip">
-                  {lang === "ar" ? tool.tipAr : tool.tipEn}
-                </div>
+                <div className="tool-card-tip">{lang === "ar" ? tool.tipAr : tool.tipEn}</div>
               </a>
             ))}
           </div>
         </div>
       ))}
+    </div>
+  );
+}
+
+/* ── Page: 3 tabs ──────────────────────────────────────────────── */
+export default function ChatPage() {
+  const { lang } = useLanguage();
+  const t = COPY[lang];
+  const [tab, setTab] = useState<Tab>("embed");
+
+  return (
+    <main className="section">
+      <div className="section-head">
+        <span className="mono">{t.eyebrow}</span>
+        <h2>{t.heading}</h2>
+      </div>
+
+      <div className="chat-tabs">
+        <button className={`chat-tab${tab === "embed" ? " active" : ""}`} onClick={() => setTab("embed")}>
+          {t.tabs.embed}
+        </button>
+        <button className={`chat-tab${tab === "engine" ? " active" : ""}`} onClick={() => setTab("engine")}>
+          {t.tabs.engine}
+        </button>
+        <button className={`chat-tab${tab === "directory" ? " active" : ""}`} onClick={() => setTab("directory")}>
+          {t.tabs.directory}
+        </button>
+      </div>
+
+      {tab === "embed" && <EmbedPanel lang={lang} />}
+      {tab === "engine" && <EnginePanel lang={lang} />}
+      {tab === "directory" && <DirectoryPanel lang={lang} />}
     </main>
   );
 }
