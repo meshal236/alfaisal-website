@@ -688,6 +688,37 @@ h1, h2, h3 {
   color: var(--copper);
 }
 
+/* ── WhatsApp quick contact ──────────────────────────────────── */
+.wa-fab {
+  position: fixed;
+  bottom: 24px;
+  inset-inline-end: 24px;
+  z-index: 60;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #25d366;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(24, 34, 52, 0.25);
+  transition: transform 0.2s;
+}
+
+.wa-fab:hover {
+  transform: scale(1.06);
+}
+
+@media (max-width: 720px) {
+  .wa-fab {
+    bottom: 16px;
+    inset-inline-end: 16px;
+    width: 46px;
+    height: 46px;
+  }
+}
+
 /* ── Responsive ───────────────────────────────────────────────── */
 @media (max-width: 720px) {
   .nav {

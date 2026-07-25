@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Alexandria, IBM_Plex_Mono } from "next/font/google";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import WhatsappButton from "@/components/WhatsappButton";
 import { LanguageProvider } from "@/lib/language-context";
 import "./globals.css";
 const alex = Alexandria({
@@ -31,6 +32,7 @@ export default function RootLayout({
           <Nav />
           {children}
           <Footer />
+          <WhatsappButton />
         </LanguageProvider>
       </body>
     </html>
