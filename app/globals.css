@@ -1,0 +1,726 @@
+/* SST Arabic — commercial font. Drop licensed .woff2 files into /public/fonts to activate. */
+@font-face {
+  font-family: "SST Arabic";
+  src: url("/fonts/SSTArabic-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SST Arabic";
+  src: url("/fonts/SSTArabic-Roman.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SST Arabic";
+  src: url("/fonts/SSTArabic-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SST Arabic";
+  src: url("/fonts/SSTArabic-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+
+/* ── design tokens ─────────────────────────── */
+:root {
+  --bg: #f7f8fa;
+  --bg-raised: #ffffff;
+  --bg-sunken: #eef0f4;
+  --ink: #182234;
+  --ink-dim: #4d5a6e;
+  --ink-faint: #8a94a6;
+  --copper: #127a66;
+  --copper-bright: #0e5f50;
+  --copper-dim: rgba(18, 122, 102, 0.09);
+  --line: rgba(24, 34, 52, 0.09);
+  --line-strong: rgba(24, 34, 52, 0.16);
+  --radius: 10px;
+  --maxw: 1080px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "SST Arabic", var(--font-alex), system-ui, sans-serif;
+  font-weight: 300;
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+::selection {
+  background: var(--copper);
+  color: #ffffff;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1, h2, h3 {
+  font-family: "SST Arabic", var(--font-alex), system-ui, sans-serif;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.mono {
+  font-family: var(--font-mono), monospace;
+  direction: ltr;
+  letter-spacing: 0.08em;
+}
+
+/* ── Nav ──────────────────────────────────────────────────────── */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 32px;
+  background: rgba(247, 248, 250, 0.85);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav-mark {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.nav-mark em {
+  font-style: normal;
+  color: var(--copper);
+}
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+
+.nav-links a {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--ink-dim);
+  transition: color 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible {
+  color: var(--copper-bright);
+}
+
+.nav-links a.active {
+  color: var(--ink);
+}
+
+.lang-toggle {
+  font-family: var(--font-mono), monospace;
+  direction: ltr;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--ink);
+  background: var(--bg-raised);
+  border: 1px solid var(--line-strong);
+  border-radius: 100px;
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.lang-toggle:hover,
+.lang-toggle:focus-visible {
+  border-color: var(--copper);
+  color: var(--copper);
+}
+
+/* ── Hero ─────────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  min-height: 78vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+}
+
+.hero-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 80px 32px;
+  width: 100%;
+}
+
+.eyebrow {
+  font-family: var(--font-mono), monospace;
+  direction: ltr;
+  font-size: 0.72rem;
+  letter-spacing: 0.35em;
+  color: var(--copper);
+  text-align: right;
+  margin-bottom: 22px;
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 8vw, 5.6rem);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  margin-bottom: 14px;
+}
+
+.hero-sub {
+  font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+  color: var(--ink-dim);
+  max-width: 34ch;
+  font-weight: 300;
+}
+
+/* NOC status strip — grounded in the operations world */
+.statusbar {
+  margin-top: 52px;
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.statusbar span {
+  font-family: var(--font-mono), monospace;
+  direction: ltr;
+  font-size: 0.74rem;
+  letter-spacing: 0.12em;
+  color: var(--ink-dim);
+  padding: 12px 20px;
+  border-inline-start: 1px solid var(--line);
+}
+
+.statusbar span:first-child {
+  border-inline-start: none;
+}
+
+.statusbar b {
+  color: var(--copper-bright);
+  font-weight: 500;
+}
+
+/* ── Sections ─────────────────────────────────────────────────── */
+.section {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 88px 32px;
+  width: 100%;
+}
+
+.section + .section {
+  border-top: 1px solid var(--line);
+}
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  margin-bottom: 44px;
+}
+
+.section-head h2 {
+  font-size: 1.9rem;
+}
+
+.section-head .mono {
+  font-size: 0.7rem;
+  color: var(--ink-faint);
+  letter-spacing: 0.3em;
+}
+
+.prose {
+  max-width: 62ch;
+  color: var(--ink-dim);
+  font-size: 1.05rem;
+}
+
+.prose strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+/* ── Expertise grid ───────────────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 14px;
+}
+
+.grid .cell {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 1px 2px rgba(24, 34, 52, 0.04);
+}
+
+.cell {
+  background: var(--bg-raised);
+  padding: 30px 26px;
+  transition: background 0.25s;
+}
+
+.cell:hover {
+  border-color: var(--line-strong);
+  box-shadow: 0 4px 14px rgba(24, 34, 52, 0.07);
+}
+
+.cell h3 {
+  font-size: 1.08rem;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+
+.cell p {
+  font-size: 0.92rem;
+  color: var(--ink-dim);
+  line-height: 1.8;
+}
+
+.cell .mono {
+  display: block;
+  font-size: 0.66rem;
+  color: var(--copper);
+  margin-bottom: 14px;
+  letter-spacing: 0.25em;
+}
+
+/* ── Cert chips ───────────────────────────────────────────────── */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.chip {
+  font-family: var(--font-mono), monospace;
+  direction: ltr;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  color: var(--ink);
+  border: 1px solid var(--line-strong);
+  border-radius: 100px;
+  padding: 9px 20px;
+  background: var(--bg-raised);
+}
+
+.chip::before {
+  content: "◆ ";
+  color: var(--copper);
+}
+
+/* ── Project rows ─────────────────────────────────────────────── */
+.projects {
+  display: flex;
+  flex-direction: column;
+}
+
+.project {
+  display: grid;
+  grid-template-columns: 200px 1fr auto;
+  gap: 24px;
+  align-items: baseline;
+  padding: 26px 4px;
+  border-bottom: 1px solid var(--line);
+  transition: background 0.2s;
+}
+
+.project:hover {
+  background: var(--bg-raised);
+}
+
+.project:first-child {
+  border-top: 1px solid var(--line);
+}
+
+.project h3 {
+  font-size: 1.05rem;
+}
+
+.project p {
+  color: var(--ink-dim);
+  font-size: 0.92rem;
+}
+
+.project .mono {
+  font-size: 0.68rem;
+  color: var(--ink-faint);
+}
+
+/* ── Chat ─────────────────────────────────────────────────────── */
+.chat-shell {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  max-width: 880px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 32px;
+  min-height: calc(100dvh - 140px);
+}
+
+.chat-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+  flex-wrap: wrap;
+}
+
+.chat-top h1 {
+  font-size: 1.4rem;
+}
+
+.model-select {
+  font-family: var(--font-mono), monospace;
+  direction: ltr;
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  color: var(--ink);
+  background: var(--bg-raised);
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  padding: 10px 14px;
+  cursor: pointer;
+}
+
+.model-select:focus-visible {
+  outline: 2px solid var(--copper);
+  outline-offset: 2px;
+}
+
+.chat-log {
+  flex: 1;
+  overflow-y: auto;
+  padding: 28px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.msg {
+  max-width: 78%;
+  padding: 14px 20px;
+  border-radius: 14px;
+  font-size: 0.98rem;
+  line-height: 1.9;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.msg.user {
+  align-self: flex-start;
+  background: var(--copper-dim);
+  border: 1px solid rgba(18, 122, 102, 0.28);
+  color: var(--ink);
+}
+
+.msg.ai {
+  align-self: flex-end;
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  color: var(--ink-dim);
+}
+
+.msg-role {
+  display: block;
+  font-family: var(--font-mono), monospace;
+  direction: ltr;
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  color: var(--copper);
+  margin-bottom: 6px;
+}
+
+.chat-empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--ink-faint);
+  text-align: center;
+}
+
+.chat-empty .glyph {
+  font-size: 3rem;
+  color: var(--copper);
+  opacity: 0.6;
+}
+
+.chat-error {
+  font-size: 0.85rem;
+  color: #b3432f;
+  border: 1px solid rgba(179, 67, 47, 0.3);
+  background: rgba(179, 67, 47, 0.06);
+  border-radius: 10px;
+  padding: 12px 18px;
+}
+
+.chat-form {
+  display: flex;
+  gap: 12px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+
+.chat-input {
+  flex: 1;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--ink);
+  background: var(--bg-raised);
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
+  padding: 14px 18px;
+  resize: none;
+  line-height: 1.7;
+}
+
+.chat-input:focus-visible {
+  outline: 2px solid var(--copper);
+  outline-offset: 1px;
+}
+
+.chat-send {
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #ffffff;
+  background: var(--copper);
+  border: none;
+  border-radius: 12px;
+  padding: 0 28px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.chat-send:hover:not(:disabled) {
+  background: var(--copper-bright);
+}
+
+.chat-send:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.chat-send:focus-visible {
+  outline: 2px solid var(--copper-bright);
+  outline-offset: 2px;
+}
+
+/* ── Blog ─────────────────────────────────────────────────────── */
+.blog-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-row {
+  display: block;
+  padding: 32px 4px;
+  border-bottom: 1px solid var(--line);
+  transition: background 0.2s;
+}
+
+.post-row:first-of-type {
+  border-top: 1px solid var(--line);
+}
+
+.post-row:hover {
+  background: var(--bg-raised);
+}
+
+.post-row .mono {
+  font-size: 0.68rem;
+  color: var(--copper);
+  display: block;
+  margin-bottom: 10px;
+}
+
+.post-row h3 {
+  font-size: 1.35rem;
+  margin-bottom: 8px;
+}
+
+.post-row p {
+  color: var(--ink-dim);
+  font-size: 0.95rem;
+  max-width: 68ch;
+}
+
+.article {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 72px 32px;
+}
+
+.article .mono {
+  font-size: 0.7rem;
+  color: var(--copper);
+  display: block;
+  margin-bottom: 16px;
+}
+
+.article h1 {
+  font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+  margin-bottom: 32px;
+}
+
+.article-body p {
+  color: var(--ink-dim);
+  font-size: 1.06rem;
+  margin-bottom: 24px;
+}
+
+.article-body h2 {
+  font-size: 1.35rem;
+  margin: 44px 0 16px;
+  color: var(--ink);
+}
+
+.refs {
+  margin-top: 48px;
+  padding: 20px 24px;
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.refs .mono {
+  font-size: 0.66rem;
+  color: var(--ink-faint);
+  letter-spacing: 0.25em;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.refs ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.refs a {
+  font-family: var(--font-mono), monospace;
+  direction: ltr;
+  display: inline-block;
+  font-size: 0.85rem;
+  color: var(--copper);
+}
+
+.refs a:hover {
+  color: var(--copper-bright);
+  text-decoration: underline;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 40px;
+  font-size: 0.9rem;
+  color: var(--copper);
+}
+
+.back-link:hover {
+  color: var(--copper-bright);
+}
+
+/* ── Footer ───────────────────────────────────────────────────── */
+.footer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 26px 32px;
+  border-top: 1px solid var(--line);
+}
+
+.footer-mark {
+  font-size: 0.95rem;
+  color: var(--ink-faint);
+}
+
+.footer-meta {
+  font-family: var(--font-mono), monospace;
+  direction: ltr;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  color: var(--ink-faint);
+}
+
+.footer-meta a:hover {
+  color: var(--copper);
+}
+
+/* ── Responsive ───────────────────────────────────────────────── */
+@media (max-width: 720px) {
+  .nav {
+    padding: 14px 20px;
+  }
+  .nav-links {
+    gap: 18px;
+  }
+  .hero-inner,
+  .section {
+    padding-inline: 20px;
+  }
+  .section {
+    padding-block: 60px;
+  }
+  .project {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .msg {
+    max-width: 92%;
+  }
+  .chat-shell {
+    padding: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
