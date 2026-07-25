@@ -30,7 +30,7 @@ const COPY = {
         desc: "توريد وتركيب حلول الشبكات السلكية واللاسلكية (Wi-Fi)، مع تقوية الإشارة ومعالجة النقاط الضعيفة عبر نقاط وصول (Access Points) أو أنظمة Mesh، لضمان تغطية كاملة وثابتة لكل مساحات الموقع. الخدمة متاحة للأفراد والشركات والقطاع الحكومي.",
       },
       {
-        mono: "ACTIVATION",
+        mono: "Professional services",
         title: "تفعيل وإعداد أنظمة الشبكات",
         desc: "تفعيل وضبط وتهيئة أنظمة الشبكات القائمة — إعداد نقاط الوصول والأجهزة، تقسيم الشبكات وسياسات الوصول، وضبط إعدادات الأداء والأمان — لضمان تشغيل مستقر وآمن دون الحاجة لتركيب جديد.",
       },
@@ -69,7 +69,7 @@ const COPY = {
         desc: "Supply and installation of wired and wireless (Wi-Fi) network solutions, with signal boosting and dead-zone remediation via access points or mesh systems, ensuring complete and consistent coverage across every area of the site. Available for individuals, businesses, and the government sector.",
       },
       {
-        mono: "ACTIVATION",
+        mono: "Professional services",
         title: "Network Systems Activation & Configuration",
         desc: "Activating, configuring, and tuning existing network systems — setting up access points and devices, network segmentation and access policies, and performance and security settings — for stable, secure operation without new installation.",
       },
