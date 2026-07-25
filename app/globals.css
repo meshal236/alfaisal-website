@@ -718,6 +718,76 @@ h1, h2, h3 {
   }
 }
 
+/* ── Free AI tools directory (chat page) ─────────────────────── */
+.tools-intro {
+  color: var(--ink-dim);
+  font-size: 1.02rem;
+  max-width: 68ch;
+  margin-bottom: 8px;
+}
+.tools-note {
+  font-size: 0.82rem;
+  color: var(--ink-faint);
+  margin-bottom: 56px;
+}
+.tool-category {
+  margin-bottom: 48px;
+}
+.tool-category-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.tool-category-head h3 {
+  font-size: 1.15rem;
+}
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+.tool-card {
+  display: block;
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.tool-card:hover {
+  border-color: var(--line-strong);
+  box-shadow: 0 4px 14px rgba(24, 34, 52, 0.06);
+}
+.tool-card-name {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-weight: 500;
+  font-size: 0.98rem;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.tool-card-name span.arrow {
+  color: var(--copper);
+  font-size: 0.85rem;
+}
+.tool-card-models {
+  font-family: var(--font-mono), monospace;
+  direction: ltr;
+  font-size: 0.66rem;
+  letter-spacing: 0.04em;
+  color: var(--copper);
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+.tool-card-tip {
+  font-size: 0.86rem;
+  color: var(--ink-dim);
+  line-height: 1.7;
+}
+
 /* ── Responsive ───────────────────────────────────────────────── */
 @media (max-width: 720px) {
   .nav {
