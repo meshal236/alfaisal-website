@@ -7,7 +7,7 @@ const COPY = {
     eyebrow: "SERVICES",
     heading: "الخدمات",
     intro:
-      "خدمات تقنية متخصصة تغطي البنية التحتية الرقمية والفيزيائية — من الذكاء الاصطناعي التطبيقي إلى الشبكات وأنظمة المراقبة، لعملاء من الأفراد والشركات والقطاع الحكومي.",
+      "تقديم وتنفيذ خدمات تقنية متخصصة تغطي البنية التحتية الرقمية من الذكاء الاصطناعي إلى الشبكات وأنظمة المراقبة.\nلعملاء من الأفراد والشركات والقطاع الحكومي.",
     services: [
       {
         mono: "NETWORKING",
@@ -93,7 +93,7 @@ export default function ServicesPage() {
         <span className="mono">{t.eyebrow}</span>
         <h2>{t.heading}</h2>
       </div>
-      <p className="prose" style={{ marginBottom: 44 }}>
+      <p className="prose" style={{ marginBottom: 44, whiteSpace: "pre-line" }}>
         {t.intro}
       </p>
       <div className="grid">
