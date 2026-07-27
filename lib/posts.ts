@@ -13,6 +13,30 @@ export type Post = {
 
 export const posts: Post[] = [
   {
+    slug: "lightpanda-headless-browser-ai-agents",
+    title: "متصفح بلا واجهة مبني من الصفر لوكلاء الذكاء الاصطناعي",
+    titleEn: "A Headless Browser Built From Scratch for AI Agents",
+    date: "2026-07",
+    tag: "AGENTIC AI",
+    excerpt:
+      "تشغيل Chrome بلا واجهة لأتمتة الوكلاء مكلف على الذاكرة والمعالج. متصفح مفتوح المصدر جديد مكتوب من الصفر بلغة Zig يعد بأداء أسرع بأضعاف واستهلاك ذاكرة أقل بكثير من Headless Chrome.",
+    excerptEn:
+      "Running headless Chrome for agent automation is expensive on memory and CPU. A new open-source browser written from scratch in Zig promises multiples-faster performance and far lower memory use than headless Chrome.",
+    body: [
+      { p: "مشروع Lightpanda Browser متصفح بلا واجهة رسومية (headless) مبني من الصفر بلغة Zig — ليس فرعًا من Chromium ولا من WebKit. الهدف صريح منذ البداية: أتمتة الويب ووكلاء الذكاء الاصطناعي، لا التصفح البشري." },
+      { h: "الفرق في الأداء", p: "وفق اختبارات المشروع نفسه على 933 صفحة حقيقية، يستهلك Lightpanda نحو 123 ميجابايت ذاكرة مقابل 2 جيجابايت لـ Headless Chrome عند نفس الحمل، وينجز المهمة في نحو 5 ثوانٍ مقابل 46 ثانية تقريبًا — فرق يقارب 9 أضعاف بالسرعة و16 ضعفًا بالذاكرة." },
+      { h: "وضع الوكيل (Agent mode)", p: "يوفر المشروع وضع تشغيل يقود فيه وكيل ذكاء اصطناعي المتصفح مباشرة بأوامر بلغة طبيعية — تصفح، ضغط، تعبئة نماذج، استخراج بيانات — مع دعم Anthropic وOpenAI وGemini وHugging Face والنماذج المحلية عبر Ollama. أي جلسة وكيل يمكن تصديرها كسكربت جافاسكريبت قابل لإعادة التشغيل دون الحاجة لنموذج لغوي وقت التشغيل لاحقًا." },
+      { h: "زاوية عملية", p: "يدعم بروتوكول CDP القياسي (نفس بروتوكول Chrome DevTools)، فيعمل مباشرة مع Puppeteer وPlaywright دون تعديل كبير على السكربتات الحالية. المشروع لسا في مرحلة Beta وتغطيته لواجهات الويب لا تصل بعد لمستوى Chrome الكامل — يستحق التجربة في مهام زحف وأتمتة محددة، لا كبديل كامل فوري." },
+    ],
+    bodyEn: [
+      { p: "Lightpanda Browser is a headless browser built entirely from scratch in Zig — not a fork of Chromium or WebKit. Its stated goal from the start is explicit: web automation and AI agents, not human browsing." },
+      { h: "The performance difference", p: "Per the project's own benchmarks on 933 real web pages, Lightpanda uses about 123MB of memory versus 2GB for headless Chrome under the same load, finishing in around 5 seconds versus roughly 46 — close to a 9x speed difference and 16x less memory." },
+      { h: "Agent mode", p: "The project ships a mode where an AI agent drives the browser directly through natural-language commands — navigating, clicking, filling forms, extracting structured data — supporting Anthropic, OpenAI, Gemini, Hugging Face, and local models via Ollama. Any agent session can be exported as a replayable JavaScript script that needs no model at runtime afterward." },
+      { h: "A practical angle", p: "It speaks the standard CDP protocol (the same one Chrome DevTools uses), so it works directly with Puppeteer and Playwright without major changes to existing scripts. The project is still in beta and its web-API coverage hasn't reached full Chrome parity yet — worth trying for specific crawling and automation tasks, not yet a full drop-in replacement." },
+    ],
+    refs: [{ label: "lightpanda-io/browser", url: "https://github.com/lightpanda-io/browser" }],
+  },
+  {
     slug: "openworker-ai-desktop-coworker",
     title: "OpenWorker: زميل عمل بالذكاء الاصطناعي يعيش على سطح مكتبك",
     titleEn: "OpenWorker: An AI Coworker That Lives on Your Desktop",
