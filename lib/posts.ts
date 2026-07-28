@@ -13,6 +13,30 @@ export type Post = {
 
 export const posts: Post[] = [
   {
+    slug: "microsoft-agent-governance-toolkit",
+    title: "Agent Governance Toolkit: طبقة تحكم إلزامية على قرارات وكلاء الذكاء الاصطناعي",
+    titleEn: "Agent Governance Toolkit: Enforced Control Over What AI Agents Are Allowed to Do",
+    date: "2026-07",
+    tag: "AI AGENTS",
+    excerpt:
+      "طلب اللطف من نموذج ذكاء اصطناعي بـ«اتبع القواعد» ليس ضابط أمان حقيقي. أداة من مايكروسوفت تفرض السياسات على مستوى الكود قبل أي استدعاء أداة، بحيث تصبح المخالفة مستحيلة هيكليًا لا مجرد نادرة.",
+    excerptEn:
+      "Politely asking a model to \"follow the rules\" isn't a real security control. A Microsoft project enforces policy in application code before any tool call, making violations structurally impossible, not just unlikely.",
+    body: [
+      { p: "هجمات حقن الأوامر (prompt injection) نجحت بنسبة تقارب 100% ضد نماذج كبرى في أبحاث أكاديمية حديثة — أي ضابط أمان يعتمد فقط على تعليمات داخل الـ prompt نفسه غير موثوق. مشروع Agent Governance Toolkit من مايكروسوفت يحل هذا بطريقة مختلفة تمامًا: يعترض كل استدعاء أداة أو رسالة أو تفويض في كود التطبيق نفسه، قبل ما تصل نية النموذج للتنفيذ الفعلي." },
+      { h: "كيف تبدو الحوكمة عمليًا", p: "سطران فقط: تلف أي دالة أداة بدالة govern() مع ملف سياسة بصيغة YAML، وكل استدعاء يصبح مُقيَّمًا ومسجّلًا ومنفذًا وفق القاعدة — عملية حذف جدول مثلًا تُرفض تلقائيًا وتتطلب موافقة بشرية صريحة، بينما عملية قراءة عادية تمر بلا احتكاك." },
+      { h: "طبقات اختيارية حسب الحاجة", p: "فوق محرك السياسات، توجد طبقات إضافية اختيارية: هوية بمعايير Zero-Trust لتمييز أي وكيل نفّذ أي إجراء بالضبط في نظام متعدد الوكلاء، عزل تنفيذ بأربع مستويات صلاحية، سجل تدقيق مقاوم للتلاعب، وحتى بوابة أمان مخصصة لبروتوكول MCP تكتشف تسميم الأدوات ومحاولات الانتحال. أغلب الفرق تكتفي بمحرك السياسات وسجل التدقيق فقط." },
+      { h: "زاوية عملية", p: "يغطي المشروع كل بنود قائمة OWASP Agentic Top 10 العشرة، ومتاح كحزمة لخمس لغات (Python، TypeScript، C#، Rust، Go) بالإضافة لتكامل جاهز مع Claude Code وGitHub Copilot CLI ومعظم أطر عمل الوكلاء الشائعة (LangChain، CrewAI، AutoGen، Semantic Kernel). لسا في مرحلة Public Preview من مايكروسوفت — يستحق التجربة على مشروع غير حرج أولًا قبل الإنتاج." },
+    ],
+    bodyEn: [
+      { p: "Prompt injection attacks have hit near-100% success rates against major models in recent academic research — any safety approach that relies solely on instructions inside the prompt itself is unreliable. Microsoft's Agent Governance Toolkit takes an entirely different approach: it intercepts every tool call, message, and delegation in the application's own code, before the model's intent ever reaches actual execution." },
+      { h: "What governance looks like in practice", p: "Two lines: wrap any tool function with govern() alongside a YAML policy file, and every call gets evaluated, logged, and enforced against the rule — a table-drop action, for example, is denied automatically and requires explicit human approval, while an ordinary read passes through with no friction." },
+      { h: "Optional layers as needed", p: "On top of the policy engine sit optional additional layers: zero-trust identity to know exactly which agent performed which action in a multi-agent system, execution sandboxing with four privilege rings, a tamper-evident audit log, and even a dedicated MCP security gateway that detects tool poisoning and impersonation attempts. Most teams stick with just the policy engine plus audit logging." },
+      { h: "A practical angle", p: "The project covers all ten categories of the OWASP Agentic Top 10, and ships as a package for five languages (Python, TypeScript, C#, Rust, Go), with ready integrations for Claude Code, GitHub Copilot CLI, and most popular agent frameworks (LangChain, CrewAI, AutoGen, Semantic Kernel). It's still in Microsoft's Public Preview — worth trying on a non-critical project first before production." },
+    ],
+    refs: [{ label: "microsoft/agent-governance-toolkit", url: "https://github.com/microsoft/agent-governance-toolkit" }],
+  },
+  {
     slug: "superfile-modern-terminal-file-manager",
     title: "Superfile: مدير ملفات طرفية عصري وأنيق",
     titleEn: "Superfile: A Fancy, Modern Terminal File Manager",
