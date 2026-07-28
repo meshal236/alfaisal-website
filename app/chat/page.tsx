@@ -251,6 +251,7 @@ const DIRECTORY: DirCategory[] = [
       { name: "openrouter.ai", url: "https://openrouter.ai", models: "عشرات النماذج المجانية", tipAr: "مفتاح واحد يوصلك لعشرات النماذج، وبعضها مجاني بالكامل.", tipEn: "One key gives access to dozens of models, several of them fully free." },
       { name: "huggingface.co", url: "https://huggingface.co", models: "آلاف النماذج المفتوحة", tipAr: "استضافة وتجربة نماذج مفتوحة المصدر مجانًا عبر Spaces.", tipEn: "Host and try open-source models for free through Spaces." },
       { name: "together.ai", url: "https://together.ai", models: "نماذج مفتوحة سريعة", tipAr: "رصيد تجريبي مجاني عند التسجيل لتشغيل نماذج مفتوحة بسرعة عالية.", tipEn: "A free trial credit on signup to run open models at high speed." },
+      { name: "replit.com", url: "https://replit.com", models: "Replit Agent", tipAr: "محرر برمجة سحابي بوكيل ذكاء اصطناعي يبني تطبيقات كاملة من وصف نصي.", tipEn: "A cloud code editor with an AI agent that builds full apps from a text prompt." },
     ],
   },
 ];
