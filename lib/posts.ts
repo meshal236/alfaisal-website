@@ -13,6 +13,30 @@ export type Post = {
 
 export const posts: Post[] = [
   {
+    slug: "huggingface-speech-to-speech-local-voice-agent",
+    title: "Speech To Speech: بنية مفتوحة كاملة لوكيل صوتي محلي من Hugging Face",
+    titleEn: "Speech To Speech: A Full Open Pipeline for a Local Voice Agent from Hugging Face",
+    date: "2026-07",
+    tag: "AI INFRA",
+    excerpt:
+      "أغلب المساعدات الصوتية الفورية تمر عبر خدمات سحابية مغلقة. مشروع من Hugging Face يبني خط أنابيب كامل (كشف صوت → تحويل نص → نموذج لغوي → تحويل صوت) قابل للتبديل مكونًا مكونًا، بواجهة متوافقة مع OpenAI Realtime.",
+    excerptEn:
+      "Most real-time voice assistants run through closed cloud services. A Hugging Face project builds a complete pipeline (voice detection → speech-to-text → language model → text-to-speech) with every component swappable, exposed through an OpenAI Realtime-compatible interface.",
+    body: [
+      { p: "أغلب المساعدات الصوتية الفورية (زي ميزة Realtime من OpenAI) تعمل كصندوق أسود سحابي. مشروع Speech To Speech من Hugging Face يعيد بناء نفس الفكرة كخط أنابيب مفتوح بالكامل: كشف نشاط صوتي (VAD)، تحويل كلام لنص (STT)، نموذج لغوي (LLM)، ثم تحويل نص لكلام (TTS) — كل مرحلة تشتغل على خيط مستقل وتتواصل عبر طوابير، وكل مكون فيها قابل للاستبدال بأمر سطر واحد." },
+      { h: "التشغيل بأمر واحد", p: "أمر تثبيت واحد ثم أمر تشغيل واحد يشغّل خادمًا متوافقًا مع بروتوكول OpenAI Realtime على المنفذ المحلي — بنموذج Parakeet TDT للتفريغ وQwen3-TTS للصوت افتراضيًا. أي عميل يدعم Realtime API يقدر يتصل مباشرة بدون أي تعديل." },
+      { h: "مرونة اختيار النموذج اللغوي", p: "النموذج اللغوي — أكثر مرحلة استهلاكًا للوقت والمعالجة في خط الأنابيب — يقدر يكون محليًا بالكامل عبر llama.cpp أو vLLM على عتادك، أو عبر أي مزود متوافق مع OpenAI (HF Inference Providers، OpenRouter، أو OpenAI نفسها). تبديل المزود سطر واحد فقط في أمر التشغيل." },
+      { h: "زاوية عملية", p: "المشروع يشغّل فعليًا محادثات آلاف من روبوتات Reachy Mini في الإنتاج، وهذا مؤشر نضج حقيقي لا مجرد عرض تجريبي. الدعم اللغوي يعتمد على النموذج المختار لا على خط الأنابيب نفسه، ويدعم التبديل التلقائي بين اللغات عبر خيار تشغيل مخصص." },
+    ],
+    bodyEn: [
+      { p: "Most real-time voice assistants (like OpenAI's Realtime feature) work as a closed cloud black box. Hugging Face's Speech To Speech project rebuilds the same idea as a fully open pipeline: voice activity detection (VAD), speech-to-text (STT), a language model (LLM), then text-to-speech (TTS) — each stage runs on its own thread and communicates through queues, and every component can be swapped with a single CLI flag." },
+      { h: "Running it with one command", p: "One install command, then one run command starts a server compatible with the OpenAI Realtime protocol on a local port — with Parakeet TDT for transcription and Qwen3-TTS for voice output by default. Any client that speaks the Realtime API can connect directly with no changes." },
+      { h: "Flexible language-model choice", p: "The language model — the most time- and compute-intensive stage in the pipeline — can run fully locally via llama.cpp or vLLM on your own hardware, or through any OpenAI-compatible provider (HF Inference Providers, OpenRouter, or OpenAI itself). Switching providers is a one-line change in the run command." },
+      { h: "A practical angle", p: "This project actually powers the conversation backend for thousands of Reachy Mini robots in production — a real maturity signal, not just a demo. Language coverage depends on the model you choose, not the pipeline itself, and it supports automatic language switching via a dedicated run flag." },
+    ],
+    refs: [{ label: "huggingface/speech-to-speech", url: "https://github.com/huggingface/speech-to-speech" }],
+  },
+  {
     slug: "ecc-agent-harness-operating-system",
     title: "ECC: طبقة تشغيل موحّدة لأدوات الوكلاء البرمجية عبر Claude Code وCursor وأكثر",
     titleEn: "ECC: An Operating Layer for Coding Agent Tools Across Claude Code, Cursor, and More",
