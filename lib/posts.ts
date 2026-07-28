@@ -13,6 +13,30 @@ export type Post = {
 
 export const posts: Post[] = [
   {
+    slug: "meetily-local-ai-meeting-assistant",
+    title: "Meetily: مساعد اجتماعات ذكي يعمل بالكامل على جهازك",
+    titleEn: "Meetily: An AI Meeting Assistant That Runs Entirely on Your Machine",
+    date: "2026-07",
+    tag: "SELF-HOSTED",
+    excerpt:
+      "أدوات تفريغ الاجتماعات السحابية تعني إرسال نقاشاتك الحساسة لخوادم لا تملكها. مشروع مفتوح المصدر يفرّغ ويلخّص اجتماعاتك بالكامل محليًا — بلا سحابة، بلا اشتراك، وبخصوصية كاملة.",
+    excerptEn:
+      "Cloud meeting-transcription tools mean sending your sensitive discussions to servers you don't own. An open-source project transcribes and summarizes your meetings entirely locally — no cloud, no subscription, full privacy.",
+    body: [
+      { p: "تكلفة متوسط اختراق البيانات بلغت 4.4 مليون دولار عام 2024 حسب تقرير IBM، وغرامات GDPR تجاوزت 5.88 مليار يورو حتى 2025 — أرقام تجعل أي مسؤول تقني يعيد التفكير قبل رفع تسجيل اجتماع حساس لأداة سحابية. مشروع Meetily يحل هذا بمعالجة كاملة على الجهاز نفسه، دون إرسال أي بيانات للسحابة." },
+      { h: "كيف يعمل", p: "يسجّل الاجتماع (المايكروفون وصوت النظام معًا)، يفرّغه لحظيًا عبر نماذج Whisper أو Parakeet (أسرع بأربع مرات حسب مطوّري المشروع)، ثم يولّد ملخصًا عبر نموذج لغوي من اختيارك — Ollama محليًا، أو Claude وGroq وOpenRouter، أو أي نقطة نهاية متوافقة مع OpenAI." },
+      { h: "البنية التقنية", p: "تطبيق سطح مكتب واحد مبني بإطار Tauri، بخلفية Rust تتولى كل المنطق الأساسي وواجهة Next.js للاستخدام. يدعم تسريع العتاد تلقائيًا على كل منصة وقت البناء — Metal وCoreML على macOS، وCUDA وVulkan على Windows/Linux." },
+      { h: "زاوية عملية", p: "النسخة المجتمعية مجانية ومفتوحة المصدر بالكامل، وتغطي التفريغ اللحظي والتلخيص محليًا. نسخة PRO تجارية تضيف دقة أعلى وقوالب تصدير وتمييزًا للمتحدثين — مناسبة للفرق، لكن جوهر الخصوصية والمعالجة المحلية يبقى في النسخة المجانية." },
+    ],
+    bodyEn: [
+      { p: "The average cost of a data breach hit $4.4M in 2024 per IBM, and GDPR fines topped €5.88 billion through 2025 — numbers that make any IT lead think twice before uploading a sensitive meeting recording to a cloud tool. Meetily solves this with full on-device processing, sending no data to the cloud at all." },
+      { h: "How it works", p: "It records the meeting (microphone and system audio together), transcribes it live via Whisper or Parakeet models (claimed 4x faster by the project's developers), then generates a summary through a language model of your choice — Ollama locally, or Claude, Groq, OpenRouter, or any OpenAI-compatible endpoint." },
+      { h: "Technical architecture", p: "A single desktop app built with the Tauri framework, with a Rust backend handling all core logic and a Next.js frontend for the interface. It supports hardware acceleration on every platform automatically at build time — Metal and CoreML on macOS, CUDA and Vulkan on Windows/Linux." },
+      { h: "A practical angle", p: "The community edition is free and fully open-source, covering live transcription and local summarization. A commercial PRO tier adds higher accuracy, export templates, and speaker identification — useful for teams, but the core privacy and local-processing promise stays in the free edition." },
+    ],
+    refs: [{ label: "Zackriya-Solutions/meetily", url: "https://github.com/Zackriya-Solutions/meetily" }],
+  },
+  {
     slug: "lightpanda-headless-browser-ai-agents",
     title: "متصفح بلا واجهة مبني من الصفر لوكلاء الذكاء الاصطناعي",
     titleEn: "A Headless Browser Built From Scratch for AI Agents",
