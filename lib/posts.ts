@@ -13,6 +13,30 @@ export type Post = {
 
 export const posts: Post[] = [
   {
+    slug: "superfile-modern-terminal-file-manager",
+    title: "Superfile: مدير ملفات طرفية عصري وأنيق",
+    titleEn: "Superfile: A Fancy, Modern Terminal File Manager",
+    date: "2026-07",
+    tag: "CLI TOOLS",
+    excerpt:
+      "أوامر ls وcd وcp الكلاسيكية تكفي، لكن مدير ملفات طرفية حديث يجمع سهولة الأدوات الرسومية مع سرعة الطرفية — بواجهة ملونة، لوحات متعددة، وإضافات قابلة للتوسيع.",
+    excerptEn:
+      "The classic ls, cd, and cp commands are enough, but a modern terminal file manager combines the ease of graphical tools with terminal speed — a colorful interface, multiple panels, and an extensible plugin system.",
+    body: [
+      { p: "مديرو الملفات الطرفية التقليدية (مثل ranger أو nnn) قوية لكن واجهاتها قديمة وتعلّمها صعب. Superfile مكتوب بلغة Go فوق مكتبة Bubble Tea الشهيرة، يقدم واجهة حديثة ملونة داخل الطرفية نفسها — بدون التضحية بسرعة أو خفة الأدوات النصية." },
+      { h: "التثبيت والتشغيل", p: "أمر تثبيت واحد لكل نظام تشغيل (macOS، Linux، Windows عبر winget أو scoop)، وأمر spf يفتح الواجهة مباشرة. يدعم عدة لوحات (panels) مفتوحة بجانب بعض، تصفح متعدد الألسنة، ونظام سمات (themes) قابل للتخصيص بالكامل." },
+      { h: "الإضافات والتخصيص", p: "نظام إضافات (plugins) وسمات جاهزة عبر ويكي منفصل، ومفاتيح اختصار قابلة لإعادة التعيين بالكامل — تتضمن حتى إعدادًا جاهزًا لمستخدمي vim/nvim. تحديث تلقائي اختياري يتحقق من وجود إصدار جديد كل 24 ساعة." },
+      { h: "زاوية عملية", p: "مفيد لمن يقضي أغلب وقته في الطرفية ويحتاج إدارة ملفات بصرية دون فتح مدير ملفات رسومي منفصل — خصوصًا على خوادم بلا واجهة رسومية أو أثناء الاتصال عبر SSH." },
+    ],
+    bodyEn: [
+      { p: "Traditional terminal file managers (like ranger or nnn) are powerful but dated-looking and have a learning curve. Superfile, written in Go on top of the popular Bubble Tea library, offers a modern, colorful interface right inside the terminal — without sacrificing the speed or lightness of a text-based tool." },
+      { h: "Install and run", p: "One install command per OS (macOS, Linux, Windows via winget or scoop), and a single `spf` command opens the interface. It supports multiple side-by-side panels, multi-tab browsing, and a fully customizable theming system." },
+      { h: "Plugins and customization", p: "A plugin system and ready-made themes are documented in a separate wiki, and hotkeys are fully remappable — there's even a ready preset for vim/nvim users. Optional auto-update checks for a new version every 24 hours." },
+      { h: "A practical angle", p: "Useful for anyone who spends most of their time in the terminal and needs visual file management without opening a separate GUI file manager — especially on headless servers or over an SSH connection." },
+    ],
+    refs: [{ label: "yorukot/superfile", url: "https://github.com/yorukot/superfile" }],
+  },
+  {
     slug: "huggingface-speech-to-speech-local-voice-agent",
     title: "Speech To Speech: بنية مفتوحة كاملة لوكيل صوتي محلي من Hugging Face",
     titleEn: "Speech To Speech: A Full Open Pipeline for a Local Voice Agent from Hugging Face",
