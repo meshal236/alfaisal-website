@@ -201,6 +201,11 @@ const DIRECTORY: DirCategory[] = [
       { name: "kimi.com", url: "https://kimi.com", models: "K2 · K1.5", tipAr: "دردشة قوية تدعم العربي والإنجليزي بشكل جيد.", tipEn: "A strong chat model that handles Arabic and English well." },
       { name: "gemini.google.com", url: "https://gemini.google.com", models: "Gemini 2.5 Flash", tipAr: "سجّل دخول بحساب Google واستخدم بضع محادثات يوميًا.", tipEn: "Sign in with a Google account for a few daily chats." },
       { name: "copilot.microsoft.com", url: "https://copilot.microsoft.com", models: "GPT-5", tipAr: "دردشة شبه غير محدودة، وصورة واحدة يوميًا مجانًا.", tipEn: "Near-unlimited chat, plus one free image per day." },
+      { name: "claude.ai", url: "https://claude.ai", models: "Claude", tipAr: "دردشة عالية الجودة بالكتابة والتحليل، برسائل مجانية يومية.", tipEn: "High-quality writing and analysis chat, with a daily free message quota." },
+      { name: "huggingface.co/chat", url: "https://huggingface.co/chat", models: "عدة نماذج مفتوحة", tipAr: "منصة HuggingChat — نماذج مفتوحة المصدر متعددة، مجانية بلا تسجيل معقّد.", tipEn: "HuggingChat — several open-source models, free with a simple signup." },
+      { name: "poe.com", url: "https://poe.com", models: "Claude · GPT · Llama", tipAr: "منصة واحدة تجمع أشهر النماذج، وتبدّل بينها بضغطة زر.", tipEn: "One platform bundling the most popular models — switch between them instantly." },
+      { name: "chat.deepseek.com", url: "https://chat.deepseek.com", models: "DeepSeek V3 · R1", tipAr: "دردشة قوية في الاستدلال والبرمجة، مجانية بالكامل تقريبًا.", tipEn: "Strong at reasoning and coding, free with essentially no real cap." },
+      { name: "you.com", url: "https://you.com", models: "بحث + دردشة", tipAr: "يدمج نتائج بحث حية مع إجابة الذكاء الاصطناعي في مكان واحد.", tipEn: "Combines live search results with an AI answer in one place." },
     ],
   },
   {
@@ -214,6 +219,10 @@ const DIRECTORY: DirCategory[] = [
       { name: "vheer.com", url: "https://vheer.com/", models: "نموذج خاص", tipAr: "اكتب الوصف واحصل على صورة بدون علامة مائية.", tipEn: "Type a prompt and get an image with no watermark." },
       { name: "perchance.org", url: "https://perchance.org/wtr90dexsn", models: "غير محدود", tipAr: "مولّد صور بسيط جدًا وسريع بدون إنشاء حساب.", tipEn: "A very simple, fast image generator, no account needed." },
       { name: "fotor.com", url: "https://www.fotor.com/", models: "تحرير بالذكاء الاصطناعي", tipAr: "ارفع صورة موجودة ودع الذكاء الاصطناعي يحررها لك.", tipEn: "Upload an existing photo and let the AI edit it for you." },
+      { name: "leonardo.ai", url: "https://leonardo.ai", models: "عدة نماذج", tipAr: "أرصدة يومية مجانية لتوليد صور بجودة احترافية.", tipEn: "Daily free credits for generating professional-quality images." },
+      { name: "ideogram.ai", url: "https://ideogram.ai", models: "Ideogram", tipAr: "الأدق بين أدوات توليد الصور في كتابة نص واضح داخل الصورة.", tipEn: "Among the most accurate at rendering clean readable text inside images." },
+      { name: "craiyon.com", url: "https://www.craiyon.com", models: "نموذج مجاني", tipAr: "توليد صور فوري بدون أي تسجيل دخول إطلاقًا.", tipEn: "Instant image generation with absolutely no login required." },
+      { name: "bing.com/create", url: "https://www.bing.com/images/create", models: "DALL-E 3", tipAr: "سجّل بحساب Microsoft مجانًا وولّد صورًا بجودة DALL-E 3.", tipEn: "Free Microsoft account sign-in for DALL-E 3 quality image generation." },
     ],
   },
   {
@@ -225,6 +234,9 @@ const DIRECTORY: DirCategory[] = [
       { name: "ttsmp3.com", url: "https://ttsmp3.com", models: "Google/Microsoft TTS", tipAr: "الصق النص، اختر صوتًا، وحمّل الملف الصوتي مباشرة.", tipEn: "Paste text, pick a voice, and download the audio file." },
       { name: "voicegenerator.io", url: "https://voicegenerator.io", models: "أصوات متعددة", tipAr: "اكتب النص واختر من مكتبة أصوات جاهزة.", tipEn: "Type your text and choose from a ready voice library." },
       { name: "fakeyou.com", url: "https://fakeyou.com", models: "أصوات مجتمعية", tipAr: "اختر صوتًا من المكتبة وحوّل نصك إليه (قد يوجد انتظار).", tipEn: "Pick a voice from the library and convert your text (queue may apply)." },
+      { name: "elevenlabs.io", url: "https://elevenlabs.io", models: "أشهر أداة TTS", tipAr: "أصوات واقعية جدًا شبه بشرية، بحصة شهرية مجانية.", tipEn: "The best-known TTS tool, extremely natural voices, with a free monthly quota." },
+      { name: "suno.com", url: "https://suno.com", models: "توليد أغاني كاملة", tipAr: "اكتب وصف الأغنية ويولّدها كاملة بموسيقى وغناء حقيقي.", tipEn: "Describe a song and it generates a complete track with real singing and music." },
+      { name: "udio.com", url: "https://udio.com", models: "توليد موسيقى", tipAr: "بديل قوي لـ Suno بجودة صوتية عالية، مجاني للتجربة.", tipEn: "A strong Suno alternative with high audio quality, free to try." },
     ],
   },
   {
@@ -236,6 +248,9 @@ const DIRECTORY: DirCategory[] = [
       { name: "uncloseai.com", url: "https://uncloseai.com/", models: "Hermes · Qwen 3 Coder · TTS", tipAr: "واجهة برمجية متوافقة مع OpenAI، بدون أي تسجيل.", tipEn: "An OpenAI-compatible API, no signup required at all." },
       { name: "ollama.com", url: "https://ollama.com", models: "عشرات النماذج", tipAr: "شغّل النماذج مجانًا محليًا على جهازك أو عبر السحابة.", tipEn: "Run models free, locally on your machine or in the cloud." },
       { name: "g4f.dev", url: "https://g4f.dev/docs/ready_to_use.html", models: "عدة مزودين موحّدين", tipAr: "واجهة برمجية واحدة توحّد الوصول لعدة مزودي نماذج مجانًا.", tipEn: "One unified API that gives free access to several model providers." },
+      { name: "openrouter.ai", url: "https://openrouter.ai", models: "عشرات النماذج المجانية", tipAr: "مفتاح واحد يوصلك لعشرات النماذج، وبعضها مجاني بالكامل.", tipEn: "One key gives access to dozens of models, several of them fully free." },
+      { name: "huggingface.co", url: "https://huggingface.co", models: "آلاف النماذج المفتوحة", tipAr: "استضافة وتجربة نماذج مفتوحة المصدر مجانًا عبر Spaces.", tipEn: "Host and try open-source models for free through Spaces." },
+      { name: "together.ai", url: "https://together.ai", models: "نماذج مفتوحة سريعة", tipAr: "رصيد تجريبي مجاني عند التسجيل لتشغيل نماذج مفتوحة بسرعة عالية.", tipEn: "A free trial credit on signup to run open models at high speed." },
     ],
   },
 ];
