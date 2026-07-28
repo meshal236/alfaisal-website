@@ -13,6 +13,30 @@ export type Post = {
 
 export const posts: Post[] = [
   {
+    slug: "ecc-agent-harness-operating-system",
+    title: "ECC: طبقة تشغيل موحّدة لأدوات الوكلاء البرمجية عبر Claude Code وCursor وأكثر",
+    titleEn: "ECC: An Operating Layer for Coding Agent Tools Across Claude Code, Cursor, and More",
+    date: "2026-07",
+    tag: "AI AGENTS",
+    excerpt:
+      "كل أداة وكيل برمجي (Claude Code، Cursor، Codex...) تبدأ من الصفر بلا ذاكرة ولا معايير موحدة. مشروع مفتوح المصدر يضيف طبقة مهارات وذاكرة وأمان فوق سبع أدوات وكيلة مختلفة دفعة واحدة.",
+    excerptEn:
+      "Every coding agent tool (Claude Code, Cursor, Codex...) starts from zero, with no memory and no shared standards. An open-source project adds a skills, memory, and security layer on top of seven different agent tools at once.",
+    body: [
+      { p: "كل من جرّب أكثر من أداة وكيل برمجي واحدة (Claude Code، Cursor، Codex، OpenCode...) يعرف المشكلة: كل أداة تبدأ محادثة جديدة بلا ذاكرة لما تعلمته سابقًا، ولا معايير برمجة موحدة، ولا طبقة أمان افتراضية. مشروع ECC يبني هذه الطبقة مرة واحدة، وتعمل عبر كل الأدوات." },
+      { h: "ما الذي يضيفه", p: "أكثر من 260 «مهارة» جاهزة تغطي لغات وأطر عمل متعددة (TypeScript، Python، Go، Rust، Java، PHP وغيرها)، عشرات الوكلاء الفرعيين المتخصصين (مراجعة كود، إصلاح بناء، اختبار E2E، مراجعة أمنية)، ونظام «تعلم مستمر» يستخرج أنماط عمل من جلساتك السابقة ويحقنها في الجلسات القادمة تلقائيًا." },
+      { h: "الأمان كطبقة مدمجة", p: "أداة فرعية اسمها AgentShield تفحص إعدادات الوكيل نفسه بحثًا عن أسرار مكشوفة، صلاحيات مفرطة، ومخاطر حقن عبر MCP — بـ102 قاعدة تحليل ثابت، مع وضع اختياري يشغّل ثلاثة نماذج Claude Opus في دور مهاجم ومدافع ومدقق لتقييم تحديات فعلية لا مجرد مطابقة أنماط." },
+      { h: "زاوية عملية", p: "يدعم المشروع Claude Code وCursor وCodex وOpenCode وGemini CLI وZed وGitHub Copilot ضمن أدوات أخرى — نفس القواعد والمهارات تنتقل معك بين الأدوات. قبل التثبيت، اختر مسارًا واحدًا فقط (الإضافة الجاهزة أو التثبيت اليدوي) وتجنّب تكديس الطريقتين، لأنه أشيع سبب لتكرار السلوك وتضارب الإعدادات حسب توثيق المشروع نفسه." },
+    ],
+    bodyEn: [
+      { p: "Anyone who has tried more than one coding agent tool (Claude Code, Cursor, Codex, OpenCode...) knows the problem: every tool starts a fresh session with no memory of what it learned before, no shared coding standards, and no default security layer. The ECC project builds that layer once, and it works across every tool." },
+      { h: "What it adds", p: "260+ ready-made \"skills\" covering multiple languages and frameworks (TypeScript, Python, Go, Rust, Java, PHP, and more), dozens of specialized subagents (code review, build-fix, E2E testing, security review), and a \"continuous learning\" system that extracts patterns from your past sessions and injects them into future ones automatically." },
+      { h: "Security as a built-in layer", p: "A companion tool called AgentShield scans the agent's own configuration for exposed secrets, excessive permissions, and MCP injection risks — with 102 static-analysis rules, plus an optional mode that runs three Claude Opus models as attacker, defender, and auditor to assess real exploit chains, not just pattern matching." },
+      { h: "A practical angle", p: "The project supports Claude Code, Cursor, Codex, OpenCode, Gemini CLI, Zed, and GitHub Copilot, among others — the same rules and skills travel with you between tools. Before a full install, pick exactly one path (the ready plugin or manual install) and avoid stacking both, since the project's own documentation flags that as the most common cause of duplicated behavior and conflicting configuration." },
+    ],
+    refs: [{ label: "affaan-m/ECC", url: "https://github.com/affaan-m/ECC" }],
+  },
+  {
     slug: "meetily-local-ai-meeting-assistant",
     title: "Meetily: مساعد اجتماعات ذكي يعمل بالكامل على جهازك",
     titleEn: "Meetily: An AI Meeting Assistant That Runs Entirely on Your Machine",
