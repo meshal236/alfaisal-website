@@ -13,6 +13,30 @@ export type Post = {
 
 export const posts: Post[] = [
   {
+    slug: "tencentdb-agent-memory-layered-local-memory",
+    title: "TencentDB Agent Memory: ذاكرة طويلة الأمد محلية بالكامل لوكلاء الذكاء الاصطناعي",
+    titleEn: "TencentDB Agent Memory: Fully Local Long-Term Memory for AI Agents",
+    date: "2026-07",
+    tag: "AI AGENTS",
+    excerpt:
+      "أغلب أنظمة الذاكرة تكدس كل شيء في مخزن متجهات مسطح وتفقد التتبع عند الاستدعاء. مشروع من Tencent يبني ذاكرة هرمية بأربع طبقات مع رسوم بيانية رمزية (Mermaid) تقلل استهلاك التوكنات بأكثر من 60% وتحسّن دقة استرجاع الشخصية من 48% إلى 76%.",
+    excerptEn:
+      "Most memory systems dump everything into a flat vector store and lose traceability on recall. A Tencent project builds a 4-tier hierarchical memory with symbolic (Mermaid) graphs, cutting token usage by over 60% and raising persona-recall accuracy from 48% to 76%.",
+    body: [
+      { p: "أنظمة الذاكرة التقليدية للوكلاء تقطّع المحادثات لشظايا وتضعها في مخزن متجهات مسطح — يتحول الاسترجاع لبحث أعمى بلا سياق هرمي. مشروع TencentDB Agent Memory يرفض هذا النمط، ويبني بدلًا منه هرمًا دلاليًا بأربع طبقات: محادثة خام (L0)، حقائق ذرية (L1)، مشاهد (L2)، وأخيرًا ملف شخصي مكثف للمستخدم (L3) — كل طبقة يمكن الغوص منها للطبقة الأسفل عند الحاجة لتفاصيل دقيقة." },
+      { h: "الذاكرة الرمزية لضغط السياق", p: "أكبر مستهلك للتوكنات في المهام الطويلة هو سجلات الأدوات المطولة (نتائج بحث، كود، أخطاء). المشروع يرحّل هذه السجلات الكاملة لملفات خارجية، ويبقي في السياق فقط خريطة Mermaid خفيفة تلخّص حالة المهمة — الوكيل يستدل من الرسم، ويرجع للنص الخام فقط عبر معرّف عقدة (node_id) عند الحاجة الفعلية للتحقق." },
+      { h: "أرقام حقيقية من الاختبارات", p: "عند دمجه مع منصة OpenClaw، خفّض استهلاك التوكنات حتى 61.38% ورفع معدل نجاح المهام 51.52% نسبيًا على اختبار WideSearch، ورفع دقة استرجاع الشخصية (PersonaMem) من 48% إلى 76% — نتائج مقاسة عبر جلسات طويلة مستمرة لا لفتات معزولة." },
+      { h: "زاوية عملية", p: "يعمل كإضافة (plugin) مباشرة لمنصتي OpenClaw وHermes، بخلفية SQLite محلية افتراضيًا بدون أي اعتماد على خدمة سحابية خارجية إلزامية. كل الملفات الوسيطة (الشخصية، المشاهد، خرائط المهام) نصوص Markdown أو Mermaid قابلة للفتح والفحص مباشرة — تصحيح الأخطاء يصير مسارًا واضحًا من الملف الشخصي رجوعًا للمحادثة الخام، لا صندوقًا أسود من درجات تشابه متجهية." },
+    ],
+    bodyEn: [
+      { p: "Traditional agent memory systems shred conversations into fragments and drop them into a flat vector store — recall degenerates into a blind search with no hierarchical context. TencentDB Agent Memory rejects that pattern, building instead a four-layer semantic pyramid: raw conversation (L0), atomic facts (L1), scenes (L2), and finally a condensed user persona (L3) — with a deterministic drill-down path back to lower layers whenever precise detail is needed." },
+      { h: "Symbolic memory for context compression", p: "The biggest token consumer in long-running tasks is verbose tool logs (search results, code, error traces). The project offloads these full logs to external files, keeping only a lightweight Mermaid task map in context — the agent reasons over the diagram, and only pulls the raw text back in via a node_id when it actually needs to verify a detail." },
+      { h: "Real numbers from benchmarks", p: "When integrated with the OpenClaw platform, it cut token usage by up to 61.38% and raised task success by 51.52% relative on the WideSearch benchmark, and raised persona-recall accuracy (PersonaMem) from 48% to 76% — results measured over continuous long-horizon sessions, not isolated turns." },
+      { h: "A practical angle", p: "It runs as a direct plugin for both the OpenClaw and Hermes platforms, defaulting to a local SQLite backend with no mandatory external cloud dependency. Every intermediate artifact (persona, scenes, task canvases) is a plain Markdown or Mermaid file you can open and inspect directly — debugging becomes a clear walk from the persona back down to the raw conversation, not an opaque black box of vector similarity scores." },
+    ],
+    refs: [{ label: "TencentCloud/TencentDB-Agent-Memory", url: "https://github.com/TencentCloud/TencentDB-Agent-Memory" }],
+  },
+  {
     slug: "microsoft-agent-governance-toolkit",
     title: "Agent Governance Toolkit: طبقة تحكم إلزامية على قرارات وكلاء الذكاء الاصطناعي",
     titleEn: "Agent Governance Toolkit: Enforced Control Over What AI Agents Are Allowed to Do",
