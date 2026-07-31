@@ -1,71 +1,70 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useMemo, useState, useRef, useEffect } from "react";
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
 import { useLanguage } from "@/lib/language-context";
 
-type Tab = "embed" | "engine" | "directory";
+type Tab = "engine" | "embed" | "directory";
 
 const COPY = {
   ar: {
-    eyebrow: "AI TOOLS",
-    heading: "أدوات ومحرك الذكاء الاصطناعي",
-    tabs: { embed: "أدوات مدمجة", engine: "محرك المحادثة", directory: "دليل الخدمات" },
+    eyebrow: "AI HUB",
+    heading: "مركز الذكاء الاصطناعي",
+    sub: "محرك محادثة خاص بالموقع، أدوات تعمل داخل الصفحة، ودليل مختار لأفضل الخدمات المجانية.",
+    tabs: { engine: "محرك المحادثة", embed: "أدوات مدمجة", directory: "دليل الخدمات" },
   },
   en: {
-    eyebrow: "AI TOOLS",
-    heading: "AI tools & chat engine",
-    tabs: { embed: "Embedded tools", engine: "Chat engine", directory: "Service directory" },
+    eyebrow: "AI HUB",
+    heading: "AI Hub",
+    sub: "A site-native chat engine, tools that run inside the page, and a curated directory of the best free services.",
+    tabs: { engine: "Chat engine", embed: "Embedded tools", directory: "Directory" },
   },
 };
 
-/* ── Tab 1: embedded small tools (iframe, no new tab) ─────────── */
+/* ── Embedded tools (run inside the page) ─────────────────────── */
 const EMBED_TOOLS = [
-  { name: "sur.pollinations.ai", url: "https://sur.pollinations.ai/" },
-  { name: "umint-ai.hf.space", url: "https://umint-ai.hf.space/" },
-  { name: "mirexa.vercel.app", url: "https://mirexa.vercel.app/" },
-  { name: "freegpt.es", url: "https://freegpt.es/" },
-  { name: "heck.ai", url: "https://heck.ai" },
+  { name: "Pollinations Chat", host: "sur.pollinations.ai", url: "https://sur.pollinations.ai/", descAr: "دردشة سريعة بلا حساب", descEn: "Fast chat, no account" },
+  { name: "UMint AI", host: "umint-ai.hf.space", url: "https://umint-ai.hf.space/", descAr: "واجهة نماذج مفتوحة", descEn: "Open models interface" },
+  { name: "Mirexa", host: "mirexa.vercel.app", url: "https://mirexa.vercel.app/", descAr: "مساعد متعدد المهام", descEn: "Multi-purpose assistant" },
+  { name: "FreeGPT", host: "freegpt.es", url: "https://freegpt.es/", descAr: "دردشة مجانية مباشرة", descEn: "Direct free chat" },
+  { name: "Heck AI", host: "heck.ai", url: "https://heck.ai", descAr: "دردشة وبحث", descEn: "Chat and search" },
 ];
 
-const EMBED_COPY = {
-  ar: {
-    intro: "أدوات صغيرة تفتح مباشرة داخل هذي الصفحة، بدون تبويب جديد — اختر أداة من القائمة.",
-    note: "لو ظهر الإطار فارغًا، فهذا يعني أن الخدمة غيّرت سياستها ومنعت التضمين من طرفها — جرّب أداة ثانية.",
-  },
-  en: {
-    intro: "Small tools that load directly inside this page, no new tab — pick one from the list.",
-    note: "If the frame appears blank, that service changed its policy and blocked embedding on its end — try another tool.",
-  },
-};
-
 function EmbedPanel({ lang }: { lang: "ar" | "en" }) {
-  const [tool, setTool] = useState(EMBED_TOOLS[0]);
-  const t = EMBED_COPY[lang];
+  const [active, setActive] = useState(EMBED_TOOLS[0]);
+  const [loaded, setLoaded] = useState(false);
+  const t = lang === "ar"
+    ? { intro: "أدوات تفتح داخل الصفحة مباشرة — اختر بطاقة وابدأ.", note: "لو ظهر الإطار فارغًا فالخدمة منعت التضمين من طرفها — جرّب أداة أخرى.", open: "فتح في تبويب جديد ↗" }
+    : { intro: "Tools that open directly inside the page — pick a card and start.", note: "If the frame is blank, the service blocked embedding on its end — try another tool.", open: "Open in new tab ↗" };
   return (
     <div>
-      <p className="tools-intro">{t.intro}</p>
-      <select
-        className="embed-select"
-        value={tool.url}
-        onChange={(e) => setTool(EMBED_TOOLS.find((x) => x.url === e.target.value)!)}
-      >
+      <p className="hub-intro">{t.intro}</p>
+      <div className="embed-chips">
         {EMBED_TOOLS.map((x) => (
-          <option key={x.url} value={x.url}>
-            {x.name}
-          </option>
+          <button
+            key={x.url}
+            className={`embed-chip${active.url === x.url ? " active" : ""}`}
+            onClick={() => { setActive(x); setLoaded(false); }}
+          >
+            <span className="embed-chip-name">{x.name}</span>
+            <span className="embed-chip-desc">{lang === "ar" ? x.descAr : x.descEn}</span>
+          </button>
         ))}
-      </select>
-      <div className="embed-frame-wrap">
-        <iframe key={tool.url} src={tool.url} title={tool.name} />
       </div>
-      <p className="embed-note">{t.note}</p>
+      <div className="embed-frame-wrap">
+        {!loaded && <div className="embed-loading"><span /></div>}
+        <iframe key={active.url} src={active.url} title={active.name} onLoad={() => setLoaded(true)} style={{ opacity: loaded ? 1 : 0 }} />
+      </div>
+      <div className="embed-below">
+        <span className="embed-note">{t.note}</span>
+        <a href={active.url} target="_blank" rel="noreferrer" className="embed-open">{t.open}</a>
+      </div>
     </div>
   );
 }
 
-/* ── Tab 2: real chat engine (Vercel AI Gateway) ──────────────── */
+/* ── Site-native chat engine ──────────────────────────────────── */
 const MODELS = [
   { id: "deepseek/deepseek-v4-flash", label: "DeepSeek V4 Flash" },
   { id: "alibaba/qwen3.6-27b", label: "Qwen 3.6 27B" },
@@ -75,31 +74,25 @@ const MODELS = [
   { id: "moonshotai/kimi-k2.6", label: "Kimi K2.6" },
 ];
 
-const ENGINE_COPY = {
-  ar: {
-    modelAria: "اختيار النموذج",
-    emptyGlyph: "م",
-    emptyText: "اسأل عن أي شيء — بنية تحتية، شبكات، ذكاء اصطناعي، أو أي موضوع آخر.",
-    error: "حدث خطأ في الاتصال — جرّب نموذجًا آخر من القائمة أو أعد المحاولة.",
-    placeholder: "اكتب رسالتك…",
-    send: "إرسال",
-    you: "YOU",
-    ai: "AI",
-  },
-  en: {
-    modelAria: "Select model",
-    emptyGlyph: "M",
-    emptyText: "Ask about anything — infrastructure, networking, AI, or any other topic.",
-    error: "Something went wrong connecting to the model — try another one from the list or retry.",
-    placeholder: "Type your message…",
-    send: "Send",
-    you: "YOU",
-    ai: "AI",
-  },
+const SUGGESTIONS = {
+  ar: [
+    "اشرح لي الفرق بين Docker وKubernetes",
+    "كيف أبدأ homelab بميزانية بسيطة؟",
+    "وش أفضل طريقة لتأمين شبكة منزلية؟",
+    "لخّص لي مفهوم Zero Trust",
+  ],
+  en: [
+    "Explain the difference between Docker and Kubernetes",
+    "How do I start a homelab on a small budget?",
+    "Best way to secure a home network?",
+    "Summarize the Zero Trust concept",
+  ],
 };
 
 function EnginePanel({ lang }: { lang: "ar" | "en" }) {
-  const t = ENGINE_COPY[lang];
+  const t = lang === "ar"
+    ? { modelAria: "اختيار النموذج", emptyTitle: "اسأل عن أي شيء", emptyText: "بنية تحتية، شبكات، ذكاء اصطناعي — أو جرّب أحد الاقتراحات:", error: "حدث خطأ في الاتصال — جرّب نموذجًا آخر أو أعد المحاولة.", placeholder: "اكتب رسالتك…", send: "إرسال", you: "YOU", ai: "AI" }
+    : { modelAria: "Select model", emptyTitle: "Ask anything", emptyText: "Infrastructure, networking, AI — or try a suggestion:", error: "Connection error — try another model or retry.", placeholder: "Type your message…", send: "Send", you: "YOU", ai: "AI" };
   const [model, setModel] = useState(MODELS[0].id);
   const [input, setInput] = useState("");
   const logRef = useRef<HTMLDivElement>(null);
@@ -107,55 +100,48 @@ function EnginePanel({ lang }: { lang: "ar" | "en" }) {
   const { messages, sendMessage, status, error } = useChat({
     transport: new DefaultChatTransport({ api: "/api/chat" }),
   });
-
   const busy = status === "submitted" || status === "streaming";
 
   useEffect(() => {
-    logRef.current?.scrollTo({ top: logRef.current.scrollHeight });
+    logRef.current?.scrollTo({ top: logRef.current.scrollHeight, behavior: "smooth" });
   }, [messages]);
 
-  const submit = () => {
-    const text = input.trim();
-    if (!text || busy) return;
+  const send = (text: string) => {
+    const clean = text.trim();
+    if (!clean || busy) return;
     setInput("");
-    sendMessage({ text }, { body: { model } });
+    sendMessage({ text: clean }, { body: { model } });
   };
 
   return (
-    <div className="chat-shell" style={{ padding: 0, minHeight: 560 }}>
-      <div className="chat-top">
-        <select
-          className="model-select"
-          value={model}
-          onChange={(e) => setModel(e.target.value)}
-          aria-label={t.modelAria}
-        >
-          {MODELS.map((m) => (
-            <option key={m.id} value={m.id}>
-              {m.label}
-            </option>
-          ))}
+    <div className="engine-shell">
+      <div className="engine-top">
+        <select className="model-select" value={model} onChange={(e) => setModel(e.target.value)} aria-label={t.modelAria}>
+          {MODELS.map((m) => <option key={m.id} value={m.id}>{m.label}</option>)}
         </select>
       </div>
-
       <div className="chat-log" ref={logRef}>
         {messages.length === 0 && !error && (
           <div className="chat-empty">
-            <span className="glyph">{t.emptyGlyph}</span>
+            <span className="glyph">{lang === "ar" ? "م" : "M"}</span>
+            <p className="chat-empty-title">{t.emptyTitle}</p>
             <p>{t.emptyText}</p>
+            <div className="suggestions">
+              {SUGGESTIONS[lang].map((s) => (
+                <button key={s} className="suggestion" onClick={() => send(s)}>{s}</button>
+              ))}
+            </div>
           </div>
         )}
         {messages.map((m) => (
           <div key={m.id} className={`msg ${m.role === "user" ? "user" : "ai"}`}>
             <span className="msg-role">{m.role === "user" ? t.you : t.ai}</span>
-            {m.parts.map((part, i) =>
-              part.type === "text" ? <span key={i}>{part.text}</span> : null
-            )}
+            {m.parts.map((part, i) => part.type === "text" ? <span key={i}>{part.text}</span> : null)}
           </div>
         ))}
+        {busy && messages.length > 0 && <div className="typing"><span /><span /><span /></div>}
         {error && <div className="chat-error">{t.error}</div>}
       </div>
-
       <div className="chat-form">
         <textarea
           className="chat-input"
@@ -163,14 +149,9 @@ function EnginePanel({ lang }: { lang: "ar" | "en" }) {
           placeholder={t.placeholder}
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === "Enter" && !e.shiftKey) {
-              e.preventDefault();
-              submit();
-            }
-          }}
+          onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); send(input); } }}
         />
-        <button className="chat-send" onClick={submit} disabled={busy || !input.trim()}>
+        <button className="chat-send" onClick={() => send(input)} disabled={busy || !input.trim()}>
           {busy ? "…" : t.send}
         </button>
       </div>
@@ -178,161 +159,126 @@ function EnginePanel({ lang }: { lang: "ar" | "en" }) {
   );
 }
 
-/* ── Tab 3: directory of strong services (new tab links) ──────── */
-type DirTool = { name: string; url: string; models: string; tipAr: string; tipEn: string };
-type DirCategory = { key: string; ar: string; en: string; tag: string; tools: DirTool[] };
+/* ── Directory ────────────────────────────────────────────────── */
+type DirTool = { name: string; url: string; models: string; tipAr: string; tipEn: string; cat: string };
 
-const DIRECTORY: DirCategory[] = [
-  {
-    key: "chat",
-    ar: "واجهات محادثة",
-    en: "Chat interfaces",
-    tag: "CHAT",
-    tools: [
-      { name: "lmarena.ai", url: "https://lmarena.ai/", models: "40+ نموذج", tipAr: "قارن ردود عدة نماذج جنبًا إلى جنب وصوّت للأفضل.", tipEn: "Compare responses from multiple models side by side and vote." },
-      { name: "meta.ai", url: "https://www.meta.ai", models: "Llama 4", tipAr: "افتح الرابط وابدأ الدردشة فورًا، بدون تسجيل.", tipEn: "Open the link and start chatting instantly, no signup." },
-      { name: "phind.com", url: "https://www.phind.com", models: "Phind-70B", tipAr: "محرك بحث ودردشة مخصص للمبرمجين وأسئلة الكود.", tipEn: "A search + chat engine built for developers and code questions." },
-      { name: "groq.com", url: "https://groq.com", models: "15+ نموذج", tipAr: "دردشة فائقة السرعة — اختر نموذجًا من القائمة وابدأ.", tipEn: "Ultra-fast chat — pick a model from the list and go." },
-      { name: "chatgpt.com", url: "https://chatgpt.com", models: "GPT-4o (محدود)", tipAr: "افتح الرابط واكتب مباشرة، بضع رسائل GPT-4o مجانية.", tipEn: "Open and type directly — a handful of free GPT-4o messages." },
-      { name: "chat.mistral.ai", url: "https://chat.mistral.ai", models: "Le Chat", tipAr: "10 رسائل مجانية يوميًا، تتجدد كل 24 ساعة.", tipEn: "10 free messages a day, resets every 24 hours." },
-      { name: "perplexity.ai", url: "https://perplexity.ai", models: "GPT-4.1 · Claude 4", tipAr: "اسأل سؤالك ويرجع لك جواب مع مصادر وروابط حقيقية.", tipEn: "Ask a question and get an answer with real cited sources." },
-      { name: "grok.com", url: "https://grok.com/chat", models: "Grok 3", tipAr: "3 رسائل مجانية تقريبًا كل ساعتين.", tipEn: "About 3 free messages every 2 hours." },
-      { name: "pi.ai", url: "https://pi.ai", models: "Inflection-2.5", tipAr: "محادثة شخصية أقرب لأسلوب الإنسان، بلا حدود واضحة.", tipEn: "A personal, human-like conversation style, no clear cap." },
-      { name: "kimi.com", url: "https://kimi.com", models: "K2 · K1.5", tipAr: "دردشة قوية تدعم العربي والإنجليزي بشكل جيد.", tipEn: "A strong chat model that handles Arabic and English well." },
-      { name: "gemini.google.com", url: "https://gemini.google.com", models: "Gemini 2.5 Flash", tipAr: "سجّل دخول بحساب Google واستخدم بضع محادثات يوميًا.", tipEn: "Sign in with a Google account for a few daily chats." },
-      { name: "copilot.microsoft.com", url: "https://copilot.microsoft.com", models: "GPT-5", tipAr: "دردشة شبه غير محدودة، وصورة واحدة يوميًا مجانًا.", tipEn: "Near-unlimited chat, plus one free image per day." },
-      { name: "claude.ai", url: "https://claude.ai", models: "Claude", tipAr: "دردشة عالية الجودة بالكتابة والتحليل، برسائل مجانية يومية.", tipEn: "High-quality writing and analysis chat, with a daily free message quota." },
-      { name: "huggingface.co/chat", url: "https://huggingface.co/chat", models: "عدة نماذج مفتوحة", tipAr: "منصة HuggingChat — نماذج مفتوحة المصدر متعددة، مجانية بلا تسجيل معقّد.", tipEn: "HuggingChat — several open-source models, free with a simple signup." },
-      { name: "poe.com", url: "https://poe.com", models: "Claude · GPT · Llama", tipAr: "منصة واحدة تجمع أشهر النماذج، وتبدّل بينها بضغطة زر.", tipEn: "One platform bundling the most popular models — switch between them instantly." },
-      { name: "chat.deepseek.com", url: "https://chat.deepseek.com", models: "DeepSeek V3 · R1", tipAr: "دردشة قوية في الاستدلال والبرمجة، مجانية بالكامل تقريبًا.", tipEn: "Strong at reasoning and coding, free with essentially no real cap." },
-      { name: "you.com", url: "https://you.com", models: "بحث + دردشة", tipAr: "يدمج نتائج بحث حية مع إجابة الذكاء الاصطناعي في مكان واحد.", tipEn: "Combines live search results with an AI answer in one place." },
-    ],
-  },
-  {
-    key: "media",
-    ar: "توليد الصور والفيديو",
-    en: "Media generation",
-    tag: "MEDIA",
-    tools: [
-      { name: "runwayml.com", url: "https://runwayml.com/", models: "Gen-4", tipAr: "اكتب وصف المشهد وحوّله مباشرة لصورة أو فيديو.", tipEn: "Describe a scene and turn it directly into an image or video." },
-      { name: "pollinations.ai", url: "https://pollinations.ai/", models: "عدة نماذج صور", tipAr: "رابط واحد يولّد صورة فورية بدون أي تسجيل دخول.", tipEn: "A single link generates an image instantly, no login." },
-      { name: "vheer.com", url: "https://vheer.com/", models: "نموذج خاص", tipAr: "اكتب الوصف واحصل على صورة بدون علامة مائية.", tipEn: "Type a prompt and get an image with no watermark." },
-      { name: "perchance.org", url: "https://perchance.org/wtr90dexsn", models: "غير محدود", tipAr: "مولّد صور بسيط جدًا وسريع بدون إنشاء حساب.", tipEn: "A very simple, fast image generator, no account needed." },
-      { name: "fotor.com", url: "https://www.fotor.com/", models: "تحرير بالذكاء الاصطناعي", tipAr: "ارفع صورة موجودة ودع الذكاء الاصطناعي يحررها لك.", tipEn: "Upload an existing photo and let the AI edit it for you." },
-      { name: "leonardo.ai", url: "https://leonardo.ai", models: "عدة نماذج", tipAr: "أرصدة يومية مجانية لتوليد صور بجودة احترافية.", tipEn: "Daily free credits for generating professional-quality images." },
-      { name: "ideogram.ai", url: "https://ideogram.ai", models: "Ideogram", tipAr: "الأدق بين أدوات توليد الصور في كتابة نص واضح داخل الصورة.", tipEn: "Among the most accurate at rendering clean readable text inside images." },
-      { name: "craiyon.com", url: "https://www.craiyon.com", models: "نموذج مجاني", tipAr: "توليد صور فوري بدون أي تسجيل دخول إطلاقًا.", tipEn: "Instant image generation with absolutely no login required." },
-      { name: "bing.com/create", url: "https://www.bing.com/images/create", models: "DALL-E 3", tipAr: "سجّل بحساب Microsoft مجانًا وولّد صورًا بجودة DALL-E 3.", tipEn: "Free Microsoft account sign-in for DALL-E 3 quality image generation." },
-    ],
-  },
-  {
-    key: "voice",
-    ar: "الصوت والموسيقى",
-    en: "Voice & music",
-    tag: "VOICE",
-    tools: [
-      { name: "ttsmp3.com", url: "https://ttsmp3.com", models: "Google/Microsoft TTS", tipAr: "الصق النص، اختر صوتًا، وحمّل الملف الصوتي مباشرة.", tipEn: "Paste text, pick a voice, and download the audio file." },
-      { name: "voicegenerator.io", url: "https://voicegenerator.io", models: "أصوات متعددة", tipAr: "اكتب النص واختر من مكتبة أصوات جاهزة.", tipEn: "Type your text and choose from a ready voice library." },
-      { name: "fakeyou.com", url: "https://fakeyou.com", models: "أصوات مجتمعية", tipAr: "اختر صوتًا من المكتبة وحوّل نصك إليه (قد يوجد انتظار).", tipEn: "Pick a voice from the library and convert your text (queue may apply)." },
-      { name: "elevenlabs.io", url: "https://elevenlabs.io", models: "أشهر أداة TTS", tipAr: "أصوات واقعية جدًا شبه بشرية، بحصة شهرية مجانية.", tipEn: "The best-known TTS tool, extremely natural voices, with a free monthly quota." },
-      { name: "suno.com", url: "https://suno.com", models: "توليد أغاني كاملة", tipAr: "اكتب وصف الأغنية ويولّدها كاملة بموسيقى وغناء حقيقي.", tipEn: "Describe a song and it generates a complete track with real singing and music." },
-      { name: "udio.com", url: "https://udio.com", models: "توليد موسيقى", tipAr: "بديل قوي لـ Suno بجودة صوتية عالية، مجاني للتجربة.", tipEn: "A strong Suno alternative with high audio quality, free to try." },
-    ],
-  },
-  {
-    key: "dev",
-    ar: "واجهات ومنصات المطورين",
-    en: "Developer APIs & platforms",
-    tag: "DEV",
-    tools: [
-      { name: "uncloseai.com", url: "https://uncloseai.com/", models: "Hermes · Qwen 3 Coder · TTS", tipAr: "واجهة برمجية متوافقة مع OpenAI، بدون أي تسجيل.", tipEn: "An OpenAI-compatible API, no signup required at all." },
-      { name: "ollama.com", url: "https://ollama.com", models: "عشرات النماذج", tipAr: "شغّل النماذج مجانًا محليًا على جهازك أو عبر السحابة.", tipEn: "Run models free, locally on your machine or in the cloud." },
-      { name: "g4f.dev", url: "https://g4f.dev/docs/ready_to_use.html", models: "عدة مزودين موحّدين", tipAr: "واجهة برمجية واحدة توحّد الوصول لعدة مزودي نماذج مجانًا.", tipEn: "One unified API that gives free access to several model providers." },
-      { name: "openrouter.ai", url: "https://openrouter.ai", models: "عشرات النماذج المجانية", tipAr: "مفتاح واحد يوصلك لعشرات النماذج، وبعضها مجاني بالكامل.", tipEn: "One key gives access to dozens of models, several of them fully free." },
-      { name: "huggingface.co", url: "https://huggingface.co", models: "آلاف النماذج المفتوحة", tipAr: "استضافة وتجربة نماذج مفتوحة المصدر مجانًا عبر Spaces.", tipEn: "Host and try open-source models for free through Spaces." },
-      { name: "together.ai", url: "https://together.ai", models: "نماذج مفتوحة سريعة", tipAr: "رصيد تجريبي مجاني عند التسجيل لتشغيل نماذج مفتوحة بسرعة عالية.", tipEn: "A free trial credit on signup to run open models at high speed." },
-      { name: "replit.com", url: "https://replit.com", models: "Replit Agent", tipAr: "محرر برمجة سحابي بوكيل ذكاء اصطناعي يبني تطبيقات كاملة من وصف نصي.", tipEn: "A cloud code editor with an AI agent that builds full apps from a text prompt." },
-      { name: "lovable.dev", url: "https://lovable.dev", models: "AI App Builder", tipAr: "اكتب وصف تطبيقك ويبنيه لك كاملًا (واجهة وربط قاعدة بيانات) خلال دقائق.", tipEn: "Describe your app and it builds it fully — UI and database wiring — in minutes." },
-      { name: "cursor.com", url: "https://cursor.com", models: "محرر كود بالذكاء الاصطناعي", tipAr: "نسخة من VS Code بمساعد ذكاء اصطناعي مدمج يكتب ويعدّل الكود معك مباشرة.", tipEn: "A VS Code-based editor with a built-in AI assistant that writes and edits code alongside you." },
-    ],
-  },
+const DIR_CATS = [
+  { key: "all", ar: "الكل", en: "All" },
+  { key: "chat", ar: "محادثة", en: "Chat" },
+  { key: "media", ar: "صور وفيديو", en: "Media" },
+  { key: "voice", ar: "صوت وموسيقى", en: "Voice" },
+  { key: "dev", ar: "منصات مطورين", en: "Dev" },
 ];
 
-const DIR_COPY = {
-  ar: {
-    intro: "الخدمات القوية والمعروفة — تفتح بتبويب جديد لأنها تمنع التضمين داخل صفحات أخرى.",
-    note: "الخدمات ومزودوها خارج نطاق تحكمي، وقد تتغير حدودها أو تتوقف دون إشعار — القائمة مبنية على مستودع zebbern/no-cost-ai مفتوح المصدر.",
-    source: "المصدر: zebbern/no-cost-ai",
-  },
-  en: {
-    intro: "The strong, well-known services — they open in a new tab because they block embedding in other pages.",
-    note: "These services and their providers are outside my control, and limits may change or stop without notice — list based on the open-source zebbern/no-cost-ai repository.",
-    source: "Source: zebbern/no-cost-ai",
-  },
-};
+const DIR_TOOLS: DirTool[] = [
+  { cat: "chat", name: "lmarena.ai", url: "https://lmarena.ai/", models: "40+ models", tipAr: "قارن ردود عدة نماذج جنبًا إلى جنب وصوّت للأفضل.", tipEn: "Compare responses from multiple models side by side." },
+  { cat: "chat", name: "meta.ai", url: "https://www.meta.ai", models: "Llama 4", tipAr: "افتح الرابط وابدأ فورًا بدون تسجيل.", tipEn: "Open and start instantly, no signup." },
+  { cat: "chat", name: "phind.com", url: "https://www.phind.com", models: "Phind-70B", tipAr: "بحث ودردشة للمبرمجين وأسئلة الكود.", tipEn: "Search + chat for developers." },
+  { cat: "chat", name: "groq.com", url: "https://groq.com", models: "15+ models", tipAr: "دردشة فائقة السرعة — اختر نموذجًا وابدأ.", tipEn: "Ultra-fast chat — pick a model and go." },
+  { cat: "chat", name: "chatgpt.com", url: "https://chatgpt.com", models: "GPT-4o", tipAr: "بضع رسائل GPT-4o مجانية بدون حساب.", tipEn: "A few free GPT-4o messages, no account." },
+  { cat: "chat", name: "chat.mistral.ai", url: "https://chat.mistral.ai", models: "Le Chat", tipAr: "10 رسائل مجانية يوميًا.", tipEn: "10 free messages a day." },
+  { cat: "chat", name: "perplexity.ai", url: "https://perplexity.ai", models: "GPT-4.1 · Claude", tipAr: "جواب مع مصادر وروابط حقيقية.", tipEn: "Answers with real cited sources." },
+  { cat: "chat", name: "grok.com", url: "https://grok.com/chat", models: "Grok 3", tipAr: "3 رسائل تقريبًا كل ساعتين.", tipEn: "~3 messages every 2 hours." },
+  { cat: "chat", name: "pi.ai", url: "https://pi.ai", models: "Inflection-2.5", tipAr: "محادثة شخصية بأسلوب إنساني.", tipEn: "A personal, human-like style." },
+  { cat: "chat", name: "kimi.com", url: "https://kimi.com", models: "K2 · K1.5", tipAr: "دردشة قوية تدعم العربي جيدًا.", tipEn: "Strong chat, handles Arabic well." },
+  { cat: "chat", name: "gemini.google.com", url: "https://gemini.google.com", models: "Gemini 2.5", tipAr: "بحساب Google — بضع محادثات يوميًا.", tipEn: "Google sign-in — a few daily chats." },
+  { cat: "chat", name: "copilot.microsoft.com", url: "https://copilot.microsoft.com", models: "GPT-5", tipAr: "دردشة شبه غير محدودة + صورة يوميًا.", tipEn: "Near-unlimited chat + one image a day." },
+  { cat: "chat", name: "claude.ai", url: "https://claude.ai", models: "Claude", tipAr: "جودة عالية بالكتابة والتحليل، بحصة يومية.", tipEn: "High-quality writing and analysis, daily quota." },
+  { cat: "chat", name: "huggingface.co/chat", url: "https://huggingface.co/chat", models: "Open models", tipAr: "نماذج مفتوحة متعددة بتسجيل بسيط.", tipEn: "Several open models, simple signup." },
+  { cat: "chat", name: "poe.com", url: "https://poe.com", models: "Claude · GPT · Llama", tipAr: "منصة تجمع أشهر النماذج وتبدّل بينها.", tipEn: "One platform bundling top models." },
+  { cat: "chat", name: "chat.deepseek.com", url: "https://chat.deepseek.com", models: "V3 · R1", tipAr: "قوية بالاستدلال والبرمجة، شبه مجانية كليًا.", tipEn: "Strong reasoning and coding, essentially free." },
+  { cat: "chat", name: "you.com", url: "https://you.com", models: "Search + chat", tipAr: "يدمج بحثًا حيًا مع إجابة الذكاء الاصطناعي.", tipEn: "Live search fused with an AI answer." },
+  { cat: "media", name: "runwayml.com", url: "https://runwayml.com/", models: "Gen-4", tipAr: "حوّل وصف المشهد لصورة أو فيديو.", tipEn: "Turn a scene description into image or video." },
+  { cat: "media", name: "pollinations.ai", url: "https://pollinations.ai/", models: "Image models", tipAr: "رابط واحد يولّد صورة فورًا بلا تسجيل.", tipEn: "One link generates an image instantly." },
+  { cat: "media", name: "vheer.com", url: "https://vheer.com/", models: "Own model", tipAr: "صور بدون علامة مائية.", tipEn: "Images with no watermark." },
+  { cat: "media", name: "perchance.org", url: "https://perchance.org/wtr90dexsn", models: "Unlimited", tipAr: "مولّد بسيط وسريع بلا حساب.", tipEn: "Simple, fast, no account." },
+  { cat: "media", name: "fotor.com", url: "https://www.fotor.com/", models: "AI editing", tipAr: "ارفع صورة ودع الذكاء الاصطناعي يحررها.", tipEn: "Upload a photo and let AI edit it." },
+  { cat: "media", name: "leonardo.ai", url: "https://leonardo.ai", models: "Multiple", tipAr: "أرصدة يومية مجانية بجودة احترافية.", tipEn: "Daily free credits, professional quality." },
+  { cat: "media", name: "ideogram.ai", url: "https://ideogram.ai", models: "Ideogram", tipAr: "الأدق في كتابة نص واضح داخل الصورة.", tipEn: "Best at clean text inside images." },
+  { cat: "media", name: "craiyon.com", url: "https://www.craiyon.com", models: "Free model", tipAr: "توليد فوري بدون أي تسجيل.", tipEn: "Instant generation, no login at all." },
+  { cat: "media", name: "bing.com/create", url: "https://www.bing.com/images/create", models: "DALL-E 3", tipAr: "بحساب Microsoft مجاني بجودة DALL-E 3.", tipEn: "Free Microsoft sign-in, DALL-E 3 quality." },
+  { cat: "voice", name: "ttsmp3.com", url: "https://ttsmp3.com", models: "Google/MS TTS", tipAr: "الصق النص واختر صوتًا وحمّل الملف.", tipEn: "Paste text, pick a voice, download." },
+  { cat: "voice", name: "voicegenerator.io", url: "https://voicegenerator.io", models: "Multiple voices", tipAr: "مكتبة أصوات جاهزة للنصوص.", tipEn: "A ready voice library for text." },
+  { cat: "voice", name: "fakeyou.com", url: "https://fakeyou.com", models: "Community voices", tipAr: "اختر صوتًا وحوّل نصك إليه.", tipEn: "Pick a voice and convert your text." },
+  { cat: "voice", name: "elevenlabs.io", url: "https://elevenlabs.io", models: "Top TTS", tipAr: "أصوات شبه بشرية بحصة شهرية مجانية.", tipEn: "Near-human voices, free monthly quota." },
+  { cat: "voice", name: "suno.com", url: "https://suno.com", models: "Full songs", tipAr: "اكتب وصف الأغنية ويولّدها كاملة.", tipEn: "Describe a song and it generates it fully." },
+  { cat: "voice", name: "udio.com", url: "https://udio.com", models: "Music gen", tipAr: "بديل قوي لـ Suno بجودة عالية.", tipEn: "A strong Suno alternative." },
+  { cat: "dev", name: "uncloseai.com", url: "https://uncloseai.com/", models: "Hermes · Qwen", tipAr: "واجهة متوافقة مع OpenAI بلا تسجيل.", tipEn: "OpenAI-compatible API, no signup." },
+  { cat: "dev", name: "ollama.com", url: "https://ollama.com", models: "Dozens local", tipAr: "شغّل النماذج محليًا على جهازك.", tipEn: "Run models locally on your machine." },
+  { cat: "dev", name: "g4f.dev", url: "https://g4f.dev/docs/ready_to_use.html", models: "Unified providers", tipAr: "واجهة واحدة لعدة مزودين مجانًا.", tipEn: "One API over several providers, free." },
+  { cat: "dev", name: "openrouter.ai", url: "https://openrouter.ai", models: "Dozens free", tipAr: "مفتاح واحد لعشرات النماذج وبعضها مجاني.", tipEn: "One key for dozens of models, several free." },
+  { cat: "dev", name: "huggingface.co", url: "https://huggingface.co", models: "Thousands", tipAr: "استضافة وتجربة نماذج مفتوحة عبر Spaces.", tipEn: "Host and try open models via Spaces." },
+  { cat: "dev", name: "together.ai", url: "https://together.ai", models: "Fast open models", tipAr: "رصيد تجريبي مجاني عند التسجيل.", tipEn: "Free trial credit on signup." },
+  { cat: "dev", name: "replit.com", url: "https://replit.com", models: "Replit Agent", tipAr: "وكيل يبني تطبيقات كاملة من وصف نصي.", tipEn: "An agent that builds full apps from text." },
+  { cat: "dev", name: "lovable.dev", url: "https://lovable.dev", models: "App builder", tipAr: "يبني تطبيقك كاملًا خلال دقائق.", tipEn: "Builds your app fully in minutes." },
+  { cat: "dev", name: "cursor.com", url: "https://cursor.com", models: "AI editor", tipAr: "محرر VS Code بمساعد يكتب الكود معك.", tipEn: "A VS Code editor with an AI pair." },
+];
 
 function DirectoryPanel({ lang }: { lang: "ar" | "en" }) {
-  const t = DIR_COPY[lang];
+  const [cat, setCat] = useState("all");
+  const [q, setQ] = useState("");
+  const t = lang === "ar"
+    ? { search: "ابحث عن أداة…", note: "الخدمات خارج نطاق تحكمي وقد تتغير حدودها — القائمة مبنية على مستودع zebbern/no-cost-ai.", src: "المصدر" }
+    : { search: "Search tools…", note: "Services are outside my control and limits may change — based on the zebbern/no-cost-ai repo.", src: "Source" };
+  const filtered = useMemo(
+    () => DIR_TOOLS.filter((x) => (cat === "all" || x.cat === cat) && (!q || x.name.toLowerCase().includes(q.toLowerCase()))),
+    [cat, q]
+  );
   return (
     <div>
-      <p className="tools-intro">{t.intro}</p>
-      <p className="tools-note">
+      <div className="dir-controls">
+        <div className="dir-cats">
+          {DIR_CATS.map((c) => (
+            <button key={c.key} className={`dir-cat${cat === c.key ? " active" : ""}`} onClick={() => setCat(c.key)}>
+              {lang === "ar" ? c.ar : c.en}
+            </button>
+          ))}
+        </div>
+        <input className="dir-search" placeholder={t.search} value={q} onChange={(e) => setQ(e.target.value)} />
+      </div>
+      <div className="tool-grid">
+        {filtered.map((tool) => (
+          <a key={tool.url} href={tool.url} target="_blank" rel="noreferrer" className="tool-card">
+            <div className="tool-card-name">{tool.name}<span className="arrow">↗</span></div>
+            <div className="tool-card-models">{tool.models}</div>
+            <div className="tool-card-tip">{lang === "ar" ? tool.tipAr : tool.tipEn}</div>
+          </a>
+        ))}
+      </div>
+      <p className="tools-note" style={{ marginTop: 28 }}>
         {t.note}{" "}
         <a href="https://github.com/zebbern/no-cost-ai" target="_blank" rel="noreferrer" style={{ color: "var(--copper)" }}>
-          {t.source}
+          {t.src}: zebbern/no-cost-ai
         </a>
       </p>
-      {DIRECTORY.map((cat) => (
-        <div className="tool-category" key={cat.key}>
-          <div className="tool-category-head">
-            <span className="mono">{cat.tag}</span>
-            <h3>{lang === "ar" ? cat.ar : cat.en}</h3>
-          </div>
-          <div className="tool-grid">
-            {cat.tools.map((tool) => (
-              <a key={tool.url} href={tool.url} target="_blank" rel="noreferrer" className="tool-card">
-                <div className="tool-card-name">
-                  {tool.name}
-                  <span className="arrow">↗</span>
-                </div>
-                <div className="tool-card-models">{tool.models}</div>
-                <div className="tool-card-tip">{lang === "ar" ? tool.tipAr : tool.tipEn}</div>
-              </a>
-            ))}
-          </div>
-        </div>
-      ))}
     </div>
   );
 }
 
-/* ── Page: 3 tabs ──────────────────────────────────────────────── */
+/* ── Page ─────────────────────────────────────────────────────── */
 export default function ChatPage() {
   const { lang } = useLanguage();
   const t = COPY[lang];
-  const [tab, setTab] = useState<Tab>("embed");
+  const [tab, setTab] = useState<Tab>("engine");
 
   return (
-    <main className="section">
-      <div className="section-head">
-        <span className="mono">{t.eyebrow}</span>
-        <h2>{t.heading}</h2>
+    <main className="section hub">
+      <div className="hub-head">
+        <p className="eyebrow" style={{ textAlign: "start", marginBottom: 10 }}>{t.eyebrow}</p>
+        <h1>{t.heading}</h1>
+        <p className="hub-sub">{t.sub}</p>
       </div>
 
-      <div className="chat-tabs">
-        <button className={`chat-tab${tab === "embed" ? " active" : ""}`} onClick={() => setTab("embed")}>
-          {t.tabs.embed}
-        </button>
-        <button className={`chat-tab${tab === "engine" ? " active" : ""}`} onClick={() => setTab("engine")}>
-          {t.tabs.engine}
-        </button>
-        <button className={`chat-tab${tab === "directory" ? " active" : ""}`} onClick={() => setTab("directory")}>
-          {t.tabs.directory}
-        </button>
+      <div className="hub-tabs" role="tablist">
+        {(Object.keys(t.tabs) as Tab[]).map((k) => (
+          <button key={k} role="tab" aria-selected={tab === k} className={`hub-tab${tab === k ? " active" : ""}`} onClick={() => setTab(k)}>
+            {t.tabs[k]}
+          </button>
+        ))}
       </div>
 
-      {tab === "embed" && <EmbedPanel lang={lang} />}
       {tab === "engine" && <EnginePanel lang={lang} />}
+      {tab === "embed" && <EmbedPanel lang={lang} />}
       {tab === "directory" && <DirectoryPanel lang={lang} />}
     </main>
   );
