@@ -5,8 +5,8 @@ import type { Post } from "@/lib/posts";
 import { useLanguage } from "@/lib/language-context";
 
 const COPY = {
-  ar: { refsLabel: "GITHUB REFERENCES", back: "← كل المقالات" },
-  en: { refsLabel: "GITHUB REFERENCES", back: "← All Articles" },
+  ar: { refsLabel: "REFERENCES", back: "← كل المقالات" },
+  en: { refsLabel: "REFERENCES", back: "← All Articles" },
 };
 
 export default function ArticleView({ post }: { post: Post }) {
