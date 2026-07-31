@@ -26,6 +26,13 @@ export default function ArticleView({ post }: { post: Post }) {
           <div key={i}>
             {block.h && <h2>{block.h}</h2>}
             {block.p && <p>{block.p}</p>}
+            {block.list && (
+              <ul className="post-list-ul">
+                {block.list.map((item, li) => (
+                  <li key={li}>{item}</li>
+                ))}
+              </ul>
+            )}
             {block.table && (
               <div className="table-wrap">
                 <table className="post-table">

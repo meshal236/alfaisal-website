@@ -842,6 +842,21 @@ h1, h2, h3 {
   margin-top: 12px;
 }
 
+.post-list-ul {
+  margin: 0 0 24px;
+  padding-inline-start: 22px;
+  color: var(--ink-dim);
+  font-size: 1.02rem;
+}
+.post-list-ul li {
+  margin-bottom: 10px;
+  line-height: 1.85;
+  padding-inline-start: 4px;
+}
+.post-list-ul li::marker {
+  color: var(--copper);
+}
+
 /* ── Article tables and figures ───────────────────────────────── */
 .table-wrap {
   overflow-x: auto;
