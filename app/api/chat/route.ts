@@ -32,6 +32,9 @@ export async function POST(req: Request) {
   return result.toUIMessageStreamResponse({
     onError: (error) => {
       const msg = error instanceof Error ? error.message : String(error);
+      if (msg.includes("rate-limited") || msg.includes("rate_limit")) {
+        return "وصلنا حد الاستخدام المجاني مؤقتًا — انتظر دقيقة أو جرّب نموذجًا آخر من القائمة.";
+      }
       if (msg.includes("Free tier")) {
         return "هذا النموذج غير متاح على الخطة المجانية — جرّب نموذجًا آخر من القائمة.";
       }

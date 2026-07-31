@@ -140,7 +140,13 @@ function EnginePanel({ lang }: { lang: "ar" | "en" }) {
           </div>
         ))}
         {busy && messages.length > 0 && <div className="typing"><span /><span /><span /></div>}
-        {error && <div className="chat-error">{t.error}</div>}
+        {error && (
+          <div className="chat-error">
+            {error.message && error.message.length < 200 && !error.message.toLowerCase().includes("fetch")
+              ? error.message
+              : t.error}
+          </div>
+        )}
       </div>
       <div className="chat-form">
         <textarea
