@@ -1,3 +1,10 @@
+export type Block = {
+  h?: string;
+  p?: string;
+  table?: { headers: string[]; rows: string[][] };
+  svg?: string;
+};
+
 export type Post = {
   slug: string;
   title: string;
@@ -6,12 +13,105 @@ export type Post = {
   tag: string;
   excerpt: string;
   excerptEn: string;
-  body: { h?: string; p: string }[];
-  bodyEn: { h?: string; p: string }[];
+  body: Block[];
+  bodyEn: Block[];
   refs?: { label: string; url: string }[];
 };
 
+import {
+  POSTURE_SVG,
+  ARCH_SVG,
+  SKILL_LOOP_SVG,
+  DECISION_SVG,
+} from "./diagrams/hermes-openclaw";
+
 export const posts: Post[] = [
+  {
+    slug: "hermes-vs-openclaw",
+    title: "Hermes مقابل OpenClaw: وكيل يطوّر نفسه أم طبقة تحكم محلية؟",
+    titleEn: "Hermes vs OpenClaw: A Self-Evolving Agent or a Local Control Plane?",
+    date: "2026-07",
+    tag: "AI AGENTS",
+    excerpt:
+      "الاثنان يشغّلان وكلاء ذكاء اصطناعي محليًا، لكن مركز ثقل كل واحد مختلف تمامًا: Hermes وكيل واحد يتعلّم طريقته مع الوقت، وOpenClaw طبقة تشغيل تدير قنوات وأجهزة ومساحات عمل ووكلاء متعددين.",
+    excerptEn:
+      "Both run AI agents locally, but their centers of gravity differ completely: Hermes is one agent that learns its own method over time, while OpenClaw is a runtime layer managing channels, devices, workspaces, and multiple agents.",
+    body: [
+      { p: "السؤال الحقيقي في المقارنة بين Hermes وOpenClaw ليس «أيهما أفضل»، بل «أي نموذج تشغيل يناسب طريقة عملك». الأول وكيل واحد تدرّبه ليتحسّن مع الوقت، والثاني منصة تشغّل عليها بيئة ذكاء اصطناعي محلية كاملة." },
+      { svg: POSTURE_SVG },
+      { h: "ما هو Hermes", p: "وكيل من Nous Research مبني حول حلقة تعلّم داخلية: يستطيع توليد مهارات من تجربته الفعلية، تحسينها أثناء الاستخدام، الاحتفاظ بذاكرة محدودة بين الجلسات، البحث في محادثات سابقة، وبناء نموذج أعمق عن المستخدم تدريجيًا. عمليًا يشبه موظفًا تدرّبه، لا مجرد واجهة أسئلة وأجوبة." },
+      { h: "ما هو OpenClaw", p: "مركز ثقله مختلف: الـ Gateway هو النواة — خادم WebSocket يدير القنوات والعقد والجلسات والـ hooks. Gateway واحد طويل العمر يملك أسطح المراسلة، وتتصل به عملاء التحكم (تطبيق macOS، سطر الأوامر، واجهة الويب، الأتمتة). العقد (nodes) تتصل بقدرات معرّفة وأوامر على مستوى الجهاز." },
+      { h: "لماذا ليسا بديلين مباشرين", p: "كلاهما يتصل بالنماذج، يستخدم أدوات، يحمّل مهارات، ويدعم مهامًا طويلة. لكن أقوى فكرة في كل منهما مختلفة: Hermes يتفوق حين تهمّك قدرة الوكيل على تحويل الدروس إلى ذاكرة إجرائية قابلة لإعادة الاستخدام، وOpenClaw يتفوق حين يهمّك تشغيل نظام محلي أوسع بتحكم أوضح في سلوك الـ gateway وحدود مساحات العمل وتوجيه القنوات والإضافات المثبّتة وإعداد وكلاء متعددين." },
+      { h: "جدول المقارنة", p: "" },
+      {
+        table: {
+          headers: ["المحور", "Hermes", "OpenClaw"],
+          rows: [
+            ["التموضع", "وكيل أولًا", "طبقة تحكم أولًا"],
+            ["البنية الأساسية", "وكيل مستقل بحلقة تعلّم وذاكرة ومهارات", "زمن تشغيل حول Gateway للقنوات والعقد والجلسات"],
+            ["نظام المهارات", "المهارات ذاكرة إجرائية يكتبها الوكيل ويعدّلها بنفسه", "تثبيت وتوزيع وتحميل على مستوى مساحة العمل عبر ClawHub"],
+            ["التطوّر الذاتي للمهارات", "الميزة الجوهرية", "ليست هوية المنتج الأساسية"],
+            ["نموذج الذاكرة", "ذاكرة محدودة + بحث بالجلسات + مزودات خارجية اختيارية", "ملفات مساحة عمل وجلسات وملفات مصادقة وتوجيه"],
+            ["تعدد الوكلاء", "وكلاء فرعيون ومسارات عمل متوازية", "توجيه متعدد الوكلاء وعزل أصيل في التصميم"],
+            ["التوسعة و MCP", "دعم MCP مع منظومة مهارات", "مهارات وإضافات وClawHub وعقد وتكاملات قنوات"],
+            ["عزل مساحات العمل", "ممكن لكنه ليس محور المنتج", "جزء رئيسي من نموذج التشغيل"],
+            ["الأنسب لـ", "الأفراد والفرق الصغيرة والعمل كثيف المنهجية", "المشغّلين وبيئات متعددة الوكلاء والقنوات"],
+          ],
+        },
+      },
+      { h: "البنية: وكيل أولًا مقابل طبقة تحكم أولًا", p: "Hermes وكيل واحد يتعلّم عبر الزمن، يملك ذاكرة ومهارات وأدوات ومزودات، ويحتفظ بما تعلّمه بين الجلسات. OpenClaw مبني حول الـ Gateway: القنوات والعقد والجلسات والـ hooks والعملاء والأجهزة ولوحة التحكم كلها تمر من خلاله — فيبدو كمنصة أو نظام تشغيل، لا كوكيل واحد يتحسّن." },
+      { svg: ARCH_SVG },
+      { p: "هذا الفرق يظهر حتى في الوصول للنماذج: Hermes أبسط حين تريد وكيلًا واحدًا متطورًا موصولًا بواجهة نموذج متوافقة، بينما OpenClaw أنسب حين يكون إعداد المزوّد جزءًا من نظام أكبر فيه ملفات مصادقة ومساحات عمل وتوجيه ووكلاء متعددون." },
+      { h: "المهارات: أكبر فرق عملي", p: "مهارات Hermes ليست إضافات تجميلية — التوثيق يصفها كذاكرة إجرائية، تُخزَّن في مجلد مخصص وتُحمَّل عند الحاجة، وقد تكون مضمّنة أو مثبّتة أو خارجية أو من إنتاج الوكيل نفسه. المفتاح أن الوكيل يستطيع إنشاء مهاراته وتحديثها وحذفها عبر أداة مخصصة: بعد مهمة معقدة ناجحة، أو فشل تم تجاوزه، أو تصحيح من المستخدم، يحوّل التجربة لطريقة عمل قابلة لإعادة الاستخدام." },
+      { svg: SKILL_LOOP_SVG },
+      { p: "OpenClaw يدعم المهارات أيضًا لكن بتركيز مختلف: عبر ClawHub تبحث وتثبّت وتحدّث وتدير المهارات والإضافات لمساحة عمل محددة — قوته في التوزيع والتخصيص والتوسعة بالإضافات، لا في توليد المهارات ذاتيًا." },
+      { h: "المقايضة التي يجب الانتباه لها", p: "التطوّر الذاتي للمهارات سيف ذو حدّين: مهارة يولّدها الوكيل قد تحسّن سير العمل، وقد تسبب انحرافًا (drift) إذا غيّرت عملية مستقرة في الاتجاه الخطأ. للاستخدام الفردي هذا مقبول؛ لسير عمل إنتاجي يحتاج مراجعة وضبطًا أقوى." },
+      { h: "الشفافية والثقة", p: "السؤال ليس أيهما أكثر شفافية بشكل مطلق، بل أي جزء من النظام تحتاج شفافية فيه. Hermes يجعل حلقة الوكيل نفسها مقروءة — تربط المخرجات بالذاكرة والمهارات والتصحيحات السابقة. OpenClaw يعطيك نوعًا آخر من الرؤية: حالة الخدمة، وضع الـ gateway، توجيه الجلسات، بنية مساحات العمل، وتثبيت الإضافات — أنسب حين تكون المشكلة تعقيدًا تشغيليًا لا تشكيل سلوك وكيل." },
+      { h: "أيهما تختار؟", p: "" },
+      { svg: DECISION_SVG },
+      { h: "الخلاصة", p: "Hermes أفضل لتدريب وكيل عمل موثوق يراكم الخبرة، وOpenClaw أفضل لبناء منصة وكلاء أوسع. إن كانت أولويتك تراكم القدرة عبر الذاكرة وتوليد المهارات، فـ Hermes يملك الفكرة الأميز. وإن كانت أولويتك تشغيل بيئة ذكاء اصطناعي محلية بأسطح متعددة ووكلاء معزولين وتحكم في الـ gateway، فـ OpenClaw يملك القصة الهندسية الأقوى. السؤال باختصار: هل تريد تطوير وكيل، أم تشغيل طبقة تحكم؟" },
+    ],
+    bodyEn: [
+      { p: "The real question in comparing Hermes and OpenClaw isn't \"which is better,\" but \"which operating model fits how you work.\" One is a single agent you train to improve over time; the other is a platform on which you run an entire local AI environment." },
+      { svg: POSTURE_SVG },
+      { h: "What Hermes is", p: "An agent from Nous Research built around an internal learning loop: it can create skills from actual experience, refine them during use, persist bounded memory across sessions, search prior conversations, and gradually build a deeper model of its user. In practice it feels like a worker you train, not a question-and-answer interface." },
+      { h: "What OpenClaw is", p: "Its center of gravity is different: the Gateway is the core — a WebSocket server managing channels, nodes, sessions, and hooks. A single long-lived Gateway owns the messaging surfaces, with control clients (macOS app, CLI, web UI, automations) connecting to it. Nodes connect with declared capabilities and device-level commands." },
+      { h: "Why they aren't direct substitutes", p: "Both connect to models, use tools, load skills, and support longer-running work. But their strongest ideas differ: Hermes excels when you care about an agent encoding lessons into reusable procedural memory, while OpenClaw excels when you care about running a broader local system with clearer control over gateway behavior, workspace boundaries, channel routing, installed plugins, and multi-agent setup." },
+      { h: "Comparison table", p: "" },
+      {
+        table: {
+          headers: ["Dimension", "Hermes", "OpenClaw"],
+          rows: [
+            ["Posture", "Agent-first", "Control-plane-first"],
+            ["Core architecture", "Autonomous agent with a learning loop, memory, and skills", "Gateway-centered runtime for channels, nodes, and sessions"],
+            ["Skills system", "Skills as procedural memory the agent writes and patches itself", "Install, distribution, and workspace-level loading via ClawHub"],
+            ["Skill self-evolution", "The core differentiator", "Not the main product identity"],
+            ["Memory model", "Bounded memory plus session search and optional external providers", "Workspace files, sessions, auth profiles, and routing state"],
+            ["Multi-agent", "Subagents and parallel workstreams", "Native multi-agent routing and first-class isolation"],
+            ["Extensibility / MCP", "MCP support plus a skills ecosystem", "Skills, plugins, ClawHub, nodes, and channel integrations"],
+            ["Workspace isolation", "Possible, but not the product's main story", "A major part of the operating model"],
+            ["Best fit", "Solo builders, small teams, method-heavy work", "Operators, multi-agent and multi-channel environments"],
+          ],
+        },
+      },
+      { h: "Architecture: agent-first vs control-plane-first", p: "Hermes is a single agent that learns over time, holding memory, skills, tools, and providers, and keeping what it learns between sessions. OpenClaw is built around the Gateway: channels, nodes, sessions, hooks, clients, devices, and the dashboard all flow through it — making it feel like a platform or runtime system, not one agent that keeps improving." },
+      { svg: ARCH_SVG },
+      { p: "This difference even shows up in model access: Hermes is simpler when you want one evolving agent wired to a compatible model API, while OpenClaw makes more sense when provider setup is part of a larger system with auth profiles, workspaces, routing, and multiple agents." },
+      { h: "Skills: the biggest practical difference", p: "Hermes skills aren't cosmetic add-ons — the docs describe them as procedural memory, stored in a dedicated directory and loaded on demand, sourced from bundled, installed, external, or agent-created origins. The key point is that the agent can create, update, and delete its own skills through a dedicated tool: after a successful complex task, a recovered failure, or a user correction, it turns experience into a reusable working method." },
+      { svg: SKILL_LOOP_SVG },
+      { p: "OpenClaw supports skills too, but with a different emphasis: through ClawHub you search, install, update, and manage skills and plugins for a specific workspace — its strength is distribution, customization, and plugin-based extension, not self-generated skills." },
+      { h: "The tradeoff worth noting", p: "Skill self-evolution cuts both ways: an agent-generated skill may improve a workflow, or cause drift if it changes a stable process in the wrong direction. For individual use that's acceptable; for production workflows it demands stronger review and control." },
+      { h: "Transparency and trust", p: "The question isn't which is more transparent in the absolute, but which part of the system you need transparency into. Hermes makes the agent loop itself legible — you connect outputs back to memory, skills, and prior corrections. OpenClaw gives a different kind of visibility: service state, gateway status, session routing, workspace structure, and plugin installation — better when the problem is operational complexity rather than shaping agent behavior." },
+      { h: "Which should you choose?", p: "" },
+      { svg: DECISION_SVG },
+      { h: "The verdict", p: "Hermes is better for training a dependable working agent that compounds experience; OpenClaw is better for building a broader agent platform. If your priority is compounding capability through memory and skill creation, Hermes has the more distinctive idea. If your priority is operating a local AI environment with multiple surfaces, isolated agents, and gateway control, OpenClaw has the stronger systems story. In short: do you want to develop an agent, or operate a control plane?" },
+    ],
+    refs: [
+      { label: "المصدر: Kimi — Hermes vs OpenClaw", url: "https://www.kimi.com/resources/hermes-vs-openclaw" },
+      { label: "NousResearch/hermes-agent", url: "https://github.com/NousResearch/hermes-agent" },
+      { label: "openclaw/openclaw", url: "https://github.com/openclaw/openclaw" },
+    ],
+  },
   {
     slug: "hermes-vs-openclaw-comparison",
     title: "Hermes مقابل OpenClaw: وكيل يتعلم بنفسه أم منصة تحكم محلية شاملة؟",

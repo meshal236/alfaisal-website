@@ -25,7 +25,35 @@ export default function ArticleView({ post }: { post: Post }) {
         {body.map((block, i) => (
           <div key={i}>
             {block.h && <h2>{block.h}</h2>}
-            <p>{block.p}</p>
+            {block.p && <p>{block.p}</p>}
+            {block.table && (
+              <div className="table-wrap">
+                <table className="post-table">
+                  <thead>
+                    <tr>
+                      {block.table.headers.map((th) => (
+                        <th key={th}>{th}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {block.table.rows.map((row, r) => (
+                      <tr key={r}>
+                        {row.map((cell, c) => (
+                          <td key={c}>{cell}</td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+            {block.svg && (
+              <div
+                className="post-figure"
+                dangerouslySetInnerHTML={{ __html: block.svg }}
+              />
+            )}
           </div>
         ))}
       </div>
