@@ -29,170 +29,419 @@ import {
 export const posts: Post[] = [
   {
     slug: "bi-agentic-mcp-power-bi",
-    title: "وكلاء الذكاء الاصطناعي وPower BI: تحليل بلغة طبيعية بدل كتابة DAX",
-    titleEn: "AI Agents and Power BI: Natural-Language Analytics Instead of Hand-Written DAX",
+    title: "Power BI ووكلاء الذكاء الاصطناعي: من السؤال إلى التقرير بلا كتابة كود",
+    titleEn: "Power BI and AI Agents: From Question to Report Without Writing Code",
     date: "2026-07",
     tag: "BI / AGENTIC",
     excerpt:
-      "بروتوكول MCP ربط وكلاء الذكاء الاصطناعي مباشرة بنماذج Power BI: يقرأ المخطط، يولّد DAX، وينفّذه. لكن الوهم الشائع أن الوكيل يتصل بكل شيء — الحقيقة أنه يستعلم عن طبقة بيانات يجب أن تبنيها أنت أولًا.",
+      "دليل عملي لربط وكيل ذكاء اصطناعي بنماذج Power BI: ما هو بروتوكول MCP، كيف تبدو دورة السؤال والجواب فعليًا، ما الأدوات المتاحة رسميًا ومفتوحة المصدر، وأين تفشل هذي المشاريع عادة.",
     excerptEn:
-      "MCP wired AI agents directly into Power BI models: read the schema, generate DAX, execute it. But the common illusion is that the agent connects to everything — in reality it queries a data layer you must build first.",
+      "A practical guide to wiring an AI agent into Power BI models: what MCP actually is, what the question-to-answer cycle really looks like, which official and open-source tools exist, and where these projects usually fail.",
     body: [
-      { p: "السؤال المتكرر: هل يوجد وكيل يتصل بكل أنظمتي ويحوّلها إلى تقارير في Power BI؟ الجواب نعم — المكونات موجودة وناضجة. لكن ترتيب البناء أهم من اختيار الأداة." },
-      { h: "ما الذي تقدمه مايكروسوفت رسميًا", p: "" },
+      { p: "في أغلب المؤسسات، الفجوة ليست في البيانات بل في الوصول إليها. المدير يريد رقمًا، فيفتح تذكرة لفريق البيانات، وينتظر يومين، ليحصل على تقرير يولّد ثلاثة أسئلة جديدة. المحلل نفسه يقضي وقته في طلبات متكررة بدل التحليل العميق." },
+      { p: "وكلاء الذكاء الاصطناعي المرتبطون بـ Power BI يعالجون هذي الحلقة تحديدًا: المستخدم يسأل بلغته، والوكيل يترجم السؤال لاستعلام، وينفّذه، ويرجّع الجواب. لكن الفكرة تُساء فهمها كثيرًا، فلنبدأ من الأساس." },
+
+      { h: "ما هو MCP ولماذا غيّر المعادلة" },
+      { p: "Model Context Protocol بروتوكول مفتوح يعرّف كيف يتحدث نموذج الذكاء الاصطناعي مع أدوات ومصادر بيانات خارجية بشكل منظّم وآمن. قبله، كل ربط بين نموذج ونظام كان تكاملًا مخصصًا يُبنى من الصفر." },
+      { p: "المصطلحات الثلاثة التي ستراها في كل توثيق:" },
       {
         list: [
-          "خادما MCP لـ Power BI (معاينة عامة): واحد بعيد للاستعلام بالمحادثة، وآخر محلي لتأليف النماذج الدلالية.",
-          "الوكيل يتعلّم بنية النموذج تلقائيًا، ويستخدم محرك توليد DAX نفسه الذي يشغّل Copilot.",
-          "التنفيذ يتم بصلاحيات المستخدم المصادَق نفسه — فضوابط الوصول تبقى محفوظة.",
+          "المضيف (Host): البيئة التي تعمل فيها — مثل VS Code.",
+          "العميل (Client): المكوّن الذي يتصل بالخوادم ويستهلك قدراتها — مثل Copilot.",
+          "الخادم (Server): برنامج محلي أو بعيد يعرض الأدوات والموارد — مثل خادم Power BI.",
         ],
       },
-      { h: "Fabric Data Agent — الأقرب لفكرة «كل الأنظمة»", p: "وكيل محادثة يربط حتى خمسة مصادر لكل وكيل: Lakehouse وWarehouse ونماذج Power BI وقواعد KQL وOntologies وMicrosoft Graph. يحلّل السؤال، يختار المصدر، يولّد الاستعلام، وينفّذه." },
+      { p: "أهمية هذا التقسيم عملية لا نظرية: أي عميل يدعم البروتوكول يستطيع استخدام أي خادم يدعمه. تبني التكامل مرة واحدة، ويعمل مع Claude وCopilot وغيرهما." },
+
+      { h: "كيف تبدو الدورة فعليًا" },
+      { p: "لنأخذ سؤالًا واقعيًا: «كم عدد التذاكر المفتوحة أكثر من 30 يومًا لكل إدارة؟» ما يحدث خلف الكواليس:" },
       {
         list: [
-          "الردود محدودة بـ25 صفًا و25 عمودًا — مصمَّم للرؤى لا لتصدير البيانات.",
-          "يفرض هوية المستخدم السائل، فتنطبق سياسات RLS تلقائيًا حسب من يسأل.",
+          "الوكيل يقرأ مخطط النموذج الدلالي: الجداول والأعمدة والعلاقات والمقاييس المعرَّفة.",
+          "يحدد الجداول ذات الصلة ويبني استعلام DAX مناسبًا.",
+          "ينفّذ الاستعلام عبر نقطة نهاية XMLA الخاصة بالنموذج.",
+          "يستقبل النتيجة الخام ويصيغها بلغة طبيعية مفهومة.",
+        ],
+      },
+      { p: "النقطة الحاسمة أمنيًا: التنفيذ يتم بصلاحيات المستخدم السائل نفسه. فلو كان لديه وصول لإدارته فقط، الوكيل لن يرى غيرها — سياسات أمن مستوى الصف تعمل تلقائيًا." },
+      { p: "وهذا يفسّر لماذا جودة النموذج الدلالي تحدد جودة الإجابة. إن كانت الأعمدة بأسماء مثل COL_A وCOL_B وبلا أوصاف، فالوكيل يخمّن. وإن كانت بأسماء واضحة ومترادفات معرّفة وعلاقات صحيحة، تصبح الإجابات دقيقة." },
+
+      { h: "الخيارات الرسمية من مايكروسوفت" },
+      {
+        table: {
+          headers: ["الخيار", "ماذا يفعل", "متى تستخدمه"],
+          rows: [
+            ["خادم MCP البعيد", "استعلام النماذج الدلالية بالمحادثة وتوليد DAX", "تحليل واستكشاف البيانات"],
+            ["خادم MCP المحلي", "تأليف وتعديل النماذج الدلالية", "بناء الجداول والمقاييس والعلاقات"],
+            ["Power BI Agentic", "حزمة مهارات وأدوات تُثبَّت في وكيلك البرمجي", "تطوير النماذج والتقارير بأفضل الممارسات"],
+            ["Fabric Data Agent", "وكيل محادثة فوق عدة مصادر بيانات", "واجهة سؤال وجواب لغير التقنيين"],
+          ],
+        },
+      },
+
+      { h: "Fabric Data Agent بالتفصيل" },
+      { p: "هذا الخيار الأقرب لفكرة «وكيل يتصل بكل أنظمتي». يربط حتى خمسة مصادر لكل وكيل بأي تركيبة: Lakehouse وWarehouse ونماذج Power BI وقواعد KQL وOntologies وMicrosoft Graph." },
+      { p: "آلية عمله: يحلل السؤال، يحدد المصدر الأنسب من بين المتصلة، يولّد الاستعلام المناسب لنوع المصدر — SQL أو KQL أو DAX — وينفّذه ويصيغ النتيجة." },
+      { p: "حدوده التي يجب معرفتها قبل البناء:" },
+      {
+        list: [
+          "خمسة مصادر كحد أقصى لكل وكيل. للتغطية الأوسع تُنشئ عدة وكلاء متخصصين.",
+          "الردود محدودة بـ25 صفًا و25 عمودًا — مصمَّم للرؤى لا لتصدير مجموعات بيانات.",
           "يتطلب سعة Fabric بحجم F2 أو أعلى.",
-          "يوفّر نقطة نهاية API تُستدعى من Copilot Studio وFoundry وتطبيقاتك.",
+          "يوفّر نقطة نهاية API تُستدعى من Copilot Studio وMicrosoft Foundry وتطبيقاتك.",
         ],
       },
-      { h: "أدوات مفتوحة المصدر تكمّل الرسمي", p: "" },
+      { p: "وحدّ الخمسة مصادر ليس عيبًا بقدر ما هو توجيه تصميمي: وكيل واحد يعرف كل شيء يعطي إجابات أسوأ من عدة وكلاء متخصصين، كل واحد يفهم مجاله بعمق." },
+
+      { h: "أدوات مفتوحة المصدر" },
+      { p: "الخوادم الرسمية تغطي الأساسيات، والمجتمع يغطي الفجوات — خاصة في الحوكمة وتحرير التقارير." },
       {
         table: {
           headers: ["المشروع", "ما يضيفه"],
           rows: [
-            ["sulaiman013/powerbi-mcp", "حوكمة: إخفاء PII قبل وصولها للنموذج، حجب أعمدة، سجل تدقيق، ووضع قراءة فقط"],
-            ["mateuscbrito/powerbi-server", "تحكم برمجي في تقارير PBIR والنماذج: إنشاء مقاييس، بناء علاقات، وأدوار RLS"],
-            ["Power BI Agentic (رسمي)", "حزمة مهارات تُثبَّت في وكيلك البرمجي لبناء النماذج والتقارير وفق أفضل الممارسات"],
+            ["sulaiman013/powerbi-mcp", "حوكمة: إخفاء PII قبل وصولها للنموذج، حجب أو تجزئة أعمدة، سجل تدقيق مقاوم للتلاعب، ووضع قراءة فقط. وللمشرفين: جرد كل مساحات العمل ورصد النماذج بلا تصنيف حساسية"],
+            ["mateuscbrito/powerbi-server", "تحكم برمجي في تقارير PBIR: إنشاء وتعديل المقاييس، بناء العلاقات، إنشاء أدوار RLS، وقائمة بأثقل الأعمدة استهلاكًا للذاكرة"],
           ],
         },
       },
-      { h: "الترتيب الصحيح", p: "الوكيل لا يتصل بأنظمتك — بل يستعلم عن طبقة موحّدة موجودة أصلًا. تخطي هذي الخطوة ينتج وكيلًا يعطيك نصف صورة بثقة كاملة، وهذا أسوأ من عدمه. الترتيب: تكامل البيانات، ثم نموذج دلالي نظيف، ثم وكيل فوقه." },
-      { h: "قبل الإنتاج", p: "التوثيق الرسمي ينبّه صراحة: النموذج قد ينتج نتائج غير دقيقة تؤدي لتغييرات غير مقصودة، وقد يكشف بيانات حساسة في السجلات أو الردود. خذ نسخة احتياطية، وابدأ بوضع القراءة فقط على نموذج غير حرج." },
+      { p: "ميزة وضع القراءة فقط تحديدًا تستحق الانتباه. تجعل الوكيل قادرًا على النظر دون التعديل — وهذي أول ما تفعّله في أي تجربة أولى." },
+
+      { h: "الترتيب الصحيح للبناء" },
+      { p: "أكبر سوء فهم في هذا المجال: أن الوكيل «يتصل بكل الأنظمة». الوكيل لا يتصل بشيء — بل يستعلم عن طبقة بيانات موحّدة يجب أن تكون موجودة أصلًا." },
+      { p: "الترتيب الذي يعمل:" },
+      {
+        list: [
+          "تكامل البيانات: جمع أنظمتك المتفرقة في مستودع أو Lakehouse موحّد.",
+          "نموذج دلالي نظيف: أسماء أعمال واضحة، أوصاف، مترادفات، وعلاقات صحيحة.",
+          "مقاييس معرَّفة مسبقًا: عرّف «معدل الإنجاز» و«التذاكر المتأخرة» كمقاييس، لا تترك الوكيل يخترعها.",
+          "وكيل فوق الطبقة الجاهزة، بوضع قراءة فقط أولًا.",
+          "توسيع تدريجي بعد قياس الدقة على أسئلة حقيقية.",
+        ],
+      },
+      { p: "تخطي الخطوتين الثانية والثالثة هو سبب فشل أغلب هذي المشاريع. تحصل على وكيل يعطيك نصف صورة بثقة كاملة — وهذا أسوأ من عدم وجوده، لأن الثقة الزائفة تُبنى عليها قرارات." },
+
+      { h: "أين تفشل هذي المشاريع" },
+      {
+        list: [
+          "نموذج دلالي فوضوي: أسماء تقنية بلا أوصاف تجعل الوكيل يخمّن العلاقات.",
+          "غياب المقاييس المعرَّفة: كل سؤال يُحسب بطريقة مختلفة، فتختلف الأرقام بين جلسة وأخرى.",
+          "توقعات غير واقعية: المستخدمون يتوقعون تصدير بيانات، والأداة مصممة للرؤى المختصرة.",
+          "تجاهل التحقق: لا أحد يقارن مخرجات الوكيل بتقرير معروف صحته.",
+          "منح صلاحيات تعديل مبكرًا قبل إثبات دقة القراءة.",
+        ],
+      },
+
+      { h: "محاذير موثّقة رسميًا" },
+      { p: "التوثيق نفسه ينبّه بوضوح: النموذج اللغوي قد ينتج نتائج غير متوقعة أو غير دقيقة تؤدي لتغييرات غير مقصودة في النموذج الدلالي. كما قد يكشف معلومات حساسة — بيانات أو بيانات وصفية — في السجلات أو الردود." },
+      { p: "التوصية العملية: خذ نسخة احتياطية من النموذج قبل أي عملية تعديل، وابدأ بوضع القراءة فقط على نموذج غير حرج، وراجع سجل الاستدعاءات قبل توسيع الصلاحيات." },
     ],
     bodyEn: [
-      { p: "The recurring question: is there an agent that connects to all my systems and turns them into Power BI reports? Yes — the components exist and are mature. But build order matters more than tool choice." },
-      { h: "What Microsoft ships officially", p: "" },
+      { p: "In most organizations the gap isn't data — it's access to it. A manager wants a number, opens a ticket with the data team, waits two days, and gets a report that raises three new questions. The analyst spends their time on repeat requests instead of deep analysis." },
+      { p: "AI agents wired into Power BI target exactly that loop: the user asks in plain language, the agent translates it into a query, executes it, and returns the answer. But the idea is widely misunderstood, so let's start from the foundation." },
+
+      { h: "What MCP is and why it changed things" },
+      { p: "The Model Context Protocol is an open standard defining how an AI model talks to external tools and data sources in a structured, secure way. Before it, every model-to-system connection was a custom integration built from scratch." },
+      { p: "The three terms you'll see in every doc:" },
       {
         list: [
-          "Two Power BI MCP servers (public preview): a remote one for chat-with-data, a local one for authoring semantic models.",
-          "The agent learns the model structure automatically, using the same DAX engine that powers Copilot.",
-          "Execution runs under the authenticated user's own permissions, so access controls stay intact.",
+          "Host: the environment you work in — such as VS Code.",
+          "Client: the component that connects to servers and consumes their capabilities — such as Copilot.",
+          "Server: a local or remote program exposing tools and resources — such as the Power BI server.",
         ],
       },
-      { h: "Fabric Data Agent — closest to the \"all systems\" idea", p: "A conversational agent connecting up to five sources per agent: Lakehouse, Warehouse, Power BI models, KQL databases, ontologies, and Microsoft Graph. It parses the question, picks the source, generates the query, and executes it." },
+      { p: "This split matters practically, not theoretically: any client supporting the protocol can use any server supporting it. You build the integration once, and it works with Claude, Copilot, and others." },
+
+      { h: "What the cycle actually looks like" },
+      { p: "Take a real question: \"how many tickets have been open more than 30 days, per department?\" What happens behind the scenes:" },
       {
         list: [
-          "Responses cap at 25 rows and 25 columns — built for insight, not data export.",
-          "It enforces the asking user's identity, so RLS applies based on who is asking.",
+          "The agent reads the semantic model schema: tables, columns, relationships, and defined measures.",
+          "It identifies the relevant tables and builds an appropriate DAX query.",
+          "It executes the query through the model's XMLA endpoint.",
+          "It receives the raw result and phrases it in understandable natural language.",
+        ],
+      },
+      { p: "The critical security point: execution runs under the asking user's own permissions. If they only have access to their department, the agent won't see beyond it — row-level security applies automatically." },
+      { p: "This explains why semantic model quality determines answer quality. If columns are named COL_A and COL_B with no descriptions, the agent guesses. With clear names, defined synonyms, and correct relationships, answers become accurate." },
+
+      { h: "The official Microsoft options" },
+      {
+        table: {
+          headers: ["Option", "What it does", "When to use it"],
+          rows: [
+            ["Remote MCP server", "Conversational querying of semantic models and DAX generation", "Analysis and data exploration"],
+            ["Local MCP server", "Authoring and editing semantic models", "Building tables, measures, and relationships"],
+            ["Power BI Agentic", "A skills and tools bundle installed into your coding agent", "Developing models and reports per best practices"],
+            ["Fabric Data Agent", "A conversational agent across several data sources", "A Q&A interface for non-technical users"],
+          ],
+        },
+      },
+
+      { h: "Fabric Data Agent in detail" },
+      { p: "This is the option closest to the \"an agent connected to all my systems\" idea. It connects up to five sources per agent in any combination: Lakehouse, Warehouse, Power BI models, KQL databases, ontologies, and Microsoft Graph." },
+      { p: "How it works: it parses the question, determines the most relevant connected source, generates the query type appropriate to that source — SQL, KQL, or DAX — then executes it and phrases the result." },
+      { p: "Its limits, which you should know before building:" },
+      {
+        list: [
+          "Five sources maximum per agent. For broader coverage you create several specialized agents.",
+          "Responses cap at 25 rows and 25 columns — designed for insight, not dataset export.",
           "It requires F2 or higher Fabric capacity.",
-          "It exposes an API endpoint callable from Copilot Studio, Foundry, and your own apps.",
+          "It exposes an API endpoint callable from Copilot Studio, Microsoft Foundry, and your own apps.",
         ],
       },
-      { h: "Open-source tools that complement the official ones", p: "" },
+      { p: "The five-source cap is less a flaw than a design signal: one agent that knows everything gives worse answers than several specialized agents that each understand their domain deeply." },
+
+      { h: "Open-source tools" },
+      { p: "The official servers cover the fundamentals; the community covers the gaps — particularly governance and report editing." },
       {
         table: {
           headers: ["Project", "What it adds"],
           rows: [
-            ["sulaiman013/powerbi-mcp", "Governance: mask PII before the AI sees it, block columns, audit log, and read-only mode"],
-            ["mateuscbrito/powerbi-server", "Programmatic control over PBIR reports and models: create measures, build relationships, RLS roles"],
-            ["Power BI Agentic (official)", "A skills bundle installed into your coding agent to build models and reports per best practices"],
+            ["sulaiman013/powerbi-mcp", "Governance: mask PII before the AI sees it, block or hash columns, a tamper-evident audit log, and read-only mode. For admins: inventory every workspace and find models with no sensitivity label"],
+            ["mateuscbrito/powerbi-server", "Programmatic control over PBIR reports: create and update measures, build relationships, create RLS roles, and list the heaviest columns by memory usage"],
           ],
         },
       },
-      { h: "The correct order", p: "The agent doesn't connect to your systems — it queries a unified layer that already exists. Skipping that step produces an agent that gives you half a picture with full confidence, which is worse than none. The order: data integration, then a clean semantic model, then an agent on top." },
-      { h: "Before production", p: "The official docs warn plainly: the model may produce inaccurate results leading to unintended changes, and may expose sensitive data in logs or responses. Take a backup, and start read-only against a non-critical model." },
+      { p: "The read-only mode deserves particular attention. It lets the agent look but not touch — and it's the first thing you enable in any initial trial." },
+
+      { h: "The correct build order" },
+      { p: "The biggest misconception in this space: that the agent \"connects to all systems.\" The agent connects to nothing — it queries a unified data layer that must already exist." },
+      { p: "The order that works:" },
+      {
+        list: [
+          "Data integration: consolidate scattered systems into a unified warehouse or Lakehouse.",
+          "A clean semantic model: clear business names, descriptions, synonyms, and correct relationships.",
+          "Pre-defined measures: define \"completion rate\" and \"overdue tickets\" as measures; don't let the agent invent them.",
+          "An agent on top of the ready layer, in read-only mode first.",
+          "Gradual expansion after measuring accuracy on real questions.",
+        ],
+      },
+      { p: "Skipping steps two and three is why most of these projects fail. You get an agent that gives you half a picture with full confidence — worse than none, because decisions get built on false confidence." },
+
+      { h: "Where these projects fail" },
+      {
+        list: [
+          "A messy semantic model: technical names with no descriptions force the agent to guess relationships.",
+          "Missing defined measures: every question is calculated differently, so numbers shift between sessions.",
+          "Unrealistic expectations: users expect data export while the tool is built for concise insight.",
+          "No validation: nobody compares the agent's output against a report known to be correct.",
+          "Granting write permissions early, before read accuracy is proven.",
+        ],
+      },
+
+      { h: "Officially documented cautions" },
+      { p: "The documentation itself warns clearly: the language model may produce unexpected or inaccurate results leading to unintended changes in the semantic model. It may also expose sensitive information — data or metadata — in logs or responses." },
+      { p: "The practical recommendation: back up the model before any modifying operation, start in read-only mode against a non-critical model, and review the call log before expanding permissions." },
     ],
     refs: [
       { label: "Power BI MCP servers — Microsoft Learn", url: "https://learn.microsoft.com/en-us/power-bi/developer/mcp/mcp-servers-overview" },
       { label: "Fabric data agent — Microsoft Learn", url: "https://learn.microsoft.com/en-us/fabric/data-science/concept-data-agent" },
+      { label: "Power BI Agentic — Microsoft Learn", url: "https://learn.microsoft.com/en-us/power-bi/developer/agentic/power-bi-agentic-overview" },
       { label: "sulaiman013/powerbi-mcp", url: "https://github.com/sulaiman013/powerbi-mcp" },
       { label: "mateuscbrito/powerbi-server", url: "https://github.com/mateuscbrito/powerbi-server" },
     ],
   },
   {
     slug: "aiops-root-cause-analysis-stack",
-    title: "AIOps عمليًا: من ضجيج التنبيهات إلى السبب الجذري",
-    titleEn: "AIOps in Practice: From Alert Noise to Root Cause",
+    title: "AIOps: كيف تنتقل من مراقبة تُنبّهك إلى نظام يشخّص العطل",
+    titleEn: "AIOps: Moving From Monitoring That Alerts You to a System That Diagnoses",
     date: "2026-07",
     tag: "OPERATIONS",
     excerpt:
-      "كل منصة مراقبة تدّعي اليوم أنها مدعومة بالذكاء الاصطناعي. لكن الفرق بين من يكشف الشذوذ ومن يشخّص السبب الجذري فرق جوهري — وأغلب الأدوات تقف عند الأولى.",
+      "كل منصة مراقبة تدّعي اليوم أنها مدعومة بالذكاء الاصطناعي. لكن الفرق بين كشف الشذوذ وتشخيص السبب الجذري فرق جوهري — هنا شرح للفرق، وتصنيف للأدوات، وخطة تبنٍّ قابلة للتنفيذ.",
     excerptEn:
-      "Every monitoring platform now claims to be AI-powered. But the gap between flagging an anomaly and diagnosing a root cause is fundamental — and most tools stop at the first.",
+      "Every monitoring platform now claims to be AI-powered. But the gap between flagging an anomaly and diagnosing a root cause is fundamental — here's the difference explained, the tools classified, and an adoption plan you can execute.",
     body: [
-      { p: "مشكلة فرق التشغيل ليست نقص البيانات بل فائضها. عشرات آلاف التنبيهات شهريًا، وارتباطات سطحية، ومهندس يقضي أول عشرين دقيقة من كل حادثة يجمع الصورة يدويًا من ثلاث لوحات. AIOps وُجدت لسد هذي الفجوة." },
-      { h: "ثلاث فئات، والخلط بينها أشيع خطأ في الشراء", p: "" },
+      { p: "مشكلة فرق التشغيل ليست نقص البيانات بل فائضها. عشرات آلاف التنبيهات شهريًا، وأغلبها ضجيج. ومهندس المناوبة يقضي أول عشرين دقيقة من كل حادثة يجمع الصورة يدويًا من ثلاث لوحات مختلفة." },
+      { p: "الأسوأ أن كثرة الإنذارات الكاذبة تولّد ما يُسمى إرهاق التنبيهات: الفريق يتجاهل التنبيهات تدريجيًا، فيمر التنبيه الحقيقي دون انتباه. AIOps وُجدت لمعالجة هذي الحلقة." },
+
+      { h: "الفرق بين الارتباط والسببية" },
+      { p: "هذا الفرق هو جوهر الموضوع كله، وأغلب التسويق يتجاهله عمدًا. لنوضحه بمثال." },
+      { p: "تخيّل حادثة: تطبيقك بطيء. الأداة تخبرك أن استهلاك المعالج ارتفع في قاعدة البيانات، وأن زمن الاستجابة زاد، وأن معدل الأخطاء ارتفع — كلها في نفس اللحظة." },
+      {
+        list: [
+          "أداة ارتباط (correlation) تقول لك: هذي الثلاثة حدثت معًا. وتترك لك استنتاج العلاقة بينها.",
+          "أداة سببية (causation) تقول لك: نشر جديد أدخل استعلامًا بلا فهرس، فارتفع استهلاك المعالج، فتأخرت الاستجابات، فبدأت المهل تنتهي بأخطاء.",
+        ],
+      },
+      { p: "الأولى تعطيك ثلاث نوافذ لتفتحها. الثانية تعطيك سببًا وإجراءً. الفرق بينهما هو الفرق بين تقليل الضجيج وتقليل زمن الإصلاح فعليًا." },
+
+      { h: "ثلاث فئات، والخلط بينها أشيع خطأ في الشراء" },
       {
         table: {
-          headers: ["الفئة", "تقدّم", "لا تقدّم"],
+          headers: ["الفئة", "أمثلة", "تقدّم", "لا تقدّم"],
           rows: [
-            ["منصات مراقبة (Datadog · Dynatrace · New Relic)", "البيانات وكشف الشذوذ", "التحقيق يبقى يدويًا"],
-            ["AIOps تقليدي (Moogsoft · BigPanda)", "تقليل الضجيج وتجميع التنبيهات", "لا تشخّص السبب الجذري"],
-            ["تحقيق أصلي بالذكاء الاصطناعي", "تحقيق مؤتمت وتتبّع سببي بالأدلة", "تحتاج طبقة تتبع ناضجة أسفلها"],
+            ["منصات مراقبة", "Datadog · Dynatrace · New Relic", "البيانات وكشف الشذوذ", "التحقيق يبقى يدويًا في الغالب"],
+            ["AIOps تقليدي", "Moogsoft · BigPanda", "تقليل الضجيج وتجميع التنبيهات المترابطة", "لا تشخّص السبب الجذري"],
+            ["تحقيق أصلي بالذكاء الاصطناعي", "الجيل الوكيلي الجديد", "تحقيق مؤتمت وتتبّع سلاسل سببية بالأدلة", "يحتاج طبقة تتبع ناضجة أسفله"],
           ],
         },
       },
-      { h: "الأساس الذي لا يُتخطّى", p: "OpenTelemetry هي طبقة الأساس لأي AIOps. مخططها الموحّد للتتبعات والمقاييس والسجلات يعطي النموذج رؤية كاملة لرحلة كل طلب. الفرق كبير: التنبيه التقليدي يكشف أنماط الفشل المعروفة فقط، بينما جوهر AIOps هو كشف الشذوذ غير المتوقع." },
-      { h: "مفتوح المصدر — ابدأ من هنا", p: "" },
+      { p: "النتيجة العملية: أغلب المؤسسات لا تعتمد على أداة واحدة، بل تبني سلسلة من طبقتين أو ثلاث — طبقة مراقبة تجمع البيانات، وفوقها طبقة تحقيق." },
+
+      { h: "الأساس الذي لا يُتخطّى: طبقة التتبع" },
+      { p: "لا توجد طبقة AIOps ناجحة فوق بيانات مجزّأة. الأساس هو OpenTelemetry بمخططها الموحّد للإشارات الثلاث." },
+      {
+        list: [
+          "المقاييس (Metrics): أرقام عبر الزمن — استهلاك المعالج، عدد الطلبات، زمن الاستجابة. تخبرك أن شيئًا تغيّر.",
+          "السجلات (Logs): أحداث نصية بتفاصيل. تخبرك ماذا حدث بالضبط في لحظة معينة.",
+          "التتبعات (Traces): رحلة الطلب الواحد عبر كل الخدمات. تخبرك أين تأخّر بالضبط.",
+        ],
+      },
+      { p: "قيمة التوحيد أن الثلاثة تتشارك معرّفات مشتركة. فحين يرى النموذج ارتفاعًا في المقاييس، يستطيع القفز مباشرة للتتبعات المرتبطة به، ومنها للسجلات — وهذا يحسّن دقة السبب الجذري تحسينًا كبيرًا مقارنة بتنبيه مقياس معزول." },
+      { p: "ونقطة جوهرية: التنبيه التقليدي القائم على قواعد ثابتة يكشف أنماط الفشل المعروفة مسبقًا فقط. أما جوهر AIOps فهو كشف الشذوذ غير المتوقع — وهو ما يسبب حصة كبيرة من أعطال الإنتاج." },
+
+      { h: "أدوات مفتوحة المصدر — ابدأ من هنا" },
       {
         table: {
           headers: ["الأداة", "تقدّم"],
           rows: [
-            ["HolmesGPT", "تحليل سبب جذري فوق بيئات Kubernetes"],
-            ["keephq/keep", "ربط تنبيهات وrunbooks ذاتية: إعادة تشغيل، توسعة، تراجع عن إعداد"],
-            ["Aurora", "وكلاء LangGraph يحققون عبر AWS وAzure وGCP وK8s، بتكامل PagerDuty وGrafana"],
+            ["HolmesGPT", "تحليل سبب جذري مدعوم بالذكاء الاصطناعي فوق بيئات Kubernetes"],
+            ["keephq/keep", "ربط تنبيهات وrunbooks ذاتية التشغيل: إعادة تشغيل، توسعة، وتراجع عن إعداد"],
+            ["Aurora", "وكلاء LangGraph يحققون عبر AWS وAzure وGCP وKubernetes، بتكامل PagerDuty وDatadog وGrafana وSlack — رخصة Apache 2.0"],
           ],
         },
       },
-      { h: "التجاري بتحليل سببي حقيقي", p: "Dynatrace يقود للمؤسسات المحتاجة تحليلًا سببيًا حتميًا لا ارتباطًا إحصائيًا. وLogz.io OrionIQ يمثّل الجيل الوكيلي: وكلاء يبدأون لحظة إطلاق التنبيه، ويحللون السجلات والمقاييس والتتبعات معًا. الأهم أنهم يعملون ضمن runbooks فريقك، لا بمنطق عام على بيئة يجهلونها." },
-      { h: "السؤال الحاسم عند التقييم", p: "هل تتعلم الأداة من بيئتك؟ أداة تعطيك في اليوم المئة نفس تحليل اليوم الأول لم تلتقط المعرفة المؤسسية التي تجعل المهندس المخضرم فعّالًا. ابحث عمّا يبني معرفة خاصة بمنظمتك من الحوادث السابقة وتغذية الفريق الراجعة." },
-      { h: "خطة تبنٍّ عملية", p: "" },
+      { p: "هذي الأدوات تتعامل فعليًا مع كثير من الحوادث الروتينية دون تدخل بشري، فيتفرغ المهندسون للأعطال المعقدة الجديدة التي تحتاج حكمًا بشريًا حقيقيًا." },
+
+      { h: "الخيارات التجارية" },
+      { p: "Dynatrace يقود للمؤسسات الكبيرة المحتاجة تحليلًا سببيًا حتميًا لا ارتباطًا إحصائيًا — أي محرك يبني خريطة اعتماديات فعلية بين المكوّنات." },
+      { p: "وLogz.io OrionIQ يمثّل الجيل الوكيلي: وكلاء يبدأون العمل لحظة إطلاق التنبيه، ويحللون السجلات والمقاييس والتتبعات في آن واحد، وينتجون سببًا جذريًا موحّدًا قبل أن يفتح المهندس أي لوحة. والأهم أنهم يعملون ضمن الإجراءات والـ runbooks التي وضعها فريقك فعلًا." },
+      { p: "أما OpenObserve فيجمع طبقة ذكاء ثلاثية مع تتبع كامل الدقة بتكلفة تخزين أقل بكثير من المنصات التقليدية — نقطة تستحق الحساب في البيئات كثيفة السجلات." },
+
+      { h: "كيف تقيس النجاح فعليًا" },
+      { p: "لا تقيّم أداة AIOps بالعرض التجريبي. قِسها بأرقام قبل وبعد على بيئتك أنت:" },
       {
         list: [
-          "ابدأ من طبقة المراقبة التي تملكها أصلًا وفعّل ميزات الشذوذ فيها قبل أي شراء.",
-          "وحّد بقية المصادر تدريجيًا عبر OpenTelemetry collector بدل جزر منفصلة.",
-          "جرّب أداة مفتوحة على بيئة واحدة غير حرجة.",
-          "قِس بصدق: كم حادثة شخّصتها صح، وكم مرة أعطت سببًا خاطئًا بثقة.",
-          "قيّم الحل التجاري بعد إثبات القيمة على نطاق ضيق، لا قبله.",
+          "نسبة تقليل التنبيهات: كم تنبيهًا وصل للمناوب قبل التطبيق وبعده؟",
+          "دقة التشخيص: من أصل عشر حوادث حقيقية، كم مرة أصاب السبب الجذري؟",
+          "معدل الخطأ الواثق: كم مرة أعطى سببًا خاطئًا بصياغة واثقة؟ هذا أخطر مقياس.",
+          "زمن الوصول للسبب: كم دقيقة وفّر مقارنة بالتحقيق اليدوي؟",
+          "التغطية: كم نسبة من أنظمتك مشمولة فعليًا بالتتبع؟",
+        ],
+      },
+      { p: "المقياس الثالث تحديدًا يُهمَل دائمًا. أداة تخطئ بصمت أفضل من أداة تخطئ بثقة، لأن الثانية تقود الفريق في الاتجاه الخاطئ بسرعة." },
+
+      { h: "السؤال الحاسم عند المقارنة" },
+      { p: "هل تتعلم الأداة من بيئتك مع الوقت؟ أداة تعطيك في اليوم المئة نفس التحليل العام الذي أعطته في اليوم الأول لم تلتقط المعرفة المؤسسية التي تجعل المهندس المخضرم فعّالًا." },
+      { p: "ابحث عمّا يبني معرفة خاصة بمنظمتك من الحوادث السابقة والـ runbooks وتغذية الفريق الراجعة. هذا ما يفصل مساعدًا مفيدًا عن شريك تشخيص حقيقي." },
+
+      { h: "خطة تبنٍّ عملية" },
+      {
+        list: [
+          "ابدأ من طبقة المراقبة التي تملكها أصلًا وفعّل ميزات كشف الشذوذ فيها قبل أي شراء جديد.",
+          "وحّد المصادر تدريجيًا عبر OpenTelemetry collector بدل أن تبقى كل أداة جزيرة.",
+          "اختر بيئة واحدة غير حرجة كساحة تجربة.",
+          "جرّب أداة مفتوحة المصدر عليها لمدة شهر على الأقل.",
+          "قِس المقاييس الخمسة أعلاه بصدق ودوّنها.",
+          "وسّع للبيئات الأهم فقط بعد إثبات القيمة، ثم قيّم الحل التجاري.",
+        ],
+      },
+
+      { h: "أخطاء شائعة" },
+      {
+        list: [
+          "شراء منصة تجارية قبل توحيد التتبع — تدفع لأداة ذكية تقرأ بيانات ناقصة.",
+          "توقّع أتمتة كاملة: الأدوات تقلّل زمن الإصلاح وإرهاق التنبيهات، لكنها لا تلغي الحاجة للحكم البشري.",
+          "منح صلاحيات إصلاح تلقائي مبكرًا قبل قياس دقة التشخيص.",
+          "إهمال الـ runbooks: أقوى الأدوات الوكيلية تعمل ضمن إجراءاتك المكتوبة — فإن لم تكن مكتوبة، تفقد أهم ميزة.",
         ],
       },
     ],
     bodyEn: [
-      { p: "The problem for operations teams isn't a shortage of data but a surplus. Tens of thousands of alerts a month, shallow correlations, and an engineer spending the first twenty minutes of every incident assembling the picture from three dashboards. AIOps exists to close that gap." },
-      { h: "Three categories, and conflating them is the most common purchasing mistake", p: "" },
+      { p: "The problem for operations teams isn't a shortage of data but a surplus. Tens of thousands of alerts a month, most of them noise. And the on-call engineer spends the first twenty minutes of every incident manually assembling the picture from three different dashboards." },
+      { p: "Worse, the volume of false alarms produces what's called alert fatigue: the team gradually starts ignoring alerts, so the real one passes unnoticed. AIOps exists to break that loop." },
+
+      { h: "The difference between correlation and causation" },
+      { p: "This distinction is the heart of the entire subject, and most marketing deliberately blurs it. Let's make it concrete." },
+      { p: "Imagine an incident: your app is slow. The tool tells you database CPU spiked, response time increased, and error rate rose — all at the same moment." },
+      {
+        list: [
+          "A correlation tool says: these three happened together. It leaves you to infer the relationship.",
+          "A causation tool says: a new deployment introduced an unindexed query, which spiked CPU, which delayed responses, which caused timeouts to surface as errors.",
+        ],
+      },
+      { p: "The first gives you three windows to open. The second gives you a cause and an action. That difference is the difference between reducing noise and actually reducing time to repair." },
+
+      { h: "Three categories, and conflating them is the most common purchasing mistake" },
       {
         table: {
-          headers: ["Category", "Provides", "Doesn't provide"],
+          headers: ["Category", "Examples", "Provides", "Doesn't provide"],
           rows: [
-            ["Observability (Datadog · Dynatrace · New Relic)", "Data and anomaly surfacing", "Investigation stays manual"],
-            ["Classic AIOps (Moogsoft · BigPanda)", "Noise reduction and alert grouping", "No root-cause diagnosis"],
-            ["AI-native investigation", "Automated investigation and causal tracing with evidence", "Needs a mature telemetry layer beneath"],
+            ["Observability platforms", "Datadog · Dynatrace · New Relic", "The data and anomaly surfacing", "Investigation largely stays manual"],
+            ["Classic AIOps", "Moogsoft · BigPanda", "Noise reduction and grouping of related alerts", "No root-cause diagnosis"],
+            ["AI-native investigation", "The new agentic generation", "Automated investigation and causal-chain tracing with evidence", "Needs a mature telemetry layer beneath"],
           ],
         },
       },
-      { h: "The foundation you can't skip", p: "OpenTelemetry is the base layer for any AIOps. Its unified schema for traces, metrics, and logs gives the model a full view of each request's journey. The difference is large: traditional alerting catches only known failure modes, while the whole point of AIOps is detecting the unknown ones." },
-      { h: "Open source — start here", p: "" },
+      { p: "The practical upshot: most organizations don't rely on a single tool but build a chain of two or three layers — an observability layer gathering the data, with an investigation layer on top." },
+
+      { h: "The foundation you can't skip: the telemetry layer" },
+      { p: "No AIOps layer succeeds on fragmented data. The foundation is OpenTelemetry, with its unified schema across the three signals." },
+      {
+        list: [
+          "Metrics: numbers over time — CPU usage, request counts, response time. They tell you something changed.",
+          "Logs: textual events with detail. They tell you what exactly happened at a given moment.",
+          "Traces: a single request's journey across every service. They tell you where exactly it was delayed.",
+        ],
+      },
+      { p: "The value of unification is that all three share common identifiers. So when the model sees a metric spike, it can jump straight to the associated traces, and from there to the logs — dramatically improving root-cause accuracy compared to an isolated metric alert." },
+      { p: "And a core point: traditional rule-based alerting catches only pre-known failure modes. The whole point of AIOps is detecting the unexpected anomalies — which cause a significant share of production outages." },
+
+      { h: "Open-source tools — start here" },
       {
         table: {
           headers: ["Tool", "Provides"],
           rows: [
-            ["HolmesGPT", "Root cause analysis over Kubernetes environments"],
-            ["keephq/keep", "Alert correlation and autonomous runbooks: restarts, scale-outs, config rollbacks"],
-            ["Aurora", "LangGraph agents investigating across AWS, Azure, GCP, and K8s, with PagerDuty and Grafana integration"],
+            ["HolmesGPT", "AI-powered root cause analysis over Kubernetes environments"],
+            ["keephq/keep", "Alert correlation and autonomous runbooks: restarts, scale-outs, and config rollbacks"],
+            ["Aurora", "LangGraph agents investigating across AWS, Azure, GCP, and Kubernetes, integrating with PagerDuty, Datadog, Grafana, and Slack — Apache 2.0"],
           ],
         },
       },
-      { h: "Commercial options with real causal analysis", p: "Dynatrace leads for enterprises needing deterministic causal AI rather than statistical correlation. Logz.io's OrionIQ represents the agentic generation: agents start the moment an alert fires and analyze logs, metrics, and traces together. Crucially, they work within your team's runbooks, not generic logic on an environment they don't know." },
-      { h: "The decisive evaluation question", p: "Does the tool learn from your environment? A tool giving you the same analysis on day 100 as day 1 hasn't captured the institutional knowledge that makes an experienced engineer effective. Look for what builds organization-specific knowledge from past incidents and team feedback." },
-      { h: "A practical adoption plan", p: "" },
+      { p: "These tools genuinely handle many routine incidents without human intervention, freeing engineers for the complex, novel failures that require real human judgment." },
+
+      { h: "Commercial options" },
+      { p: "Dynatrace leads for large enterprises needing deterministic causal AI rather than statistical correlation — an engine that builds an actual dependency map between components." },
+      { p: "Logz.io's OrionIQ represents the agentic generation: agents begin the moment an alert fires, analyzing logs, metrics, and traces simultaneously, and producing a consolidated root cause before an engineer opens a single dashboard. Crucially, they operate within the procedures and runbooks your team has already established." },
+      { p: "OpenObserve combines a three-layer AI stack with full-fidelity telemetry at dramatically lower storage cost than legacy platforms — worth calculating in log-heavy environments." },
+
+      { h: "How to actually measure success" },
+      { p: "Don't judge an AIOps tool by the demo. Measure it with before-and-after numbers on your own environment:" },
       {
         list: [
-          "Start from the monitoring layer you already own and enable its anomaly features before buying anything.",
-          "Unify remaining sources gradually via an OpenTelemetry collector instead of separate islands.",
-          "Trial an open-source tool on a single non-critical environment.",
-          "Measure honestly: how many incidents it diagnosed correctly, and how often it was confidently wrong.",
-          "Evaluate the commercial option after proving value at narrow scope, not before.",
+          "Alert reduction: how many alerts reached the on-call before and after?",
+          "Diagnostic accuracy: out of ten real incidents, how many times did it get the root cause right?",
+          "Confident-error rate: how often did it give a wrong cause in confident phrasing? This is the most dangerous metric.",
+          "Time to cause: how many minutes did it save versus manual investigation?",
+          "Coverage: what share of your systems is actually instrumented?",
+        ],
+      },
+      { p: "The third metric is always neglected. A tool that fails silently is better than one that fails confidently, because the second leads the team in the wrong direction faster." },
+
+      { h: "The decisive comparison question" },
+      { p: "Does the tool learn from your environment over time? A tool that gives you the same generic analysis on day 100 as on day 1 hasn't captured the institutional knowledge that makes an experienced engineer effective." },
+      { p: "Look for what builds organization-specific knowledge from past incidents, runbooks, and team feedback. That's what separates a useful assistant from a genuine diagnostic partner." },
+
+      { h: "A practical adoption plan" },
+      {
+        list: [
+          "Start from the monitoring layer you already own and enable its anomaly detection before buying anything new.",
+          "Unify sources gradually through an OpenTelemetry collector instead of leaving each tool an island.",
+          "Pick one non-critical environment as your proving ground.",
+          "Trial an open-source tool on it for at least a month.",
+          "Measure the five metrics above honestly and write them down.",
+          "Expand to more important environments only after proving value, then evaluate the commercial option.",
+        ],
+      },
+
+      { h: "Common mistakes" },
+      {
+        list: [
+          "Buying a commercial platform before unifying telemetry — you pay for a smart tool reading incomplete data.",
+          "Expecting full automation: these tools reduce MTTR and alert fatigue, but don't remove the need for human judgment.",
+          "Granting auto-remediation permissions early, before measuring diagnostic accuracy.",
+          "Neglecting runbooks: the strongest agentic tools operate within your written procedures — if they aren't written, you lose the biggest advantage.",
         ],
       },
     ],
@@ -204,109 +453,275 @@ export const posts: Post[] = [
   },
   {
     slug: "ai-voice-chat-internal-systems-integration",
-    title: "وكلاء الصوت والمحادثة: كيف تربطهم بأنظمتك الداخلية",
-    titleEn: "Voice and Chat Agents: Wiring Them Into Your Internal Systems",
+    title: "بناء وكيل صوت ومحادثة متصل بأنظمتك الداخلية: الدليل الكامل",
+    titleEn: "Building a Voice and Chat Agent Wired Into Your Internal Systems: The Full Guide",
     date: "2026-07",
     tag: "VOICE AI",
     excerpt:
-      "الوكيل الذي لا يقرأ من أنظمتك ولا يكتب فيها ليس أكثر من IVR بصوت أجمل. القيمة تبدأ من استدعاء الدوال أثناء المكالمة — وهناك تبدأ القيود الهندسية والنظامية معًا.",
+      "الوكيل الذي لا يقرأ من أنظمتك ولا يكتب فيها ليس أكثر من IVR بصوت أجمل. هنا شرح للمعمارية الكاملة، وكيف يبدو استدعاء نظام أثناء المكالمة، والأدوات، وميزانية الاستجابة، والمتطلبات النظامية في السعودية.",
     excerptEn:
-      "An agent that can't read from or write to your systems is just an IVR with a nicer voice. The value starts with function calling during the call — and that's where both the engineering and regulatory limits begin.",
+      "An agent that can't read from or write to your systems is just an IVR with a nicer voice. Here's the full architecture explained, what a mid-call system invocation actually looks like, the tools, the latency budget, and the Saudi regulatory requirements.",
     body: [
-      { p: "الفرق بين وكيل صوتي حقيقي وIVR متطور هو استدعاء أنظمتك أثناء المحادثة: يقرأ حالة طلب، يفتح تذكرة، يتحقق من هوية، ثم يكمل بناءً على الرد. هذي وظيفة طبقة التنسيق، وتُسمّى تقنيًا Function Calling." },
-      { h: "ما الذي تحله طبقة التنسيق", p: "" },
+      { p: "أغلب مشاريع الوكلاء الصوتية تتوقف عند عرض تجريبي جميل: صوت طبيعي يجيب عن أسئلة عامة. لكن القيمة الحقيقية لا تبدأ إلا حين يتصل الوكيل بأنظمتك فعليًا — يقرأ حالة طلب، يفتح تذكرة، يتحقق من هوية." },
+      { p: "هذي المقالة تشرح كيف يحدث ذلك تقنيًا، وما القيود التي ستصطدم بها." },
+
+      { h: "الفرق الجوهري عن IVR التقليدي" },
+      { p: "الـ IVR شجرة خيارات ثابتة: اضغط 1 للمبيعات، 2 للدعم. أي طلب خارج الشجرة يفشل. والوكيل الصوتي مختلف في ثلاثة أمور." },
       {
         list: [
-          "تحديد متى انتهى المتصل من كلامه.",
-          "إسكات الوكيل فورًا عند المقاطعة (barge-in).",
-          "كلمات تأكيد قصيرة أثناء الاستماع.",
-          "ملء الفراغ الصوتي أثناء انتظار النموذج.",
-          "الاحتفاظ بسياق الجلسة واستدعاء الأنظمة الخارجية.",
+          "يفهم اللغة الطبيعية بدل الأرقام: المتصل يقول ما يريد بجملة واحدة.",
+          "يحتفظ بسياق المحادثة: يتذكر ما قيل قبل ثلاث جمل ويبني عليه.",
+          "يتخذ قرارًا بأي أداة يستدعي، بدل تنفيذ مسار مكتوب مسبقًا.",
         ],
       },
-      { h: "الأدوات حسب نموذج التشغيل", p: "" },
+      { p: "وهذا الفارق الثالث تحديدًا هو ما يجعل التكامل مع الأنظمة ممكنًا أصلًا." },
+
+      { h: "المعمارية: نمط السلسلة (Cascade)" },
+      { p: "النمط الافتراضي والأكثر تحكمًا يمر بأربع مراحل متتابعة لكل دورة حوار." },
+      {
+        list: [
+          "الاتصالات (Telephony): استقبال المكالمة عبر SIP أو WebRTC.",
+          "تحويل الكلام لنص (STT): يجب أن يكون streaming لا batch، أي يحوّل أثناء الكلام لا بعده.",
+          "النموذج اللغوي (LLM): يفهم النية ويقرر الرد أو استدعاء أداة.",
+          "تحويل النص لكلام (TTS): ينطق الرد بصوت طبيعي.",
+        ],
+      },
+      { p: "وفوق هذي المراحل تجلس طبقة التنسيق (Orchestration) التي تدير الدورة كلها. البديل هو نموذج Speech-to-Speech واحد، لكنه صندوق مغلق لا يمكن ضبطه للهجات المحلية — لذلك السلسلة هي الافتراضي الصحيح للعربية." },
+      { p: "ونقطة حاسمة: دقة تحويل الكلام لنص تحكم كل ما بعدها. لو كان النسخ خاطئًا، فكل مرحلة تالية خاطئة مهما كان النموذج ذكيًا." },
+
+      { h: "ما الذي تحله طبقة التنسيق" },
+      { p: "هذي الطبقة مسؤولة عن كل ما يجعل المحادثة تبدو طبيعية لا آلية." },
+      {
+        list: [
+          "تحديد نهاية الدور: متى انتهى المتصل من كلامه فعلًا؟",
+          "المقاطعة (barge-in): إسكات الوكيل فورًا حين يبدأ المستخدم بالكلام.",
+          "كلمات التأكيد القصيرة أثناء الاستماع لتبدو المحادثة حية.",
+          "ملء الفراغ الصوتي أثناء انتظار النموذج بدل صمت محرج.",
+          "الاحتفاظ بحالة الجلسة عبر دورات الحوار.",
+          "استدعاء الأنظمة الخارجية أثناء المكالمة.",
+        ],
+      },
+
+      { h: "كيف يبدو استدعاء نظام أثناء المكالمة" },
+      { p: "لنأخذ سيناريو واقعيًا: موظف يتصل ليسأل عن حالة طلب صيانة. ما يحدث فعليًا:" },
+      {
+        list: [
+          "المتصل يقول: «أبي أعرف وش صار في طلب الصيانة حقي».",
+          "الوكيل يحتاج رقم هوية أو رقم طلب، فيسأل عنه.",
+          "بعد الحصول عليه، يستدعي دالة معرَّفة مسبقًا مثل get_ticket_status برقم الطلب كمعامل.",
+          "البوابة الوسيطة تستقبل الاستدعاء، تتحقق من الصلاحيات، وتستعلم من نظام التذاكر.",
+          "ترجع النتيجة كبيانات منظمة: الحالة، تاريخ آخر تحديث، الفني المسؤول.",
+          "الوكيل يصيغها بلغة طبيعية وينطقها.",
+        ],
+      },
+      { p: "الخطوة الرابعة هي جوهر التصميم الآمن. الوكيل لا يتصل بنظام التذاكر مباشرة أبدًا — بل يمر عبر طبقة تتحكم بما يُسمح به." },
+
+      { h: "الأدوات حسب نموذج التشغيل" },
       {
         table: {
           headers: ["الأداة", "النوع", "الأنسب لـ"],
           rows: [
-            ["LiveKit Agents", "مفتوح (WebRTC)", "تحكم كامل واستضافة ذاتية وسيادة بيانات"],
-            ["Pipecat", "مفتوح (Python)", "تحكم دقيق في الـ pipeline، والأوضح للتعلم"],
-            ["Vapi · Retell · Bland", "مُدارة", "سرعة الإطلاق — لكن ضعفها في اللهجات العربية"],
-            ["Hams.AI · نبرة · Hamsa", "محلية", "اللهجة السعودية، وتكامل الهاتف وواتساب"],
+            ["LiveKit Agents", "مفتوح المصدر (WebRTC)", "تحكم كامل واستضافة ذاتية وسيادة بيانات — الوكيل process ينضم للغرفة كمشارك"],
+            ["Pipecat", "مفتوح المصدر (Python)", "تحكم دقيق في الـ pipeline والاستجابة، والأوضح للتعلّم لأنك ترى كل طبقة"],
+            ["Vapi · Retell · Bland", "مُدارة", "سرعة الإطلاق بلا بنية تحتية — لكن ضعفها الأساسي في اللهجات العربية"],
+            ["Hams.AI · نبرة · Hamsa", "محلية وإقليمية", "اللهجة السعودية والخليجية، وتكامل الهاتف وواتساب"],
           ],
         },
       },
-      { h: "أربعة أسئلة تفصل الادعاء عن الواقع", p: "" },
+      { p: "الاختيار بين مفتوح ومُدار ليس تقنيًا فقط. الاستضافة الذاتية تعطيك سيطرة على مكان البيانات، وهذي نقطة نظامية لا رفاهية هندسية في السعودية." },
+
+      { h: "أربعة أسئلة تفصل الادعاء عن الواقع" },
+      { p: "عند تقييم أي مزوّد، هذي الأسئلة تكشف القدرة الفعلية على التكامل:" },
       {
         list: [
-          "هل يدعم استدعاء الدوال أثناء المكالمة لا بعدها؟ وكم يضيف من زمن استجابة؟",
-          "هل يدعم مصادقة مخصصة — OAuth2 أو مفاتيح API أو mTLS؟",
-          "هل يصل لأنظمة محلية خلف جدار ناري، أم يشترط كشفها للإنترنت؟",
-          "هل يوفّر webhooks للأحداث: بداية المكالمة ونهايتها والنص والنتيجة؟",
+          "هل يدعم استدعاء الدوال أثناء المكالمة لا بعدها فقط؟ وكم يضيف كل استدعاء من زمن استجابة؟",
+          "هل يدعم رؤوس مصادقة مخصصة — OAuth2 أو مفاتيح API أو mTLS؟",
+          "هل يستطيع الوصول لأنظمة محلية خلف جدار ناري، أم يشترط كشفها للإنترنت؟",
+          "هل يوفّر webhooks للأحداث: بداية المكالمة ونهايتها، النص الكامل، والنتيجة؟",
         ],
       },
-      { p: "السؤال الثالث هو الفاصل عمليًا. أغلب المنصات المُدارة تتطلب نقطة نهاية عامة، فتضطر لبناء طبقة وسيطة." },
-      { h: "المعمارية الواقعية للأنظمة المحلية", p: "الوكيل يتحدث إلى بوابة API تملكها أنت، وهي وحدها من يتحدث لأنظمتك. تعطيك أربعة مكاسب: تحكمًا بالصلاحيات، سجل تدقيق لكل استدعاء، إخفاء تفاصيل الأنظمة، وحرية تبديل المزوّد لاحقًا دون إعادة بناء التكاملات." },
-      { h: "الميزانية التي تحكم كل قرار", p: "زمن الاستجابة هو المنتج نفسه." },
+      { p: "السؤال الثالث هو الفاصل عمليًا. أغلب المنصات المُدارة تتطلب نقطة نهاية عامة، وهذا يعني أنك ستبني طبقة وسيطة على أي حال." },
+
+      { h: "المعمارية الواقعية للأنظمة المحلية" },
+      { p: "التصميم الذي يعمل: الوكيل يتحدث إلى بوابة API تملكها أنت، وهي وحدها من يتحدث لأنظمتك الداخلية." },
+      { p: "هذي الطبقة تعطيك أربعة مكاسب دفعة واحدة:" },
       {
         list: [
-          "أقل من 300 ملي ثانية: يُحس طبيعيًا.",
-          "300 إلى 500: مقبول.",
-          "500 إلى 800: يبدأ يبدو آليًا.",
+          "تحكم دقيق بالصلاحيات: تحدد بالضبط أي عمليات مسموحة وعلى أي بيانات.",
+          "سجل تدقيق لكل استدعاء: من طلب ماذا ومتى وبأي نتيجة.",
+          "إخفاء تفاصيل الأنظمة الداخلية عن المزوّد الخارجي.",
+          "حرية تبديل مزوّد الصوت لاحقًا دون إعادة بناء التكاملات من الصفر.",
+        ],
+      },
+      { p: "المكسب الرابع يُستهان به دائمًا. سوق الوكلاء الصوتية يتغيّر بسرعة، ومن يبني تكاملاته مباشرة داخل منصة مزوّد واحد يدفع ثمن التبديل مرتين." },
+
+      { h: "ميزانية الاستجابة تحكم كل قرار" },
+      { p: "في العالم الصوتي، زمن الاستجابة هو المنتج نفسه. لا تقيّم أي مكوّن دون حساب كلفته الزمنية." },
+      {
+        list: [
+          "أقل من 300 ملي ثانية: يُحس طبيعيًا كإنسان.",
+          "من 300 إلى 500: مقبول وطبيعي.",
+          "من 500 إلى 800: يبدأ يبدو آليًا.",
           "فوق 1500: المتصل يقفل الخط.",
         ],
       },
-      { p: "كل استدعاء API أثناء المكالمة يخصم من هذي الميزانية. إما تصمّم استدعاءاتك سريعة جدًا، أو تشغّل صوت انتظار قصيرًا أثناء الجلب." },
-      { h: "الجانب النظامي في السعودية", p: "أي جهة تقدّم خدمات صوتية داخل المملكة يجب أن تعمل عبر مشغّل مرخّص من CST. وهناك تصريح VVSP منفصل للخدمات الصوتية الافتراضية، وتسجيل منفصل لمراكز الاتصال. ونظام PDPL بإشراف SDAIA يحكم بيانات المكالمات، بغرامات تصل 5 ملايين ريال قابلة للمضاعفة." },
-      { p: "هذا ليس استشارة قانونية — راجع cst.gov.sa وsdaia.gov.sa وأشرك الجهة القانونية قبل أي التزام. النقطة الجوهرية: النظام قد يوقف المشروع قبل التقنية، فاطرحه في الأسبوع الأول لا الشهر السادس." },
-    ],
-    bodyEn: [
-      { p: "The difference between a real voice agent and a sophisticated IVR is calling your systems mid-conversation: reading a request's status, opening a ticket, verifying an identity, then continuing based on the response. That's the orchestration layer's job, technically called function calling." },
-      { h: "What the orchestration layer solves", p: "" },
+      { p: "كل استدعاء API أثناء المكالمة يُخصم من هذي الميزانية. أمامك خياران: تصميم استدعاءات سريعة جدًا بفهارس مناسبة، أو تشغيل صوت انتظار قصير أثناء الجلب — والثاني أسهل وأكثر واقعية مع الأنظمة القديمة." },
+
+      { h: "الجانب النظامي في السعودية" },
+      { p: "هذا القسم يُطرح في الأسبوع الأول لا في الشهر السادس، لأن النظام قد يوقف المشروع قبل أن تفعل التقنية." },
       {
         list: [
-          "Detecting when the caller has finished speaking.",
-          "Silencing the agent instantly on interruption (barge-in).",
-          "Short acknowledgments while listening.",
-          "Filling the audio gap while waiting on the model.",
-          "Holding session context and calling external systems.",
+          "أي جهة تقدّم أو تعيد بيع خدمات صوتية داخل المملكة يجب أن تعمل عبر مشغّل مرخّص من هيئة الاتصالات والفضاء والتقنية (CST).",
+          "هناك تصريح VVSP منفصل للخدمات الصوتية الافتراضية.",
+          "وتسجيل منفصل لخدمات مراكز الاتصال يتطلب سجلًا تجاريًا ساريًا.",
+          "نظام حماية البيانات الشخصية (PDPL) بإشراف SDAIA يحكم البيانات المجمّعة عبر المكالمات، بغرامات تصل إلى 5 ملايين ريال قابلة للمضاعفة عند تكرار المخالفة.",
         ],
       },
-      { h: "Tools by operating model", p: "" },
+      { p: "ونقطة أخلاقية تتحول تدريجيًا لمتطلب نظامي: إفصاح الوكيل عن كونه نظامًا آليًا لا إنسانًا في بداية المكالمة." },
+      { p: "هذا ليس استشارة قانونية — راجع cst.gov.sa وsdaia.gov.sa مباشرة، وأشرك الجهة القانونية قبل أي التزام تعاقدي." },
+
+      { h: "من أين تبدأ عمليًا" },
+      {
+        list: [
+          "اختر حالة استخدام واحدة ضيقة ومتكررة، مثل الاستعلام عن حالة طلب.",
+          "ابنِ البوابة الوسيطة أولًا واختبرها بدون أي وكيل صوتي.",
+          "جرّب النص قبل الصوت: وكيل محادثة نصي يكشف مشاكل المنطق بتكلفة أقل بكثير.",
+          "أضف الصوت بعد استقرار المنطق، وقِس زمن الاستجابة في كل دورة.",
+          "اختبر بلهجة حقيقية من متصلين فعليين لا بتسجيلات معملية.",
+        ],
+      },
+      { p: "الخطأ الأشيع في التسلسل: البدء بالصوت مباشرة. تنتهي وأنت تصحّح مشاكل منطق واستدعاءات وأنت تحت ضغط زمن الاستجابة — بدل أن تكون قد حللتها في واجهة نصية هادئة." },
+    ],
+    bodyEn: [
+      { p: "Most voice agent projects stall at a pretty demo: a natural voice answering generic questions. But the real value only begins when the agent actually connects to your systems — reading a request's status, opening a ticket, verifying an identity." },
+      { p: "This article explains how that happens technically, and which constraints you'll run into." },
+
+      { h: "The fundamental difference from a traditional IVR" },
+      { p: "An IVR is a fixed decision tree: press 1 for sales, 2 for support. Anything outside the tree fails. A voice agent differs in three ways." },
+      {
+        list: [
+          "It understands natural language instead of digits: the caller states what they want in one sentence.",
+          "It holds conversational context: it remembers what was said three turns ago and builds on it.",
+          "It decides which tool to invoke, instead of executing a pre-written path.",
+        ],
+      },
+      { p: "That third difference is precisely what makes system integration possible at all." },
+
+      { h: "The architecture: the cascade pattern" },
+      { p: "The default and most controllable pattern runs four sequential stages per conversational turn." },
+      {
+        list: [
+          "Telephony: receiving the call over SIP or WebRTC.",
+          "Speech-to-text (STT): must be streaming, not batch — transcribing while speaking, not after.",
+          "The language model (LLM): understands intent and decides to reply or call a tool.",
+          "Text-to-speech (TTS): speaks the reply in a natural voice.",
+        ],
+      },
+      { p: "Above these stages sits the orchestration layer managing the whole cycle. The alternative is a single speech-to-speech model, but that's a closed box that can't be tuned for local dialects — which is why the cascade is the correct default for Arabic." },
+      { p: "A decisive point: STT accuracy gates everything downstream. If transcription is wrong, every later stage is wrong no matter how capable the model is." },
+
+      { h: "What the orchestration layer solves" },
+      { p: "This layer is responsible for everything that makes a conversation feel natural rather than mechanical." },
+      {
+        list: [
+          "Turn detection: when has the caller actually finished speaking?",
+          "Barge-in: silencing the agent instantly when the user starts talking.",
+          "Short acknowledgments while listening, so the conversation feels alive.",
+          "Filling the audio gap while waiting on the model instead of awkward silence.",
+          "Holding session state across conversational turns.",
+          "Calling external systems during the call.",
+        ],
+      },
+
+      { h: "What a mid-call system invocation looks like" },
+      { p: "Take a realistic scenario: an employee calls to ask about a maintenance request status. What actually happens:" },
+      {
+        list: [
+          "The caller says: \"I want to know what happened with my maintenance request.\"",
+          "The agent needs an ID or request number, so it asks for one.",
+          "Once it has it, it invokes a pre-defined function such as get_ticket_status with the request number as a parameter.",
+          "The middleware gateway receives the call, checks permissions, and queries the ticketing system.",
+          "It returns the result as structured data: status, last update date, assigned technician.",
+          "The agent phrases it in natural language and speaks it.",
+        ],
+      },
+      { p: "Step four is the heart of a secure design. The agent never talks to the ticketing system directly — it goes through a layer that controls what's permitted." },
+
+      { h: "Tools by operating model" },
       {
         table: {
           headers: ["Tool", "Type", "Best for"],
           rows: [
-            ["LiveKit Agents", "Open (WebRTC)", "Full control, self-hosting, and data sovereignty"],
-            ["Pipecat", "Open (Python)", "Fine pipeline control, and the clearest for learning"],
-            ["Vapi · Retell · Bland", "Managed", "Fast launch — but weak on Arabic dialect"],
-            ["Hams.AI · Nabrah · Hamsa", "Local", "Saudi dialect, with telephony and WhatsApp integration"],
+            ["LiveKit Agents", "Open source (WebRTC)", "Full control, self-hosting, and data sovereignty — the agent is a process that joins the room as a participant"],
+            ["Pipecat", "Open source (Python)", "Fine-grained pipeline and latency control, and the clearest for learning since you see every layer"],
+            ["Vapi · Retell · Bland", "Managed", "Fast launch with no infrastructure — but their core weakness is Arabic dialect"],
+            ["Hams.AI · Nabrah · Hamsa", "Local and regional", "Saudi and Gulf dialect, with telephony and WhatsApp integration"],
           ],
         },
       },
-      { h: "Four questions that separate claim from reality", p: "" },
+      { p: "Choosing between open and managed isn't purely technical. Self-hosting gives you control over where data lives, and in Saudi Arabia that's a regulatory point, not an engineering luxury." },
+
+      { h: "Four questions that separate claim from reality" },
+      { p: "When evaluating any provider, these questions expose actual integration capability:" },
       {
         list: [
-          "Does it support function calling during the call, not just after? And how much latency does each add?",
-          "Does it support custom authentication — OAuth2, API keys, or mTLS?",
-          "Can it reach on-premise systems behind a firewall, or must they be internet-exposed?",
-          "Does it provide event webhooks: call start and end, transcript, and outcome?",
+          "Does it support function calling during the call, not just afterward? And how much latency does each call add?",
+          "Does it support custom authentication headers — OAuth2, API keys, or mTLS?",
+          "Can it reach on-premise systems behind a firewall, or does it require them internet-exposed?",
+          "Does it provide event webhooks: call start and end, full transcript, and outcome?",
         ],
       },
-      { p: "The third question is the practical dividing line. Most managed platforms require a public endpoint, forcing you to build a middleware layer." },
-      { h: "The realistic architecture for on-premise systems", p: "The agent talks to an API gateway you own, and that gateway alone talks to your systems. It gives you four wins: permission control, an audit log of every call, concealment of internal details, and freedom to swap providers later without rebuilding integrations." },
-      { h: "The budget that governs every decision", p: "Latency is the product itself." },
+      { p: "The third question is the practical dividing line. Most managed platforms require a public endpoint, which means you'll be building a middleware layer regardless." },
+
+      { h: "The realistic architecture for on-premise systems" },
+      { p: "The design that works: the agent talks to an API gateway you own, and that gateway alone talks to your internal systems." },
+      { p: "This layer gives you four wins at once:" },
       {
         list: [
-          "Under 300 ms: feels human.",
-          "300 to 500: acceptable.",
+          "Fine-grained permission control: you define exactly which operations are allowed on which data.",
+          "An audit log of every invocation: who requested what, when, and with what result.",
+          "Concealment of internal system details from the external provider.",
+          "Freedom to swap voice providers later without rebuilding integrations from scratch.",
+        ],
+      },
+      { p: "The fourth win is consistently underrated. The voice agent market is shifting fast, and whoever builds integrations directly inside one provider's platform pays the switching cost twice." },
+
+      { h: "The latency budget governs every decision" },
+      { p: "In the voice world, latency is the product itself. Never evaluate a component without accounting for its time cost." },
+      {
+        list: [
+          "Under 300 milliseconds: feels human.",
+          "300 to 500: acceptable and natural.",
           "500 to 800: starts to feel robotic.",
           "Above 1500: the caller hangs up.",
         ],
       },
-      { p: "Every API call during a conversation is deducted from that budget. Either design your calls to be very fast, or play a short filler sound while fetching." },
-      { h: "The regulatory side in Saudi Arabia", p: "Any entity providing voice services inside the Kingdom must operate through a CST-licensed carrier. There's a separate VVSP permit for virtual voice services, and a separate call-center registration. PDPL, enforced by SDAIA, governs call data with fines reaching SAR 5 million, doubleable on repeat violation." },
-      { p: "This is not legal advice — consult cst.gov.sa and sdaia.gov.sa and involve your legal function before any commitment. The core point: regulation can stop the project before the technology does, so raise it in week one, not month six." },
+      { p: "Every API call during a conversation is deducted from that budget. You have two options: design very fast calls with proper indexing, or play a short filler sound while fetching — the second is easier and more realistic with legacy systems." },
+
+      { h: "The regulatory side in Saudi Arabia" },
+      { p: "This section belongs in week one, not month six, because regulation can stop the project before the technology does." },
+      {
+        list: [
+          "Any entity providing or reselling voice services inside the Kingdom must operate through a carrier licensed by the Communications, Space & Technology Commission (CST).",
+          "There is a separate VVSP permit for virtual voice services.",
+          "And a separate call-center services registration requiring a valid commercial registration.",
+          "The Personal Data Protection Law (PDPL), enforced by SDAIA, governs data collected through calls, with fines reaching SAR 5 million, doubleable on repeat violation.",
+        ],
+      },
+      { p: "One ethical point is gradually becoming a regulatory requirement: the agent disclosing that it's an automated system rather than a human at the start of the call." },
+      { p: "This is not legal advice — consult cst.gov.sa and sdaia.gov.sa directly, and involve your legal function before any contractual commitment." },
+
+      { h: "Where to start practically" },
+      {
+        list: [
+          "Pick one narrow, repetitive use case, such as checking a request's status.",
+          "Build the middleware gateway first and test it with no voice agent at all.",
+          "Try text before voice: a text chat agent exposes logic problems at far lower cost.",
+          "Add voice after the logic is stable, and measure latency on every turn.",
+          "Test with real dialect from actual callers, not lab recordings.",
+        ],
+      },
+      { p: "The most common sequencing error: starting with voice directly. You end up debugging logic and invocation problems while under latency pressure — instead of having solved them in a calm text interface first." },
     ],
     refs: [
       { label: "livekit/agents", url: "https://github.com/livekit/agents" },
