@@ -1106,6 +1106,38 @@ h1, h2, h3 {
   color: var(--copper);
 }
 
+.post-code {
+  position: relative;
+  margin: 24px 0 30px;
+  background: #121a28;
+  border-radius: var(--radius);
+  overflow: hidden;
+  direction: ltr;
+  text-align: left;
+}
+.post-code-lang {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+}
+.post-code pre {
+  margin: 0;
+  padding: 20px 22px;
+  overflow-x: auto;
+}
+.post-code code {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.84rem;
+  line-height: 1.85;
+  color: #d8e0ec;
+  white-space: pre;
+}
+
 /* ── Article tables and figures ───────────────────────────────── */
 .table-wrap {
   overflow-x: auto;

@@ -33,6 +33,12 @@ export default function ArticleView({ post }: { post: Post }) {
                 ))}
               </ul>
             )}
+            {block.code && (
+              <div className="post-code">
+                {block.code.lang && <span className="post-code-lang">{block.code.lang}</span>}
+                <pre><code>{block.code.text}</code></pre>
+              </div>
+            )}
             {block.table && (
               <div className="table-wrap">
                 <table className="post-table">

@@ -2,6 +2,7 @@ export type Block = {
   h?: string;
   p?: string;
   list?: string[];
+  code?: { lang?: string; text: string };
   table?: { headers: string[]; rows: string[][] };
   svg?: string;
 };
@@ -27,6 +28,398 @@ import {
 } from "./diagrams/hermes-openclaw";
 
 export const posts: Post[] = [
+  {
+    slug: "mcp-vs-api-ai-agents",
+    title: "MCP مقابل API التقليدي: كيف يتصل وكيل الذكاء الاصطناعي بأنظمتك فعليًا",
+    titleEn: "MCP vs Traditional APIs: How an AI Agent Actually Connects to Your Systems",
+    date: "2026-07",
+    tag: "AI AGENTS",
+    excerpt:
+      "شرح كامل للفرق بين ربط الوكيل عبر تكامل API مخصص وربطه عبر بروتوكول MCP: مشكلة N×M، البنية، الفوائد، أمثلة كود عملية، والمخاطر الأمنية الموثّقة — مع المراجع.",
+    excerptEn:
+      "A complete breakdown of connecting an agent through custom API integration versus the MCP protocol: the N×M problem, the architecture, the benefits, working code examples, and documented security risks — with references.",
+    body: [
+      { p: "أي وكيل ذكاء اصطناعي بلا اتصال بأنظمتك هو مجرد نموذج يتكلم. القيمة تبدأ حين يقرأ من أنظمتك ويكتب فيها. والسؤال الذي يواجه كل من يبني هذا: أربطه بتكامل API مخصص، أم عبر بروتوكول MCP؟" },
+      { p: "الجواب المختصر: MCP لا يحل محل الـ API — بل يغلّفه في طبقة موحّدة يستطيع النموذج التنقل فيها. لنفهم لماذا." },
+
+      { h: "المشكلة الأصلية: N×M" },
+      { p: "قبل MCP، كل ربط بين وكيل وأداة كان تكاملًا ثنائيًا مستقلًا. وكيل يتصل بقاعدة بيانات يحتاج كودًا مخصصًا. ونفس الوكيل مع تقويم يحتاج كودًا مختلفًا. ومتصفحًا يحتاج ثالثًا." },
+      { p: "النتيجة معادلة غير مستدامة: عدد الوكلاء (N) مضروبًا في عدد الأدوات (M) — كل زوج بتكامل خاص. عشرة وكلاء وعشر أدوات تعني مئة تكامل." },
+      { p: "MCP يحوّل المعادلة إلى N+M: كل وكيل يتكلم MCP، وكل أداة تعرض خادم MCP، وأي وكيل يستطيع استخدام أي أداة. عشرة وكلاء وعشر أدوات تصبح عشرين مكوّنًا بدل مئة." },
+
+      { h: "ما هو MCP بدقة" },
+      { p: "بروتوكول مفتوح أطلقته Anthropic في نوفمبر 2024، ثم تبرّعت به لمؤسسة Agentic AI Foundation تحت مظلة Linux Foundation — فأصبح معيارًا محايدًا لا يملكه مزوّد واحد." },
+      { p: "أطرافه الثلاثة:" },
+      {
+        list: [
+          "المضيف (Host): التطبيق الذي يعمل فيه الوكيل — Claude Desktop، VS Code، أو تطبيقك.",
+          "العميل (Client): المكوّن داخل المضيف الذي يتصل بالخوادم ويستهلك قدراتها.",
+          "الخادم (Server): برنامج محلي أو بعيد يعرض القدرات بصيغة موحّدة.",
+        ],
+      },
+      { p: "والخادم يعرض ثلاثة أنواع من القدرات، والتمييز بينها مهم عمليًا:" },
+      {
+        list: [
+          "الأدوات (Tools): أفعال ينفّذها الوكيل — إنشاء سجل، إرسال رسالة، تشغيل أمر.",
+          "الموارد (Resources): بيانات للقراءة — ملفات، سجلات قاعدة بيانات، مخططات.",
+          "القوالب (Prompts): سير عمل جاهز يوجّه سلوك الوكيل في مهمة متكررة.",
+        ],
+      },
+      { p: "الفكرة الجوهرية أن MCP يعامل التكاملات كمزوّدات سياق لا كنقاط بيانات خام. أي أنه لا يعرض عمليات CRUD مجردة، بل قدرات موصوفة يفهم النموذج متى يستخدمها." },
+
+      { h: "الفرق المعماري" },
+      {
+        table: {
+          headers: ["المحور", "API تقليدي", "MCP"],
+          rows: [
+            ["اكتشاف القدرات", "نقاط نهاية مكتوبة يدويًا في الكود", "الوكيل يكتشف الأدوات وقت التشغيل عبر طلب tools/list"],
+            ["إدارة الحالة", "REST بلا حالة — كل طلب مستقل وينسى المرسل", "جلسة JSON-RPC 2.0 لها حالة مستمرة"],
+            ["المستهلك المستهدف", "مطوّر يكتب الاستدعاء بنفسه", "نموذج يقرر الاستدعاء بنفسه"],
+            ["إعادة الاستخدام", "تكامل لكل نظام ولكل نموذج", "خادم واحد يخدم أي عميل متوافق"],
+            ["عند تغيير النموذج", "غالبًا إعادة كتابة التكاملات", "لا تغيير — البروتوكول واحد"],
+          ],
+        },
+      },
+      { p: "النقطة الحاسمة هي الاكتشاف وقت التشغيل. في التكامل التقليدي أنت تخبر النموذج مسبقًا بكل أداة متاحة. في MCP، الوكيل يسأل الخادم عمّا يستطيع فعله، فيتعلّم قدرات جديدة دون إعادة برمجته." },
+
+      { h: "متى تستخدم كل واحد" },
+      { p: "الخلط بينهما مكلف في الاتجاهين. القاعدة العملية:" },
+      {
+        list: [
+          "استخدم MCP حين يحتاج الوكيل اكتشاف أدوات واستدعاءها ديناميكيًا عبر عدة أنظمة.",
+          "استخدم API مباشرًا حين تريد تحكمًا حتميًا مباشرًا في تكامل واحد داخل كود التطبيق.",
+          "نقطة التحول العملية: من يشغّل ثلاثة تكاملات أو أكثر مرتبطة بالذكاء الاصطناعي يبدأ يرى MCP يقلّل التعقيد فعليًا.",
+        ],
+      },
+      { p: "وأغلب خوادم MCP في الواقع أغلفة رقيقة فوق واجهات REST موجودة أصلًا. القيمة ليست في استبدال الـ API بل في طبقة التوحيد فوقه." },
+
+      { h: "التطبيق الفني: الطريقة التقليدية" },
+      { p: "في نمط استدعاء الدوال التقليدي، تعرّف كل أداة يدويًا للنموذج بمخطط JSON، ثم تكتب منطق التنفيذ وتربطه باسم الأداة:" },
+      {
+        code: {
+          lang: "typescript",
+          text: `// تعريف الأداة للنموذج — يدويًا لكل نظام
+const tools = [{
+  name: "get_ticket_status",
+  description: "يرجّع حالة تذكرة دعم برقمها",
+  parameters: {
+    type: "object",
+    properties: { ticketId: { type: "string" } },
+    required: ["ticketId"],
+  },
+}];
+
+// منطق التنفيذ — تكتبه وتصونه بنفسك
+async function runTool(name, args) {
+  if (name === "get_ticket_status") {
+    const res = await fetch(
+      \`https://itsm.internal/api/tickets/\${args.ticketId}\`,
+      { headers: { Authorization: \`Bearer \${process.env.ITSM_TOKEN}\` } }
+    );
+    return res.json();
+  }
+  throw new Error("أداة غير معروفة");
+}`,
+        },
+      },
+      { p: "هذا يعمل جيدًا لنظام واحد. لكن أضف Oracle وActive Directory وCisco، ثم قرر تبديل النموذج — وستكتشف حجم التكرار." },
+
+      { h: "التطبيق الفني: خادم MCP" },
+      { p: "نفس الوظيفة كخادم MCP. تبنيه مرة واحدة، ويعمل مع أي عميل متوافق:" },
+      {
+        code: {
+          lang: "typescript",
+          text: `import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import { z } from "zod";
+
+const server = new McpServer({
+  name: "itsm-gateway",
+  version: "1.0.0",
+});
+
+server.tool(
+  "get_ticket_status",
+  "يرجّع حالة تذكرة دعم برقمها",
+  { ticketId: z.string().describe("رقم التذكرة") },
+  async ({ ticketId }) => {
+    const res = await fetch(
+      \`https://itsm.internal/api/tickets/\${ticketId}\`,
+      { headers: { Authorization: \`Bearer \${process.env.ITSM_TOKEN}\` } }
+    );
+    const data = await res.json();
+    return {
+      content: [{ type: "text", text: JSON.stringify(data) }],
+    };
+  }
+);
+
+await server.connect(new StdioServerTransport());`,
+        },
+      },
+      { p: "لاحظ ثلاثة فروق جوهرية في هذا المثال:" },
+      {
+        list: [
+          "المخطط معرَّف بـ Zod، فيُتحقق من المدخلات على الخادم لا في ثقة عمياء بمخرجات النموذج.",
+          "الوصف جزء من تعريف الأداة نفسها، فالوكيل يكتشفها ويفهم متى يستخدمها تلقائيًا.",
+          "المفتاح يعيش في متغير بيئة على الخادم، ولا يمر عبر النموذج إطلاقًا.",
+        ],
+      },
+
+      { h: "ربط الخادم بالعميل" },
+      { p: "بعد بناء الخادم، تعريفه في أي عميل متوافق سطور قليلة:" },
+      {
+        code: {
+          lang: "json",
+          text: `{
+  "mcpServers": {
+    "itsm-gateway": {
+      "command": "node",
+      "args": ["/opt/mcp/itsm-gateway/index.js"],
+      "env": { "ITSM_TOKEN": "\${ITSM_TOKEN}" }
+    }
+  }
+}`,
+        },
+      },
+      { p: "نفس هذا الملف تقريبًا يعمل في Claude Desktop وCursor وVS Code وغيرها. هذي هي القيمة العملية للمعيارية." },
+
+      { h: "الفوائد الملموسة" },
+      {
+        list: [
+          "تكامل واحد يخدم كل الوكلاء: تبني الخادم مرة، وتستخدمه في مشاريع متعددة.",
+          "استقلال عن المزوّد: تبديل النموذج لا يعني إعادة كتابة التكاملات.",
+          "قدرات ديناميكية: الوكيل يتعلّم أدوات جديدة دون تحديث كوده.",
+          "فصل المسؤوليات: فريق النظام يملك خادمه، وفريق الوكيل لا يحتاج معرفة تفاصيله الداخلية.",
+          "نقطة تحكم واحدة: الصلاحيات والتدقيق في مكان واحد بدل تكرارها في كل تكامل.",
+        ],
+      },
+
+      { h: "المخاطر الأمنية — الجزء الذي يُهمَل" },
+      { p: "MCP يمركز الاعتمادات (credentials) لعدة أنظمة في مكان واحد، وهذا يخلق نقطة فشل واحدة: خادم واحد مخترق قد يعطي المهاجم وصولًا لكل قاعدة بيانات ونظام ملفات وخدمة سحابية مرتبطة بمساعدك." },
+      { p: "المخاطر الموثّقة في المجتمع والأبحاث:" },
+      {
+        list: [
+          "تسميم الأدوات (Tool poisoning): وصف أداة مُعدّل خبيثًا يوجّه الوكيل لتنفيذ ما لم يطلبه المستخدم — وهناك مستودعات إثبات مفهوم توضّح تسريب مفاتيح SSH بهذي الطريقة.",
+          "حقن الأوامر: بحث من Equixly في مارس 2025 وجد 43% من تطبيقات MCP المفحوصة عرضة لحقن الأوامر.",
+          "خوادم بلا مصادقة: نشر خادم دون ضوابط مصادقة يفتح كل ما خلفه.",
+          "صلاحيات مفرطة: خادم بصلاحيات أوسع من اللازم يمنح وكيلًا مخترقًا وصولًا أكبر من المقصود.",
+          "سجل غير موثّق: السجل الرسمي للخوادم مفتوح للنشر بلا تحقق أمني، ونسبة معتبرة من الإدخالات بلا مستودع مصدري يمكن فحصه.",
+        ],
+      },
+      { p: "وحتى الخوادم المرجعية الرسمية صدرت لها تنبيهات أمنية — مثل ثغرات اجتياز مسارات وحقن معاملات في خادم Git. والتوثيق الرسمي نفسه يوضح أن هذي الخوادم أمثلة تعليمية لا حلول جاهزة للإنتاج." },
+
+      { h: "ضوابط عملية قبل الإنتاج" },
+      {
+        list: [
+          "شغّل الخوادم غير الموثوقة داخل حاويات معزولة، وافترض انعدام الثقة حتى التحقق.",
+          "خزّن الاعتمادات في متغيرات بيئة فقط — لا في مخططات الأدوات ولا في محتوى الموارد.",
+          "تحقق من كل مدخلات الأدوات على الخادم بمخططات صارمة (Zod أو Pydantic). لا تثق أبدًا أن النموذج سيرسل معاملات سليمة.",
+          "سجّل كل استدعاء أداة بالوقت والمعاملات (منقّاة من البيانات الحساسة) والنتيجة.",
+          "افرض TLS ومصادقة متبادلة (mTLS) للاتصالات بين الخوادم.",
+          "ابدأ بوضع قراءة فقط، ووسّع الصلاحيات بعد مراجعة السجل فعليًا.",
+        ],
+      },
+
+      { h: "الخلاصة العملية" },
+      { p: "لو كان لديك نظام واحد وتكامل بسيط لا تخطط لتوسعته، فالـ API المباشر أسرع وأبسط. أما إن كانت لديك عدة أنظمة وتتوقع مشاريع وكلاء متعددة أو تغيير النماذج مستقبلًا، فبناء خادم MCP لكل نظام رئيسي يوفّر عليك تكرارًا كبيرًا." },
+      { p: "والقاعدة الذهبية لا تتغير بأي من الطريقتين: أقل صلاحية ممكنة، قراءة فقط أولًا، وسجل تدقيق قابل للمراجعة لكل استدعاء." },
+    ],
+    bodyEn: [
+      { p: "Any AI agent without a connection to your systems is just a model that talks. Value begins when it reads from and writes to your systems. And the question facing everyone building this: wire it with a custom API integration, or through the MCP protocol?" },
+      { p: "The short answer: MCP doesn't replace APIs — it wraps them into a standardized layer the model can navigate. Let's see why." },
+
+      { h: "The original problem: N×M" },
+      { p: "Before MCP, every agent-to-tool connection was an independent pairwise integration. An agent connecting to a database needed custom code. The same agent with a calendar needed different code. A browser needed a third." },
+      { p: "The result was an unsustainable equation: the number of agents (N) times the number of tools (M) — each pair with its own integration. Ten agents and ten tools means a hundred integrations." },
+      { p: "MCP collapses this to N+M: each agent speaks MCP, each tool exposes an MCP server, and any agent can use any tool. Ten agents and ten tools become twenty components instead of a hundred." },
+
+      { h: "What MCP is precisely" },
+      { p: "An open protocol released by Anthropic in November 2024, then donated to the Agentic AI Foundation under the Linux Foundation — making it a vendor-neutral standard no single provider owns." },
+      { p: "Its three parties:" },
+      {
+        list: [
+          "Host: the application the agent runs in — Claude Desktop, VS Code, or your own app.",
+          "Client: the component inside the host that connects to servers and consumes their capabilities.",
+          "Server: a local or remote program exposing capabilities in a standardized form.",
+        ],
+      },
+      { p: "And a server exposes three kinds of capability, with a distinction that matters practically:" },
+      {
+        list: [
+          "Tools: actions the agent can invoke — create a record, send a message, run a command.",
+          "Resources: read-only data — files, database records, schemas.",
+          "Prompts: pre-structured workflows that guide agent behavior on a recurring task.",
+        ],
+      },
+      { p: "The core idea is that MCP treats integrations as context providers rather than raw data endpoints. It doesn't expose bare CRUD operations, but described capabilities the model understands when to use." },
+
+      { h: "The architectural difference" },
+      {
+        table: {
+          headers: ["Dimension", "Traditional API", "MCP"],
+          rows: [
+            ["Capability discovery", "Endpoints hardcoded manually", "The agent discovers tools at runtime via a tools/list request"],
+            ["State management", "Stateless REST — each request independent, the server forgets the caller", "A stateful JSON-RPC 2.0 session"],
+            ["Intended consumer", "A developer writing the call themselves", "A model deciding the call itself"],
+            ["Reusability", "One integration per system and per model", "One server serving any compatible client"],
+            ["When you change models", "Usually rewriting the integrations", "No change — the protocol is the same"],
+          ],
+        },
+      },
+      { p: "The decisive point is runtime discovery. In traditional integration you tell the model in advance about every available tool. With MCP, the agent asks the server what it can do, so it learns new capabilities without being reprogrammed." },
+
+      { h: "When to use each" },
+      { p: "Confusing the two is costly in both directions. The practical rule:" },
+      {
+        list: [
+          "Use MCP when agents need to discover and invoke tools dynamically across multiple systems.",
+          "Use a direct API when you want deterministic, direct control over a single integration in application code.",
+          "The practical crossover: teams running three or more AI-connected integrations start seeing MCP genuinely reduce complexity.",
+        ],
+      },
+      { p: "And most MCP servers are in fact thin wrappers over existing REST APIs. The value isn't replacing the API but the standardization layer above it." },
+
+      { h: "Technical implementation: the traditional way" },
+      { p: "In classic function calling, you define each tool manually for the model with a JSON schema, then write execution logic bound to the tool name:" },
+      {
+        code: {
+          lang: "typescript",
+          text: `// Declaring the tool to the model — manually, per system
+const tools = [{
+  name: "get_ticket_status",
+  description: "Returns a support ticket's status by ID",
+  parameters: {
+    type: "object",
+    properties: { ticketId: { type: "string" } },
+    required: ["ticketId"],
+  },
+}];
+
+// Execution logic — you write and maintain it yourself
+async function runTool(name, args) {
+  if (name === "get_ticket_status") {
+    const res = await fetch(
+      \`https://itsm.internal/api/tickets/\${args.ticketId}\`,
+      { headers: { Authorization: \`Bearer \${process.env.ITSM_TOKEN}\` } }
+    );
+    return res.json();
+  }
+  throw new Error("Unknown tool");
+}`,
+        },
+      },
+      { p: "This works fine for one system. But add Oracle, Active Directory, and Cisco, then decide to switch models — and you'll discover the scale of the duplication." },
+
+      { h: "Technical implementation: an MCP server" },
+      { p: "The same function as an MCP server. You build it once, and it works with any compatible client:" },
+      {
+        code: {
+          lang: "typescript",
+          text: `import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import { z } from "zod";
+
+const server = new McpServer({
+  name: "itsm-gateway",
+  version: "1.0.0",
+});
+
+server.tool(
+  "get_ticket_status",
+  "Returns a support ticket's status by ID",
+  { ticketId: z.string().describe("The ticket number") },
+  async ({ ticketId }) => {
+    const res = await fetch(
+      \`https://itsm.internal/api/tickets/\${ticketId}\`,
+      { headers: { Authorization: \`Bearer \${process.env.ITSM_TOKEN}\` } }
+    );
+    const data = await res.json();
+    return {
+      content: [{ type: "text", text: JSON.stringify(data) }],
+    };
+  }
+);
+
+await server.connect(new StdioServerTransport());`,
+        },
+      },
+      { p: "Note three fundamental differences in this example:" },
+      {
+        list: [
+          "The schema is defined with Zod, so inputs are validated on the server rather than blindly trusting model output.",
+          "The description is part of the tool definition itself, so the agent discovers it and understands when to use it automatically.",
+          "The credential lives in a server-side environment variable and never passes through the model at all.",
+        ],
+      },
+
+      { h: "Wiring the server to a client" },
+      { p: "Once the server is built, registering it in any compatible client is a few lines:" },
+      {
+        code: {
+          lang: "json",
+          text: `{
+  "mcpServers": {
+    "itsm-gateway": {
+      "command": "node",
+      "args": ["/opt/mcp/itsm-gateway/index.js"],
+      "env": { "ITSM_TOKEN": "\${ITSM_TOKEN}" }
+    }
+  }
+}`,
+        },
+      },
+      { p: "Nearly this same file works in Claude Desktop, Cursor, VS Code, and others. That is the practical value of standardization." },
+
+      { h: "Concrete benefits" },
+      {
+        list: [
+          "One integration serving every agent: build the server once, use it across multiple projects.",
+          "Provider independence: switching models doesn't mean rewriting integrations.",
+          "Dynamic capabilities: the agent learns new tools without a code update.",
+          "Separation of concerns: the system team owns its server, and the agent team needs no knowledge of its internals.",
+          "A single control point: permissions and auditing in one place instead of duplicated per integration.",
+        ],
+      },
+
+      { h: "Security risks — the neglected part" },
+      { p: "MCP centralizes credentials for multiple systems in one place, creating a single point of failure: one compromised server may give an attacker access to every database, filesystem, and cloud service your assistant connects to." },
+      { p: "Risks documented in the community and research:" },
+      {
+        list: [
+          "Tool poisoning: a maliciously altered tool description steering the agent to do what the user never asked — public proof-of-concept repositories demonstrate SSH key exfiltration this way.",
+          "Command injection: Equixly research in March 2025 found 43% of examined MCP implementations vulnerable to command injection.",
+          "Servers with no authentication: publishing a server without auth controls opens everything behind it.",
+          "Over-privileged servers: a server with broader permissions than needed gives a compromised agent more access than intended.",
+          "An unvetted registry: the official server registry is open to publish with no security verification, and a notable share of entries have no inspectable source repository.",
+        ],
+      },
+      { p: "Even the official reference servers have had security advisories — such as path traversal and argument injection issues in the Git server. And the official documentation itself states these servers are educational examples, not production-ready solutions." },
+
+      { h: "Practical controls before production" },
+      {
+        list: [
+          "Run untrusted servers inside isolated containers, and assume zero trust until verified.",
+          "Store credentials in environment variables only — never in tool schemas or resource payloads.",
+          "Validate all tool inputs server-side with strict schemas (Zod or Pydantic). Never trust the model to emit well-formed parameters.",
+          "Log every tool invocation with timestamp, arguments (sanitized of sensitive data), and result.",
+          "Enforce TLS and mutual authentication (mTLS) for server-to-server communication.",
+          "Start in read-only mode, and expand permissions only after actually reviewing the log.",
+        ],
+      },
+
+      { h: "The practical bottom line" },
+      { p: "If you have one system and a simple integration you don't plan to expand, a direct API is faster and simpler. But if you have several systems and expect multiple agent projects or model changes ahead, building an MCP server per major system saves you substantial duplication." },
+      { p: "And the golden rule doesn't change either way: least privilege possible, read-only first, and a reviewable audit trail for every invocation." },
+    ],
+    refs: [
+      { label: "modelcontextprotocol/modelcontextprotocol", url: "https://github.com/modelcontextprotocol/modelcontextprotocol" },
+      { label: "modelcontextprotocol/servers", url: "https://github.com/modelcontextprotocol/servers" },
+      { label: "modelcontextprotocol/registry", url: "https://github.com/modelcontextprotocol/registry" },
+      { label: "MCP Specification — modelcontextprotocol.io", url: "https://modelcontextprotocol.io" },
+      { label: "Repello-AI/mcp-exploit-demo (بحث أمني)", url: "https://github.com/Repello-AI/mcp-exploit-demo" },
+    ],
+  },
   {
     slug: "bi-agentic-mcp-power-bi",
     title: "Power BI ووكلاء الذكاء الاصطناعي: من السؤال إلى التقرير بلا كتابة كود",
