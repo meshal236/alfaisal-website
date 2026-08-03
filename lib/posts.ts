@@ -29,6 +29,113 @@ import {
 
 export const posts: Post[] = [
   {
+    slug: "ego-lite-parallel-agent-browser",
+    title: "ego lite: متصفح واحد تعمل فيه أنت ووكلاؤك بالتوازي",
+    titleEn: "ego lite: One Browser Where You and Your Agents Work in Parallel",
+    date: "2026-07",
+    tag: "AGENTIC AI",
+    excerpt:
+      "أدوات أتمتة المتصفح الحالية تجعلك تتنازع مع الوكيل على نفس التبويبات، وتفشل في نقل تسجيلات الدخول. متصفح مفتوح المصدر يعطي كل وكيل مساحة معزولة داخل نفس المتصفح، ويمرّر المهام المعقدة أسرع بـ2.5 ضعف بتوكنات أقل.",
+    excerptEn:
+      "Existing browser automation tools leave you fighting the agent for the same tabs, with logins that never carry cleanly. An open-source browser gives each agent an isolated Space inside the same browser, finishing complex tasks up to 2.5× faster with far fewer tokens.",
+    body: [
+      { p: "من جرّب أتمتة المتصفح بوكيل ذكاء اصطناعي يعرف الاحتكاك: الأداة تحتاج متصفحًا منفصلًا تقوده، وتسجيلات دخولك لا تنتقل بنظافة، وتنتهي وأنت والوكيل تتنازعان على نفس التبويبات. مشروع ego lite يعالج هذا بمقاربة مختلفة: متصفح واحد مصمم من البداية ليتشاركه الطرفان." },
+
+      { h: "المساحات المعزولة (Spaces)", p: "الفكرة المحورية: كل وكيل يحصل على مساحة معزولة تمامًا داخل نفس المتصفح. أنت تتصفح في المقدمة، ووكيلك يشتغل في الخلفية، بلا تصادم." },
+      {
+        list: [
+          "كل مساحة تستضيف وكيلًا أو مهمة مستقلة، وكلها تعمل في آن واحد.",
+          "ترى أي مساحة يشتغل فيها وكيل الآن، وتقدر تستولي عليها أو توقفها متى شئت.",
+          "مؤشر الفأرة وتبويباتك تبقى كما تركتها — لا يسرقها الوكيل.",
+        ],
+      },
+      { p: "مثال من توثيق المشروع: Claude Code يعالج عشرة عملاء محتملين في عشر مساحات متوازية، بينما Codex يستخرج بيانات خمسة مواقع منافسة في خمس مساحات أخرى — دون تداخل." },
+
+      { h: "لماذا الكود أسرع من سطر الأوامر", p: "الفارق التقني الأهم في التصميم: القدرات تُعرض للوكيل كدوال JavaScript يستدعيها مباشرة، لا كأوامر CLI متتابعة." },
+      { p: "الفرق العملي أن الوكيل يكتب كودًا يدمج مهمة متعددة الخطوات في مخرج واحد، بدل الدوران في حلقة «نفّذ أمرين، اقرأ النتيجة، نفّذ أمرين آخرين». وفق قياسات المشروع مقابل agent-browser من Vercel على أربع مهام معقدة، أنجز ego lite كل مهمة أسرع بما يصل إلى 2.5 ضعف، بتوكنات أقل بكثير — وكلما زادت صعوبة المهمة، اتسعت الفجوة." },
+
+      { h: "جودة قراءة الصفحة (Snapshot)", p: "الـ Snapshot هو التمثيل النصي الذي يعتمد عليه النموذج «ليرى» الصفحة ويتفاعل معها. ego lite يبني هذا التمثيل بتخصيص على مستوى نواة المتصفح، فيتعامل بموثوقية مع الحالات الصعبة مثل الإطارات المتداخلة بعمق — وهي بالضبط النقطة التي تنهار عندها المقاربات الأخرى." },
+      { p: "هذي نقطة جوهرية: دقة قراءة الصفحة تحكم كل ما بعدها. لو كان التمثيل ناقصًا، فقرارات الوكيل خاطئة مهما كان النموذج ذكيًا." },
+
+      { h: "طبقة الوصل ego-browser", p: "أي وكيل يقدر يقود المتصفح عبر ego-browser، وهي طبقة الربط بين أي واجهة وكيل (Claude Code، Codex، Cursor، أو واحدة مخصصة) والمتصفح نفسه." },
+      { p: "تعرض المتصفح كمجموعة أدوات JavaScript داخل الصفحة: snapshot، fill، click، wait، navigate، capture. الوكيل يكتب مقطع JavaScript يستدعي هذي الأدوات، وego-browser ينفّذه على الصفحة في مرور واحد." },
+
+      { h: "أين يقف مقابل البدائل", p: "" },
+      {
+        table: {
+          headers: ["القدرة", "ego lite", "Browser-Use", "agent-browser", "Atlas / Comet"],
+          rows: [
+            ["تعدد المهام بالتوازي", "✓", "—", "—", "—"],
+            ["يرث بيانات Chrome", "✓", "—", "—", "✓"],
+            ["نفس المتصفح بمساحة منفصلة", "✓", "—", "—", "—"],
+            ["يقوده وكيل خارجي تختاره", "✓", "✓", "✓", "—"],
+            ["البيانات مخزّنة محليًا", "✓", "✓", "✓", "—"],
+            ["متصفح للاستخدام اليومي", "✓", "—", "—", "✓"],
+            ["مجاني", "✓", "✓", "✓", "—"],
+          ],
+        },
+      },
+      { p: "التصنيف يوضّح الفرق: أدوات مثل Browser-Use وagent-browser هي أطر أتمتة (مكتبات يستدعيها الوكيل) بلا متصفح خاص بها، فتحتاج متصفحًا منفصلًا تقوده. ومتصفحات مثل ChatGPT Atlas وPerplexity Comet تأتي بوكيل مدمج، ولا يقودها إلا هو. أما ego lite فمتصفح واحد يشاركه أي وكيل تختاره." },
+
+      { h: "التشغيل عمليًا", p: "يعمل حاليًا على macOS فقط (ويندوز ولينكس على خارطة الطريق). التثبيت يضع المتصفح ومساعد ego-browser، ويكتب المهارة في كل واجهة وكيل على جهازك." },
+      { p: "عند أول تشغيل يسألك سؤالًا واحدًا: هل تنقل بيانات Chrome؟ الموافقة تعني أن وكيلك يرث تسجيلات دخولك وملفات تعريف الارتباط والإضافات والإشارات المرجعية الموجودة — وهذي بالضبط النقطة التي تفشل فيها أطر الأتمتة التقليدية." },
+      { p: "بعدها تكتب في واجهة وكيلك أمرًا بلغة طبيعية، فيلتقط الوكيل المهارة، ويفتح الصفحة في مساحته الخاصة، ويقرأ Snapshot، وينفّذ، ويرجع بالنتيجة — وتبويباتك أنت لم تُمس." },
+
+      { h: "زاوية عملية", p: "الميزة الجوهرية هنا ليست السرعة بل العزل. القدرة على تشغيل وكيل على حسابات حقيقية مسجّلة الدخول دون أن يتداخل مع عملك اليومي تحل أكثر مشكلة عملية تعطّل تبنّي وكلاء التصفح." },
+      { p: "لكن هذي الميزة نفسها هي مصدر الخطر: وكيل يرث تسجيلات دخولك الحقيقية يملك صلاحياتك كاملة. ابدأ بمهام قراءة فقط على حسابات غير حساسة، وراقب ما ينفّذه فعليًا قبل توسيع نطاقه. والمشروع لسا حديثًا نسبيًا، فتعامل معه كأداة تجريبية لا كجزء من سير عمل إنتاجي." },
+    ],
+    bodyEn: [
+      { p: "Anyone who has tried browser automation with an AI agent knows the friction: the tool needs a separate browser to drive, your logins don't carry cleanly, and you end up fighting the agent for the same tabs. The ego lite project takes a different approach: a single browser designed from the start for both parties to share." },
+
+      { h: "Isolated Spaces", p: "The central idea: each agent gets a fully isolated Space inside the same browser. You browse up front, your agent works in the background, with no collisions." },
+      {
+        list: [
+          "Each Space hosts its own agent or task, all running at the same time.",
+          "You can see which Space has an agent running right now, and take it over or stop it whenever you want.",
+          "Your cursor and tabs stay exactly where you left them — the agent doesn't steal them.",
+        ],
+      },
+      { p: "An example from the project's documentation: Claude Code enriching ten leads across ten parallel Spaces while Codex scrapes five competitor sites in five more — without interference." },
+
+      { h: "Why code beats a CLI", p: "The most important technical difference in the design: capabilities are exposed to the agent as JavaScript functions it calls directly, not as sequential CLI commands." },
+      { p: "The practical effect is that the agent writes code composing a multi-step task into a single output, instead of looping through \"call two commands, look at the result, call two more.\" Per the project's benchmarks against Vercel's agent-browser on four complex tasks, ego lite finished each up to 2.5× faster with substantially fewer tokens — and the harder the task, the wider the gap." },
+
+      { h: "Page snapshot quality", p: "The Snapshot is the textual representation a model relies on to \"see\" and act on a page. ego lite builds it through kernel-level customization, so it reliably handles hard cases like deeply nested iframes — exactly where other approaches consistently break down." },
+      { p: "This matters fundamentally: page-reading accuracy gates everything downstream. If the representation is incomplete, the agent's decisions are wrong no matter how capable the model is." },
+
+      { h: "The ego-browser connection layer", p: "Any agent can drive the browser through ego-browser, the connection layer between any agent CLI (Claude Code, Codex, Cursor, or a custom one) and the browser itself." },
+      { p: "It exposes the browser as a set of in-page JavaScript tools: snapshot, fill, click, wait, navigate, capture. The agent writes a JavaScript snippet calling those tools, and ego-browser runs it on the page in one pass." },
+
+      { h: "Where it stands against the alternatives", p: "" },
+      {
+        table: {
+          headers: ["Capability", "ego lite", "Browser-Use", "agent-browser", "Atlas / Comet"],
+          rows: [
+            ["Multitask in parallel", "✓", "—", "—", "—"],
+            ["Inherits Chrome data", "✓", "—", "—", "✓"],
+            ["Same browser, separate workspace", "✓", "—", "—", "—"],
+            ["Driven by an external agent you pick", "✓", "✓", "✓", "—"],
+            ["Data stored locally", "✓", "✓", "✓", "—"],
+            ["A daily-use browser", "✓", "—", "—", "✓"],
+            ["Free", "✓", "✓", "✓", "—"],
+          ],
+        },
+      },
+      { p: "The classification clarifies the difference: tools like Browser-Use and agent-browser are automation frameworks (libraries the agent calls) with no browser of their own, so they need a separate one to drive. Browsers like ChatGPT Atlas and Perplexity Comet ship a built-in agent, and only that agent can drive them. ego lite is one browser that any agent you bring can share." },
+
+      { h: "Running it in practice", p: "It currently runs on macOS only (Windows and Linux are on the roadmap). Installation places the browser and the ego-browser helper, and writes the skill into every agent CLI on your machine." },
+      { p: "On first launch it asks one question: migrate your Chrome data? Saying yes means your agent inherits your existing logins, cookies, extensions, and bookmarks — which is exactly where traditional automation frameworks fall down." },
+      { p: "After that you type a natural-language command in your agent CLI, and the agent picks up the skill, opens the page in its own Space, reads a Snapshot, acts, and reports back — with your own tabs untouched." },
+
+      { h: "A practical angle", p: "The core advantage here isn't speed but isolation. Being able to run an agent against real, logged-in accounts without it interfering with your daily work solves the most practical problem blocking browsing-agent adoption." },
+      { p: "But that same advantage is the source of the risk: an agent inheriting your real logins holds your full permissions. Start with read-only tasks on non-sensitive accounts, and watch what it actually executes before widening its scope. The project is also relatively new, so treat it as an experimental tool rather than part of a production workflow." },
+    ],
+    refs: [
+      { label: "citrolabs/ego-lite", url: "https://github.com/citrolabs/ego-lite" },
+      { label: "lite.ego.app — التوثيق", url: "https://lite.ego.app/document/" },
+    ],
+  },
+  {
     slug: "mcp-vs-api-ai-agents",
     title: "MCP مقابل API التقليدي: كيف يتصل وكيل الذكاء الاصطناعي بأنظمتك فعليًا",
     titleEn: "MCP vs Traditional APIs: How an AI Agent Actually Connects to Your Systems",
