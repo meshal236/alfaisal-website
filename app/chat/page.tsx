@@ -26,7 +26,7 @@ const COPY = {
 const EMBED_TOOLS = [
   { name: "Pollinations Chat", host: "sur.pollinations.ai", url: "https://sur.pollinations.ai/", descAr: "دردشة سريعة بلا حساب", descEn: "Fast chat, no account" },
   { name: "UMint AI", host: "umint-ai.hf.space", url: "https://umint-ai.hf.space/", descAr: "واجهة نماذج مفتوحة", descEn: "Open models interface" },
-  { name: "Mirexa", host: "mirexa.vercel.app", url: "https://mirexa.vercel.app/", descAr: "مساعد متعدد المهام", descEn: "Multi-purpose assistant" },
+  { name: "URV AI Chat", host: "perchance.org", url: "https://perchance.org/urv-ai-chat", descAr: "دردشة بلا حساب ولا حدود", descEn: "No account, no limits" },
   { name: "FreeGPT", host: "freegpt.es", url: "https://freegpt.es/", descAr: "دردشة مجانية مباشرة", descEn: "Direct free chat" },
   { name: "Heck AI", host: "heck.ai", url: "https://heck.ai", descAr: "دردشة وبحث", descEn: "Chat and search" },
 ];
