@@ -5,64 +5,22 @@ import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
 import { useLanguage } from "@/lib/language-context";
 
-type Tab = "engine" | "embed" | "directory";
+type Tab = "engine" | "directory";
 
 const COPY = {
   ar: {
     eyebrow: "AI HUB",
     heading: "مركز الذكاء الاصطناعي",
-    sub: "محرك محادثة خاص بالموقع، أدوات تعمل داخل الصفحة، ودليل مختار لأفضل الخدمات المجانية.",
-    tabs: { engine: "محرك المحادثة", embed: "أدوات مدمجة", directory: "دليل الخدمات" },
+    sub: "محرك محادثة خاص بالموقع، ودليل مختار لأفضل خدمات الذكاء الاصطناعي المجانية.",
+    tabs: { engine: "محرك المحادثة", directory: "دليل الخدمات" },
   },
   en: {
     eyebrow: "AI HUB",
     heading: "AI Hub",
-    sub: "A site-native chat engine, tools that run inside the page, and a curated directory of the best free services.",
-    tabs: { engine: "Chat engine", embed: "Embedded tools", directory: "Directory" },
+    sub: "A site-native chat engine, and a curated directory of the best free AI services.",
+    tabs: { engine: "Chat engine", directory: "Directory" },
   },
 };
-
-/* ── Embedded tools (run inside the page) ─────────────────────── */
-const EMBED_TOOLS = [
-  { name: "Pollinations Chat", host: "sur.pollinations.ai", url: "https://sur.pollinations.ai/", descAr: "دردشة سريعة بلا حساب", descEn: "Fast chat, no account" },
-  { name: "UMint AI", host: "umint-ai.hf.space", url: "https://umint-ai.hf.space/", descAr: "واجهة نماذج مفتوحة", descEn: "Open models interface" },
-  { name: "URV AI Chat", host: "perchance.org", url: "https://perchance.org/urv-ai-chat", descAr: "دردشة بلا حساب ولا حدود", descEn: "No account, no limits" },
-  { name: "FreeGPT", host: "freegpt.es", url: "https://freegpt.es/", descAr: "دردشة مجانية مباشرة", descEn: "Direct free chat" },
-  { name: "Heck AI", host: "heck.ai", url: "https://heck.ai", descAr: "دردشة وبحث", descEn: "Chat and search" },
-];
-
-function EmbedPanel({ lang }: { lang: "ar" | "en" }) {
-  const [active, setActive] = useState(EMBED_TOOLS[0]);
-  const [loaded, setLoaded] = useState(false);
-  const t = lang === "ar"
-    ? { intro: "أدوات تفتح داخل الصفحة مباشرة — اختر بطاقة وابدأ.", note: "لو ظهر الإطار فارغًا فالخدمة منعت التضمين من طرفها — جرّب أداة أخرى.", open: "فتح في تبويب جديد ↗" }
-    : { intro: "Tools that open directly inside the page — pick a card and start.", note: "If the frame is blank, the service blocked embedding on its end — try another tool.", open: "Open in new tab ↗" };
-  return (
-    <div>
-      <p className="hub-intro">{t.intro}</p>
-      <div className="embed-chips">
-        {EMBED_TOOLS.map((x) => (
-          <button
-            key={x.url}
-            className={`embed-chip${active.url === x.url ? " active" : ""}`}
-            onClick={() => { setActive(x); setLoaded(false); }}
-          >
-            <span className="embed-chip-name">{x.name}</span>
-            <span className="embed-chip-desc">{lang === "ar" ? x.descAr : x.descEn}</span>
-          </button>
-        ))}
-      </div>
-      <div className="embed-frame-wrap">
-        {!loaded && <div className="embed-loading"><span /></div>}
-        <iframe key={active.url} src={active.url} title={active.name} onLoad={() => setLoaded(true)} style={{ opacity: loaded ? 1 : 0 }} />
-      </div>
-      <div className="embed-below">
-        <span className="embed-note">{t.note}</span>
-        <a href={active.url} target="_blank" rel="noreferrer" className="embed-open">{t.open}</a>
-      </div>
-    </div>
-  );
-}
 
 /* ── Site-native chat engine ──────────────────────────────────── */
 const MODELS = [
@@ -284,7 +242,6 @@ export default function ChatPage() {
       </div>
 
       {tab === "engine" && <EnginePanel lang={lang} />}
-      {tab === "embed" && <EmbedPanel lang={lang} />}
       {tab === "directory" && <DirectoryPanel lang={lang} />}
     </main>
   );
