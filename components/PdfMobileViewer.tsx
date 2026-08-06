@@ -26,7 +26,14 @@ export default function PdfMobileViewer({ href, lang }: Props) {
       try {
         const pdfjs = await import("pdfjs-dist");
         pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
-        const doc = await pdfjs.getDocument({ url: href }).promise;
+        const doc = await pdfjs.getDocument({
+          url: href,
+          cMapUrl: "/pdfjs/cmaps/",
+          cMapPacked: true,
+          standardFontDataUrl: "/pdfjs/standard_fonts/",
+          wasmUrl: "/pdfjs/wasm/",
+          iccUrl: "/pdfjs/iccs/",
+        }).promise;
         if (cancelled) return;
         docRef.current = doc;
         setNumPages(doc.numPages);
