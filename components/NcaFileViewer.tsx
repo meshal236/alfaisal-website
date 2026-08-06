@@ -1,8 +1,11 @@
 "use client";
 
 import { useEffect, useState, useMemo, useCallback } from "react";
+import dynamic from "next/dynamic";
 import type { NcaFile } from "@/lib/nca";
 import { useLanguage } from "@/lib/language-context";
+
+const PdfMobileViewer = dynamic(() => import("@/components/PdfMobileViewer"), { ssr: false });
 
 type Ctrl = { id: string; desc: string; evidence: string };
 type Sub = { id: string; title: string; objective: string; controls: Ctrl[] };
@@ -146,6 +149,15 @@ export default function NcaFileViewer({
 }) {
   const { lang } = useLanguage();
   const t = COPY[lang];
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 820px), (pointer: coarse)");
+    const apply = () => setIsMobile(mq.matches);
+    apply();
+    mq.addEventListener("change", apply);
+    return () => mq.removeEventListener("change", apply);
+  }, []);
 
   const esc = useCallback(
     (e: KeyboardEvent) => {
@@ -191,7 +203,11 @@ export default function NcaFileViewer({
         </div>
         <div className="viewer-content">
           {file.kind === "pdf" ? (
-            <iframe src={`${file.href}#view=FitH`} title={file.labelEn} />
+            isMobile ? (
+              <PdfMobileViewer href={file.href} lang={lang} />
+            ) : (
+              <iframe src={`${file.href}#view=FitH`} title={file.labelEn} />
+            )
           ) : (
             <SheetViewer href={file.href} lang={lang} />
           )}
