@@ -9,12 +9,14 @@ const LINKS = {
     { href: "/", label: "الرئيسية" },
     { href: "/services", label: "الخدمات" },
     { href: "/chat", label: "المحادثة" },
+    { href: "/nca", label: "الأمن السيبراني" },
     { href: "/blog", label: "المقالات" },
   ],
   en: [
     { href: "/", label: "Home" },
     { href: "/services", label: "Services" },
     { href: "/chat", label: "Chat" },
+    { href: "/nca", label: "NCA" },
     { href: "/blog", label: "Blog" },
   ],
 };

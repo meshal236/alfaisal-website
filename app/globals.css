@@ -788,6 +788,267 @@ h1, h2, h3 {
   line-height: 1.7;
 }
 
+/* ── NCA frameworks ───────────────────────────────────────────── */
+.nca-stats {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+.nca-stat {
+  flex: 1;
+  min-width: 130px;
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px 22px;
+}
+.nca-stat-num {
+  display: block;
+  font-family: var(--font-mono), monospace;
+  font-size: 1.7rem;
+  font-weight: 500;
+  color: var(--copper);
+  line-height: 1.2;
+}
+.nca-stat-label {
+  font-size: 0.82rem;
+  color: var(--ink-faint);
+}
+.nca-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 14px;
+}
+.nca-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.nca-card:hover {
+  border-color: var(--line-strong);
+  box-shadow: 0 4px 16px rgba(24, 34, 52, 0.07);
+}
+.nca-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.nca-code {
+  font-family: var(--font-mono), monospace;
+  direction: ltr;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  font-weight: 500;
+  color: #ffffff;
+  background: var(--copper);
+  border-radius: 6px;
+  padding: 5px 11px;
+}
+.nca-code.lg {
+  font-size: 0.85rem;
+  padding: 7px 15px;
+}
+.nca-version {
+  font-family: var(--font-mono), monospace;
+  direction: ltr;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  color: var(--ink-faint);
+}
+.nca-card h3 {
+  font-size: 1.08rem;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+.nca-card p {
+  font-size: 0.9rem;
+  color: var(--ink-dim);
+  line-height: 1.8;
+  flex: 1;
+}
+.nca-card-meta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin: 16px 0 12px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  font-size: 0.82rem;
+  color: var(--ink-faint);
+}
+.nca-card-meta b {
+  color: var(--ink);
+  font-weight: 600;
+}
+.nca-card-link {
+  font-size: 0.86rem;
+  color: var(--copper);
+}
+
+/* detail */
+.nca-detail-head {
+  margin-bottom: 32px;
+}
+.nca-detail-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.nca-detail-head h1 {
+  font-size: clamp(1.6rem, 4vw, 2.3rem);
+  margin-bottom: 12px;
+  line-height: 1.45;
+}
+.nca-detail-stats {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+  font-size: 0.88rem;
+  color: var(--ink-faint);
+}
+.nca-detail-stats b {
+  color: var(--copper);
+  font-family: var(--font-mono), monospace;
+  font-size: 1.05rem;
+}
+.nca-variants {
+  background: var(--copper-dim);
+  border: 1px solid rgba(18, 122, 102, 0.25);
+  border-radius: var(--radius);
+  padding: 18px 22px;
+  margin-bottom: 34px;
+}
+.nca-variants .mono {
+  display: block;
+  font-size: 0.66rem;
+  color: var(--copper-bright);
+  letter-spacing: 0.2em;
+  margin-bottom: 14px;
+}
+.nca-variant-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+.nca-variant {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px 16px;
+}
+.nca-variant-code {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  color: var(--copper);
+  display: block;
+  margin-bottom: 5px;
+}
+.nca-variant-name {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.nca-variant-total {
+  font-size: 0.82rem;
+  color: var(--ink-faint);
+}
+.nca-section {
+  margin-bottom: 44px;
+}
+.nca-section h2 {
+  font-size: 1.35rem;
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+}
+.nca-domain {
+  margin-bottom: 26px;
+}
+.nca-domain-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+.nca-domain-head h3 {
+  font-size: 1.05rem;
+}
+.nca-domain-count {
+  font-family: var(--font-mono), monospace;
+  direction: ltr;
+  font-size: 0.72rem;
+  color: var(--copper);
+  white-space: nowrap;
+}
+.nca-files {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 10px;
+}
+.nca-file {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px 16px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.nca-file:hover {
+  border-color: var(--copper);
+  box-shadow: 0 2px 10px rgba(24, 34, 52, 0.07);
+}
+.nca-file-kind {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  color: #ffffff;
+  border-radius: 5px;
+  padding: 6px 8px;
+  background: var(--ink-faint);
+  flex-shrink: 0;
+}
+.nca-file.xlsx .nca-file-kind {
+  background: #1a7f4b;
+}
+.nca-file.pdf .nca-file-kind {
+  background: #b3432f;
+}
+.nca-file-body {
+  flex: 1;
+  min-width: 0;
+}
+.nca-file-label {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--ink);
+  line-height: 1.5;
+}
+.nca-file-meta {
+  font-family: var(--font-mono), monospace;
+  direction: ltr;
+  font-size: 0.68rem;
+  color: var(--ink-faint);
+}
+.nca-file-dl {
+  color: var(--copper);
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
 /* ── AI Hub (chat page) ───────────────────────────────────────── */
 .hub-head {
   margin-bottom: 36px;
