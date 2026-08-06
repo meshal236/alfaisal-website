@@ -29,6 +29,274 @@ import {
 
 export const posts: Post[] = [
   {
+    slug: "nvidia-nemotron-voicechat-full-duplex",
+    title: "NemotronLabs VoiceChat: نموذج صوتي مفتوح يسمع ويتكلم في آنٍ واحد",
+    titleEn: "NemotronLabs VoiceChat: An Open Voice Model That Listens and Speaks Simultaneously",
+    date: "2026-08",
+    tag: "VOICE AI",
+    excerpt:
+      "معظم المساعدات الصوتية سباق تتابع: تفريغ ثم نموذج لغوي ثم تركيب صوت — وكل تسليم يضيف تأخيرًا. نموذج مفتوح الأوزان من NVIDIA يدمج الثلاثة في شبكة واحدة، وهو أول نموذج مزدوج الاتجاه مفتوح يستدعي الأدوات أثناء الحديث.",
+    excerptEn:
+      "Most voice assistants are a relay race: transcribe, then reason, then speak — each handoff adding latency. An open-weights model from NVIDIA collapses all three into one network, and it's the first open full-duplex model that calls tools mid-conversation.",
+    body: [
+      { p: "شرحنا سابقًا معمارية السلسلة (cascade) في وكلاء الصوت: تفريغ الكلام لنص، ثم نموذج لغوي، ثم تركيب صوت. عيبها البنيوي أن كل تسليم بين المراحل يضيف تأخيرًا، والأهم أن النظام يعمل بالأدوار الصارمة — لا يستطيع الاستماع وهو يتكلم." },
+      { p: "نموذج NemotronLabs VoiceChat من NVIDIA، الصادر في 3 أغسطس 2026 بأوزان مفتوحة على Hugging Face، يعالج هذا بدمج المراحل الثلاث في شبكة تدفق واحدة." },
+
+      { h: "ما معنى «مزدوج الاتجاه» (Full Duplex)", p: "المصطلح مستعار من الاتصالات: قناة أحادية الاتجاه تعني أن طرفًا واحدًا يتكلم في اللحظة، ومزدوجة الاتجاه تعني أن الطرفين يستطيعان الإرسال والاستقبال معًا." },
+      { p: "عمليًا في المحادثة الصوتية، هذا يعني:" },
+      {
+        list: [
+          "النموذج يستمع أثناء كلامه، فيلتقط المقاطعة فورًا دون طبقة كشف منفصلة.",
+          "تبادل الأدوار يصبح سلسًا وطبيعيًا بدل انتظار صمت كامل.",
+          "التعامل مع الوقفات القصيرة بلا اعتبارها نهاية دور.",
+        ],
+      },
+
+      { h: "البنية التقنية", p: "التركيب ليس غريبًا: NVIDIA أخذت نموذجها اللغوي Nemotron Nano v2 بحجم 9 مليارات معامل، ووضعت أمامه مُرمِّزًا صوتيًا Fast Conformer، وخلفه مُفكِّك TTS خاص بها — بإجمالي نحو 11 مليار معامل في كومة هجينة Mamba/Transformer." },
+      { p: "والإضافة الأذكى: قناة إخراج منفصلة تصدر نصوص استدعاء الأدوات بينما تستمر المحادثة الصوتية. لهذا صار أول نموذج مزدوج الاتجاه مفتوح الأوزان يدعم استدعاء الدوال أثناء الحديث — نقطة كانت الحاجز الأساسي أمام ربط النماذج الموحّدة بالأنظمة الداخلية." },
+
+      { h: "أين يقف في القياسات", p: "إطار القياس يفصل بين محورين: ديناميكيات المحادثة (77.8%) والاستدلال الصوتي (29.2%). ووفق اختبار مستقل من Artificial Analysis، هو النموذج مفتوح الأوزان الوحيد الذي يأتي ضمن أفضل ثلاثة في المحورين معًا." },
+      { p: "لكن الفجوة مع المغلق واضحة: أنظمة مثل Step-Audio R1.1 عند 96% وGrok Voice Agent عند 92% تتقدم بفارق كبير في الاستدلال الصوتي. هذي فجوة يقبلها المطوّر مقابل امتلاك الأوزان والتشغيل محليًا." },
+
+      { h: "القيود الحقيقية قبل أي قرار", p: "التوثيق الرسمي صريح بحدوده، وهذي أهم من الأرقام التسويقية:" },
+      {
+        list: [
+          "إنجليزي فقط — لا يخدم حالات الاستخدام العربية إطلاقًا حاليًا.",
+          "سياق صوتي محدود بدقيقتين.",
+          "ضعيف في العمليات الحسابية متعددة الخطوات.",
+          "لا يدعم كلمات التأكيد القصيرة أثناء الاستماع (backchanneling).",
+          "غير مناسب صراحة للغرف الصاخبة أو ذات الصدى.",
+          "يحتاج معالج رسومات بذاكرة 80 جيجابايت (A100 أو H100 أو H200 أو B100 أو B200 أو RTX 6000) يشغّل vLLM على لينكس.",
+        ],
+      },
+      { p: "والرخصة تستحق الانتباه: الأوزان تحت OpenMDW-1.1 موسومة لأغراض البحث، بينما كود NeMo Speech المحيط تحت Apache 2.0." },
+
+      { h: "الأدوات الداعمة في منظومة NeMo", p: "النموذج جزء من منظومة أوسع تستحق المعرفة، خصوصًا لمن يبني وكلاء صوت:" },
+      {
+        table: {
+          headers: ["الأداة", "ماذا تقدّم"],
+          rows: [
+            ["Nemotron-3.5-ASR-Streaming-0.6B", "تفريغ لحظي بـ40 لغة، بتأخير قابل للضبط من 80 ملي ثانية إلى ثانية"],
+            ["MagpieTTS v2607", "تركيب صوت يدعم 12 لغة — أُضيفت العربية والكورية والبرتغالية في يوليو 2026"],
+            ["Parakeet-unified-en-0.6b", "تفريغ إنجليزي يجمع الوضعين المسجّل واللحظي في نموذج واحد بأقل تأخير 160 ملي ثانية"],
+            ["Canary-Qwen-2.5B", "معدل خطأ كلمات قياسي 5.63% على لوحة ASR الإنجليزية المفتوحة"],
+          ],
+        },
+      },
+      { p: "لمن يعمل على العربية تحديدًا، MagpieTTS هو المكوّن الأهم في هذي القائمة — إضافة دعم العربية في يوليو 2026 تفتح مسار بناء وكيل عربي بمعمارية السلسلة، بينما VoiceChat الموحّد يبقى إنجليزيًا حتى إشعار آخر." },
+
+      { h: "زاوية عملية", p: "الأهمية الحقيقية لهذا الإصدار ليست في استخدامه اليوم لحالة عربية — بل في ما يثبته: أن النموذج الموحّد مزدوج الاتجاه صار قابلًا للتشغيل بأوزان مفتوحة، ويستطيع استدعاء أدواتك أثناء المحادثة." },
+      { p: "وهناك أخ أكبر في برنامج وصول مبكر: Nemotron 3 VoiceChat بحجم 12 مليار معامل، يستهدف تأخيرًا شاملًا أقل من 300 ملي ثانية عبر معالجة مقاطع صوتية بطول 80 ملي ثانية أسرع من الزمن الحقيقي. ملاحظة: أعداد المعاملات تتراوح بين 11 و12 مليارًا بين صفحات NVIDIA نفسها، فتعامل مع الرقم كتقريبي." },
+    ],
+    bodyEn: [
+      { p: "We previously covered the cascade architecture in voice agents: speech-to-text, then a language model, then text-to-speech. Its structural flaw is that every handoff between stages adds latency — and more importantly, the system works in strict turns, unable to listen while it speaks." },
+      { p: "NVIDIA's NemotronLabs VoiceChat, released August 3, 2026 with open weights on Hugging Face, addresses this by collapsing all three stages into a single streaming network." },
+
+      { h: "What \"full duplex\" means", p: "The term is borrowed from telecommunications: a half-duplex channel means only one party transmits at a time, while full duplex means both can send and receive simultaneously." },
+      { p: "In a voice conversation this practically means:" },
+      {
+        list: [
+          "The model listens while speaking, catching interruptions instantly without a separate detection layer.",
+          "Turn-taking becomes smooth and natural instead of waiting for complete silence.",
+          "Short pauses are handled without being treated as end-of-turn.",
+        ],
+      },
+
+      { h: "The technical build", p: "The construction isn't exotic: NVIDIA took its 9-billion-parameter Nemotron Nano v2 language model, put a Fast Conformer speech encoder in front of it, and an NVIDIA TTS decoder behind — totaling roughly 11 billion parameters in a hybrid Mamba/Transformer stack." },
+      { p: "The cleverest addition: a separate output channel that emits tool-call scripts while the audio conversation keeps going. That makes it the first open-weights full-duplex model supporting live function calling — the very barrier that blocked connecting unified models to internal systems." },
+
+      { h: "Where it stands in benchmarks", p: "The benchmark framework separates two axes: conversational dynamics (77.8%) and speech reasoning (29.2%). Per independent testing from Artificial Analysis, it's the only open-weights model ranking top-three on both axes at once." },
+      { p: "But the gap to proprietary systems is clear: Step-Audio R1.1 at 96% and Grok Voice Agent at 92% hold a commanding speech-reasoning lead. That's a gap developers accept in exchange for owning the weights and running locally." },
+
+      { h: "The real constraints before any decision", p: "The official documentation is explicit about its limits, and these matter more than the marketing numbers:" },
+      {
+        list: [
+          "English only — it serves no Arabic use case at all right now.",
+          "Audio context capped at two minutes.",
+          "Weak on multi-step arithmetic.",
+          "No support for backchanneling while listening.",
+          "Explicitly unsuited to noisy or reverberant rooms.",
+          "Requires an 80 GB GPU (A100, H100, H200, B100, B200, or RTX 6000) running vLLM on Linux.",
+        ],
+      },
+      { p: "The license deserves attention: the weights ship under OpenMDW-1.1 marked for research purposes, while the surrounding NeMo Speech code is Apache 2.0." },
+
+      { h: "Supporting tools in the NeMo ecosystem", p: "The model is part of a broader ecosystem worth knowing, especially for anyone building voice agents:" },
+      {
+        table: {
+          headers: ["Tool", "What it provides"],
+          rows: [
+            ["Nemotron-3.5-ASR-Streaming-0.6B", "Streaming transcription in 40 languages, with controllable latency from 80 ms to 1 second"],
+            ["MagpieTTS v2607", "Text-to-speech supporting 12 languages — Arabic, Korean, and Portuguese added in July 2026"],
+            ["Parakeet-unified-en-0.6b", "English transcription combining offline and streaming modes in one model, minimum latency 160 ms"],
+            ["Canary-Qwen-2.5B", "A record 5.63% word error rate on the English Open ASR Leaderboard"],
+          ],
+        },
+      },
+      { p: "For anyone working on Arabic specifically, MagpieTTS is the most important item on this list — the July 2026 Arabic support opens a path to building an Arabic agent with the cascade architecture, while unified VoiceChat stays English-only for now." },
+
+      { h: "A practical angle", p: "The real significance of this release isn't using it today for an Arabic use case — it's what it proves: that a unified full-duplex model is now runnable with open weights, and can call your tools mid-conversation." },
+      { p: "There's also a larger sibling in an early-access program: Nemotron 3 VoiceChat at 12 billion parameters, targeting sub-300 ms end-to-end latency by processing 80 ms audio chunks faster than real time. Note: parameter counts shift between 11B and 12B across NVIDIA's own pages, so treat the figure as approximate." },
+    ],
+    refs: [
+      { label: "NVIDIA-NeMo/Speech", url: "https://github.com/NVIDIA-NeMo/Speech" },
+      { label: "nvidia/NVIDIA-NemotronLabs-VoiceChat-11B — Hugging Face", url: "https://huggingface.co/nvidia/NVIDIA-NemotronLabs-VoiceChat-11B" },
+      { label: "Nemotron Speech Collection", url: "https://huggingface.co/collections/nvidia/nemotron-speech" },
+      { label: "Nemotron 3 VoiceChat — Early Access", url: "https://developer.nvidia.com/nemotron-voicechat-early-access" },
+    ],
+  },
+  {
+    slug: "prime-agent-rlm-self-improving",
+    title: "Prime Agent: وكيل يعامل السياق كمتغيرات والوكلاء الفرعيين كدوال",
+    titleEn: "Prime Agent: An Agent That Treats Context as Variables and Subagents as Functions",
+    date: "2026-08",
+    tag: "AI AGENTS",
+    excerpt:
+      "أغلب الوكلاء يفقدون كل شيء بانتهاء نافذة المحادثة. مشروع مفتوح المصدر يبني الوكيل حول بيئة Python مستمرة وحالة قابلة للتحسين، فتعيش أنماط العمل المفيدة أطول من الجلسة الواحدة.",
+    excerptEn:
+      "Most agents lose everything when the chat window ends. An open-source project builds the agent around a persistent Python environment and refinable state, so useful operating patterns outlive a single session.",
+    body: [
+      { p: "المشكلة المتكررة مع وكلاء البرمجة: كل جلسة تبدأ من الصفر. الوكيل يتعلّم شيئًا مفيدًا عن مشروعك، ثم تُغلق النافذة ويضيع كل شيء. Prime Agent من Prime Intellect يبني حلًا حول تجريدين أساسيين." },
+
+      { h: "التجريد الأول: نموذج اللغة العودي (RLM)", p: "الفكرة الجوهرية: يعامل السياق كمتغيرات (prompt-as-a-variable)، والأدوات والوكلاء الفرعيين كاستدعاءات دوال داخل بيئة REPL مستمرة." },
+      { p: "الفرق العملي عن النمط المعتاد كبير:" },
+      {
+        list: [
+          "بيئة IPython مستمرة هي الأداة المدمجة الأساسية — لا مجرد إضافة.",
+          "عمليات الملفات وأوامر الصدفة واستخدام الأدوات وإدارة السياق كلها تمر عبر الكود.",
+          "استدعاء rlm(...) يولّد وكلاء أبناء حقيقيين لعمل متوازٍ أو خلفي، ويرجّع نتائجهم برمجيًا.",
+        ],
+      },
+      { p: "هذي نفس الفكرة التي رأيناها في ego lite بزاوية مختلفة: حين يكتب الوكيل كودًا بدل تنفيذ أوامر متتابعة، يدمج مهمة متعددة الخطوات في مخرج واحد بدل الدوران في حلقة استدعاء وقراءة." },
+
+      { h: "التجريد الثاني: الحزام المستمر (Continual Harness)", p: "يخزّن الحزام مطالبات تكميلية وذكريات وأوصاف مهارات ومواصفات وكلاء فرعيين قابلة لإعادة الاستخدام — كحالة دائمة يستطيع الوكيل تحسينها بتحديثات صغيرة مدعومة بالأدلة، محلية للجلسة افتراضيًا." },
+      { p: "الأمر /refine يراجع المسار الحالي ويطبّق تحديثات مركّزة وقابلة للمراجعة. ونقطتان أمنيتان مهمتان في التصميم:" },
+      {
+        list: [
+          "لا يعيد كتابة مطالبة النظام الأساسية غير القابلة للتغيير إطلاقًا.",
+          "اللقطات المسجّلة تدعم التراجع (rollback) عن أي تحسين.",
+        ],
+      },
+
+      { h: "مصمَّم للعمل طويل الأمد", p: "أغلب مزايا المشروع تدور حول استمرارية المهام الطويلة، خصوصًا لتقييمات البحث:" },
+      {
+        table: {
+          headers: ["الميزة", "ماذا تحل"],
+          rows: [
+            ["استمرارية بخدمة خلفية (daemon)", "الجلسات وحالة IPython والجداول والوكلاء الفرعيون يستمرون بعد فصل الطرفية، ويمكن إعادة الاتصال بهم لاحقًا"],
+            ["تواصل مباشر بين الوكلاء", "الوكلاء العاملون يكتشفون بعضهم ويتبادلون الرسائل ويوجّهون العمل النشط دون المرور بالمستخدم"],
+            ["نبضات وجداول", "أوامر heartbeat وschedule تعيد الدخول للجلسة دوريًا أو في وقت محدد"],
+            ["أهداف دائمة", "الأمر /goal يبقي الهدف وتقدّمه نشطًا عبر الأدوار حتى يكتمل أو يُلغى"],
+            ["وضع مستقل محدود", "الأمر /autonomous يواصل ضمن ميزانيات أدوار وتوكنات ووقت، مع بوابات جودة يعرّفها المستخدم"],
+          ],
+        },
+      },
+      { p: "وتنبيه دقيق من التوثيق يستحق الاقتباس بالمعنى: اجتياز بوابة جودة يتحقق فقط مما تفحصه تلك البوابة، وبلوغ حد الميزانية لا يعني نجاح المهمة. هذا تمييز يغيب عن كثير من أدوات الوكلاء." },
+
+      { h: "المهارات كحزم قابلة للتنفيذ", p: "المهارات هنا ليست ملفات نصية توجيهية، بل حزم Python قابلة للاستيراد. ومنشئ المهارات المدمج يحوّل أنماط العمل المتكررة إلى مهارات على مستوى المشروع أو المستخدم." },
+      { p: "والتوثيق يفرّق بوضوح بين الأمرين: /refine يحفظ دروسًا في الحالة التكميلية، لكنه لا يحل محل تغليف مهارة تنفيذية جديدة ومراجعتها." },
+
+      { h: "التشغيل والأدوات المحيطة", p: "التثبيت بأمر واحد على macOS أو لينكس، والمثبّت يتحقق من بصمة SHA-256 للإصدار ويجهّز بيئة IPython. ثم تشغّله من داخل المجلد الذي تريده أن يعمل فيه." },
+      {
+        table: {
+          headers: ["المشروع", "دوره في المنظومة"],
+          rows: [
+            ["prime-agent", "الوكيل نفسه — رخصة MIT مفتوحة بالكامل"],
+            ["verifiers", "بيئات تحقق لتقييم أداء الوكلاء"],
+            ["prime-rl", "إطار التعلّم المعزز من Prime Intellect"],
+            ["pi (earendil-works)", "الأساس الذي بُني عليه الوكيل والواجهة الطرفية"],
+          ],
+        },
+      },
+      { p: "ويدعم أوضاعًا للأتمتة بلا واجهة: JSON mode وRPC mode للتكامل مع أنظمة أخرى — نقطة مهمة لمن يريد دمجه في خط أنابيب قائم." },
+
+      { h: "تحذير أمني صريح من المشروع", p: "التوثيق يذكر بوضوح أن Prime Agent ينفّذ كود Python المولّد من النموذج وأوامر المشروع بصلاحيات المستخدم نفسه. وعمليات العامل والنواة تحسّن عزل دورة الحياة والتعافي، لكنها ليست صندوقًا رمليًا أمنيًا." },
+      { p: "التوصية العملية المستخلصة:" },
+      {
+        list: [
+          "شغّله في نسخة مستنسخة قابلة للاستغناء أو فرع نظيف يمكنك فحصه واستعادته.",
+          "استخدم مستودعات وتعليمات ومهارات وإضافات موثوقة فقط.",
+          "شغّل أي كود أو تعليمات غير موثوقة في بيئة معزولة خارجية.",
+          "راجع التغييرات فعليًا قبل الدمج، خصوصًا في الوضع المستقل.",
+        ],
+      },
+      { p: "وهذي هي المقايضة الجوهرية للوكلاء طويلة الأمد: كلما زادت استقلالية الوكيل واستمراريته، زادت الحاجة لضوابط مراجعة صريحة — لأن الخطأ الصامت يتراكم عبر جلسات لا عبر رسالة واحدة." },
+    ],
+    bodyEn: [
+      { p: "The recurring problem with coding agents: every session starts from zero. The agent learns something useful about your project, then the window closes and it's all gone. Prime Agent from Prime Intellect builds a solution around two core abstractions." },
+
+      { h: "The first abstraction: the Recursive Language Model (RLM)", p: "The core idea: it treats context as variables (prompt-as-a-variable), and tools and subagents as function calls inside a persistent REPL." },
+      { p: "The practical difference from the usual pattern is significant:" },
+      {
+        list: [
+          "A persistent IPython environment is the built-in primary tool — not an add-on.",
+          "File operations, shell commands, tool use, and context management all happen through code.",
+          "Calling rlm(...) spawns real child agents for parallel or background work, returning their results programmatically.",
+        ],
+      },
+      { p: "This is the same idea we saw in ego lite from a different angle: when the agent writes code instead of issuing sequential commands, it composes a multi-step task into a single output rather than looping through call-and-read." },
+
+      { h: "The second abstraction: the Continual Harness", p: "The harness stores supplemental prompts, memories, skill descriptions, and reusable subagent specifications as durable state the agent can refine through small, evidence-backed updates, local to the session by default." },
+      { p: "The /refine command reviews the current trajectory and applies focused, reviewable updates. Two security-relevant points in the design:" },
+      {
+        list: [
+          "It never rewrites the immutable base system prompt.",
+          "Recorded snapshots support rollback of any refinement.",
+        ],
+      },
+
+      { h: "Built for long-running work", p: "Most of the project's features revolve around continuity for long tasks, especially research evaluations:" },
+      {
+        table: {
+          headers: ["Feature", "What it solves"],
+          rows: [
+            ["Daemon-backed continuity", "Sessions, IPython state, schedules, and subagents keep running after the terminal detaches, and can be reattached later"],
+            ["Direct agent-to-agent communication", "Running agents discover one another, exchange messages, and steer active work without routing through the user"],
+            ["Heartbeats and schedules", "The heartbeat and schedule commands re-enter a session periodically or at a specific time"],
+            ["Persistent goals", "The /goal command keeps an objective and its progress active across turns until completed or cleared"],
+            ["Bounded autonomous mode", "The /autonomous command continues within turn, token, and time budgets, with user-defined quality gates"],
+          ],
+        },
+      },
+      { p: "One precise caveat from the documentation deserves paraphrasing: a passed quality gate verifies only what that gate checks, and reaching a budget limit does not imply task success. That distinction is missing from many agent tools." },
+
+      { h: "Skills as executable packages", p: "Skills here aren't instructional text files but importable Python packages. And the built-in skill creator turns recurring workflows into project-level or personal skills." },
+      { p: "The documentation draws a clear line between the two: /refine persists lessons in supplemental state, but it does not replace packaging and reviewing a new executable skill." },
+
+      { h: "Running it, and the surrounding tools", p: "Installation is one command on macOS or Linux, and the installer verifies the release's SHA-256 checksum and prepares the IPython runtime. Then you run it from inside the directory you want it to work in." },
+      {
+        table: {
+          headers: ["Project", "Its role in the ecosystem"],
+          rows: [
+            ["prime-agent", "The agent itself — fully open under the MIT license"],
+            ["verifiers", "Verification environments for evaluating agent performance"],
+            ["prime-rl", "Prime Intellect's reinforcement learning framework"],
+            ["pi (earendil-works)", "The foundation the agent and terminal UI are built on"],
+          ],
+        },
+      },
+      { p: "It also supports headless automation modes: JSON mode and RPC mode for integration with other systems — important for anyone folding it into an existing pipeline." },
+
+      { h: "An explicit security warning from the project", p: "The documentation states plainly that Prime Agent executes model-generated Python and project commands with your own user permissions. Its worker and kernel processes improve lifecycle isolation and recovery, but they are not a security sandbox." },
+      { p: "The practical recommendation that follows:" },
+      {
+        list: [
+          "Run it in a disposable clone or clean worktree you can inspect and restore.",
+          "Use only trusted repositories, instructions, skills, and extensions.",
+          "Run any untrusted code or instructions in an external isolated environment.",
+          "Actually review changes before merging, especially in autonomous mode.",
+        ],
+      },
+      { p: "And that's the fundamental tradeoff of long-running agents: the more autonomous and persistent the agent, the more explicit review controls you need — because a silent error compounds across sessions rather than a single message." },
+    ],
+    refs: [
+      { label: "PrimeIntellect-ai/prime-agent", url: "https://github.com/PrimeIntellect-ai/prime-agent" },
+      { label: "PrimeIntellect-ai/verifiers", url: "https://github.com/PrimeIntellect-ai/verifiers" },
+      { label: "PrimeIntellect-ai/prime-rl", url: "https://github.com/PrimeIntellect-ai/prime-rl" },
+      { label: "Recursive Language Model — Prime Intellect", url: "https://www.primeintellect.ai/blog/rlm" },
+    ],
+  },
+  {
     slug: "ego-lite-parallel-agent-browser",
     title: "ego lite: متصفح واحد تعمل فيه أنت ووكلاؤك بالتوازي",
     titleEn: "ego lite: One Browser Where You and Your Agents Work in Parallel",
