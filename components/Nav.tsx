@@ -8,14 +8,14 @@ const LINKS = {
   ar: [
     { href: "/", label: "الرئيسية" },
     { href: "/services", label: "الخدمات" },
-    { href: "/chat", label: "المحادثة" },
+    { href: "/chat", label: "الذكاء الاصطناعي والأدوات" },
     { href: "/nca", label: "الأمن السيبراني" },
     { href: "/blog", label: "المقالات" },
   ],
   en: [
     { href: "/", label: "Home" },
     { href: "/services", label: "Services" },
-    { href: "/chat", label: "Chat" },
+    { href: "/chat", label: "AI & Tools" },
     { href: "/nca", label: "NCA" },
     { href: "/blog", label: "Blog" },
   ],
