@@ -1,7 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
-import type { NcaFramework } from "@/lib/nca";
+import NcaFileViewer from "@/components/NcaFileViewer";
+import type { NcaFramework, NcaFile } from "@/lib/nca";
 import { useLanguage } from "@/lib/language-context";
 
 const COPY = {
@@ -14,6 +16,7 @@ const COPY = {
     subdomain: "المجال الفرعي",
     count: "عدد الضوابط",
     download: "تحميل",
+    preview: "معاينة",
     variants: "مساران منفصلان",
     filesNote: "ملفات Excel هي أوراق التقييم الرسمية المستخدمة في قياس الالتزام. وثائق PDF هي نص الضوابط ودليل التطبيق.",
     disclaimer: "المصدر: الهيئة الوطنية للأمن السيبراني. راجع النسخة الرسمية على nca.gov.sa قبل أي اعتماد رسمي.",
@@ -27,6 +30,7 @@ const COPY = {
     subdomain: "Subdomain",
     count: "Controls",
     download: "Download",
+    preview: "Preview",
     variants: "Two separate tracks",
     filesNote: "The Excel files are the official assessment sheets used to measure compliance. The PDFs are the control text and implementation guide.",
     disclaimer: "Source: National Cybersecurity Authority. Check the official version on nca.gov.sa before any formal reliance.",
@@ -36,6 +40,7 @@ const COPY = {
 export default function NcaDetail({ framework: f }: { framework: NcaFramework }) {
   const { lang } = useLanguage();
   const t = COPY[lang];
+  const [preview, setPreview] = useState<NcaFile | null>(null);
 
   return (
     <main className="section">
@@ -114,14 +119,23 @@ export default function NcaDetail({ framework: f }: { framework: NcaFramework })
         <p className="tools-note" style={{ marginBottom: 18 }}>{t.filesNote}</p>
         <div className="nca-files">
           {f.files.map((file) => (
-            <a key={file.href} href={file.href} download className={`nca-file ${file.kind}`}>
-              <span className="nca-file-kind">{file.kind === "xlsx" ? "XLS" : "PDF"}</span>
-              <span className="nca-file-body">
-                <span className="nca-file-label">{lang === "ar" ? file.labelAr : file.labelEn}</span>
-                <span className="nca-file-meta">{file.lang} · {file.size}</span>
-              </span>
-              <span className="nca-file-dl">↓</span>
-            </a>
+            <div key={file.href} className={`nca-file ${file.kind}`}>
+              <button
+                className="nca-file-main"
+                onClick={() => setPreview(file)}
+                aria-label={t.preview}
+              >
+                <span className="nca-file-kind">{file.kind === "xlsx" ? "XLS" : "PDF"}</span>
+                <span className="nca-file-body">
+                  <span className="nca-file-label">{lang === "ar" ? file.labelAr : file.labelEn}</span>
+                  <span className="nca-file-meta">{file.lang} · {file.size}</span>
+                </span>
+                <span className="nca-file-eye">{t.preview}</span>
+              </button>
+              <a href={file.href} download className="nca-file-dl" title={t.download}>
+                ↓
+              </a>
+            </div>
           ))}
         </div>
       </section>
@@ -132,6 +146,8 @@ export default function NcaDetail({ framework: f }: { framework: NcaFramework })
           nca.gov.sa
         </a>
       </p>
+
+      {preview && <NcaFileViewer file={preview} onClose={() => setPreview(null)} />}
     </main>
   );
 }
