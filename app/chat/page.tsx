@@ -10,7 +10,7 @@ type Tab = "engine" | "directory";
 const COPY = {
   ar: {
     eyebrow: "AI HUB",
-    heading: "مركز الذكاء الاصطناعي",
+    heading: "AI HUB",
     sub: "محرك محادثة خاص بالموقع، ودليل مختار لأفضل خدمات الذكاء الاصطناعي المجانية.",
     tabs: { engine: "محرك المحادثة", directory: "دليل الخدمات" },
   },
