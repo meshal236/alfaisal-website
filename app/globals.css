@@ -1275,16 +1275,14 @@ h1, h2, h3 {
   align-items: center;
   gap: 12px;
 }
-.pdfm-page {
+.pdfm-img {
+  display: block;
+  height: auto;
+  max-width: none;
   background: #ffffff;
   box-shadow: 0 1px 6px rgba(24, 34, 52, 0.16);
   border-radius: 3px;
-  min-height: 120px;
-  display: flex;
-}
-.pdfm-page canvas {
-  display: block;
-  max-width: none;
+  min-height: 60px;
 }
 .pdfm-bar {
   display: flex;

@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 import type { NcaFile } from "@/lib/nca";
 import { useLanguage } from "@/lib/language-context";
 
-const PdfMobileViewer = dynamic(() => import("@/components/PdfMobileViewer"), { ssr: false });
+const PdfPageViewer = dynamic(() => import("@/components/PdfPageViewer"), { ssr: false });
 
 type Ctrl = { id: string; desc: string; evidence: string };
 type Sub = { id: string; title: string; objective: string; controls: Ctrl[] };
@@ -204,7 +204,7 @@ export default function NcaFileViewer({
         <div className="viewer-content">
           {file.kind === "pdf" ? (
             isMobile ? (
-              <PdfMobileViewer href={file.href} lang={lang} />
+              <PdfPageViewer href={file.href} lang={lang} />
             ) : (
               <iframe src={`${file.href}#view=FitH`} title={file.labelEn} />
             )
