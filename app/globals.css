@@ -788,6 +788,158 @@ h1, h2, h3 {
   line-height: 1.7;
 }
 
+/* ── Control search ───────────────────────────────────────────── */
+.nca-search-cta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--copper);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin-bottom: 20px;
+  color: #ffffff;
+  transition: background 0.2s;
+}
+.nca-search-cta:hover { background: var(--copper-bright); }
+.nca-search-icon {
+  font-size: 1.6rem;
+  line-height: 1;
+  opacity: 0.9;
+  flex-shrink: 0;
+}
+.nca-search-body { flex: 1; min-width: 0; }
+.nca-search-title {
+  display: block;
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+.nca-search-sub {
+  display: block;
+  font-size: 0.86rem;
+  opacity: 0.85;
+  line-height: 1.6;
+}
+.nca-search-go { font-size: 1.2rem; flex-shrink: 0; }
+
+.csearch-input {
+  width: 100%;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--ink);
+  background: var(--bg-raised);
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
+  padding: 15px 20px;
+}
+.csearch-input:focus-visible {
+  outline: 2px solid var(--copper);
+  outline-offset: 1px;
+}
+.csearch-count {
+  font-size: 0.72rem;
+  color: var(--ink-faint);
+  margin: 18px 0 12px;
+  display: block;
+}
+.csearch-results {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.cres {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+}
+.cres:hover { border-color: var(--line-strong); }
+.cres-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.cres-id {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: var(--copper);
+  border-radius: 6px;
+  padding: 4px 10px;
+  flex-shrink: 0;
+}
+.cres-tags {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-size: 0.72rem;
+  color: var(--ink-faint);
+}
+.cres-fw {
+  font-family: var(--font-mono), monospace;
+  letter-spacing: 0.08em;
+  color: var(--copper-bright);
+  border: 1px solid rgba(18, 122, 102, 0.3);
+  border-radius: 100px;
+  padding: 2px 9px;
+}
+.cres-dom, .cres-sub { color: var(--ink-faint); }
+.cres-desc {
+  font-size: 0.96rem;
+  color: var(--ink);
+  line-height: 1.85;
+  margin-bottom: 12px;
+  white-space: pre-line;
+}
+.cres-desc mark,
+.cres-ev mark {
+  background: rgba(18, 122, 102, 0.18);
+  color: inherit;
+  border-radius: 3px;
+  padding: 0 2px;
+}
+.cres-ev {
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+}
+.cres-ev-label {
+  display: block;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 6px;
+}
+.cres-ev p {
+  font-size: 0.86rem;
+  color: var(--ink-dim);
+  line-height: 1.8;
+  white-space: pre-line;
+}
+.csearch-more {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 20px;
+}
+.csearch-more span { font-size: 0.72rem; color: var(--ink-faint); }
+.csearch-more button {
+  font-family: inherit;
+  font-size: 0.88rem;
+  color: var(--copper);
+  background: var(--bg-raised);
+  border: 1px solid var(--line-strong);
+  border-radius: 100px;
+  padding: 9px 22px;
+  cursor: pointer;
+}
+.csearch-more button:hover { border-color: var(--copper); }
+
 /* ── NCA frameworks ───────────────────────────────────────────── */
 .nca-stats {
   display: flex;

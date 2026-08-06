@@ -16,6 +16,8 @@ const COPY = {
     statControls: "إجمالي الضوابط",
     statFrameworks: "أطر",
     statFiles: "ملف مرجعي",
+    searchTitle: "ابحث في كل الضوابط",
+    searchSub: "بحث موحّد في 833 ضابطًا عبر الأطر السبعة — بالنص أو رقم الضابط أو الأدلة المطلوبة",
   },
   en: {
     eyebrow: "NCA FRAMEWORKS",
@@ -28,6 +30,8 @@ const COPY = {
     statControls: "Total controls",
     statFrameworks: "Frameworks",
     statFiles: "Reference files",
+    searchTitle: "Search all controls",
+    searchSub: "Unified search across 833 controls in all seven frameworks — by text, control number, or required evidence",
   },
 };
 
@@ -59,6 +63,15 @@ export default function NcaPage() {
           <span className="nca-stat-label">{t.statFiles}</span>
         </div>
       </div>
+
+      <Link href="/nca/search" className="nca-search-cta">
+        <span className="nca-search-icon">⌕</span>
+        <span className="nca-search-body">
+          <span className="nca-search-title">{t.searchTitle}</span>
+          <span className="nca-search-sub">{t.searchSub}</span>
+        </span>
+        <span className="nca-search-go">→</span>
+      </Link>
 
       <div className="nca-grid">
         {frameworks.map((f) => (

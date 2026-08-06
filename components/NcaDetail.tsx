@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import NcaFileViewer from "@/components/NcaFileViewer";
+import ControlSearch from "@/components/ControlSearch";
 import type { NcaFramework, NcaFile } from "@/lib/nca";
 import { useLanguage } from "@/lib/language-context";
 
@@ -11,6 +12,7 @@ const COPY = {
     back: "← كل الأطر",
     scope: "نطاق التطبيق",
     structure: "بنية الضوابط",
+    search: "البحث في ضوابط هذا الإطار",
     files: "الملفات المرجعية",
     controls: "ضابط",
     subdomain: "المجال الفرعي",
@@ -26,6 +28,7 @@ const COPY = {
     back: "← All frameworks",
     scope: "Scope of application",
     structure: "Control structure",
+    search: "Search these controls",
     files: "Reference files",
     controls: "controls",
     subdomain: "Subdomain",
@@ -91,6 +94,11 @@ export default function NcaDetail({ framework: f }: { framework: NcaFramework })
       <section className="nca-section">
         <h2>{t.scope}</h2>
         <p className="prose">{lang === "ar" ? f.scopeAr : f.scopeEn}</p>
+      </section>
+
+      <section className="nca-section">
+        <h2>{t.search}</h2>
+        <ControlSearch scope={f.slug} />
       </section>
 
       <section className="nca-section">
