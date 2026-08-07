@@ -29,6 +29,89 @@ import {
 
 export const posts: Post[] = [
   {
+    slug: "whatsapp-mcp-server",
+    title: "WhatsApp MCP: ربط محادثاتك الشخصية بوكيل ذكاء اصطناعي — والثمن الأمني لذلك",
+    titleEn: "WhatsApp MCP: Wiring Your Personal Chats Into an AI Agent — and the Security Price",
+    date: "2026-08",
+    tag: "AI AGENTS",
+    excerpt:
+      "خادم MCP مفتوح المصدر يعطي Claude وصولًا كاملًا لمحادثاتك في واتساب: بحث، قراءة، وإرسال. المشروع نفسه يحذّر من مخاطر أمنية حقيقية — والتحذير يستحق الانتباه أكثر من الميزة نفسها.",
+    excerptEn:
+      "An open-source MCP server gives Claude full access to your WhatsApp conversations: search, read, and send. The project itself warns of a real security risk — one worth more attention than the feature itself.",
+    body: [
+      { p: "مشروع WhatsApp MCP من Luke Harries يربط حساب واتساب الشخصي مباشرة بأي عميل يدعم Model Context Protocol — Claude Desktop أو Cursor. بعد الربط، يقدر الوكيل يبحث في محادثاتك، يقرأ الرسائل والصور والفيديوهات والملفات الصوتية، ويرسل رسائل نيابة عنك — لأفراد أو مجموعات." },
+      { h: "كيف يعمل تقنيًا", p: "مكوّنان منفصلان يعملان معًا: جسر Go يتصل بواتساب عبر بروتوكول الويب متعدد الأجهزة نفسه (نفس آلية واتساب ويب الرسمية، عبر مكتبة whatsmeow مفتوحة المصدر)، ويخزّن كل تاريخ المحادثات محليًا في قاعدة SQLite. وخادم MCP بلغة Python يقرأ من هذي القاعدة ويعرضها كأدوات موحّدة للنموذج." },
+      { p: "المصادقة تتم بمسح رمز QR من تطبيق واتساب على جوالك — نفس آلية ربط جهاز جديد، وتنتهي الجلسة تلقائيًا كل نحو 20 يومًا فتحتاج إعادة المسح." },
+      { h: "الأدوات المتاحة للوكيل", p: "" },
+      {
+        list: [
+          "البحث عن جهات الاتصال بالاسم أو رقم الهاتف.",
+          "استرجاع الرسائل مع فلاتر وسياق محدد.",
+          "عرض قائمة المحادثات وبياناتها الوصفية.",
+          "إرسال رسالة نصية أو ملف (صورة، فيديو، مستند) أو رسالة صوتية.",
+          "تنزيل وسائط من رسالة محددة.",
+        ],
+      },
+      { h: "نقطة إيجابية حقيقية: الخصوصية بالتصميم", p: "كل بياناتك تبقى محلية على جهازك في قاعدة SQLite. لا شيء يُرسل لخوادم خارجية إلا وقت استخدام النموذج فعليًا لأداة معينة — وحينها فقط تُرسل النتيجة المطلوبة تحديدًا لواجهة النموذج، لا قاعدة البيانات كاملة." },
+      { h: "التحذير الأمني — من المطوّر نفسه لا تخمينًا", p: "المشروع يحذّر صراحة في توثيقه من مفهوم يُعرف بـ«الثلاثية القاتلة» (lethal trifecta): أي نظام يجمع ثلاثة عناصر معًا يصبح عرضة لتسريب بيانات حقيقي عبر حقن أوامر خبيثة." },
+      {
+        list: [
+          "وصول لبيانات حساسة — هنا: كامل تاريخ محادثاتك الشخصية.",
+          "معالجة محتوى غير موثوق — أي رسالة واردة، من أي شخص، قد تحتوي نصًا مصمَّمًا لخداع النموذج.",
+          "قناة تواصل خارجية — القدرة على إرسال رسائل فعلية لأطراف ثالثة.",
+        ],
+      },
+      { p: "اجتماع هذي الثلاثة يعني أن رسالة واردة واحدة تحتوي تعليمات مخفية قد تدفع النموذج — دون علمك — لقراءة محادثات حساسة وإرسال محتواها لجهة يحددها المهاجم. هذا ليس خللًا في كود المشروع، بل خاصية بنيوية في أي MCP يربط بيانات شخصية بنموذج قادر على التصرف." },
+      { h: "زاوية عملية", p: "المشروع صحي من ناحية الشعبية والصيانة، ورخصته MIT مفتوحة بالكامل. لكن الخطر الحقيقي في طبيعة الفكرة لا في جودة التنفيذ. قبل التركيب على حسابك الأساسي:" },
+      {
+        list: [
+          "جرّبه أولًا على حساب واتساب اختباري، لا حسابك الشخصي الرئيسي.",
+          "لا تمنحه صلاحية إرسال تلقائي دون مراجعتك لكل رسالة، خصوصًا في البداية.",
+          "كن حذرًا بشكل خاص مع محادثات من جهات غير معروفة قبل أن يقرأها الوكيل.",
+          "راجع أي طلب إرسال يقترحه النموذج قبل الموافقة عليه.",
+        ],
+      },
+    ],
+    bodyEn: [
+      { p: "Luke Harries' WhatsApp MCP project wires a personal WhatsApp account directly into any client supporting the Model Context Protocol — Claude Desktop or Cursor. Once connected, the agent can search your conversations, read messages, images, videos, and voice notes, and send messages on your behalf — to individuals or groups." },
+      { h: "How it works technically", p: "Two separate components work together: a Go bridge connects to WhatsApp through its own multi-device web protocol (the same mechanism the official WhatsApp Web uses, via the open-source whatsmeow library), storing the full conversation history locally in a SQLite database. A Python MCP server reads from that database and exposes it as standardized tools to the model." },
+      { p: "Authentication happens by scanning a QR code from the WhatsApp app on your phone — the same flow as linking a new device — and the session expires automatically roughly every 20 days, requiring a re-scan." },
+      { h: "Tools available to the agent", p: "" },
+      {
+        list: [
+          "Searching contacts by name or phone number.",
+          "Retrieving messages with filters and surrounding context.",
+          "Listing chats and their metadata.",
+          "Sending a text message, a file (image, video, document), or a voice message.",
+          "Downloading media from a specific message.",
+        ],
+      },
+      { h: "A genuine positive: privacy by design", p: "All your data stays local on your machine in a SQLite database. Nothing is sent to external servers except at the moment the model actually invokes a specific tool — and even then, only the specific requested result goes to the model's interface, not the entire database." },
+      { h: "The security warning — from the developer, not speculation", p: "The project explicitly warns in its documentation about a concept known as the \"lethal trifecta\": any system combining three elements at once becomes exposed to genuine data exfiltration through malicious prompt injection." },
+      {
+        list: [
+          "Access to sensitive data — here, your entire personal conversation history.",
+          "Processing untrusted content — any incoming message, from anyone, could contain text designed to manipulate the model.",
+          "An external communication channel — the ability to actually send messages to third parties.",
+        ],
+      },
+      { p: "The combination of all three means a single incoming message with hidden instructions could push the model — without your knowledge — to read sensitive conversations and send their contents to a destination the attacker chooses. This isn't a flaw in the project's code; it's a structural property of any MCP that connects personal data to a model capable of taking action." },
+      { h: "A practical angle", p: "The project is healthy in terms of popularity and maintenance, and fully open under the MIT license. But the real risk lies in the nature of the idea, not the quality of the implementation. Before installing it on your main account:" },
+      {
+        list: [
+          "Try it first on a test WhatsApp account, not your primary personal one.",
+          "Don't grant it automatic send permission without reviewing every message, especially at first.",
+          "Be particularly cautious with conversations from unknown contacts before letting the agent read them.",
+          "Review any send request the model proposes before approving it.",
+        ],
+      },
+    ],
+    refs: [
+      { label: "lharries/whatsapp-mcp", url: "https://github.com/lharries/whatsapp-mcp" },
+      { label: "tulir/whatsmeow", url: "https://github.com/tulir/whatsmeow" },
+    ],
+  },
+  {
     slug: "soup-llm-finetuning-cli",
     title: "Soup: أمر واحد يحوّل ضبط نماذج اللغة الكبيرة إلى سير عمل بسيط",
     titleEn: "Soup: One Command That Turns LLM Fine-Tuning Into a Simple Workflow",
