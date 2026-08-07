@@ -29,6 +29,81 @@ import {
 
 export const posts: Post[] = [
   {
+    slug: "soup-llm-finetuning-cli",
+    title: "Soup: أمر واحد يحوّل ضبط نماذج اللغة الكبيرة إلى سير عمل بسيط",
+    titleEn: "Soup: One Command That Turns LLM Fine-Tuning Into a Simple Workflow",
+    date: "2026-08",
+    tag: "AI INFRA",
+    excerpt:
+      "ضبط نماذج اللغة الكبيرة تقليديًا صراع مع بنية تحتية معقدة — فرق ذات خبرة تقضي حتى 50% من وقتها في إعدادات GPU لا في تحسين النموذج. أداة مفتوحة المصدر تختصر هذا لملف إعداد واحد وأمر واحد.",
+    excerptEn:
+      "Fine-tuning LLMs traditionally means fighting complex infrastructure — experienced teams spend up to 50% of their time on GPU setup instead of improving the model. An open-source tool compresses this to one config file and one command.",
+    body: [
+      { p: "ضبط نماذج اللغة الكبيرة (fine-tuning) لا يزال مؤلمًا. حتى الفرق ذات الخبرة تقضي 30 إلى 50% من وقتها في محاربة البنية التحتية بدل تحسين النموذج — إعداد GPU، أخطاء البيئة، إدارة الحزم. مشروع Soup (رخصة Apache 2.0) يعالج هذا مباشرة." },
+      { h: "الفكرة بثلاثة أسطر", p: "تثبيت، إعداد، تدريب — بلا أكثر. المشروع يتولى تلقائيًا حجم الدفعة (batch size)، اكتشاف GPU، والضغط (quantization)، فلا حاجة للدخول عبر SSH لخادم معطّل أو ضبط إعدادات يدويًا." },
+      { h: "مرونة دعم النماذج", p: "يعمل مع أي نموذج توليد نص على HuggingFace Hub — لو حُمّل عبر AutoModelForCausalLM، يشتغل بلا تعديل إعدادات. أكثر من 100 وصفة جاهزة (recipes) لعائلات مثل Llama 3.x/4، وQwen 2.5/3، وGemma 3، وMistral، وDeepSeek R1/V3، وPhi-4." },
+      { h: "أي نموذج يناسب عتادك", p: "" },
+      {
+        table: {
+          headers: ["ذاكرة GPU", "أقصى نموذج (QLoRA 4-bit)", "مثال"],
+          rows: [
+            ["8 GB", "~7B", "Llama-3.1-8B، Mistral-7B"],
+            ["16 GB", "~14B", "Phi-4-14B، Qwen2.5-14B"],
+            ["24 GB", "~34B", "CodeLlama-34B، Yi-1.5-34B"],
+            ["48 GB", "~70B", "Llama-3.3-70B"],
+            ["80 GB+", "70B+ كامل أو MoE", "Mixtral-8x22B، DeepSeek-V3"],
+          ],
+        },
+      },
+      { h: "ميزة حديثة: رصد وتصحيح ذاتي لخداع المكافأة", p: "في أحدث إصدار، أُضيفت ميزة متقدمة لمن يدرّب وكلاء عبر التعلّم المعزز (GRPO/PPO): رصد «خداع المكافأة» (reward hacking) أثناء التدريب نفسه — وهي الحالة التي يتعلّم فيها النموذج استغلال ثغرة في دالة المكافأة بدل تحقيق الهدف الفعلي — مع تصحيح ذاتي لحظي بدل مجرد إيقاف التدريب." },
+      {
+        list: [
+          "عند ارتفاع مؤشر الخداع، يرفع النظام معامل KL تلقائيًا عبر ضابط تحكم مخصص.",
+          "لو استمر الخداع، يتراجع النظام لآخر نقطة حفظ سليمة (rollback).",
+          "وكحل أخير فقط، يوقف التدريب مبكرًا.",
+          "يعتمد تصويتًا من عدة إشارات معًا لتقليل الإنذارات الكاذبة.",
+        ],
+      },
+      { h: "صيغ البيانات وطرق التدريب", p: "اكتشاف تلقائي لصيغ JSONL وJSON وCSV وParquet وTXT، بدعم alpaca وsharegpt وchatml للمحادثات، وdpo/orpo/simpo/ipo للتفضيلات المزدوجة، وkto للتصنيف الثنائي — إضافة لصيغ الرؤية والصوت وما قبل التدريب. وطرق التدريب تغطي SFT وDPO وGRPO وPPO وKTO وORPO وSimPO وغيرها." },
+      { h: "من التدريب إلى النشر", p: "بعد التدريب، أمر merge يدمج LoRA بالنموذج الأساسي، وexport يصدّر لصيغة GGUF (لـOllama وllama.cpp) أو ONNX أو TensorRT أو AWQ أو GPTQ أو BitNet. وserve يشغّل خادمًا متوافقًا مع واجهة OpenAI، وdoctor يفحص GPU والتبعيات والبيئة دفعة واحدة." },
+      { h: "زاوية عملية", p: "أبرز فرق عن أدوات ضبط النماذج التقليدية أنه يعمل محليًا بالكامل عبر QLoRA بدون الحاجة لحساب سحابي — مناسب لمن يريد تجربة ضبط نموذج على بياناته الخاصة دون التزام بفاتورة سحابية. لكنه مشروع نشط جدًا (أكثر من 150 إصدارًا حتى الآن) وبعض ميزاته لا تزال في مرحلة Beta — يستحق التجربة على مهمة غير حرجة أولًا." },
+    ],
+    bodyEn: [
+      { p: "Fine-tuning LLMs is still painful. Even experienced teams spend 30 to 50% of their time fighting infrastructure instead of improving the model — GPU setup, environment errors, package management. Soup (Apache 2.0) addresses this directly." },
+      { h: "The idea in three lines", p: "Install, configure, train — that's it. The project handles batch size, GPU detection, and quantization automatically, so there's no SSH-ing into a broken box or manually tuning settings." },
+      { h: "Model flexibility", p: "It works with any text-generation model on the HuggingFace Hub — if it loads with AutoModelForCausalLM, it works with zero config changes. Over 100 ready-made recipes cover families like Llama 3.x/4, Qwen 2.5/3, Gemma 3, Mistral, DeepSeek R1/V3, and Phi-4." },
+      { h: "Which model fits your hardware", p: "" },
+      {
+        table: {
+          headers: ["GPU Memory", "Max model (QLoRA 4-bit)", "Example"],
+          rows: [
+            ["8 GB", "~7B", "Llama-3.1-8B, Mistral-7B"],
+            ["16 GB", "~14B", "Phi-4-14B, Qwen2.5-14B"],
+            ["24 GB", "~34B", "CodeLlama-34B, Yi-1.5-34B"],
+            ["48 GB", "~70B", "Llama-3.3-70B"],
+            ["80 GB+", "70B+ full or MoE", "Mixtral-8x22B, DeepSeek-V3"],
+          ],
+        },
+      },
+      { h: "A recent feature: closed-loop reward-hacking mitigation", p: "The latest release adds an advanced feature for anyone training agents via reinforcement learning (GRPO/PPO): detecting \"reward hacking\" mid-training — where the model learns to exploit a flaw in the reward function instead of achieving the actual goal — with live self-correction instead of merely halting." },
+      {
+        list: [
+          "When the hacking signal trips, the system raises the KL coefficient automatically through a dedicated controller.",
+          "If hacking persists, it rolls back to the last known-good checkpoint.",
+          "Only as a last resort does it stop training early.",
+          "It uses multi-signal voting to reduce false alarms.",
+        ],
+      },
+      { h: "Data formats and training methods", p: "Automatic detection across JSONL, JSON, CSV, Parquet, and TXT, supporting alpaca, sharegpt, and chatml for conversations, dpo/orpo/simpo/ipo for paired preferences, and kto for binary classification — plus vision, audio, and pre-training formats. Training methods span SFT, DPO, GRPO, PPO, KTO, ORPO, SimPO, and more." },
+      { h: "From training to deployment", p: "After training, merge folds a LoRA adapter into the base model, and export ships to GGUF (for Ollama and llama.cpp), ONNX, TensorRT, AWQ, GPTQ, or BitNet. serve spins up an OpenAI-compatible server, and doctor checks GPU, dependencies, and environment in one pass." },
+      { h: "A practical angle", p: "Its main distinction from traditional fine-tuning tools is running fully locally via QLoRA with no cloud account required — good for anyone who wants to try fine-tuning on their own data without committing to a cloud bill. But it's a very active project (over 150 releases so far) and some features remain in beta — worth trying on a non-critical task first." },
+    ],
+    refs: [
+      { label: "MakazhanAlpamys/Soup", url: "https://github.com/MakazhanAlpamys/Soup" },
+      { label: "trysoup.dev", url: "https://trysoup.dev" },
+    ],
+  },
+  {
     slug: "nvidia-nemotron-voicechat-full-duplex",
     title: "NemotronLabs VoiceChat: نموذج صوتي مفتوح يسمع ويتكلم في آنٍ واحد",
     titleEn: "NemotronLabs VoiceChat: An Open Voice Model That Listens and Speaks Simultaneously",
