@@ -64,7 +64,7 @@ export const posts: Post[] = [
         p: "كل بياناتك تبقى محلية على جهازك في قاعدة SQLite. لا شيء يُرسل لخوادم خارجية إلا وقت استخدام النموذج فعليًا لأداة معينة. وحينها فقط تُرسل النتيجة المطلوبة تحديدًا لواجهة النموذج، لا قاعدة البيانات كاملة.",
       },
       {
-        h: "التحذير الأمني. من المطوّر نفسه لا تخمينًا",
+        h: "التحذير الأمني من المطوّر نفسه",
         p: "المشروع يحذّر صراحة في توثيقه من مفهوم يُعرف بـ«الثلاثية القاتلة» (lethal trifecta): أي نظام يجمع ثلاثة عناصر معًا يصبح عرضة لتسريب بيانات حقيقي عبر حقن أوامر خبيثة.",
       },
       {
@@ -116,7 +116,7 @@ export const posts: Post[] = [
         p: "All your data stays local on your machine in a SQLite database. Nothing is sent to external servers except at the moment the model actually invokes a specific tool. And even then, only the specific requested result goes to the model's interface, not the entire database.",
       },
       {
-        h: "The security warning. From the developer, not speculation",
+        h: "The security warning from the developer",
         p: 'The project explicitly warns in its documentation about a concept known as the "lethal trifecta": any system combining three elements at once becomes exposed to genuine data exfiltration through malicious prompt injection.',
       },
       {
@@ -849,7 +849,7 @@ export const posts: Post[] = [
         p: "الميزة الأساسية هنا العزل لا السرعة. القدرة على تشغيل وكيل على حسابات حقيقية مسجّلة الدخول دون أن يتداخل مع عملك اليومي تحل أكثر مشكلة عملية تعطّل تبنّي وكلاء التصفح.",
       },
       {
-        p: "لكن هذه الميزة نفسها هي مصدر الخطر: وكيل يرث تسجيلات دخولك الحقيقية يملك صلاحياتك كاملة. ابدأ بمهام قراءة فقط على حسابات غير حساسة، وراقب ما ينفّذه فعليًا قبل توسيع نطاقه. والمشروع لا يزال حديثًا نسبيًا، فتعامل معه كأداة تجريبية لا كجزء من سير عمل إنتاجي.",
+        p: "لكن هذه الميزة نفسها هي مصدر الخطر: فالوكيل الذي يرث تسجيلات الدخول يملك الصلاحيات كاملة. ويبدأ الاستخدام بمهام قراءة فقط على حسابات غير حساسة، مع مراقبة ما ينفّذه قبل توسيع النطاق. والمشروع لا يزال حديثًا نسبيًا، فتعامل معه كأداة تجريبية لا كجزء من سير عمل إنتاجي.",
       },
     ],
     bodyEn: [
@@ -937,7 +937,7 @@ export const posts: Post[] = [
         p: "The main advantage here is isolation rather than speed. Being able to run an agent against real, logged-in accounts without it interfering with your daily work solves the most practical problem blocking browsing-agent adoption.",
       },
       {
-        p: "But that same advantage is the source of the risk: an agent inheriting your real logins holds your full permissions. Start with read-only tasks on non-sensitive accounts, and watch what it actually executes before widening its scope. The project is also relatively new, so treat it as an experimental tool rather than part of a production workflow.",
+        p: "But that same advantage is the source of the risk: an agent inheriting logins holds full permissions. Use starts with read-only tasks on non-sensitive accounts, with its actual execution monitored before the scope is widened. The project is also relatively new, so treat it as an experimental tool rather than part of a production workflow.",
       },
     ],
     refs: [
@@ -963,7 +963,7 @@ export const posts: Post[] = [
         p: "أي وكيل ذكاء اصطناعي بلا اتصال بأنظمتك هو مجرد نموذج يتكلم. القيمة تبدأ حين يقرأ من أنظمتك ويكتب فيها. والسؤال الذي يواجه كل من يبني هذا: أربطه بتكامل API مخصص، أم عبر بروتوكول MCP؟",
       },
       {
-        p: "الجواب المختصر: MCP لا يحل محل الـ API. بل يغلّفه في طبقة موحّدة يستطيع النموذج التنقل فيها. لنفهم لماذا.",
+        p: "الجواب المختصر: MCP لا يحل محل الـ API. بل يغلّفه في طبقة موحّدة يستطيع النموذج التنقل فيها.",
       },
 
       { h: "المشكلة الأصلية: N×M" },
@@ -998,7 +998,7 @@ export const posts: Post[] = [
         ],
       },
       {
-        p: "الفكرة الجوهرية أن MCP يعامل التكاملات كمزوّدات سياق لا كنقاط بيانات خام. أي أنه لا يعرض عمليات CRUD مجردة، بل قدرات موصوفة يفهم النموذج متى يستخدمها.",
+        p: "الفكرة الأساسية أن MCP يعامل التكاملات كمزوّدات سياق لا كنقاط بيانات خام. أي أنه لا يعرض عمليات CRUD مجردة، بل قدرات موصوفة يفهم النموذج متى يستخدمها.",
       },
 
       { h: "الفرق المعماري" },
@@ -1083,7 +1083,7 @@ async function runTool(name, args) {
         },
       },
       {
-        p: "هذا يعمل جيدًا لنظام واحد. لكن أضف Oracle وActive Directory وCisco، ثم قرر تبديل النموذج. وستكتشف حجم التكرار.",
+        p: "هذا يعمل جيدًا لنظام واحد. لكن مع إضافة Oracle وActive Directory وCisco، ثم تبديل النموذج، يظهر حجم التكرار.",
       },
 
       { h: "التطبيق الفني: خادم MCP" },
@@ -1159,7 +1159,7 @@ await server.connect(new StdioServerTransport());`,
         ],
       },
 
-      { h: "المخاطر الأمنية. الجزء الذي يُهمَل" },
+      { h: "المخاطر الأمنية" },
       {
         p: "MCP يمركز الاعتمادات (credentials) لعدة أنظمة في مكان واحد، وهذا يخلق نقطة فشل واحدة: خادم واحد مخترق قد يعطي المهاجم وصولًا لكل قاعدة بيانات ونظام ملفات وخدمة سحابية مرتبطة بمساعدك.",
       },
@@ -1326,7 +1326,7 @@ async function runTool(name, args) {
         },
       },
       {
-        p: "This works fine for one system. But add Oracle, Active Directory, and Cisco, then decide to switch models. And you'll discover the scale of the duplication.",
+        p: "This works fine for one system. But adding Oracle, Active Directory, and Cisco, then switching models, exposes the scale of the duplication.",
       },
 
       { h: "Technical implementation: an MCP server" },
@@ -1406,7 +1406,7 @@ await server.connect(new StdioServerTransport());`,
         ],
       },
 
-      { h: "Security risks. The neglected part" },
+      { h: "Security risks" },
       {
         p: "MCP centralizes credentials for multiple systems in one place, creating a single point of failure: one compromised server may give an attacker access to every database, filesystem, and cloud service your assistant connects to.",
       },
@@ -1482,7 +1482,7 @@ await server.connect(new StdioServerTransport());`,
         p: "في أغلب المؤسسات، الفجوة ليست في البيانات بل في الوصول إليها. المدير يريد رقمًا، فيفتح تذكرة لفريق البيانات، وينتظر يومين، ليحصل على تقرير يولّد ثلاثة أسئلة جديدة. المحلل نفسه يقضي وقته في طلبات متكررة بدل التحليل العميق.",
       },
       {
-        p: "وكلاء الذكاء الاصطناعي المرتبطون بـ Power BI يعالجون هذه الحلقة تحديدًا: المستخدم يسأل بلغته، والوكيل يترجم السؤال لاستعلام، وينفّذه، ويرجّع الجواب. لكن الفكرة تُساء فهمها كثيرًا، فلنبدأ من الأساس.",
+        p: "وكلاء الذكاء الاصطناعي المرتبطون بـ Power BI يعالجون هذه الحلقة تحديدًا: المستخدم يسأل بلغته، والوكيل يترجم السؤال لاستعلام، وينفّذه، ويرجّع الجواب. والفكرة تُساء فهمها كثيرًا، وفيما يلي تفصيلها من الأساس.",
       },
 
       { h: "ما هو MCP ولماذا غيّر المعادلة" },
@@ -1589,7 +1589,7 @@ await server.connect(new StdioServerTransport());`,
         },
       },
       {
-        p: "ميزة وضع القراءة فقط تحديدًا تستحق الانتباه. تجعل الوكيل قادرًا على النظر دون التعديل. وهذه أول ما تفعّله في أي تجربة أولى.",
+        p: "وضع القراءة فقط يتيح للوكيل الاطلاع دون التعديل، ويُفعّل عادة في أي تجربة أولى.",
       },
 
       { h: "الترتيب الصحيح للبناء" },
@@ -1607,7 +1607,7 @@ await server.connect(new StdioServerTransport());`,
         ],
       },
       {
-        p: "تخطي الخطوتين الثانية والثالثة هو سبب فشل أغلب هذه المشاريع. تحصل على وكيل يعطيك نصف صورة بثقة كاملة. وهذا أسوأ من عدم وجوده، لأن الثقة الزائفة تُبنى عليها قرارات.",
+        p: "تخطي الخطوتين الثانية والثالثة هو سبب فشل أغلب هذه المشاريع. والنتيجة وكيل يقدّم نصف صورة بثقة كاملة، وهو أسوأ من عدمه لأن الثقة الزائفة تُبنى عليها قرارات.",
       },
 
       { h: "أين تفشل هذه المشاريع" },
@@ -1634,7 +1634,7 @@ await server.connect(new StdioServerTransport());`,
         p: "In most organizations the gap isn't data. It's access to it. A manager wants a number, opens a ticket with the data team, waits two days, and gets a report that raises three new questions. The analyst spends their time on repeat requests instead of deep analysis.",
       },
       {
-        p: "AI agents wired into Power BI target exactly that loop: the user asks in plain language, the agent translates it into a query, executes it, and returns the answer. But the idea is widely misunderstood, so let's start from the foundation.",
+        p: "AI agents wired into Power BI target exactly that loop: the user asks in plain language, the agent translates it into a query, executes it, and returns the answer. The idea is widely misunderstood, so the following starts from the foundation.",
       },
 
       { h: "What MCP is and why it changed things" },
@@ -1819,15 +1819,15 @@ await server.connect(new StdioServerTransport());`,
         p: "مشكلة فرق التشغيل ليست نقص البيانات بل فائضها. عشرات آلاف التنبيهات شهريًا، وأغلبها ضجيج. ومهندس المناوبة يقضي أول عشرين دقيقة من كل حادثة يجمع الصورة يدويًا من ثلاث لوحات مختلفة.",
       },
       {
-        p: "الأسوأ أن كثرة الإنذارات الكاذبة تولّد ما يُسمى إرهاق التنبيهات: الفريق يتجاهل التنبيهات تدريجيًا، فيمر التنبيه الحقيقي دون انتباه. AIOps وُجدت لمعالجة هذه الحلقة.",
+        p: "وكثرة الإنذارات الكاذبة تولّد ما يُسمى إرهاق التنبيهات: الفريق يتجاهل التنبيهات تدريجيًا، فيمر التنبيه الحقيقي دون انتباه. AIOps وُجدت لمعالجة هذه الحلقة.",
       },
 
       { h: "الفرق بين الارتباط والسببية" },
       {
-        p: "هذا الفرق هو جوهر الموضوع كله، وأغلب التسويق يتجاهله عمدًا. لنوضحه بمثال.",
+        p: "هذا الفرق جوهري، ويغيب عادة عن المواد التسويقية. وفيما يلي مثال يوضحه.",
       },
       {
-        p: "تخيّل حادثة: تطبيقك بطيء. الأداة تخبرك أن استهلاك المعالج ارتفع في قاعدة البيانات، وأن زمن الاستجابة زاد، وأن معدل الأخطاء ارتفع. كلها في نفس اللحظة.",
+        p: "مثال: تطبيق بطيء. الأداة تخبرك أن استهلاك المعالج ارتفع في قاعدة البيانات، وأن زمن الاستجابة زاد، وأن معدل الأخطاء ارتفع. كلها في نفس اللحظة.",
       },
       {
         list: [
@@ -1887,7 +1887,7 @@ await server.connect(new StdioServerTransport());`,
         p: "ونقطة جوهرية: التنبيه التقليدي القائم على قواعد ثابتة يكشف أنماط الفشل المعروفة مسبقًا فقط. أما جوهر AIOps فهو كشف الشذوذ غير المتوقع. وهو ما يسبب حصة كبيرة من أعطال الإنتاج.",
       },
 
-      { h: "أدوات مفتوحة المصدر. ابدأ من هنا" },
+      { h: "أدوات مفتوحة المصدر" },
       {
         table: {
           headers: ["الأداة", "تقدّم"],
@@ -1916,7 +1916,7 @@ await server.connect(new StdioServerTransport());`,
         p: "Dynatrace يقود للمؤسسات الكبيرة المحتاجة تحليلًا سببيًا حتميًا لا ارتباطًا إحصائيًا. أي محرك يبني خريطة اعتماديات فعلية بين المكوّنات.",
       },
       {
-        p: "وLogz.io OrionIQ يمثّل الجيل الوكيلي: وكلاء يبدأون العمل لحظة إطلاق التنبيه، ويحللون السجلات والمقاييس والتتبعات في آن واحد، وينتجون سببًا جذريًا موحّدًا قبل أن يفتح المهندس أي لوحة. والأهم أنهم يعملون ضمن الإجراءات والـ runbooks التي وضعها فريقك فعلًا.",
+        p: "وLogz.io OrionIQ يمثّل الجيل الوكيلي: وكلاء يبدأون العمل لحظة إطلاق التنبيه، ويحللون السجلات والمقاييس والتتبعات في آن واحد، وينتجون سببًا جذريًا موحّدًا قبل أن يفتح المهندس أي لوحة. ويعملون ضمن الإجراءات والـ runbooks المعتمدة لدى الفريق.",
       },
       {
         p: "أما OpenObserve فيجمع طبقة ذكاء ثلاثية مع تتبع كامل الدقة بتكلفة تخزين أقل بكثير من المنصات التقليدية. وهو فرق ملموس في البيئات كثيفة السجلات.",
@@ -1924,7 +1924,7 @@ await server.connect(new StdioServerTransport());`,
 
       { h: "كيف تقيس النجاح فعليًا" },
       {
-        p: "لا تقيّم أداة AIOps بالعرض التجريبي. قِسها بأرقام قبل وبعد على بيئتك أنت:",
+        p: "تقييم أداة AIOps يكون بأرقام قبل وبعد على البيئة الفعلية، لا بالعرض التجريبي:",
       },
       {
         list: [
@@ -1944,7 +1944,7 @@ await server.connect(new StdioServerTransport());`,
         p: "هل تتعلم الأداة من بيئتك مع الوقت؟ أداة تعطيك في اليوم المئة نفس التحليل العام الذي أعطته في اليوم الأول لم تلتقط المعرفة المؤسسية التي تجعل المهندس المخضرم فعّالًا.",
       },
       {
-        p: "ابحث عمّا يبني معرفة خاصة بمنظمتك من الحوادث السابقة والـ runbooks وتغذية الفريق الراجعة. هذا ما يفصل مساعدًا مفيدًا عن شريك تشخيص حقيقي.",
+        p: "ابحث عمّا يبني معرفة خاصة بمنظمتك من الحوادث السابقة والـ runbooks وتغذية الفريق الراجعة. وهذا الفارق بين أداة مساعدة وأداة تشخيص فعلية.",
       },
 
       { h: "خطة تبنٍّ عملية" },
@@ -1974,15 +1974,15 @@ await server.connect(new StdioServerTransport());`,
         p: "The problem for operations teams isn't a shortage of data but a surplus. Tens of thousands of alerts a month, most of them noise. And the on-call engineer spends the first twenty minutes of every incident manually assembling the picture from three different dashboards.",
       },
       {
-        p: "Worse, the volume of false alarms produces what's called alert fatigue: the team gradually starts ignoring alerts, so the real one passes unnoticed. AIOps exists to break that loop.",
+        p: "The volume of false alarms also produces what's called alert fatigue: the team gradually starts ignoring alerts, so the real one passes unnoticed. AIOps exists to break that loop.",
       },
 
       { h: "The difference between correlation and causation" },
       {
-        p: "This distinction is the heart of the entire subject, and most marketing deliberately blurs it. Let's make it concrete.",
+        p: "This distinction is fundamental, and marketing material usually blurs it. The following example makes it concrete.",
       },
       {
-        p: "Imagine an incident: your app is slow. The tool tells you database CPU spiked, response time increased, and error rate rose. All at the same moment.",
+        p: "An example: an application is slow. The tool tells you database CPU spiked, response time increased, and error rate rose. All at the same moment.",
       },
       {
         list: [
@@ -2044,7 +2044,7 @@ await server.connect(new StdioServerTransport());`,
         p: "And a core point: traditional rule-based alerting catches only pre-known failure modes. The whole point of AIOps is detecting the unexpected anomalies. Which cause a significant share of production outages.",
       },
 
-      { h: "Open-source tools. Start here" },
+      { h: "Open-source tools" },
       {
         table: {
           headers: ["Tool", "Provides"],
@@ -2073,7 +2073,7 @@ await server.connect(new StdioServerTransport());`,
         p: "Dynatrace leads for large enterprises needing deterministic causal AI rather than statistical correlation. An engine that builds an actual dependency map between components.",
       },
       {
-        p: "Logz.io's OrionIQ represents the agentic generation: agents begin the moment an alert fires, analyzing logs, metrics, and traces simultaneously, and producing a consolidated root cause before an engineer opens a single dashboard. Crucially, they operate within the procedures and runbooks your team has already established.",
+        p: "Logz.io's OrionIQ represents the agentic generation: agents begin the moment an alert fires, analyzing logs, metrics, and traces simultaneously, and producing a consolidated root cause before an engineer opens a single dashboard. They operate within the procedures and runbooks the team has already established.",
       },
       {
         p: "OpenObserve combines a three-layer AI stack with full-fidelity telemetry at dramatically lower storage cost than legacy platforms. Worth calculating in log-heavy environments.",
@@ -2081,7 +2081,7 @@ await server.connect(new StdioServerTransport());`,
 
       { h: "How to actually measure success" },
       {
-        p: "Don't judge an AIOps tool by the demo. Measure it with before-and-after numbers on your own environment:",
+        p: "An AIOps tool is judged by before-and-after numbers on the actual environment, not by a demo:",
       },
       {
         list: [
@@ -2101,7 +2101,7 @@ await server.connect(new StdioServerTransport());`,
         p: "Does the tool learn from your environment over time? A tool that gives you the same generic analysis on day 100 as on day 1 hasn't captured the institutional knowledge that makes an experienced engineer effective.",
       },
       {
-        p: "Look for what builds organization-specific knowledge from past incidents, runbooks, and team feedback. That's what separates a useful assistant from a genuine diagnostic partner.",
+        p: "Look for what builds organization-specific knowledge from past incidents, runbooks, and team feedback. That is the difference between an assistive tool and an actual diagnostic one.",
       },
 
       { h: "A practical adoption plan" },
@@ -2147,10 +2147,10 @@ await server.connect(new StdioServerTransport());`,
       "A technical guide to building a voice agent wired into internal systems: the four-stage cascade architecture, mid-call function calling, a tool comparison, the latency budget, and CST and PDPL requirements in Saudi Arabia.",
     body: [
       {
-        p: "أغلب مشاريع الوكلاء الصوتية تتوقف عند عرض تجريبي جميل: صوت طبيعي يجيب عن أسئلة عامة. لكن القيمة الحقيقية لا تبدأ إلا حين يتصل الوكيل بأنظمتك فعليًا. يقرأ حالة طلب، يفتح تذكرة، يتحقق من هوية.",
+        p: "أغلب مشاريع الوكلاء الصوتية تتوقف عند عرض تجريبي جميل: صوت طبيعي يجيب عن أسئلة عامة. والقيمة العملية تبدأ حين يتصل الوكيل بالأنظمة فعليًا. يقرأ حالة طلب، يفتح تذكرة، يتحقق من هوية.",
       },
       {
-        p: "هذه المقالة تشرح كيف يحدث ذلك تقنيًا، وما القيود التي ستصطدم بها.",
+        p: "وفيما يلي كيف يحدث ذلك تقنيًا، والقيود المرتبطة به.",
       },
 
       { h: "الفرق الجوهري عن IVR التقليدي" },
@@ -2202,7 +2202,7 @@ await server.connect(new StdioServerTransport());`,
 
       { h: "كيف يبدو استدعاء نظام أثناء المكالمة" },
       {
-        p: "لنأخذ سيناريو واقعيًا: موظف يتصل ليسأل عن حالة طلب صيانة. ما يحدث فعليًا:",
+        p: "سيناريو واقعي: موظف يتصل ليسأل عن حالة طلب صيانة. ما يحدث فعليًا:",
       },
       {
         list: [
@@ -2278,12 +2278,12 @@ await server.connect(new StdioServerTransport());`,
         ],
       },
       {
-        p: "المكسب الرابع يُستهان به دائمًا. سوق الوكلاء الصوتية يتغيّر بسرعة، ومن يبني تكاملاته مباشرة داخل منصة مزوّد واحد يدفع ثمن التبديل مرتين.",
+        p: "والمكسب الرابع يُغفل عادة. سوق الوكلاء الصوتية يتغيّر بسرعة، ومن يبني تكاملاته مباشرة داخل منصة مزوّد واحد يدفع ثمن التبديل مرتين.",
       },
 
       { h: "ميزانية الاستجابة تحكم كل قرار" },
       {
-        p: "في العالم الصوتي، زمن الاستجابة هو المنتج نفسه. لا تقيّم أي مكوّن دون حساب كلفته الزمنية.",
+        p: "في العالم الصوتي، زمن الاستجابة هو المنتج نفسه. ولا يُقيَّم أي مكوّن دون حساب كلفته الزمنية.",
       },
       {
         list: [
@@ -2327,7 +2327,7 @@ await server.connect(new StdioServerTransport());`,
         ],
       },
       {
-        p: "الخطأ الأشيع في التسلسل: البدء بالصوت مباشرة. تنتهي وأنت تصحّح مشاكل منطق واستدعاءات وأنت تحت ضغط زمن الاستجابة. بدل أن تكون قد حللتها في واجهة نصية هادئة.",
+        p: "والخطأ الأشيع في التسلسل هو البدء بالصوت مباشرة، فتُصحَّح مشاكل المنطق والاستدعاءات تحت ضغط زمن الاستجابة بدل حلها مسبقًا في واجهة نصية.",
       },
     ],
     bodyEn: [
@@ -2335,7 +2335,7 @@ await server.connect(new StdioServerTransport());`,
         p: "Most voice agent projects stall at a pretty demo: a natural voice answering generic questions. But the real value only begins when the agent actually connects to your systems. Reading a request's status, opening a ticket, verifying an identity.",
       },
       {
-        p: "This article explains how that happens technically, and which constraints you'll run into.",
+        p: "The following covers how that happens technically, and the associated constraints.",
       },
 
       { h: "The fundamental difference from a traditional IVR" },
@@ -2389,7 +2389,7 @@ await server.connect(new StdioServerTransport());`,
 
       { h: "What a mid-call system invocation looks like" },
       {
-        p: "Take a realistic scenario: an employee calls to ask about a maintenance request status. What actually happens:",
+        p: "A realistic scenario: an employee calls to ask about a maintenance request status. What actually happens:",
       },
       {
         list: [
@@ -2467,12 +2467,12 @@ await server.connect(new StdioServerTransport());`,
         ],
       },
       {
-        p: "The fourth win is consistently underrated. The voice agent market is shifting fast, and whoever builds integrations directly inside one provider's platform pays the switching cost twice.",
+        p: "The fourth benefit is usually overlooked. The voice agent market is shifting fast, and whoever builds integrations directly inside one provider's platform pays the switching cost twice.",
       },
 
       { h: "The latency budget governs every decision" },
       {
-        p: "In the voice world, latency is the product itself. Never evaluate a component without accounting for its time cost.",
+        p: "In the voice world, latency is the product itself. No component is evaluated without accounting for its time cost.",
       },
       {
         list: [
@@ -2516,7 +2516,7 @@ await server.connect(new StdioServerTransport());`,
         ],
       },
       {
-        p: "The most common sequencing error: starting with voice directly. You end up debugging logic and invocation problems while under latency pressure. Instead of having solved them in a calm text interface first.",
+        p: "The most common sequencing error is starting with voice directly, which means debugging logic and invocation problems under latency pressure instead of resolving them beforehand in a text interface.",
       },
     ],
     refs: [
@@ -2634,13 +2634,13 @@ await server.connect(new StdioServerTransport());`,
       },
       {
         h: "الشفافية والثقة",
-        p: "السؤال ليس أيهما أكثر شفافية بشكل مطلق، بل أي جزء من النظام تحتاج شفافية فيه. Hermes يجعل حلقة الوكيل نفسها مقروءة، تربط المخرجات بالذاكرة والمهارات والتصحيحات السابقة. OpenClaw يعطيك نوعًا آخر من الرؤية: حالة الخدمة، وضع الـ gateway، توجيه الجلسات، بنية مساحات العمل، وتثبيت الإضافات أنسب حين تكون المشكلة تعقيدًا تشغيليًا لا تشكيل سلوك وكيل.",
+        p: "السؤال ليس أيهما أكثر شفافية بشكل مطلق، بل أي جزء من النظام تحتاج شفافية فيه. Hermes يجعل حلقة الوكيل نفسها مقروءة، تربط المخرجات بالذاكرة والمهارات والتصحيحات السابقة. OpenClaw يعطيك نوعًا آخر من الرؤية: حالة الخدمة، وضع الـ gateway، توجيه الجلسات، بنية مساحات العمل، وتثبيت الإضافات. وهذا أنسب حين تكون المشكلة تعقيدًا تشغيليًا لا تشكيل سلوك وكيل.",
       },
       { h: "أيهما تختار؟", p: "" },
       { svg: DECISION_SVG },
       {
         h: "الخلاصة",
-        p: "Hermes أفضل لتدريب وكيل عمل موثوق يراكم الخبرة، وOpenClaw أفضل لبناء منصة وكلاء أوسع. إن كانت أولويتك تراكم القدرة عبر الذاكرة وتوليد المهارات، فـ Hermes يملك الفكرة الأميز. وإن كانت أولويتك تشغيل بيئة ذكاء اصطناعي محلية بأسطح متعددة ووكلاء معزولين وتحكم في الـ gateway، فـ OpenClaw يملك القصة الهندسية الأقوى. السؤال باختصار: هل تريد تطوير وكيل، أم تشغيل طبقة تحكم؟",
+        p: "Hermes أفضل لتدريب وكيل عمل موثوق يراكم الخبرة، وOpenClaw أفضل لبناء منصة وكلاء أوسع. إن كانت أولويتك تراكم القدرة عبر الذاكرة وتوليد المهارات، فـ Hermes أقرب لذلك. وإن كانت أولويتك تشغيل بيئة ذكاء اصطناعي محلية بأسطح متعددة ووكلاء معزولين وتحكم في الـ gateway، فـ OpenClaw أقرب لذلك. والفارق باختصار بين تطوير وكيل وتشغيل طبقة تحكم.",
       },
     ],
     bodyEn: [
@@ -2731,13 +2731,13 @@ await server.connect(new StdioServerTransport());`,
       },
       {
         h: "Transparency and trust",
-        p: "The question isn't which is more transparent in the absolute, but which part of the system you need transparency into. Hermes makes the agent loop itself legible, you connect outputs back to memory, skills, and prior corrections. OpenClaw gives a different kind of visibility: service state, gateway status, session routing, workspace structure, and plugin installation better when the problem is operational complexity rather than shaping agent behavior.",
+        p: "The question isn't which is more transparent in the absolute, but which part of the system you need transparency into. Hermes makes the agent loop itself legible, you connect outputs back to memory, skills, and prior corrections. OpenClaw gives a different kind of visibility: service state, gateway status, session routing, workspace structure, and plugin installation. That suits cases where the problem is operational complexity rather than shaping agent behavior.",
       },
       { h: "Which should you choose?", p: "" },
       { svg: DECISION_SVG },
       {
         h: "The verdict",
-        p: "Hermes is better for training a dependable working agent that compounds experience; OpenClaw is better for building a broader agent platform. If your priority is compounding capability through memory and skill creation, Hermes has the more distinctive idea. If your priority is operating a local AI environment with multiple surfaces, isolated agents, and gateway control, OpenClaw has the stronger systems story. In short: do you want to develop an agent, or operate a control plane?",
+        p: "Hermes is better for training a dependable working agent that compounds experience; OpenClaw is better for building a broader agent platform. If your priority is compounding capability through memory and skill creation, Hermes is the closer fit. If your priority is operating a local AI environment with multiple surfaces, isolated agents, and gateway control, OpenClaw is the closer fit. In short, the difference is between developing an agent and operating a control plane.",
       },
     ],
     refs: [
@@ -2767,7 +2767,7 @@ await server.connect(new StdioServerTransport());`,
       "A memory system for AI agents from Tencent, with four hierarchical layers and a local SQLite backend. Uses Mermaid maps to compress tool logs, and runs as a plugin for OpenClaw and Hermes.",
     body: [
       {
-        p: "أنظمة الذاكرة التقليدية للوكلاء تقطّع المحادثات لشظايا وتضعها في مخزن متجهات مسطح، يتحول الاسترجاع لبحث أعمى بلا سياق هرمي. مشروع TencentDB Agent Memory يرفض هذا النمط، ويبني بدلًا منه هرمًا دلاليًا بأربع طبقات: محادثة خام (L0، حقائق ذرية (L1)، مشاهد (L2)، وأخيرًا ملف شخصي مكثف للمستخدم (L3)) كل طبقة يمكن الغوص منها للطبقة الأسفل عند الحاجة لتفاصيل دقيقة.",
+        p: "أنظمة الذاكرة التقليدية للوكلاء تقطّع المحادثات لشظايا وتضعها في مخزن متجهات مسطح، يتحول الاسترجاع لبحث أعمى بلا سياق هرمي. مشروع TencentDB Agent Memory يرفض هذا النمط، ويبني بدلًا منه هرمًا دلاليًا بأربع طبقات: محادثة خام (L0)، وحقائق ذرية (L1)، ومشاهد (L2)، وملف شخصي مكثف للمستخدم (L3). ويمكن الغوص من كل طبقة إلى ما تحتها عند الحاجة لتفاصيل دقيقة.",
       },
       {
         h: "الذاكرة الرمزية لضغط السياق",
@@ -2775,11 +2775,11 @@ await server.connect(new StdioServerTransport());`,
       },
       {
         h: "أرقام حقيقية من الاختبارات",
-        p: "عند دمجه مع منصة OpenClaw، خفّض استهلاك التوكنات حتى 61.38% ورفع معدل نجاح المهام 51.52% نسبيًا على اختبار WideSearch، ورفع دقة استرجاع الشخصية (PersonaMem) من 48% إلى 76%. نتائج مقاسة عبر جلسات طويلة مستمرة لا لفتات معزولة.",
+        p: "عند دمجه مع منصة OpenClaw، خفّض استهلاك التوكنات حتى 61.38% ورفع معدل نجاح المهام 51.52% نسبيًا على اختبار WideSearch، ورفع دقة استرجاع الشخصية (PersonaMem) من 48% إلى 76%. وهي نتائج مقاسة عبر جلسات طويلة مستمرة لا لفتات معزولة.",
       },
       {
         h: "التشغيل وقابلية الفحص",
-        p: "يعمل كإضافة (plugin) مباشرة لمنصتي OpenClaw وHermes، بخلفية SQLite محلية افتراضيًا بدون أي اعتماد على خدمة سحابية خارجية إلزامية. كل الملفات الوسيطة (الشخصية، المشاهد، خرائط المهام) نصوص Markdown أو Mermaid قابلة للفتح والفحص مباشرة. تصحيح الأخطاء يصير مسارًا واضحًا من الملف الشخصي رجوعًا للمحادثة الخام، لا صندوقًا أسود من درجات تشابه متجهية.",
+        p: "يعمل كإضافة (plugin) مباشرة لمنصتي OpenClaw وHermes، بخلفية SQLite محلية افتراضيًا بدون أي اعتماد على خدمة سحابية خارجية إلزامية. كل الملفات الوسيطة (الشخصية، المشاهد، خرائط المهام) نصوص Markdown أو Mermaid قابلة للفتح والفحص مباشرة. ويصبح تصحيح الأخطاء مسارًا واضحًا من الملف الشخصي رجوعًا للمحادثة الخام، لا صندوقًا أسود من درجات تشابه متجهية.",
       },
     ],
     bodyEn: [
@@ -2819,7 +2819,7 @@ await server.connect(new StdioServerTransport());`,
       "A Microsoft toolkit that enforces security policy on AI agent tool calls in application code. Covers all OWASP Agentic Top 10 categories, and ships for five languages with Claude Code and Copilot integrations.",
     body: [
       {
-        p: "هجمات حقن الأوامر (prompt injection) نجحت بنسبة تقارب 100% ضد نماذج كبرى في أبحاث أكاديمية حديثة. أي ضابط أمان يعتمد فقط على تعليمات داخل الـ prompt نفسه غير موثوق. مشروع Agent Governance Toolkit من مايكروسوفت يحل هذا بطريقة مختلفة تمامًا: يعترض كل استدعاء أداة أو رسالة أو تفويض في كود التطبيق نفسه، قبل ما تصل نية النموذج للتنفيذ الفعلي.",
+        p: "هجمات حقن الأوامر (prompt injection) نجحت بنسبة تقارب 100% ضد نماذج كبرى في أبحاث أكاديمية حديثة. أي ضابط أمان يعتمد فقط على تعليمات داخل الـ prompt نفسه غير موثوق. مشروع Agent Governance Toolkit من مايكروسوفت يحل هذا بطريقة مختلفة تمامًا: يعترض كل استدعاء أداة أو رسالة أو تفويض في كود التطبيق نفسه، قبل وصول نية النموذج إلى التنفيذ الفعلي.",
       },
       {
         h: "كيف تبدو الحوكمة عمليًا",
@@ -2870,7 +2870,7 @@ await server.connect(new StdioServerTransport());`,
       "A terminal file manager written in Go on the Bubble Tea library. Supports multiple panels, tabs, a theming system, and plugins, and runs on macOS, Linux, and Windows.",
     body: [
       {
-        p: "مديرو الملفات الطرفية التقليدية (مثل ranger أو nnn) قوية لكن واجهاتها قديمة وتعلّمها صعب. Superfile مكتوب بلغة Go فوق مكتبة Bubble Tea الشهيرة، يقدم واجهة حديثة ملونة داخل الطرفية نفسها. بدون التضحية بسرعة أو خفة الأدوات النصية.",
+        p: "مديرو الملفات الطرفية التقليدية (مثل ranger أو nnn) قوية، لكن واجهاتها قديمة ومنحنى تعلّمها حاد. Superfile مكتوب بلغة Go فوق مكتبة Bubble Tea الشهيرة، يقدم واجهة حديثة ملونة داخل الطرفية نفسها. مع الحفاظ على سرعة الأدوات النصية وخفتها.",
       },
       {
         h: "التثبيت والتشغيل",
@@ -2921,19 +2921,19 @@ await server.connect(new StdioServerTransport());`,
       "An open voice pipeline from Hugging Face: voice activity detection, transcription, a language model, then speech synthesis. Every component is swappable, and the interface is compatible with the OpenAI Realtime protocol.",
     body: [
       {
-        p: "أغلب المساعدات الصوتية الفورية (زي ميزة Realtime من OpenAI) تعمل كصندوق أسود سحابي. مشروع Speech To Speech من Hugging Face يعيد بناء نفس الفكرة كخط أنابيب مفتوح بالكامل: كشف نشاط صوتي (VAD)، تحويل كلام لنص (STT)، نموذج لغوي (LLM)، ثم تحويل نص لكلام (TTS). كل مرحلة تشتغل على خيط مستقل وتتواصل عبر طوابير، وكل مكون فيها قابل للاستبدال بأمر سطر واحد.",
+        p: "أغلب المساعدات الصوتية الفورية (مثل ميزة Realtime من OpenAI) تعمل كصندوق أسود سحابي. مشروع Speech To Speech من Hugging Face يعيد بناء نفس الفكرة كخط أنابيب مفتوح بالكامل: كشف نشاط صوتي (VAD)، تحويل كلام لنص (STT)، نموذج لغوي (LLM)، ثم تحويل نص لكلام (TTS). كل مرحلة تشتغل على خيط مستقل وتتواصل عبر طوابير، وكل مكون فيها قابل للاستبدال بأمر سطر واحد.",
       },
       {
         h: "التشغيل بأمر واحد",
-        p: "أمر تثبيت واحد ثم أمر تشغيل واحد يشغّل خادمًا متوافقًا مع بروتوكول OpenAI Realtime على المنفذ المحلي. بنموذج Parakeet TDT للتفريغ وQwen3-TTS للصوت افتراضيًا. أي عميل يدعم Realtime API يستطيع يتصل مباشرة بدون أي تعديل.",
+        p: "أمر تثبيت واحد ثم أمر تشغيل واحد يشغّل خادمًا متوافقًا مع بروتوكول OpenAI Realtime على المنفذ المحلي. بنموذج Parakeet TDT للتفريغ وQwen3-TTS للصوت افتراضيًا. وأي عميل يدعم Realtime API يتصل مباشرة بدون تعديل.",
       },
       {
         h: "مرونة اختيار النموذج اللغوي",
-        p: "النموذج اللغوي (أكثر مرحلة استهلاكًا للوقت والمعالجة في خط الأنابيب) يستطيع يكون محليًا بالكامل عبر llama.cpp أو vLLM على عتادك، أو عبر أي مزود متوافق مع OpenAI (HF Inference Providers، OpenRouter، أو OpenAI نفسها). تبديل المزود سطر واحد فقط في أمر التشغيل.",
+        p: "النموذج اللغوي (أكثر مرحلة استهلاكًا للوقت والمعالجة في خط الأنابيب) يمكن تشغيله محليًا بالكامل عبر llama.cpp أو vLLM على عتادك، أو عبر أي مزود متوافق مع OpenAI (HF Inference Providers، OpenRouter، أو OpenAI نفسها). تبديل المزود سطر واحد فقط في أمر التشغيل.",
       },
       {
         h: "الاستخدام في الإنتاج ودعم اللغات",
-        p: "المشروع يشغّل فعليًا محادثات آلاف من روبوتات Reachy Mini في الإنتاج، وهذا مؤشر نضج حقيقي لا مجرد عرض تجريبي. الدعم اللغوي يعتمد على النموذج المختار لا على خط الأنابيب نفسه، ويدعم التبديل التلقائي بين اللغات عبر خيار تشغيل مخصص.",
+        p: "المشروع يشغّل فعليًا محادثات آلاف من روبوتات Reachy Mini في الإنتاج، وهو مؤشر نضج تشغيلي لا مجرد عرض تجريبي. الدعم اللغوي يعتمد على النموذج المختار لا على خط الأنابيب نفسه، ويدعم التبديل التلقائي بين اللغات عبر خيار تشغيل مخصص.",
       },
     ],
     bodyEn: [
@@ -2972,11 +2972,11 @@ await server.connect(new StdioServerTransport());`,
       "A unified operating layer across seven coding agent tools (Claude Code, Cursor, Codex, and others). Includes 260+ ready skills and a security scanner for agent configuration with 102 static-analysis rules.",
     body: [
       {
-        p: "كل من جرّب أكثر من أداة وكيل برمجي واحدة (Claude Code، Cursor، Codex، OpenCode…) يعرف المشكلة: كل أداة تبدأ محادثة جديدة بلا ذاكرة لما تعلمته سابقًا، ولا معايير برمجة موحدة، ولا طبقة أمان افتراضية. مشروع ECC يبني هذه الطبقة مرة واحدة، وتعمل عبر كل الأدوات.",
+        p: "عند استخدام أكثر من أداة وكيل برمجي (Claude Code، Cursor، Codex، OpenCode…) تظهر مشكلة متكررة: كل أداة تبدأ محادثة جديدة بلا ذاكرة لما تعلمته سابقًا، ولا معايير برمجة موحدة، ولا طبقة أمان افتراضية. مشروع ECC يبني هذه الطبقة مرة واحدة، وتعمل عبر كل الأدوات.",
       },
       {
         h: "ما الذي يضيفه",
-        p: "أكثر من 260 «مهارة» جاهزة تغطي لغات وأطر عمل متعددة (TypeScript، Python، Go، Rust، Java، PHP وغيرها)، عشرات الوكلاء الفرعيين المتخصصين (مراجعة كود، إصلاح بناء، اختبار E2E، مراجعة أمنية)، ونظام «تعلم مستمر» يستخرج أنماط عمل من جلساتك السابقة ويحقنها في الجلسات القادمة تلقائيًا.",
+        p: "أكثر من 260 «مهارة» جاهزة تغطي لغات وأطر عمل متعددة (TypeScript، Python، Go، Rust، Java، PHP وغيرها)، عشرات الوكلاء الفرعيين المتخصصين (مراجعة كود، إصلاح بناء، اختبار E2E، مراجعة أمنية)، ونظام «تعلم مستمر» يستخرج أنماط العمل من الجلسات السابقة ويحقنها في الجلسات التالية تلقائيًا.",
       },
       {
         h: "الأمان كطبقة مدمجة",
@@ -2984,12 +2984,12 @@ await server.connect(new StdioServerTransport());`,
       },
       {
         h: "الأدوات المدعومة وطريقة التثبيت",
-        p: "يدعم المشروع Claude Code وCursor وCodex وOpenCode وGemini CLI وZed وGitHub Copilot ضمن أدوات أخرى. نفس القواعد والمهارات تنتقل معك بين الأدوات. قبل التثبيت، اختر مسارًا واحدًا فقط (الإضافة الجاهزة أو التثبيت اليدوي) وتجنّب تكديس الطريقتين، لأنه أشيع سبب لتكرار السلوك وتضارب الإعدادات حسب توثيق المشروع نفسه.",
+        p: "يدعم المشروع Claude Code وCursor وCodex وOpenCode وGemini CLI وZed وGitHub Copilot ضمن أدوات أخرى. والقواعد والمهارات نفسها تنتقل بين الأدوات. ويوصى قبل التثبيت باختيار مسار واحد فقط (الإضافة الجاهزة أو التثبيت اليدوي) دون الجمع بينهما، لأنه أشيع سبب لتكرار السلوك وتضارب الإعدادات حسب توثيق المشروع نفسه.",
       },
     ],
     bodyEn: [
       {
-        p: "Anyone who has tried more than one coding agent tool (Claude Code, Cursor, Codex, OpenCode…) knows the problem: every tool starts a fresh session with no memory of what it learned before, no shared coding standards, and no default security layer. The ECC project builds that layer once, and it works across every tool.",
+        p: "Using more than one coding agent tool (Claude Code, Cursor, Codex, OpenCode…) surfaces a recurring problem: every tool starts a fresh session with no memory of what it learned before, no shared coding standards, and no default security layer. The ECC project builds that layer once, and it works across every tool.",
       },
       {
         h: "What it adds",
@@ -3018,11 +3018,11 @@ await server.connect(new StdioServerTransport());`,
       "A meeting assistant that runs entirely on-device, built with Rust and Tauri. Transcribes live via Whisper or Parakeet, and summarizes through a local model or any OpenAI-compatible endpoint.",
     body: [
       {
-        p: "تكلفة متوسط اختراق البيانات بلغت 4.4 مليون دولار عام 2024 حسب تقرير IBM، وغرامات GDPR تجاوزت 5.88 مليار يورو حتى 2025. أرقام تجعل أي مسؤول تقني يعيد التفكير قبل رفع تسجيل اجتماع حساس لأداة سحابية. مشروع Meetily يحل هذا بمعالجة كاملة على الجهاز نفسه، دون إرسال أي بيانات للسحابة.",
+        p: "تكلفة متوسط اختراق البيانات بلغت 4.4 مليون دولار عام 2024 حسب تقرير IBM، وغرامات GDPR تجاوزت 5.88 مليار يورو حتى 2025. وهي أرقام ذات أثر مباشر على قرار رفع تسجيل اجتماع حساس إلى أداة سحابية. مشروع Meetily يحل هذا بمعالجة كاملة على الجهاز نفسه، دون إرسال أي بيانات للسحابة.",
       },
       {
         h: "كيف يعمل",
-        p: "يسجّل الاجتماع (المايكروفون وصوت النظام معًا)، يفرّغه لحظيًا عبر نماذج Whisper أو Parakeet (أسرع بأربع مرات حسب مطوّري المشروع)، ثم يولّد ملخصًا عبر نموذج لغوي من اختيارك. Ollama محليًا، أو Claude وGroq وOpenRouter، أو أي نقطة نهاية متوافقة مع OpenAI.",
+        p: "يسجّل الاجتماع (المايكروفون وصوت النظام معًا)، يفرّغه لحظيًا عبر نماذج Whisper أو Parakeet (أسرع بأربع مرات حسب مطوّري المشروع)، ثم يولّد ملخصًا عبر نموذج لغوي محدد. Ollama محليًا، أو Claude وGroq وOpenRouter، أو أي نقطة نهاية متوافقة مع OpenAI.",
       },
       {
         h: "البنية التقنية",
@@ -3030,7 +3030,7 @@ await server.connect(new StdioServerTransport());`,
       },
       {
         h: "النسخة المجانية مقابل التجارية",
-        p: "النسخة المجتمعية مجانية ومفتوحة المصدر بالكامل، وتغطي التفريغ اللحظي والتلخيص محليًا. نسخة PRO تجارية تضيف دقة أعلى وقوالب تصدير وتمييزًا للمتحدثين. مناسبة للفرق، لكن جوهر الخصوصية والمعالجة المحلية يبقى في النسخة المجانية.",
+        p: "النسخة المجتمعية مجانية ومفتوحة المصدر بالكامل، وتغطي التفريغ اللحظي والتلخيص محليًا. نسخة PRO تجارية تضيف دقة أعلى وقوالب تصدير وتمييزًا للمتحدثين. وهي موجّهة للفرق، مع بقاء الخصوصية والمعالجة المحلية في النسخة المجانية.",
       },
     ],
     bodyEn: [
@@ -3070,7 +3070,7 @@ await server.connect(new StdioServerTransport());`,
       "A headless browser written from scratch in Zig for agent automation. Speaks the CDP protocol so it works with Puppeteer and Playwright, and uses far less memory than headless Chrome.",
     body: [
       {
-        p: "مشروع Lightpanda Browser متصفح بلا واجهة رسومية (headless) مبني من الصفر بلغة Zig. ليس فرعًا من Chromium ولا من WebKit. الهدف صريح منذ البداية: أتمتة الويب ووكلاء الذكاء الاصطناعي، لا التصفح البشري.",
+        p: "مشروع Lightpanda Browser متصفح بلا واجهة رسومية (headless) مبني من الصفر بلغة Zig. ليس فرعًا من Chromium ولا من WebKit. والهدف المعلن: أتمتة الويب ووكلاء الذكاء الاصطناعي، لا التصفح البشري.",
       },
       {
         h: "الفرق في الأداء",
@@ -3082,12 +3082,12 @@ await server.connect(new StdioServerTransport());`,
       },
       {
         h: "التوافق ومرحلة النضج",
-        p: "يدعم بروتوكول CDP القياسي (نفس بروتوكول Chrome DevTools)، فيعمل مباشرة مع Puppeteer وPlaywright دون تعديل كبير على السكربتات الحالية. المشروع لا يزال في مرحلة Beta وتغطيته لواجهات الويب لا تصل بعد لمستوى Chrome الكامل. يستحق التجربة في مهام زحف وأتمتة محددة، لا كبديل كامل فوري.",
+        p: "يدعم بروتوكول CDP القياسي (نفس بروتوكول Chrome DevTools)، فيعمل مباشرة مع Puppeteer وPlaywright دون تعديل كبير على السكربتات الحالية. المشروع لا يزال في مرحلة Beta وتغطيته لواجهات الويب لا تصل بعد لمستوى Chrome الكامل. ويصلح لمهام زحف وأتمتة محددة، لا كبديل كامل عن Chrome.",
       },
     ],
     bodyEn: [
       {
-        p: "Lightpanda Browser is a headless browser built entirely from scratch in Zig. Not a fork of Chromium or WebKit. Its stated goal from the start is explicit: web automation and AI agents, not human browsing.",
+        p: "Lightpanda Browser is a headless browser built entirely from scratch in Zig. Not a fork of Chromium or WebKit. Its stated goal: web automation and AI agents, not human browsing.",
       },
       {
         h: "The performance difference",
@@ -3122,7 +3122,7 @@ await server.connect(new StdioServerTransport());`,
       "An open-source desktop app from Andrew Ng. Executes tasks across your files, terminal, and connected tools, asking for approval before consequential actions. Runs with your own key or fully locally via Ollama.",
     body: [
       {
-        p: "أغلب أدوات الذكاء الاصطناعي للمطورين والمستخدمين تقترح وتترك التنفيذ لك. OpenWorker، المشروع مفتوح المصدر من Andrew Ng، يذهب بالفكرة خطوة أبعد: تطبيق سطح مكتب يعمل كزميل عمل حقيقي. يفهم الهدف، يخطط، ينفّذ عبر ملفاتك وأدواتك، ويسلّمك النتيجة النهائية جاهزة، لا قائمة مهام.",
+        p: "أغلب أدوات الذكاء الاصطناعي للمطورين والمستخدمين تقترح وتترك التنفيذ لك. OpenWorker، المشروع مفتوح المصدر من Andrew Ng، يعمل كتطبيق سطح مكتب ينفّذ المهمة كاملة: يفهم الهدف، ويخطط، وينفّذ عبر الملفات والأدوات المتصلة، ويسلّم النتيجة النهائية بدل قائمة مهام.",
       },
       {
         h: "كيف يعمل",
@@ -3130,7 +3130,7 @@ await server.connect(new StdioServerTransport());`,
       },
       {
         h: "البنية التقنية",
-        p: "المحرك مبني على مكتبة aisuite (من نفس الفريق) اللي توحّد واجهة الدردشة عبر مزودي النماذج المختلفين، مع طبقة وكلاء وأدوات ودعم MCP. التطبيق نفسه: قشرة سطح مكتب (Tauri) فوق خادم وكيل محلي بلغة Python، بلا قفل على مزود نموذج معين. تربطه بمفتاحك الخاص من OpenAI أو Anthropic أو Google، أو تشغّله بالكامل محليًا عبر Ollama.",
+        p: "المحرك مبني على مكتبة aisuite (من نفس الفريق) التي توحّد واجهة الدردشة عبر مزودي النماذج المختلفين، مع طبقة وكلاء وأدوات ودعم MCP. التطبيق نفسه: قشرة سطح مكتب (Tauri) فوق خادم وكيل محلي بلغة Python، بلا قفل على مزود نموذج معين. تربطه بمفتاحك الخاص من OpenAI أو Anthropic أو Google، أو تشغّله بالكامل محليًا عبر Ollama.",
       },
       {
         h: "الخصوصية والتكامل",
@@ -3138,12 +3138,12 @@ await server.connect(new StdioServerTransport());`,
       },
       {
         h: "التكامل وتوسيع الصلاحيات",
-        p: "يدعم العمل من داخل Slack مباشرة (منشن @OpenWorker يفتح جلسة على جهازك)، وأتمتة مجدولة (تقرير صباحي، مراقبة قناة أسبوعية). قبل منحه صلاحية تنفيذ فعلية على بيانات أو حسابات حقيقية، جرّبه أولًا على مهام محدودة النطاق وراقب نمط طلبات الموافقة قبل توسيع الصلاحيات. نفس المبدأ المتكرر مع كل وكيل تنفيذي: الثقة تُبنى تدريجيًا، لا تُمنح دفعة واحدة.",
+        p: "يدعم العمل من داخل Slack مباشرة (منشن @OpenWorker يفتح جلسة على جهازك)، وأتمتة مجدولة (تقرير صباحي، مراقبة قناة أسبوعية). قبل منحه صلاحية تنفيذ فعلية على بيانات أو حسابات حقيقية، يُجرَّب أولًا على مهام محدودة النطاق مع مراقبة نمط طلبات الموافقة قبل توسيع الصلاحيات. والمبدأ نفسه ينطبق على أي وكيل تنفيذي: توسيع الصلاحيات يتم تدريجيًا لا دفعة واحدة.",
       },
     ],
     bodyEn: [
       {
-        p: "Most AI tools for developers and everyday users suggest and leave execution to you. OpenWorker, an open-source project from Andrew Ng, takes the idea a step further: a desktop app that acts as a real coworker. It understands the goal, plans, executes across your files and tools, and hands you the finished result, not a to-do list.",
+        p: "Most AI tools for developers and everyday users suggest and leave execution to you. OpenWorker, an open-source project from Andrew Ng, runs as a desktop app that completes the task: it understands the goal, plans, executes across files and connected tools, and delivers the finished result rather than a to-do list.",
       },
       {
         h: "How it works",
@@ -3159,7 +3159,7 @@ await server.connect(new StdioServerTransport());`,
       },
       {
         h: "Integrations and expanding permissions",
-        p: "It supports working directly from Slack (mentioning @OpenWorker opens a session on your machine) and scheduled automations (a morning brief, a standing weekly channel watch). Before granting it real execution authority over real data or accounts, try it first on narrow-scope tasks and watch the pattern of its approval requests before expanding permissions. The same principle that repeats with every executing agent: trust is built gradually, not granted all at once.",
+        p: "It supports working directly from Slack (mentioning @OpenWorker opens a session on your machine) and scheduled automations (a morning brief, a standing weekly channel watch). Before granting it real execution authority over real data or accounts, it is trialled first on narrow-scope tasks with attention to its approval-request pattern before permissions are expanded. The same principle that repeats with every executing agent: trust is built gradually, not granted all at once.",
       },
     ],
     refs: [
@@ -3228,7 +3228,7 @@ await server.connect(new StdioServerTransport());`,
       "A software-defined network from Flomesh, end-to-end encrypted and built on HTTP/2. Works behind CGNAT and through proxies, and serves as an alternative to solutions like Tailscale.",
     body: [
       {
-        p: 'لعقود، بنينا أمن الشبكات على فكرة المحيط: جدار ناري قوي في الخارج، وثقة واسعة في الداخل. لكن العمل عن بعد والخدمات السحابية جعلت "الداخل" و"الخارج" مفهومين بلا معنى. هنا يأتي نموذج Zero Trust: لا ثقة افتراضية لأي طرف.',
+        p: 'لعقود، بُني أمن الشبكات على فكرة المحيط: جدار ناري قوي في الخارج، وثقة واسعة في الداخل. لكن العمل عن بعد والخدمات السحابية جعلت "الداخل" و"الخارج" مفهومين بلا معنى. هنا يأتي نموذج Zero Trust: لا ثقة افتراضية لأي طرف.',
       },
       {
         h: "ماذا يقدم ZTM",
@@ -3236,12 +3236,12 @@ await server.connect(new StdioServerTransport());`,
       },
       {
         h: "الاستخدام في المختبر المنزلي",
-        p: "لمن يدير homelab خلف CGNAT، هذه الفئة من الحلول تتيح: وصول آمن دون فتح منافذ ودون المرور بخادم مركزي. ابدأ بخدمة واحدة غير حرجة وقس زمن الاستجابة قبل التعميم.",
+        p: "لمن يدير homelab خلف CGNAT، هذه الفئة من الحلول تتيح: وصول آمن دون فتح منافذ ودون المرور بخادم مركزي. ويُنصح بالبدء بخدمة واحدة غير حرجة وقياس زمن الاستجابة قبل التعميم.",
       },
     ],
     bodyEn: [
       {
-        p: 'For decades, network security was built on the perimeter model: a strong firewall outside, broad trust inside. Remote work and cloud services made "inside" and "outside" meaningless. This is where Zero Trust comes in: no default trust for any party.',
+        p: 'Network security was long built on the perimeter model: a strong firewall outside, broad trust inside. Remote work and cloud services made "inside" and "outside" meaningless. This is where Zero Trust comes in: no default trust for any party.',
       },
       {
         h: "What ZTM offers",
@@ -3249,7 +3249,7 @@ await server.connect(new StdioServerTransport());`,
       },
       {
         h: "Use in a home lab",
-        p: "For anyone running a homelab behind CGNAT, this class of solution enables: secure access without opening ports, and without a central server owned by a third party. Start with one non-critical service and measure latency before rolling it out further.",
+        p: "For anyone running a homelab behind CGNAT, this class of solution enables: secure access without opening ports, and without a central server owned by a third party. Starting with one non-critical service and measuring latency before wider rollout is the safer path.",
       },
     ],
     refs: [
@@ -3277,7 +3277,7 @@ await server.connect(new StdioServerTransport());`,
       },
       {
         h: "نصيحة تشغيلية",
-        p: "لا تقيّم أي حل قواعد بيانات بالتثبيت الناجح، بل بتمرين الاستعادة الفعلي: أوقف العقدة الرئيسية عمدًا وراقب الـ failover، ثم نفّذ استعادة كاملة لوقت محدد.",
+        p: "تقييم أي حل قواعد بيانات يكون بتمرين الاستعادة الفعلي لا بالتثبيت الناجح: أوقف العقدة الرئيسية عمدًا وراقب الـ failover، ثم نفّذ استعادة كاملة لوقت محدد.",
       },
     ],
     bodyEn: [
@@ -3290,7 +3290,7 @@ await server.connect(new StdioServerTransport());`,
       },
       {
         h: "Operational advice",
-        p: "Never judge a database solution by a successful install. Judge it by an actual recovery drill: deliberately kill the primary node and watch the failover, then run a full point-in-time restore.",
+        p: "A database solution is judged by an actual recovery drill rather than a successful install: deliberately kill the primary node and watch the failover, then run a full point-in-time restore.",
       },
     ],
     refs: [{ label: "pgsty/pigsty", url: "https://github.com/pgsty/pigsty" }],
@@ -3307,15 +3307,15 @@ await server.connect(new StdioServerTransport());`,
       "An inference engine that addresses GPU memory management through PagedAttention, raising throughput on the same hardware when serving multiple concurrent users.",
     body: [
       {
-        p: "معظم من يجرب النماذج المحلية يبدأ بأداة مثل Ollama. ممتازة للاستخدام الفردي. لكن حين تريد تقديم النموذج لعدة مستخدمين متزامنين، تصطدم بعنق الزجاجة الحقيقي: ذاكرة الـ GPU وإدارة الـ KV Cache. هنا يتفوق vLLM بفضل تقنية PagedAttention.",
+        p: "تشغيل النماذج المحلية يبدأ عادة بأداة مثل Ollama، وهي مناسبة للاستخدام الفردي. أما تقديم النموذج لعدة مستخدمين متزامنين فيصطدم بعنق زجاجة مختلف: ذاكرة الـ GPU وإدارة الـ KV Cache. هنا يتفوق vLLM بفضل تقنية PagedAttention.",
       },
       {
-        h: "الفكرة الجوهرية",
-        p: "PagedAttention تستعير مفهوم الـ paging من أنظمة التشغيل: بدل حجز كتل ذاكرة متصلة ضخمة لكل طلب، تُدار الذاكرة بصفحات صغيرة قابلة للمشاركة. إنتاجية أعلى بأضعاف على نفس العتاد.",
+        h: "الفكرة الأساسية",
+        p: "PagedAttention تستعير مفهوم الـ paging من أنظمة التشغيل: بدل حجز كتل ذاكرة متصلة ضخمة لكل طلب، تُدار الذاكرة بصفحات صغيرة قابلة للمشاركة. ما يرفع الإنتاجية على العتاد نفسه.",
       },
       {
         h: "الخلاصة",
-        p: "الذكاء الاصطناعي التوليدي في المؤسسات سيصبح عبء عمل تديره فرق البنية التحتية: تخطيط سعة GPU، وقياس tokens/second كمؤشر خدمة. من يفهم أدوات مثل vLLM يبني ميزة مهنية واضحة.",
+        p: "الذكاء الاصطناعي التوليدي في المؤسسات سيصبح عبء عمل تديره فرق البنية التحتية: تخطيط سعة GPU، وقياس tokens/second كمؤشر خدمة. ومعرفة أدوات مثل vLLM جزء من هذا التحول.",
       },
     ],
     bodyEn: [
@@ -3328,7 +3328,7 @@ await server.connect(new StdioServerTransport());`,
       },
       {
         h: "The takeaway",
-        p: "Generative AI in enterprises will become a workload infrastructure teams manage: GPU capacity planning, tokens/second as a service metric. Understanding tools like vLLM today builds a clear professional edge.",
+        p: "Generative AI in enterprises will become a workload infrastructure teams manage: GPU capacity planning, tokens/second as a service metric. Familiarity with tools like vLLM is part of that shift.",
       },
     ],
     refs: [
@@ -3353,16 +3353,16 @@ await server.connect(new StdioServerTransport());`,
         p: "قوة الاستضافة الذاتية ليست في الخدمات الكبيرة فقط، بل في الأدوات الصغيرة التي تحل مشكلة واحدة بإتقان. أربع أدوات مفتوحة المصدر تستحق التقييم.",
       },
       {
-        h: "Dashy. نقطة الدخول الموحدة",
-        p: "لوحة تحكم تجمع كل خدماتك بواجهة واحدة مع فحص حالة وودجتس. الفائدة الخفية: صفحة البداية الموحدة توثّق بنيتك ضمنيًا.",
+        h: "Dashy: نقطة الدخول الموحدة",
+        p: "لوحة تحكم تجمع كل خدماتك بواجهة واحدة مع فحص حالة وودجتس. وصفحة البداية الموحدة توثّق البنية ضمنيًا.",
       },
       {
-        h: "Neko. متصفح معزول في حاوية",
+        h: "Neko: متصفح معزول في حاوية",
         p: "متصفح كامل داخل Docker تصل إليه عبر WebRTC. تصفح معزول لفحص روابط مشبوهة، أو جلسة مشتركة يشاهدها أكثر من شخص.",
       },
       {
         h: "Pluton وStressdisk",
-        p: "Pluton حل نسخ احتياطي ذاتي الاستضافة بتشفير كامل. وStressdisk أداة من مطور rclone تختبر الأقراس قبل أن تأتمنها على بياناتك. العتاد يخذلك في أسوأ وقت، فاختبره في وقت تختاره أنت.",
+        p: "Pluton حل نسخ احتياطي ذاتي الاستضافة بتشفير كامل. وStressdisk أداة من مطور rclone تختبر الأقراص قبل الاعتماد عليها في تخزين البيانات.",
       },
     ],
     bodyEn: [
@@ -3370,16 +3370,16 @@ await server.connect(new StdioServerTransport());`,
         p: "The power of self-hosting isn't just in the big services. It's in small tools that solve one problem well. Four open-source tools worth evaluating.",
       },
       {
-        h: "Dashy. A unified entry point",
-        p: "A dashboard that gathers all your services in one interface with status checks and widgets. The hidden benefit: a unified home page implicitly documents your infrastructure.",
+        h: "Dashy: a unified entry point",
+        p: "A dashboard that gathers all your services in one interface with status checks and widgets. A unified home page also documents the infrastructure implicitly.",
       },
       {
-        h: "Neko. An isolated browser in a container",
+        h: "Neko: an isolated browser in a container",
         p: "A full browser inside Docker, accessed via WebRTC. Isolated browsing for checking suspicious links, or a shared session multiple people can watch.",
       },
       {
         h: "Pluton and Stressdisk",
-        p: "Pluton is a self-hosted backup solution with full encryption. Stressdisk, from rclone's author, stress-tests disks before you trust them with your data. Hardware fails at the worst time, so test it on your own schedule.",
+        p: "Pluton is a self-hosted backup solution with full encryption. Stressdisk, from rclone's author, stress-tests disks before they are relied on for data storage.",
       },
     ],
     refs: [
@@ -3402,7 +3402,7 @@ await server.connect(new StdioServerTransport());`,
       "Tools that emulate AWS services on a local machine or in CI, allowing deployment scripts and failure scenarios to be tested before using a real cloud environment.",
     body: [
       {
-        p: "أكبر احتكاك في تطوير البنية السحابية هو حلقة التغذية الراجعة البطيئة: تدفع تغييرًا، تنتظر، تختبر، تكتشف خطأ. أدوات المحاكاة المحلية لـ AWS تحل هذا بتشغيل نسخة طبق الأصل على جهازك أو في CI.",
+        p: "أكبر احتكاك في تطوير البنية السحابية هو بطء حلقة التغذية الراجعة: دفع التغيير، ثم الانتظار، ثم الاختبار، ثم اكتشاف الخطأ. أدوات المحاكاة المحلية لـ AWS تحل هذا بتشغيل نسخة طبق الأصل على جهازك أو في CI.",
       },
       {
         h: "لماذا يهم هذا مهندس البنية التحتية",
@@ -3410,7 +3410,7 @@ await server.connect(new StdioServerTransport());`,
       },
       {
         h: "أين ينتهي دورها",
-        p: "المحاكاة أداة تسريع، لا بديل عن بيئة تحقق حقيقية قبل الإنتاج. طوّر واختبر محليًا بسرعة، ثم تحقّق على بيئة سحابية حقيقية صغيرة قبل الدفع للإنتاج.",
+        p: "المحاكاة أداة تسريع، لا بديل عن بيئة تحقق حقيقية قبل الإنتاج. ويتم التطوير والاختبار محليًا، ثم التحقق على بيئة سحابية صغيرة قبل الإنتاج.",
       },
     ],
     bodyEn: [
@@ -3423,7 +3423,7 @@ await server.connect(new StdioServerTransport());`,
       },
       {
         h: "Where its role ends",
-        p: "Emulation is a development accelerator, not a substitute for a real staging environment before production. Develop and test locally at speed, then verify on a small real cloud environment before shipping to production.",
+        p: "Emulation is a development accelerator, not a substitute for a real staging environment before production. Development and testing happen locally, then verification on a small real cloud environment before production.",
       },
     ],
     refs: [
@@ -3446,11 +3446,11 @@ await server.connect(new StdioServerTransport());`,
       },
       {
         h: "استقلالية اختيار النموذج",
-        p: "ما يميز هذا النوع من الوكلاء أنه لا يربطك بمزوّد واحد. يعمل مع أي نموذج تختاره، محليًا أو عبر واجهة برمجية. يمنحك حرية الموازنة بين التكلفة والجودة وموقع البيانات.",
+        p: "ما يميز هذا النوع من الوكلاء أنه لا يربطك بمزوّد واحد. يعمل مع أي نموذج تختاره، محليًا أو عبر واجهة برمجية. ما يتيح الموازنة بين التكلفة والجودة وموقع البيانات.",
       },
       {
         h: "قبل منح صلاحية التنفيذ",
-        p: "قبل منح وكيل صلاحية التنفيذ الفعلي، جرّبه في مستودع تجريبي معزول ومهام محدودة النطاق، وراقب نمط قراراته لا نتيجته فقط.",
+        p: "يُجرَّب الوكيل أولًا في مستودع تجريبي معزول ومهام محدودة النطاق، مع مراقبة نمط قراراته لا نتائجه فقط، قبل منحه صلاحية تنفيذ فعلية.",
       },
     ],
     bodyEn: [
@@ -3459,11 +3459,11 @@ await server.connect(new StdioServerTransport());`,
       },
       {
         h: "Model independence",
-        p: "What sets this class of agents apart is that they aren't locked to one provider. They work with any model you choose, local or API-based, giving you freedom to balance cost, quality, and data residency.",
+        p: "What sets this class of agents apart is that they aren't locked to one provider. They work with any model you choose, local or API-based, which allows balancing cost, quality, and data residency.",
       },
       {
         h: "Before granting execution rights",
-        p: "Before granting an agent real execution rights, trial it in an isolated sandbox repo on narrow-scope tasks, and watch its decision pattern, not just its outcomes.",
+        p: "The agent is trialled first in an isolated sandbox repo on narrow-scope tasks, with attention to its decision pattern rather than outcomes alone, before real execution rights are granted.",
       },
     ],
     refs: [
@@ -3490,8 +3490,8 @@ await server.connect(new StdioServerTransport());`,
         p: "خوادم MCP المخصصة لمنصات مثل Proxmox تتيح لوكيل الذكاء الاصطناعي إدارة الأجهزة الافتراضية والحاويات مباشرة عبر أوامر بلغة طبيعية.",
       },
       {
-        h: "القاعدة الذهبية",
-        p: "امنح وكيل الـ MCP أقل صلاحية ممكنة، وابدأ بوصول للقراءة فقط، وسجّل كل استدعاء أداة في سجل تدقيق قابل للمراجعة.",
+        h: "قاعدة الصلاحيات",
+        p: "يُمنح وكيل الـ MCP أقل صلاحية ممكنة، ويبدأ بوصول للقراءة فقط، مع تسجيل كل استدعاء أداة في سجل تدقيق قابل للمراجعة.",
       },
     ],
     bodyEn: [
@@ -3503,8 +3503,8 @@ await server.connect(new StdioServerTransport());`,
         p: "MCP servers built for platforms like Proxmox let an AI agent manage virtual machines and containers directly through natural-language commands.",
       },
       {
-        h: "The golden rule",
-        p: "Grant an MCP agent the least privilege possible, start with read-only access, and log every tool call in a reviewable audit trail.",
+        h: "The permissions rule",
+        p: "An MCP agent is granted the least privilege possible, starting with read-only access, with every tool call logged in a reviewable audit trail.",
       },
     ],
     refs: [
@@ -3538,7 +3538,7 @@ await server.connect(new StdioServerTransport());`,
       },
       {
         h: "أين يقف مهندس البنية التحتية",
-        p: "يمكن تشغيله في كل نشر كطبقة فحص أولى سريعة. القاعدة نفسها تتكرر: شغّله في بيئة معزولة، وتحقق يدويًا قبل اتخاذ إجراء.",
+        p: "يمكن تشغيله في كل نشر كطبقة فحص أولى سريعة. ويُشغَّل في بيئة معزولة، مع تحقق يدوي قبل اتخاذ أي إجراء.",
       },
     ],
     bodyEn: [
@@ -3551,7 +3551,7 @@ await server.connect(new StdioServerTransport());`,
       },
       {
         h: "Where infrastructure engineers fit in",
-        p: "It can run in every deployment as a quick first-pass check layer. The same rule applies: run it in an isolated environment, and manually verify before acting.",
+        p: "It can run in every deployment as a quick first-pass check layer. It runs in an isolated environment, with manual verification before any action.",
       },
     ],
     refs: [
@@ -3570,15 +3570,15 @@ await server.connect(new StdioServerTransport());`,
       "An infrastructure-as-code tool that defines resources in general-purpose languages such as Python, TypeScript, and Go, with access to functions, type checking, and standard testing libraries.",
     body: [
       {
-        p: "أدوات البنية ككود التقليدية تستخدم لغات تعريفية خاصة بها. صياغة جديدة عليك تعلمها. البديل: كتابة تعريف البنية التحتية بلغة برمجة عامة تعرفها فعلًا.",
+        p: "أدوات البنية ككود التقليدية تستخدم لغات تعريفية خاصة بها. وهي صياغة إضافية تتطلب تعلمًا. والبديل كتابة تعريف البنية التحتية بلغة برمجة عامة.",
       },
       {
         h: "الفائدة العملية",
-        p: "تستطيع إعادة استخدام المنطق نفسه الذي تستخدمه في تطبيقاتك: دوال قابلة لإعادة الاستخدام، فحص الأنواع، ومكتبات الاختبار المعتادة لديك.",
+        p: "يمكن إعادة استخدام أنماط المنطق نفسها المستخدمة في التطبيقات: دوال قابلة لإعادة الاستخدام، فحص الأنواع، ومكتبات الاختبار المعتادة لديك.",
       },
       {
         h: "نصيحة للتبني التدريجي",
-        p: "لا تعيد كتابة بنيتك التحتية دفعة واحدة. ابدأ بمورد واحد غير حرج، اكتبه بالطريقة الجديدة، وقارن النتيجة.",
+        p: "لا يُعاد كتابة البنية التحتية دفعة واحدة، بل يبدأ التحول بمورد واحد غير حرج ومقارنة النتيجة.",
       },
     ],
     bodyEn: [
@@ -3591,7 +3591,7 @@ await server.connect(new StdioServerTransport());`,
       },
       {
         h: "Advice for gradual adoption",
-        p: "Don't rewrite your existing infrastructure all at once. Start with one non-critical resource, write it the new way, and compare the results.",
+        p: "Infrastructure isn't rewritten all at once; the migration starts with one non-critical resource and a comparison of results.",
       },
     ],
     refs: [{ label: "pulumi/pulumi", url: "https://github.com/pulumi/pulumi" }],
@@ -3608,7 +3608,7 @@ await server.connect(new StdioServerTransport());`,
       "An open-source PaaS running on your own server via Docker. Supports near-zero-config deployment for Node, Python, and Docker apps, with automatic SSL and a visual management interface.",
     body: [
       {
-        p: "منصات مثل Heroku وVercel أزالت تعقيد النشر، لكن هذه الراحة لها ثمن يتصاعد، وتعني أن بنيتك التشغيلية تعيش في بنية تحتية لا تملكها. منصات الـ PaaS ذاتية الاستضافة تعيد هذا التوازن.",
+        p: "منصات مثل Heroku وVercel أزالت تعقيد النشر، لكن كلفتها تتصاعد، وتعني أن البنية التشغيلية تعمل على بنية تحتية غير مملوكة. منصات الـ PaaS ذاتية الاستضافة تعيد هذا التوازن.",
       },
       {
         h: "ما الذي تحصل عليه فعليًا",
@@ -3616,7 +3616,7 @@ await server.connect(new StdioServerTransport());`,
       },
       {
         h: "أين تكمن المسؤولية الإضافية",
-        p: "أمن الخادم وتحديثاته ونسخه الاحتياطية أصبحت مسؤوليتك أنت. تأكد من خطة نسخ احتياطي مُختبرة فعليًا قبل نقل أي حمل إنتاجي.",
+        p: "أمن الخادم وتحديثاته ونسخه الاحتياطية تصبح مسؤولية الجهة المشغّلة، ويلزم وجود خطة نسخ احتياطي مُختبرة قبل نقل أي حمل إنتاجي.",
       },
     ],
     bodyEn: [
@@ -3629,7 +3629,7 @@ await server.connect(new StdioServerTransport());`,
       },
       {
         h: "Where the extra responsibility lies",
-        p: "Server security, patching, and backups now fall on you. Make sure you have an actually-tested backup plan before moving any real production workload.",
+        p: "Server security, patching, and backups become the operator's responsibility, and a tested backup plan is required before moving any production workload.",
       },
     ],
     refs: [
@@ -3656,7 +3656,7 @@ await server.connect(new StdioServerTransport());`,
       },
       {
         h: "حدود يجب معرفتها",
-        p: "التصفح الوكيلي أبطأ وأقل قابلية للتنبؤ من واجهة برمجية مباشرة حين تكون متوفرة. فضّل الـ API دائمًا إن وُجد. استخدم التصفح الوكيلي فقط حين لا يوجد بديل، وفي بيئة معزولة.",
+        p: "التصفح الوكيلي أبطأ وأقل قابلية للتنبؤ من واجهة برمجية مباشرة حين تكون متوفرة. ويُفضَّل الـ API عند توفره، ويقتصر التصفح الوكيلي على الحالات التي لا بديل فيها، ضمن بيئة معزولة.",
       },
     ],
     bodyEn: [
@@ -3699,7 +3699,7 @@ await server.connect(new StdioServerTransport());`,
       },
       {
         h: "أين تبدأ",
-        p: "لا تبدأ بأتمتة حرجة للعمل. اختر مهمة تكرارية بسيطة وابنها أولًا لتتعلم حدود المنصة.",
+        p: "يبدأ التبني بمهمة تكرارية بسيطة لا بأتمتة حرجة، للتعرف على حدود المنصة.",
       },
     ],
     bodyEn: [
@@ -3712,7 +3712,7 @@ await server.connect(new StdioServerTransport());`,
       },
       {
         h: "Where to start",
-        p: "Don't start with a business-critical automation. Pick a simple recurring task and build that first to learn the platform's limits.",
+        p: "Adoption starts with a simple recurring task rather than a business-critical automation, to establish the platform's limits.",
       },
     ],
     refs: [{ label: "n8n-io/n8n", url: "https://github.com/n8n-io/n8n" }],
@@ -3729,7 +3729,7 @@ await server.connect(new StdioServerTransport());`,
       "Fast-spinning-up isolated environments (seconds) built for running AI agent-generated code. Each has its own filesystem, network, and resources, and is deleted after the task.",
     body: [
       {
-        p: "وكيل ذكاء اصطناعي قادر على كتابة الكود شيء مفيد، لكن السؤال الأخطر هو: أين يُنفّذ هذا الكود؟ تنفيذه مباشرة على جهازك أو خادمك الفعلي يعني أن أي خطأ في منطق الوكيل (أو أي محاولة اختراق ناجحة عبر حقن أوامر) قد يطال بيانات حقيقية وأنظمة حقيقية.",
+        p: "الوكيل القادر على كتابة الكود يطرح سؤالًا أهم: أين يُنفَّذ هذا الكود؟ فتنفيذه مباشرة على جهاز أو خادم فعلي يعني أن أي خطأ في منطق الوكيل (أو أي محاولة اختراق ناجحة عبر حقن أوامر) قد يطال بيانات حقيقية وأنظمة حقيقية.",
       },
       {
         h: "الحل: بيئة يمكن التخلص منها",
@@ -3737,7 +3737,7 @@ await server.connect(new StdioServerTransport());`,
       },
       {
         h: "لماذا يهم مهندس البنية التحتية تحديدًا",
-        p: "هذا النمط يحوّل 'هل أثق بهذا الوكيل؟' إلى سؤال أقل أهمية. لأن الثقة لم تعد الحاجز الوحيد، بل العزل الفعلي هو الحاجز. ابدأ بمهام قراءة فقط داخل البيئة المعزولة، وراقب سجل كل عملية تنفيذ قبل توسيع الصلاحيات.",
+        p: "هذا النمط يقلّل الاعتماد على الثقة بالوكيل، لأن العزل الفعلي يصبح هو الحاجز لا الثقة وحدها. ويبدأ الاستخدام بمهام قراءة فقط داخل البيئة المعزولة، مع مراجعة سجل كل عملية تنفيذ قبل توسيع الصلاحيات.",
       },
     ],
     bodyEn: [
@@ -3750,7 +3750,7 @@ await server.connect(new StdioServerTransport());`,
       },
       {
         h: "Why this specifically matters for infrastructure engineers",
-        p: "This pattern turns 'do I trust this agent?' into a less critical question. Because trust is no longer the only barrier; actual isolation is. Start with read-only tasks inside the sandbox, and review the execution log for every run before expanding permissions.",
+        p: "This pattern reduces reliance on trusting the agent, since actual isolation becomes the barrier rather than trust alone. Use starts with read-only tasks inside the sandbox, with the execution log reviewed for every run before permissions are expanded.",
       },
     ],
     refs: [{ label: "e2b-dev/e2b", url: "https://github.com/e2b-dev/e2b" }],
@@ -3767,15 +3767,15 @@ await server.connect(new StdioServerTransport());`,
       "An open-source AI gateway unifying access to 290+ model providers behind a single endpoint, with automatic fallback when a request fails or a quota runs out.",
     body: [
       {
-        p: "من بنى منصة محادثة متعددة النماذج يعرف الألم جيدًا: كل مزود نموذج له مفتاح API مختلف، وصيغة طلب مختلفة، وحدود استخدام مختلفة تتغير دون إشعار مسبق. بوابة الذكاء الاصطناعي الموحدة تختصر هذا كله في نقطة نهاية واحدة.",
+        p: "بناء منصة محادثة متعددة النماذج يصطدم بتباين المزودين: كل مزود له مفتاح API مختلف، وصيغة طلب مختلفة، وحدود استخدام مختلفة تتغير دون إشعار مسبق. بوابة الذكاء الاصطناعي الموحدة تختصر هذا كله في نقطة نهاية واحدة.",
       },
       {
         h: "ما الذي تحله فعليًا",
-        p: "الميزة الجوهرية ليست التوحيد فقط، بل التبديل التلقائي عند فشل الطلب أو نفاد حصة مزود معين. النظام ينتقل لمزود بديل دون أن يشعر المستخدم النهائي بشيء. تضاف لذلك تقنيات ضغط السياق التي تقلّص استهلاك التوكنات بنسب كبيرة.",
+        p: "الميزة ليست التوحيد فقط، بل التبديل التلقائي عند فشل الطلب أو نفاد حصة مزود معين. النظام ينتقل لمزود بديل دون أن يشعر المستخدم النهائي بشيء. تضاف لذلك تقنيات ضغط السياق التي تقلّص استهلاك التوكنات بنسب كبيرة.",
       },
       {
         h: "الدرس لمن يبني بنية ذكاء اصطناعي مؤسسية",
-        p: "الارتهان بمزود واحد نقطة فشل حقيقية. انقطاع خدمة أو تغيير تسعير مفاجئ يعطّل كل ما بنيته فوقه. طبقة بوابة موحدة، سواء بنيتها بنفسك أو استخدمت أداة جاهزة، هي التأمين العملي ضد هذا السيناريو.",
+        p: "الاعتماد على مزود واحد نقطة فشل مفردة: انقطاع الخدمة أو تغيّر التسعير يعطّل ما بُني فوقه. وطبقة البوابة الموحدة، مبنية داخليًا أو جاهزة، تحدّ من هذا الأثر.",
       },
     ],
     bodyEn: [
@@ -3788,7 +3788,7 @@ await server.connect(new StdioServerTransport());`,
       },
       {
         h: "The lesson for anyone building enterprise AI infrastructure",
-        p: "Locking into a single provider is a real single point of failure. An outage or a sudden pricing change breaks everything built on top of it. A unified gateway layer, whether you build it yourself or use a ready tool, is the practical insurance against that scenario.",
+        p: "Depending on a single provider is a single point of failure: an outage or pricing change breaks what was built on top of it. A unified gateway layer, built in-house or off the shelf, limits that impact.",
       },
     ],
     refs: [
@@ -3810,15 +3810,15 @@ await server.connect(new StdioServerTransport());`,
       "A single install tool giving AI agents the ability to read web pages, YouTube transcripts, Reddit content, and X posts, through open-source tools for each platform.",
     body: [
       {
-        p: "الحالة المتكررة: وكيل ذكاء اصطناعي قادر على تعديل مشروع كامل، لكنه يصطدم فورًا حين تطلب منه قراءة تغريدة أو منشور من Reddit أو تلخيص فيديو يوتيوب. كل منصة لها عائقها الخاص: واجهة برمجية مدفوعة، حظر لعناوين IP، أو تسجيل دخول إلزامي.",
+        p: "الحالة المتكررة: وكيل ذكاء اصطناعي قادر على تعديل مشروع كامل، لكنه يصطدم عند قراءة تغريدة أو منشور من Reddit أو تلخيص فيديو يوتيوب. كل منصة لها عائقها الخاص: واجهة برمجية مدفوعة، حظر لعناوين IP، أو تسجيل دخول إلزامي.",
       },
       {
         h: "الفكرة",
-        p: "بدل أن يخوض كل مطور نفس التجربة بحثًا عن أداة تتجاوز كل عائق على حدة، يجمع هذا المشروع طبقة تثبيت وإعداد واحدة فوق أدوات مفتوحة المصدر موجودة أصلًا لكل منصة. قراءة الصفحات، تفريغ ترجمات يوتيوب، البحث في GitHub، وقراءة تغريدات وReddit عبر تسجيل دخول بملفات تعريف الارتباط. أمر تثبيت واحد يُرسل للوكيل، وهو يتولى الباقي.",
+        p: "بدل بحث كل مطور عن أداة لكل عائق على حدة، يجمع المشروع طبقة تثبيت وإعداد واحدة فوق أدوات مفتوحة المصدر موجودة أصلًا لكل منصة. قراءة الصفحات، تفريغ ترجمات يوتيوب، البحث في GitHub، وقراءة تغريدات وReddit عبر تسجيل دخول بملفات تعريف الارتباط. أمر تثبيت واحد يُرسل للوكيل، وهو يتولى الباقي.",
       },
       {
         h: "قابلية الاستبدال وحدود الاستخدام",
-        p: "كل قناة في الأداة قابلة للاستبدال بشكل مستقل. إن لم تعجبك أداة قراءة الصفحات المستخدمة مثلًا، تستبدلها بأخرى دون المساس بباقي النظام. بيانات تسجيل الدخول تبقى محليًا على جهازك فقط، ولا يُنصح باستخدام حسابات رئيسية مع المنصات التي تتطلب تسجيل دخول، تجنبًا لمخاطر الحظر.",
+        p: "كل قناة في الأداة قابلة للاستبدال بشكل مستقل. فأداة قراءة الصفحات مثلًا يمكن استبدالها دون المساس بباقي النظام. وبيانات تسجيل الدخول تبقى محلية على الجهاز، ولا يُنصح باستخدام حسابات رئيسية مع المنصات التي تتطلب تسجيل دخول، تجنبًا لمخاطر الحظر.",
       },
     ],
     bodyEn: [
