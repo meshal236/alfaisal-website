@@ -6,14 +6,12 @@ import { useLanguage } from "@/lib/language-context";
 
 const LINKS = {
   ar: [
-    { href: "/", label: "الرئيسية" },
     { href: "/services", label: "الخدمات" },
     { href: "/chat", label: "AI HUB" },
     { href: "/nca", label: "الأمن السيبراني" },
     { href: "/blog", label: "المقالات" },
   ],
   en: [
-    { href: "/", label: "Home" },
     { href: "/services", label: "Services" },
     { href: "/chat", label: "AI HUB" },
     { href: "/nca", label: "NCA" },
@@ -36,11 +34,7 @@ export default function Nav() {
           <Link
             key={l.href}
             href={l.href}
-            className={
-              (l.href === "/" ? path === "/" : path.startsWith(l.href))
-                ? "active"
-                : ""
-            }
+            className={path.startsWith(l.href) ? "active" : ""}
           >
             {l.label}
           </Link>
