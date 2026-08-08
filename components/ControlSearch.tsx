@@ -7,6 +7,8 @@ export type ControlRow = {
   id: string;
   desc: string;
   ev: string;
+  descAr?: string;
+  evAr?: string;
   fw: string;
   slug: string;
   var: string;
@@ -102,7 +104,9 @@ export default function ControlSearch({
         r.id.toLowerCase().includes(n) ||
         r.desc.toLowerCase().includes(n) ||
         r.ev.toLowerCase().includes(n) ||
-        r.subT.toLowerCase().includes(n)
+        r.subT.toLowerCase().includes(n) ||
+        (r.descAr ?? "").includes(q.trim()) ||
+        (r.evAr ?? "").includes(q.trim())
       );
     });
   }, [pool, q, fw, scope]);
@@ -155,11 +159,13 @@ export default function ControlSearch({
                     <span className="cres-sub">{r.sub} · {r.subT}</span>
                   </span>
                 </div>
-                <p className="cres-desc">{mark(r.desc, q)}</p>
-                {r.ev && (
+                <p className="cres-desc">
+                  {mark(lang === "ar" && r.descAr ? r.descAr : r.desc, q)}
+                </p>
+                {(lang === "ar" && r.descAr ? r.evAr : r.ev) && (
                   <div className="cres-ev">
                     <span className="cres-ev-label">{t.evidence}</span>
-                    <p>{r.ev}</p>
+                    <p>{mark((lang === "ar" && r.descAr ? r.evAr : r.ev) ?? "", q)}</p>
                   </div>
                 )}
               </div>
