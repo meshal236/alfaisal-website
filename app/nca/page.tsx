@@ -17,7 +17,8 @@ const COPY = {
     statFrameworks: "أطر",
     statFiles: "ملف مرجعي",
     searchTitle: "ابحث في كل الضوابط",
-    searchSub: "بحث موحّد في 833 ضابطًا عبر الأطر السبعة — بالنص أو رقم الضابط أو الأدلة المطلوبة",
+    searchSub:
+      "بحث موحّد في 833 ضابطًا عبر الأطر السبعة، بالنص أو رقم الضابط أو الأدلة المطلوبة",
   },
   en: {
     eyebrow: "NCA FRAMEWORKS",
@@ -31,7 +32,8 @@ const COPY = {
     statFrameworks: "Frameworks",
     statFiles: "Reference files",
     searchTitle: "Search all controls",
-    searchSub: "Unified search across 833 controls in all seven frameworks — by text, control number, or required evidence",
+    searchSub:
+      "Unified search across 833 controls in all seven frameworks, by text, control number, or required evidence",
   },
 };
 
@@ -44,7 +46,9 @@ export default function NcaPage() {
   return (
     <main className="section">
       <div className="hub-head">
-        <p className="eyebrow" style={{ textAlign: "start", marginBottom: 10 }}>{t.eyebrow}</p>
+        <p className="eyebrow" style={{ textAlign: "start", marginBottom: 10 }}>
+          {t.eyebrow}
+        </p>
         <h1>{t.heading}</h1>
         <p className="hub-sub">{t.sub}</p>
       </div>
@@ -83,9 +87,15 @@ export default function NcaPage() {
             <h3>{lang === "ar" ? f.ar : f.en}</h3>
             <p>{lang === "ar" ? f.descAr : f.descEn}</p>
             <div className="nca-card-meta">
-              <span><b>{f.totalControls}</b> {t.controls}</span>
-              <span><b>{f.domains.length}</b> {t.domains}</span>
-              <span><b>{f.files.length}</b> {lang === "ar" ? "ملفات" : "files"}</span>
+              <span>
+                <b>{f.totalControls}</b> {t.controls}
+              </span>
+              <span>
+                <b>{f.domains.length}</b> {t.domains}
+              </span>
+              <span>
+                <b>{f.files.length}</b> {lang === "ar" ? "ملفات" : "files"}
+              </span>
             </div>
             <span className="nca-card-link">{t.view}</span>
           </Link>
@@ -94,7 +104,12 @@ export default function NcaPage() {
 
       <p className="tools-note" style={{ marginTop: 40 }}>
         {t.note}{" "}
-        <a href="https://nca.gov.sa" target="_blank" rel="noreferrer" style={{ color: "var(--copper)" }}>
+        <a
+          href="https://nca.gov.sa"
+          target="_blank"
+          rel="noreferrer"
+          style={{ color: "var(--copper)" }}
+        >
           nca.gov.sa
         </a>
       </p>

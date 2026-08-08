@@ -32,12 +32,12 @@ const COPY = {
       {
         mono: "AI AGENTS",
         title: "إعداد وتفعيل وكلاء الذكاء الاصطناعي المستقلين",
-        desc: "بناء وتفعيل وربط وكيل ذكاء اصطناعي مستقل خاص بك، مزوّد بجميع المهارات والوكلاء الفرعيين اللازمة لمهامك، مع ربطه بقنوات التواصل التي تستخدمها فعليًا — تلغرام والواتساب وغيرها. الوكيل يُربط باشتراكاتك في خدمات النماذج مثل ChatGPT وAnthropic، أو يُشغّل بالكامل محليًا دون الاعتماد على أي مزود خارجي. الاستضافة والبنية التحتية تبقى بالكامل على جانب العميل.",
+        desc: "بناء وتفعيل وربط وكيل ذكاء اصطناعي مستقل خاص بك، مزوّد بجميع المهارات والوكلاء الفرعيين اللازمة لمهامك، مع ربطه بقنوات التواصل التي تستخدمها فعليًا، تلغرام والواتساب وغيرها. الوكيل يُربط باشتراكاتك في خدمات النماذج مثل ChatGPT وAnthropic، أو يُشغّل بالكامل محليًا دون الاعتماد على أي مزود خارجي. الاستضافة والبنية التحتية تبقى بالكامل على جانب العميل.",
       },
       {
         mono: "CONSULTING",
         title: "استشارات تقنية للبنية التحتية",
-        desc: "استشارات فنية متخصصة في البنية التحتية التقنية للشركات والجهات الحكومية — من تقييم البيئة الحالية وتحديد نقاط الضعف، إلى تصميم حلول وخطط تطوير عملية تراعي الميزانية ومتطلبات التشغيل.",
+        desc: "استشارات فنية متخصصة في البنية التحتية التقنية للشركات والجهات الحكومية، من تقييم البيئة الحالية وتحديد نقاط الضعف، إلى تصميم حلول وخطط تطوير عملية تراعي الميزانية ومتطلبات التشغيل.",
       },
     ],
     cta: "للاستفسار أو طلب عرض سعر، تواصل عبر بيانات التواصل أسفل الصفحة.",
@@ -46,7 +46,7 @@ const COPY = {
     eyebrow: "SERVICES",
     heading: "Services",
     intro:
-      "Specialized technical services spanning digital and physical infrastructure — from applied AI to networking and surveillance systems, for individuals, businesses, and government clients.",
+      "Specialized technical services spanning digital and physical infrastructure, from applied AI to networking and surveillance systems, for individuals, businesses, and government clients.",
     services: [
       {
         mono: "NETWORKING",
@@ -61,22 +61,22 @@ const COPY = {
       {
         mono: "Professional services",
         title: "Network Systems Activation & Configuration",
-        desc: "Activating, configuring, and tuning existing network systems — setting up access points and devices, network segmentation and access policies, and performance and security settings — for stable, secure operation without new installation.",
+        desc: "Activating, configuring, and tuning existing network systems, setting up access points and devices, network segmentation and access policies, and performance and security settings, for stable, secure operation without new installation.",
       },
       {
         mono: "SURVEILLANCE",
         title: "CCTV Surveillance Systems (DVR / NVR)",
-        desc: "Supply and installation of DVR and NVR surveillance camera systems from trusted brands such as Hikvision and Dahua, designed around the site's layout and coverage requirements. Available for individuals, businesses, and government entities — from initial installation through full setup and configuration.",
+        desc: "Supply and installation of DVR and NVR surveillance camera systems from trusted brands such as Hikvision and Dahua, designed around the site's layout and coverage requirements. Available for individuals, businesses, and government entities, from initial installation through full setup and configuration.",
       },
       {
         mono: "AI AGENTS",
         title: "Independent AI Agent Setup & Deployment",
-        desc: "Building, activating, and connecting your own independent AI agent, equipped with all the skills and sub-agents your workflow requires, and linked to the channels you actually use — Telegram, WhatsApp, and others. The agent connects to your existing subscriptions with model providers like ChatGPT and Anthropic, or runs fully locally with no external dependency. Hosting and infrastructure remain entirely on the client's side.",
+        desc: "Building, activating, and connecting your own independent AI agent, equipped with all the skills and sub-agents your workflow requires, and linked to the channels you actually use, Telegram, WhatsApp, and others. The agent connects to your existing subscriptions with model providers like ChatGPT and Anthropic, or runs fully locally with no external dependency. Hosting and infrastructure remain entirely on the client's side.",
       },
       {
         mono: "CONSULTING",
         title: "Infrastructure Technical Consulting",
-        desc: "Specialized technical consulting on IT infrastructure for businesses and government entities — from assessing the current environment and identifying weak points, to designing practical solutions and development plans that account for budget and operational requirements.",
+        desc: "Specialized technical consulting on IT infrastructure for businesses and government entities, from assessing the current environment and identifying weak points, to designing practical solutions and development plans that account for budget and operational requirements.",
       },
     ],
     cta: "For inquiries or a quote, reach out via the contact details at the bottom of the page.",

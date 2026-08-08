@@ -15,11 +15,11 @@ export async function generateMetadata({
   const f = getFramework(slug);
   if (!f) return { title: "إطار غير موجود" };
   return {
-    title: `${f.code} — ${f.ar}`,
+    title: `${f.code}، ${f.ar}`,
     description: `${f.descAr} يضم ${f.totalControls} ضابطًا موزعة على ${f.domains.length} مجالات، مع ملفات التقييم والوثائق الرسمية للتحميل.`,
     alternates: { canonical: `/nca/${slug}` },
     openGraph: {
-      title: `${f.code} — ${f.ar}`,
+      title: `${f.code}, ${f.ar}`,
       description: f.descAr,
       url: `https://alfaisal.ai/nca/${slug}`,
       type: "article",
