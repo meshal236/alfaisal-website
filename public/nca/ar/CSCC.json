@@ -1,0 +1,422 @@
+{
+"1-1-1": {
+"d": "إضافة إلى الضوابط الواردة في المجال الفرعي 1-1 من الضوابط الأساسية للأمن السيبراني (ECC)، يجب أن تحدد استراتيجية الأمن السيبراني للجهة أولوية لدعم حماية الأنظمة الحساسة لديها.",
+"e": "• Cybersecurity strategy document approved by the authorized person in the entity (electronic copy or official hard copy).\n• Presentation of the workshop that was held with the stakeholders and those concerned in the entity to give priority to supporting the protection of the critical systems of the entity.\n• A roadmap document for the implementation of the cybersecurity strategy, indicating the level of achievement in the implementation of projects and initiatives related to the critical systems of the entity.\n• Inventory review and periodic update of the list of critical systems."
+},
+"1-2-1": {
+"d": "إضافة إلى الضوابط الواردة في المجال الفرعي 1-5 من الضوابط الأساسية للأمن السيبراني، يجب أن تتضمن منهجية إدارة مخاطر الأمن السيبراني بحد أدنى ما يلي:",
+"e": ""
+},
+"1-2-1-1": {
+"d": "تنفيذ تقييم مخاطر الأمن السيبراني على الأنظمة الحساسة مرة واحدة سنويًا على الأقل.",
+"e": "• Periodic cybersecurity risk assessment reports on the range of critical systems in the organization.\n• Cybersecurity risk treatment plans for each critical system.\n• Reports or evidence showing the follow-up of treatment plans and verifying their implementation."
+},
+"1-2-1-2": {
+"d": "إنشاء سجل مخاطر الأمن السيبراني للأنظمة الحساسة ومتابعته مرة واحدة شهريًا على الأقل.",
+"e": "• Cybersecurity risk register for critical systems.\n• Record of changes to the cybersecurity risk register for critical systems.\n• Reports or evidence showing the follow-up of treatment plans and verifying their implementation."
+},
+"1-3-1": {
+"d": "إضافة إلى الضوابط الفرعية الواردة في الضابط 1-6-2 من الضوابط الأساسية (ECC)، يجب أن تغطي متطلبات الأمن السيبراني المتعلقة بإدارة المشاريع والتغييرات على الأصول المعلوماتية والتقنية للأنظمة الحساسة في الجهة بحد أدنى ما يلي:",
+"e": ""
+},
+"1-3-1-1": {
+"d": "إجراء اختبار التحمل للمكونات التقنية للأنظمة الحساسة للتأكد من قدرة استيعاب المكونات المختلفة.",
+"e": "• Evaluation and stress test reports for technical components of critical systems.\n• Document showing sample data used for stress testing of technical components of critical systems and not from production environments data.\n• Improvement plan and implementation status for stress testing of technical components of critical systems."
+},
+"1-3-1-2": {
+"d": "التأكد من تطبيق متطلبات استمرارية الأعمال.",
+"e": "• Reports on the results of the risk assessment process affecting business continuity.\n• Reports on the results of the vulnerability assessment and remediation process affecting business continuity.\n• Reports or evidence demonstrating the comprehensiveness and coverage of legislative and regulatory requirements related to business continuity.\n• Cybersecurity Incident Response Plans impacting business continuity.\n• Disaster recovery plans.\n• A document of the roles and responsibilities of the parties related to business continuity within the organization.\n• Reports on change requests within the organization.\n• Reports on the Key Performance Indicators (KPI) related to business continuity."
+},
+"1-3-2": {
+"d": "إضافة إلى الضوابط الفرعية في الضابط 3-6-1 من الضوابط الأساسية (ECC):",
+"e": ""
+},
+"1-3-2-1": {
+"d": "المراجعة الأمنية للشيفرة المصدرية قبل الإطلاق.",
+"e": "• Source code security review procedures, which include: determining the scope of the source code, and the methods taken to conduct the source code security review.\n• Reports of the results of the security source code review.\n• Source code improvement plan reports.\n• Reports showing the implementation and follow-up of the source code improvement plan."
+},
+"1-3-2-2": {
+"d": "تأمين الوصول إلى الشيفرة المصدرية وإصداراتها وتخزينها وتوثيقها.",
+"e": "• Procedures for securing access, storage, and documentation of the source code, which include: determining the scope of the source code, and backup copies of the source code.\n• Procedures for requesting access to the source code from responsible persons.\n• A sample of requests for access permissions to the source code.\n• Reports from reviewing source code access permissions.\n• A list of restrictions applied to the level of access and storage security of the source code.\n• A list of previous versions of the source code and the restrictions applied to secure it."
+},
+"1-3-2-3": {
+"d": "التحقق من الهوية لواجهات البرمجة (API).",
+"e": "• Screenshot of locking the application interface when there is integration with other applications.\n• Reports of restricted API access.\n• Reports of API access verification.\n• Screenshot of Using secure protocols in the API.\n• Reports from penetration tests on the API."
+},
+"1-3-2-4": {
+"d": "النقل الآمن والموثوق للتطبيقات من بيئة الاختبار إلى بيئة الإنتاج، مع حذف أي بيانات أو هويات أو كلمات مرور مرتبطة ببيئات الاختبار قبل النقل.",
+"e": "• Reports showing the deletion of any data, identities, or passwords related to the testing environment before the transfer to the production environment.\n• Reports showing that all critical systems data is encrypted during transmission.\n• Reports of the tools used for the transfer process.\n• Action plan for the transportation process.\n• Review reports on the application of the action plan for the transfer process.\n• Approved procedures for the transportation process."
+},
+"1-4-1": {
+"d": "بالإشارة إلى الضابط 1-8-1 في الضوابط الأساسية للأمن السيبراني، يجب على الإدارة المعنية بالأمن السيبراني مراجعة تطبيق ضوابط الأمن السيبراني للأنظمة الحساسة مرة واحدة سنويًا على الأقل.",
+"e": "• Plan to review the implementation of cybersecurity requirements or controls.\n• Periodic review reports on the implementation of cybersecurity controls for critical systems in the entity, including a plan for addressing observations.\n• Meeting notes transcript of the Cybersecurity Supervisory Committee."
+},
+"1-4-2": {
+"d": "بالإشارة إلى الضابط 2-8-1 في الضوابط الأساسية للأمن السيبراني، يجب مراجعة تطبيق ضوابط الأمن السيبراني للأنظمة الحساسة من قبل أطراف مستقلة عن الإدارة المعنية بالأمن السيبراني من داخل الجهة، مرة واحدة كل ثلاث سنوات على الأقل.",
+"e": "• Audit reports of cybersecurity controls for critical systems; By parties independent of the department concerned with cybersecurity from within the entity, once; At least every three years.\n• Plan to review the implementation of cybersecurity controls requirements.\n• Meeting notes transcript of the Cybersecurity Supervisory Committee.\n• Work on documenting reports and discussing the plan to address observations with the relevant departments."
+},
+"1-5-1": {
+"d": "إضافة إلى الضوابط الفرعية الواردة في الضابط 3-9-1 من الضوابط الأساسية للأمن السيبراني، يجب أن تغطي متطلبات الأمن السيبراني قبل بدء العلاقة المهنية للعاملين مع الجهة بحد أدنى ما يلي:",
+"e": ""
+},
+"1-5-1-1": {
+"d": "إجراء المسح الأمني للعاملين على الأنظمة الحساسة.",
+"e": "• Security scanning for personnel working on critical systems, which include e.g.\n• A list of all personnel working on critical systems from the operational and technical side, indicating their nationalities, roles and responsibilities.\n• Database Administrator security scanning for critical systems.\n• Security scanning of Network Administrators for critical systems.\n• Security scanning of Domain Administrator for critical systems.\n• Security survey for System Administrators from the technical side (Custodian) and from the business owner side of critical systems."
+},
+"1-5-1-2": {
+"d": "شغل وظائف الدعم والتطوير التقني للأنظمة الحساسة بمواطنين ذوي كفاءة.",
+"e": "• The job description of the current employees working on critical systems at the entity, which includes, e.g.:\n  - Job title.\n  - The purpose of the job.\n  - Duties and responsibilities.\n  - Required qualifications.\n  - Preferred qualifications.\n  - Working conditions.\n• Resumes of employees working on critical systems, including administrative positions and technical support and development positions."
+},
+"2-1-1": {
+"d": "إضافة إلى الضوابط الواردة في المجال الفرعي 2-1 من الضوابط الأساسية للأمن السيبراني، يجب أن تتضمن متطلبات الأمن السيبراني لإدارة الأصول المعلوماتية والتقنية بحد أدنى ما يلي:",
+"e": ""
+},
+"2-1-1-1": {
+"d": "المحافظة على سجل حصر محدَّث سنويًا لجميع أصول الأنظمة الحساسة.",
+"e": "• An inventory of all assets for critical systems and their technical components.\n• Annual audit reports of asset inventories for critical systems."
+},
+"2-1-1-2": {
+"d": "تحديد مالكي الأصول وإشراكهم في دورة حياة إدارة أصول الأنظمة الحساسة.",
+"e": "• A document that includes all the owners of the assets of the critical systems and all their duties and responsibilities.\n• A Document procedures for involving owners in the asset life cycle."
+},
+"2-2-1": {
+"d": "إضافة إلى الضوابط الفرعية الواردة في الضابط 2-2-3 من الضوابط الأساسية للأمن السيبراني، يجب أن تغطي متطلبات الأمن السيبراني المتعلقة بإدارة هويات الدخول والصلاحيات للأنظمة الحساسة في الجهة بحد أدنى ما يلي:",
+"e": ""
+},
+"2-2-1-1": {
+"d": "منع الدخول عن بُعد من خارج المملكة العربية السعودية.",
+"e": "• A list of technical controls settings to prevent remote access to critical systems from outside the Kingdom."
+},
+"2-2-1-2": {
+"d": "تقييد الدخول عن بُعد من داخل المملكة، على أن يتم التحقق منه عبر مركز العمليات الأمنية في الجهة عند كل عملية دخول، ومراقبة الأنشطة المتعلقة بالدخول عن بُعد بشكل مستمر.",
+"e": "• Procedures document for restricting remote entry from within the Kingdom to critical systems.\n• A document to set the configuration of remote access systems, for example, the (VPN) system.\n• A guide explaining the monitoring of remote access events through the entity’s security operations center."
+},
+"2-2-1-3": {
+"d": "التحقق من الهوية متعدد العناصر (MFA) لجميع المستخدمين.",
+"e": "• A guide explaining the implementation of multi-element identity verification requirements for all users on critical systems, including but not limited to: A screenshot showing adjusting the settings of critical systems to ensure confirmation of the multi-element identity verification request."
+},
+"2-2-1-4": {
+"d": "التحقق من الهوية متعدد العناصر (MFA) للمستخدمين ذوي الصلاحيات الهامة، والأنظمة المستخدمة لإدارة ومراقبة الأنظمة الحساسة المشار إليها في الضابط 4-1-3-2.",
+"e": "• An inventory of the accounts of employees who have important and critical privileges.\n• A guide explaining the implementation of multi-factor authentication requirements for logins, including but not limited to: A screenshot showing critical system settings to ensure certainty of the multi-factor identity verification request for users with important, critical permissions.\n• Requests to grant important and critical privileges and approvals.\n• Audit reports on important and critical account activities."
+},
+"2-2-1-5": {
+"d": "إعداد ضوابط معيارية لكلمات المرور مع مراعاة أفضل الممارسات وتطبيقها.",
+"e": "• Configure configuration include secure password standards for critical systems."
+},
+"2-2-1-6": {
+"d": "استخدام طرق وخوارزميات آمنة لتخزين كلمات المرور ومعالجتها، مثل استخدام دوال التجزئة.",
+"e": "• Document the procedures for storing and handling passwords for critical systems."
+},
+"2-2-1-7": {
+"d": "الإدارة الآمنة لحسابات الخدمة بين التطبيقات والأنظمة، وتعطيل تسجيل الدخول التفاعلي البشري من خلالها.",
+"e": "• Document the procedures for secure management of service accounts.\n• A list of service accounts and their owners, showing their status (activated or disabled).\n• Restrictions applicable to access to these accounts.\n• Requests to obtain access to service accounts."
+},
+"2-2-1-8": {
+"d": "باستثناء مديري قواعد البيانات، يُمنع وصول أي مستخدم إلى قواعد البيانات أو تفاعله معها مباشرة، ويتم ذلك عبر التطبيقات فقط وبناءً على الصلاحيات الممنوحة لهم، مع مراعاة تطبيق حلول أمنية تحد أو تمنع وصول مديري قواعد البيانات إلى البيانات المصنّفة.",
+"e": "• Procedure document for safe handling of databases for critical systems.\n• List of databases containing classified data and the classification of data stored on them.\n• Mechanism for approving access requests to databases.\n• Requests to obtain access to databases through database administrators.\n• Restrictions applied to access classified data."
+},
+"2-2-2": {
+"d": "بالإشارة إلى الضابط 2-2-3-5 في الضوابط الأساسية للأمن السيبراني، يجب مراجعة هويات الدخول على الأنظمة الحساسة مرة واحدة كل ثلاثة أشهر على الأقل.",
+"e": "• The results of reviewing the entry identities and privileges of the critical systems in the entity.\n• A document specifying the cycle of reviewing the access identities and privileges of the critical systems in the entity (evaluation table)."
+},
+"2-3-1": {
+"d": "إضافة إلى الضوابط الفرعية الواردة في الضابط 2-3-3 من الضوابط الأساسية للأمن السيبراني، يجب أن تغطي متطلبات الأمن السيبراني لحماية الأنظمة الحساسة وأجهزة معالجة المعلومات الخاصة بها بحد أدنى ما يلي:",
+"e": ""
+},
+"2-3-1-1": {
+"d": "السماح لقائمة محددة فقط من التطبيقات والبرامج (القائمة البيضاء) بالعمل على الأنظمة الحساسة.",
+"e": "• A list of allowed and approved operating files that have been matched in the system or server for critical systems."
+},
+"2-3-1-2": {
+"d": "حماية خوادم الأنظمة الحساسة بتقنيات حماية الأجهزة الطرفية المعتمدة لدى الجهة.",
+"e": "• List of protection systems for critical systems.\n• Special protection systems installed on critical systems."
+},
+"2-3-1-3": {
+"d": "تطبيق الحزم الأمنية والتحديثات مرة واحدة شهريًا على الأقل للأنظمة الحساسة الخارجية المتصلة بالإنترنت، ومرة كل ثلاثة أشهر على الأقل للأنظمة الحساسة الداخلية، مع اتباع آليات التغيير المعتمدة لدى الجهة.",
+"e": "• Procedures for applying security patches and patch updates to critical systems.\n• Patch update and patch application reports as per the planned period for critical systems."
+},
+"2-3-1-4": {
+"d": "تخصيص محطات عمل للعاملين التقنيين ذوي الصلاحيات الهامة، على أن تكون معزولة في شبكة إدارة خاصة وغير مرتبطة بأي شبكة أو خدمة أخرى (مثل خدمة البريد الإلكتروني أو الإنترنت).",
+"e": "• Isolated computers designated for accessing critical systems.\n• A list of accounts with access to these devices and the restrictions applied to ensure that they cannot be used on other devices."
+},
+"2-3-1-5": {
+"d": "تشفير أي وصول إداري غير مباشر (Non-console) لأي من المكونات التقنية للأنظمة الحساسة، باستخدام خوارزميات وبروتوكولات تشفير آمنة.",
+"e": "• An encryption standard for supervisory access over a network."
+},
+"2-3-1-6": {
+"d": "مراجعة إعدادات الأنظمة الحساسة وتحصينها مرة كل ستة أشهر على الأقل.",
+"e": "• Secure standards for implementing settings up, configuring and hardening critical systems.\n• Periodic configuring and hardening application reports according to the planned duration for critical systems."
+},
+"2-3-1-7": {
+"d": "مراجعة وتعديل الإعدادات الافتراضية والتأكد من عدم وجود كلمات مرور مضمّنة في الكود أو أبواب خلفية أو كلمات مرور افتراضية، حسبما ينطبق.",
+"e": "• A report on reviewing the factory settings of all critical systems.\n• Password review reports for critical systems."
+},
+"2-3-1-8": {
+"d": "حماية السجلات والملفات الحساسة للأنظمة من الوصول غير المصرّح به أو العبث أو التعديل أو الحذف.",
+"e": "• Access to critical records and files of critical systems.\n• Backup reports of critical logs and files of critical systems."
+},
+"2-4-1": {
+"d": "إضافة إلى الضوابط الفرعية الواردة في الضابط 3-5-2 من الضوابط الأساسية للأمن السيبراني، يجب أن تغطي متطلبات الأمن السيبراني لإدارة أمن شبكات الأنظمة الحساسة للجهة بحد أدنى ما يلي:",
+"e": ""
+},
+"2-4-1-1": {
+"d": "عزل شبكات الأنظمة الحساسة وتقسيمها ماديًا أو منطقيًا.",
+"e": "• Planning and drawing the infrastructure of critical systems networks.\n• Lists firewall for critical systems and other security configuration for networks."
+},
+"2-4-1-2": {
+"d": "مراجعة إعدادات وقوائم جدار الحماية مرة كل ستة أشهر على الأقل.",
+"e": "• Report of reviewing firewall configuration for critical systems in the entity (evaluation table)."
+},
+"2-4-1-3": {
+"d": "منع الاتصال المباشر لأي جهاز بالشبكة المحلية للأنظمة الحساسة، إلا بعد فحصه والتأكد من توفر عناصر الحماية المعتمدة للمستويات المقبولة للأنظمة الحساسة.",
+"e": "• Document procedures for secure connection of critical systems to the local network.\n• Proof showing the restrictions in place to ensure direct connection is prevented."
+},
+"2-4-1-4": {
+"d": "منع اتصال الأنظمة الحساسة بالشبكة اللاسلكية.",
+"e": "• Document prevention procedures for critical systems from connecting to the wireless network.\n• A guide showing setting critical systems configuration to prevent connection to the wireless network."
+},
+"2-4-1-5": {
+"d": "الحماية من التهديدات المتقدمة المستمرة على مستوى الشبكة.",
+"e": "• A list of all available APT protection systems for critical systems."
+},
+"2-4-1-6": {
+"d": "منع اتصال الأنظمة الحساسة بالإنترنت إذا كانت تقدم خدمة داخلية للجهة ولا توجد حاجة ملحّة للوصول إلى الخدمة من خارج الجهة.",
+"e": "• Procedures document for isolating critical systems on the Internet document.\n• Configuration applied at the level of network devices and servers that indicate that access to the Internet is prohibited."
+},
+"2-4-1-7": {
+"d": "تقديم خدمات الأنظمة الحساسة عبر شبكات مستقلة عن الإنترنت في حال كانت خدمات تلك الأنظمة موجّهة لجهات محدودة وليست للأفراد.",
+"e": "• Document the procedures for providing critical systems services.\n• A guide explaining the settings applied at the level of network devices and servers, which describes communication through independent networks."
+},
+"2-4-1-8": {
+"d": "الحماية من هجمات حجب الخدمة الموزعة (DDoS).",
+"e": "• Systems and technologies to protect against network disruption attacks for critical systems.\n• List of Distributed Denial of Service Attack “DDoS” configuration and controls."
+},
+"2-4-1-9": {
+"d": "السماح بالقائمة البيضاء فقط في قوائم جدار الحماية للأنظمة الحساسة.",
+"e": "• A list showing the specific permissions for firewall lists for critical systems."
+},
+"2-5-1": {
+"d": "إضافة إلى الضوابط الفرعية الواردة في الضابط 2-6-3 من الضوابط الأساسية للأمن السيبراني، يجب أن تغطي متطلبات الأمن السيبراني المتعلقة بأمن الأجهزة المحمولة وأجهزة العاملين الشخصية (BYOD) في الجهة بحد أدنى ما يلي:",
+"e": ""
+},
+"2-5-1-1": {
+"d": "تقييد الوصول من الأجهزة المحمولة إلى الأنظمة الحساسة، إلا لفترة مؤقتة فقط، وذلك بعد إجراء تقييم للمخاطر والحصول على الموافقات اللازمة من الإدارة المعنية بالأمن السيبراني في الجهة.",
+"e": "• Critical systems risk assessment procedures document.\n• Document procedures for granting permissions mechanisms to critical systems.\n• Samples of approval requests."
+},
+"2-5-1-2": {
+"d": "التشفير الكامل للقرص للأجهزة المحمولة التي لديها وصول إلى الأنظمة الحساسة.",
+"e": "• A guide demonstrating the implementation of cryptographic requirements for critical systems."
+},
+"2-6-1": {
+"d": "إضافة إلى الضوابط الفرعية الواردة في الضابط 2-7-3 من الضوابط الأساسية للأمن السيبراني، يجب أن تغطي متطلبات الأمن السيبراني لحماية البيانات والمعلومات بحد أدنى ما يلي:",
+"e": ""
+},
+"2-6-1-1": {
+"d": "عدم استخدام بيانات الأنظمة الحساسة في بيئة غير بيئة الإنتاج، إلا بعد استخدام ضوابط صارمة لحماية تلك البيانات، مثل تقنيات إخفاء البيانات أو تشويشها.",
+"e": "• Reports on identifying and classifying critical systems data in the entity.\n• A list of technologies/mechanisms used to protect the data of critical systems in the entity."
+},
+"2-6-1-2": {
+"d": "تصنيف جميع بيانات الأنظمة الحساسة.",
+"e": "• A document showing the classification of all critical systems data with the rules taken based on the classification of the data."
+},
+"2-6-1-3": {
+"d": "حماية البيانات المصنّفة للأنظمة الحساسة عبر تقنيات منع تسريب البيانات.",
+"e": "• Reports of techniques/mechanisms used to prevent critical systems data leakage.\n• A screenshot showing the application of data leakage (DLP) technology and activating a feature to receive alerts when an attempt is made to share critical systems data outside the entity.\n• Procedures for dealing with cases of critical systems data leakage."
+},
+"2-6-1-4": {
+"d": "تحديد مدة الاحتفاظ المطلوبة لبيانات الأعمال المتعلقة بالأنظمة الحساسة وفقًا للتشريعات ذات العلاقة، والاحتفاظ بالبيانات المطلوبة فقط في بيئات الإنتاج للأنظمة الحساسة.",
+"e": "• Reports retention periods for business data in critical systems, based on the quality and need of the data.\n• Reports of deletion of business data whose required retention period has expired in critical systems.\n• Reports of tools used to delete critical systems data."
+},
+"2-6-1-5": {
+"d": "منع نقل أي من بيانات بيئة الإنتاج للأنظمة الحساسة إلى أي بيئة أخرى.",
+"e": "• Procedures for restricting access and defining the privileges of access to the production environment only to the team responsible for its operation."
+},
+"2-7-1": {
+"d": "إضافة إلى الضوابط الفرعية الواردة في الضابط 2-8-3 من الضوابط الأساسية للأمن السيبراني، يجب أن تغطي متطلبات الأمن السيبراني للتشفير بحد أدنى ما يلي:",
+"e": ""
+},
+"2-7-1-1": {
+"d": "تشفير جميع بيانات الأنظمة الحساسة أثناء النقل.",
+"e": "• Data encryption procedures during transmission at the entity.\n• Encryption standards approved by the entity.\n• Protocols and technologies used to encrypt critical systems data in transit.\n• Reports reviewing the effectiveness of the encryption techniques used."
+},
+"2-7-1-2": {
+"d": "تشفير جميع بيانات الأنظمة الحساسة أثناء التخزين على مستوى الملفات أو قاعدة البيانات أو على مستوى أعمدة محددة داخل قاعدة البيانات.",
+"e": "• Procedures for encrypting critical systems data during storage, whether at the level of files, the database, or at the level of specific columns within the database, in the entity.\n• Protocols and technologies used to encrypt critical systems data during storage."
+},
+"2-7-1-3": {
+"d": "استخدام طرق وخوارزميات ومفاتيح وأجهزة تشفير محدَّثة وآمنة وفقًا لما تصدره الهيئة الوطنية للأمن السيبراني في هذا الشأن.",
+"e": "• Cybersecurity procedures that cover the safe management of encryption algorithms, keys, and devices at the entity (example: an electronic copy or an official hard copy).\n• A document defining the cycle of reviewing the effectiveness of the techniques used; For the secure management of algorithms, keys and encryption devices during their life cycle operations at the entity.\n• Protocols and technologies used to encrypt critical systems data."
+},
+"2-8-1": {
+"d": "إضافة إلى الضوابط الفرعية الواردة في الضابط 3-9-2 من الضوابط الأساسية للأمن السيبراني، يجب أن تغطي متطلبات الأمن السيبراني لإدارة النسخ الاحتياطية بحد أدنى ما يلي:",
+"e": ""
+},
+"2-8-1-1": {
+"d": "أن يشمل نطاق النسخ الاحتياطية المتصلة وغير المتصلة جميع الأنظمة الحساسة.",
+"e": "• Online and Offline Backup reports, which includes all critical systems that contain: the scope of the backup, the techniques used for the backup process in the entity.\n• Reports from applying backups for all critical systems."
+},
+"2-8-1-2": {
+"d": "إجراء النسخ الاحتياطية على فترات زمنية مخطط لها بناءً على تقييم المخاطر لدى الجهة، وتوصي الهيئة بإجراء النسخ الاحتياطية للأنظمة الحساسة بشكل يومي.",
+"e": "• Reports from the entity's risk assessment.\n• An action plan for backing up critical systems according to the time plan based on the entity's risk assessment.\n• Screenshot of a backup tool showing the latest backups taken of critical systems at agreed time intervals."
+},
+"2-8-1-3": {
+"d": "تأمين الوصول إلى محتوى ووسائط النسخ الاحتياطية للأنظمة الحساسة وتخزينها ونقلها، وحمايتها من الإتلاف أو التعديل أو الاطلاع غير المصرّح به.",
+"e": "• Reports of access to storage media for critical systems.\n• Reports of review of access rights at regular intervals.\n• Backup procedures.\n• Reports of encrypted backups in transit.\n• Reports of tools used to transfer security to backups."
+},
+"2-8-2": {
+"d": "بالإشارة إلى الضابط 2-9-3-3 في الضوابط الأساسية للأمن السيبراني، يجب إجراء فحص دوري مرة كل ثلاثة أشهر على الأقل لتحديد فعالية استعادة النسخ الاحتياطية للأنظمة الحساسة.",
+"e": "• An action plan to test the effectiveness of backups for critical systems.\n• Backup Restoration Testing reports for critical systems at least every three months."
+},
+"2-9-1": {
+"d": "إضافة إلى الضوابط الفرعية الواردة في الضابط 2-10-3 من الضوابط الأساسية للأمن السيبراني، يجب أن تغطي متطلبات الأمن السيبراني لإدارة الثغرات للأنظمة الحساسة بحد أدنى ما يلي:",
+"e": ""
+},
+"2-9-1-1": {
+"d": "استخدام وسائل وأدوات موثوقة لاكتشاف الثغرات.",
+"e": "• List of methods and tools used to discover vulnerabilities."
+},
+"2-9-1-2": {
+"d": "تقييم الثغرات ومعالجتها (بتثبيت التحديثات وحزم الإصلاح) على المكونات التقنية للأنظمة الحساسة، مرة واحدة شهريًا على الأقل للأنظمة الحساسة الخارجية المتصلة بالإنترنت، ومرة كل ثلاثة أشهر على الأقل للأنظمة الحساسة الداخلية.",
+"e": "• Assessment reports and plans to identify the vulnerabilities discovered in critical systems and reports on the implementation of these plans."
+},
+"2-9-1-3": {
+"d": "المعالجة الفورية للثغرات الحرجة المكتشفة حديثًا، مع اتباع آليات إدارة التغيير المعتمدة لدى الجهة.",
+"e": "• A plan for the critical vulnerabilities discovered in critical systems."
+},
+"2-9-2": {
+"d": "بالإشارة إلى الضابط 2-10-3-1 في الضوابط الأساسية للأمن السيبراني، يجب فحص واكتشاف الثغرات على المكونات التقنية للأنظمة الحساسة مرة واحدة شهريًا على الأقل.",
+"e": "• Schedule scan reports and find vulnerabilities for critical systems."
+},
+"2-10-1": {
+"d": "إضافة إلى الضوابط الفرعية الواردة في الضابط 2-11-3 من الضوابط الأساسية للأمن السيبراني، يجب أن تغطي متطلبات الأمن السيبراني لاختبار الاختراق للأنظمة الحساسة بحد أدنى ما يلي:",
+"e": ""
+},
+"2-10-1-1": {
+"d": "أن يشمل نطاق عمل اختبار الاختراق جميع المكونات التقنية للأنظمة الحساسة وجميع الخدمات المقدمة داخليًا وخارجيًا.",
+"e": "• List the scope of work for penetration testing activities."
+},
+"2-10-1-2": {
+"d": "إجراء اختبار الاختراق من قبل فريق مؤهل.",
+"e": "• Penetration testing team resume for critical systems."
+},
+"2-10-2": {
+"d": "بالإشارة إلى الضابط 2-11-3-2 في الضوابط الأساسية للأمن السيبراني، يجب إجراء اختبار الاختراق على الأنظمة الحساسة مرة كل ستة أشهر على الأقل.",
+"e": "• Penetration testing work plan for critical systems.\n• Periodic reports of penetration tests on critical systems.\n• A guide explaining the follow-up treatment of discovered observations."
+},
+"2-11-1": {
+"d": "إضافة إلى الضوابط الفرعية في الضابط 2-12-3 من الضوابط الأساسية (ECC)، يجب أن تتضمن متطلبات الأمن السيبراني لإدارة سجلات الأحداث ومراقبتها للأنظمة الحساسة بحد أدنى ما يلي:",
+"e": ""
+},
+"2-11-1-1": {
+"d": "تفعيل سجلات أحداث الأمن السيبراني على جميع المكونات التقنية للأنظمة الحساسة.",
+"e": "• Event logs configuration for critical systems."
+},
+"2-11-1-2": {
+"d": "تفعيل التنبيهات وسجلات الأحداث المتعلقة بإدارة سلامة الملفات ومراقبتها.",
+"e": "• Appropriate techniques for managing and controlling file changes.\n• Configuration event logs to send file change alerts to critical systems for dedicated teams so they can be assured they are constantly monitored and not tampered with."
+},
+"2-11-1-3": {
+"d": "تحليل سلوك المستخدمين (UBA).",
+"e": "• A list of all systems and configuration to monitor user behaviour to ensure continuous analysis.\n• A list of all the cases studied and analyzed.\n• Security measures (Incident response playbook)."
+},
+"2-11-1-4": {
+"d": "مراقبة سجلات أحداث الأنظمة الحساسة على مدار الساعة.",
+"e": "• Monitor event logs of systems around the clock, for example: a table showing the times of specialized teams for monitoring around the clock."
+},
+"2-11-1-5": {
+"d": "حفظ وحماية سجلات حوادث الأمن السيبراني المتعلقة بالأنظمة الحساسة، على أن تكون شاملة وتتضمن التفاصيل الكاملة (مثل الوقت والتاريخ والهوية والنظام المتأثر).",
+"e": "• Document procedures for maintaining event logs for critical systems."
+},
+"2-11-2": {
+"d": "بالإشارة إلى الضابط 2-12-3-5 في الضوابط الأساسية للأمن السيبراني، يجب ألا تقل مدة حفظ سجلات أحداث الأمن السيبراني على الأنظمة الحساسة عن 18 شهرًا، وفقًا للمتطلبات التشريعية والتنظيمية ذات العلاقة.",
+"e": "• Document event log retention procedures for critical systems."
+},
+"2-12-1": {
+"d": "إضافة إلى الضوابط الفرعية الواردة في الضابط 2-15-3 من الضوابط الأساسية للأمن السيبراني، يجب أن تغطي متطلبات الأمن السيبراني لحماية تطبيقات الويب الخارجية للأنظمة الحساسة للجهة بحد أدنى ما يلي:",
+"e": ""
+},
+"2-12-1-1": {
+"d": "الإدارة الآمنة للجلسات، بما في ذلك الموثوقية والإقفال وانتهاء المهلة.",
+"e": "• A report of a secure session, which includes.\n• Session reliability.\n• Lockout session.\n• Session timeout."
+},
+"2-12-1-2": {
+"d": "تطبيق معايير أمن التطبيقات وحمايتها (OWASP Top Ten) بحد أدنى.",
+"e": "• A document explaining the application of application security standards, clarifying the minimum and the extent of the entity’s compliance with the standards."
+},
+"2-12-2": {
+"d": "بالإشارة إلى الضابط 2-15-3-2 في الضوابط الأساسية للأمن السيبراني، يجب استخدام مبدأ البنية متعددة المستويات، على ألا يقل عدد المستويات عن ثلاثة (3-Tier Architecture).",
+"e": "• Diagram of the entity's applications, showing the use of the multi-level architecture principle."
+},
+"2-13-1": {
+"d": "يجب تحديد وتوثيق واعتماد متطلبات الأمن السيبراني لحماية التطبيقات الداخلية للأنظمة الحساسة للجهة من المخاطر السيبرانية.",
+"e": "• The cybersecurity policy document that covers the requirements for protecting the entity’s internal applications from cyber risks (electronic copy or official paper copy).\n• Official approval of the document by the head of the entity or his representative (for example: via the entity’s official e-mail, or by paper or electronic signature).\n• An action plan document to implement cybersecurity requirements to protect the entity’s internal applications.\n• Evidence confirming the periodic review of the implementation of cybersecurity requirements to protect the entity’s internal applications.\n• A guide explaining the application of the entity’s internal application protection controls, including but not limited to.\n• A sample of an application design that demonstrates the use of the multi- level architecture principle.\n• A screenshot of an app demonstrating the use of HTTPS.\n• A screenshot of the application showing the deployment of the safe usage policy to users.\n• A screenshot of a secure session with it being trusted, locked, and timed out."
+},
+"2-13-2": {
+"d": "يجب تطبيق متطلبات الأمن السيبراني لحماية التطبيقات الداخلية للأنظمة الحساسة للجهة من المخاطر السيبرانية.",
+"e": "• Application security procedures document.\n• Documents confirming the application of cybersecurity requirements related to the protection of applications that are documented in the policy document.\n• An action plan document to implement cybersecurity requirements to protect applications.\n• Evidence showing the application of application protection controls, for example.\n• Screenshot showing the use of the multi-level architecture principle in applications.\n• Screenshot of an application showing the use of the HTTPS protocol.\n• Screenshot of the app showing the publication of the Acceptable use policy to users.\n• Screenshot of a secure session including authoritative, locking, and timing out."
+},
+"2-13-3": {
+"d": "يجب أن تغطي متطلبات الأمن السيبراني لحماية التطبيقات الداخلية للأنظمة الحساسة للجهة بحد أدنى ما يلي:",
+"e": ""
+},
+"2-13-3-1": {
+"d": "استخدام مبدأ البنية متعددة المستويات، على ألا يقل عدد المستويات عن ثلاثة (3-Tier Architecture).",
+"e": "• Design an internal application that demonstrates the use of the multi-level architecture principle for an internally developed entity-specific application.\n• Design an internal application that demonstrates the use of the multi-level architecture principle for an application purchased from an external party."
+},
+"2-13-3-2": {
+"d": "استخدام بروتوكولات آمنة (مثل HTTPS).",
+"e": "• List of secure protocols used in applications.\n• An internal application demonstrating the use of the HTTPS protocol."
+},
+"2-13-3-3": {
+"d": "توضيح سياسة الاستخدام المقبول للمستخدمين.",
+"e": "• Acceptable use policy for users of internal applications.\n• A guide explaining the publication of the Acceptable use policy for App users."
+},
+"2-13-3-4": {
+"d": "الإدارة الآمنة للجلسات، بما في ذلك الموثوقية والإقفال وانتهاء المهلة.",
+"e": "• Screenshot of one of the secure sessions, including.\n• Session reliability.\n• Lockout the session.\n• Session times out."
+},
+"2-13-4": {
+"d": "مراجعة متطلبات الأمن السيبراني لحماية التطبيقات الداخلية للأنظمة الحساسة للجهة بشكل دوري.",
+"e": "• The policy document indicates that it has been reviewed and updated, and the changes have been documented and approved by the head of the entity or his representative.\n• Official approval and approval by the head of the entity or his representative on the updated policy (for example: via the entity’s official e-mail, or by paper or electronic signature)."
+},
+"3-1-1": {
+"d": "إضافة إلى الضوابط الفرعية الواردة في الضابط 3-1-3 من الضوابط الأساسية للأمن السيبراني، يجب أن تغطي إدارة استمرارية الأعمال في الجهة بحد أدنى ما يلي:",
+"e": ""
+},
+"3-1-1-1": {
+"d": "إنشاء مركز للتعافي من الكوارث للأنظمة الحساسة.",
+"e": "• Entity network diagram.\n• Designing the entity's recovery center."
+},
+"3-1-1-2": {
+"d": "تضمين الأنظمة الحساسة ضمن خطط التعافي من الكوارث.",
+"e": "• Disaster recovery plans documented and approved by the entity, which include critical systems."
+},
+"3-1-1-3": {
+"d": "إجراء فحوصات دورية مرة واحدة سنويًا على الأقل للتأكد من فعالية خطط التعافي من الكوارث للأنظمة الحساسة.",
+"e": "• Updated report for effective testing of disaster recovery plans for critical systems.\n• A plan to conduct tests of the effectiveness of disaster recovery plans for critical systems in the entity."
+},
+"3-1-1-4": {
+"d": "توصي الهيئة الوطنية للأمن السيبراني بإجراء اختبار حي دوري للتعافي من الكوارث (Live DR Test) للأنظمة الحساسة.",
+"e": "• The live DR Testing Schedule for critical systems approved by the entity.\n• A recent report of a live disaster recovery test for critical systems."
+},
+"4-1-1": {
+"d": "إضافة إلى الضوابط الواردة في المجال الفرعي 4-1 من الضوابط الأساسية للأمن السيبراني، يجب أن تغطي متطلبات الأمن السيبراني المتعلقة بالأطراف الخارجية بحد أدنى ما يلي:",
+"e": ""
+},
+"4-1-1-1": {
+"d": "إجراء المسح الأمني لشركات الإسناد وموظفي الإسناد والخدمات المُدارة العاملة على الأنظمة الحساسة.",
+"e": "• An official document from the competent authorities explaining the security scanning procedure for workers on critical systems."
+},
+"4-1-1-2": {
+"d": "أن تكون خدمات النسخ الاحتياطي والخدمات المُدارة على الأنظمة الحساسة عبر شركات وجهات وطنية، وفقًا للمتطلبات التشريعية والتنظيمية ذات العلاقة.",
+"e": "• Service Level Agreements (SLA) contracts and agreements with third party outsourcing services and managed cybersecurity services operations centers for the operation and monitoring of critical systems.\n• An official document proving that the managed cybersecurity services operations centers for operation and monitoring of critical systems are entirely located within the Kingdom of Saudi Arabia (example: its existence as one of the terms of the signed contract, the existence of a service level agreement (SLA) signed between the external party and the entity, or the entity’s visit to the service provider’s workplace).\n• An acknowledgment from the provider of support services and the operations centers of cybersecurity services managed to operate and monitor critical systems to adhere to all internal policies and procedures for support services and managed services for the entity and to adhere to the relevant legislative and regulatory requirements."
+},
+"4-2-1": {
+"d": "إضافة إلى الضوابط الفرعية الواردة في الضابط 4-2-3 من الضوابط الأساسية للأمن السيبراني، يجب أن تغطي متطلبات الأمن السيبراني لاستخدام خدمات الحوسبة السحابية والاستضافة بحد أدنى ما يلي:",
+"e": ""
+},
+"4-2-1-1": {
+"d": "أن يكون موقع استضافة الأنظمة الحساسة أو أي جزء من مكوناتها التقنية داخل الجهة، أو في خدمات حوسبة سحابية مقدَّمة من جهات حكومية أو شركات وطنية تستوفي ضوابط الحوسبة السحابية الصادرة عن الهيئة الوطنية للأمن السيبراني، مع مراعاة تصنيف البيانات المستضافة.",
+"e": "• Contracts and agreements of the entity with the cloud computing and hosting service provider for critical systems.\n• An acknowledgment from the cloud computing service provider that it adheres to all internal policies and procedures for the entity’s cloud computing and hosting services and adheres to the relevant legislative and regulatory requirements.\n• A list of data that was classified before being hosted with cloud computing service providers, including but not limited to: (a file) showing the data that was classified before sharing it with the cloud computing and hosting service provider.\n• An official document proving that the entity’s critical systems, or any part of its technical components, are hosted in a reliable and secure place within the Kingdom of Saudi Arabia."
+}
+}
