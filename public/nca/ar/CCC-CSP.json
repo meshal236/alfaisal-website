@@ -1,0 +1,534 @@
+{
+"1-1-P-1": {
+"d": "إضافة إلى الضابط 1-4-1 في الضوابط الأساسية للأمن السيبراني (ECC)، يجب على صاحب الصلاحية أيضًا تحديد وتوثيق واعتماد ما يلي:",
+"e": ""
+},
+"1-1-P-1-1": {
+"d": "أدوار الأمن السيبراني ومصفوفة المسؤوليات (RACI) لجميع الأطراف المعنية بالخدمات السحابية، بما في ذلك أدوار ومسؤوليات صاحب الصلاحية.",
+"e": "• Cloud Cybersecurity Roles and Responsibilities and RACI matrix documented and approved within the related Service Level Agreements (SLAs) between the CSP and CSTs."
+},
+"1-2-P-1": {
+"d": "يجب أن تتضمن منهجية إدارة مخاطر الأمن السيبراني المشار إليها في المجال الفرعي 1-5 من الضوابط الأساسية (ECC) بالنسبة لمقدّم الخدمة السحابية بحد أدنى ما يلي:",
+"e": ""
+},
+"1-2-P-1-1": {
+"d": "تحديد مستويات المخاطر المقبولة للخدمات السحابية وتوضيحها للجهة المستفيدة عندما تكون المخاطر متعلقة بها.",
+"e": "• Defined acceptable risk levels of cloud services documented and communicated with the concerned and relevant stakeholders, including the CSTs."
+},
+"1-2-P-1-2": {
+"d": "مراعاة تصنيف البيانات والمعلومات ضمن منهجية إدارة مخاطر الأمن السيبراني.",
+"e": "• Cybersecurity Risk Management Methodology that includes a clear procedure for dealing with data based on its classification levels."
+},
+"1-2-P-1-3": {
+"d": "إعداد سجل مخاطر الأمن السيبراني للخدمات السحابية ومراقبته دوريًا بحسب المخاطر.",
+"e": "• Cybersecurity Cloud Services Risk Register.\n• Cybersecurity Cloud Services Risk Register review plan.\n• Cybersecurity Cloud Services Risk Register review reports."
+},
+"1-3-P-1": {
+"d": "إضافة إلى الضابط 1-7-1 في الضوابط الأساسية (ECC)، يجب أن يتضمن التزام مقدّم الخدمة السحابية بالمتطلبات التشريعية والتنظيمية بحد أدنى المتطلب التالي:",
+"e": ""
+},
+"1-3-P-1-1": {
+"d": "الالتزام المستمر بجميع الأنظمة واللوائح والتعليمات والقرارات والأطر التنظيمية والضوابط والتوجيهات المتعلقة بالأمن السيبراني في المملكة العربية السعودية.",
+"e": "• List of all laws, regulations, instructions, decisions, regulatory frameworks and controls, and cybersecurity mandates applicable to the CSP in the Kingdom of Saudi Arabia.\n• Reports clarifying the status of compliance with these requirements.\n• Reports clarifying periodic plans for monitoring compliance."
+},
+"1-4-P-1": {
+"d": "إضافة إلى الضوابط الفرعية في الضابطين 1-9-3 و1-9-4 من الضوابط الأساسية (ECC)، يجب تغطية المتطلبات التالية بحد أدنى قبل وأثناء العلاقة المهنية للعاملين مع مقدّم الخدمة السحابية:",
+"e": ""
+},
+"1-4-P-1-1": {
+"d": "يجب شغل وظائف الأمن السيبراني في مراكز بيانات مقدّم الخدمة السحابية داخل المملكة العربية السعودية بمواطنين سعوديين مؤهلين ومناسبين.",
+"e": "• List of cybersecurity positions related to data centers within the Kingdom of Saudi Arabia and the requirements for each position.\n• List of employees filling these positions and their qualifications.\n• Cybersecurity training program and the training certificates provided under the program."
+},
+"1-4-P-1-2": {
+"d": "إجراء المسح الأمني دوريًا للمرشحين والعاملين داخل المملكة العربية السعودية الذين لديهم وصول إلى منظومة التقنية السحابية.",
+"e": "• Screening/Vetting process defined and implemented for candidates with access to the Cloud Technology Stack, including a plan for periodic screening/vetting.\n• Screening/Vetting reports for these candidates, with information privacy and sensitivity considered."
+},
+"1-4-P-1-3": {
+"d": "يجب أن تكون سياسات الأمن السيبراني شرطًا مسبقًا للوصول إلى منظومة التقنية السحابية، وأن تكون موقّعة ومعتمدة بشكل مناسب.",
+"e": "• Cybersecurity policies acknowledgement and compliance form signed by all personnel working on the Cloud Technology Stack before access is granted."
+},
+"1-4-P-2": {
+"d": "إضافة إلى الضوابط الفرعية في الضابط 1-9-5 من الضوابط الأساسية (ECC)، يجب توفر المتطلب التالي بحد أدنى عند إنهاء أو انتهاء العلاقة المهنية للموارد البشرية مع مقدّم الخدمة السحابية:",
+"e": ""
+},
+"1-4-P-2-1": {
+"d": "التأكد من حصر الأصول المملوكة للجهة وإعادتها عند انتهاء العلاقة الوظيفية، وخصوصًا الأصول ذات الحساسية الأمنية.",
+"e": "• Signed clearance forms that include employees’ acknowledgement to return all organization assets, validated by the concerned department."
+},
+"1-5-P-1": {
+"d": "يجب تحديد وتوثيق واعتماد متطلبات الأمن السيبراني لإدارة التغيير لدى مقدّم الخدمة السحابية.",
+"e": "• Cybersecurity change management policy approved by the organization.\n• Formal approval by the head of the organization or his/her deputy on the policy."
+},
+"1-5-P-2": {
+"d": "يجب تطبيق متطلبات الأمن السيبراني لإدارة التغيير لدى مقدّم الخدمة السحابية.",
+"e": "• Documents confirming the implementation of cybersecurity requirements for change management, as documented in the policy.\n• Document that clarifies an action plan for implementing cybersecurity requirements for change management."
+},
+"1-5-P-3": {
+"d": "يجب أن يغطي الأمن السيبراني لإدارة التغيير لدى مقدّم الخدمة السحابية بحد أدنى ما يلي:",
+"e": ""
+},
+"1-5-P-3-1": {
+"d": "العمليات والإجراءات اللازمة لتطبيق التغييرات المخطط لها في أنظمة الإنتاج بشكل آمن، مع إعطاء الأولوية لملاحظات الأمن السيبراني.",
+"e": "• Change management procedures that prioritize implementation of changes related to cybersecurity.\n• Evidence demonstrating verification of secure procedures during execution of changes."
+},
+"1-5-P-3-2": {
+"d": "إجراء لتطبيق تغييرات الأمن السيبراني الاستثنائية، مثل التغييرات أثناء التعافي من الحوادث.",
+"e": "• Document containing procedures for implementing exceptional changes.\n• Evidence demonstrating technical capability for monitoring and controlling changes."
+},
+"1-5-P-4": {
+"d": "يجب تطبيق متطلبات الأمن السيبراني لإدارة التغيير لدى مقدّم الخدمة السحابية ومراجعتها دوريًا.",
+"e": "• Log of updates and changes to the cybersecurity requirements for change management.\n• Approved document that sets the policy review schedule.\n• Policy indicating that it has been reviewed and updated and that changes have been documented and approved.\n• Formal approval by the head of the organization or his/her deputy on the updated policy."
+},
+"2-1-P-1": {
+"d": "إضافة إلى الضوابط الواردة في الضابط 2-1 من الضوابط الأساسية (ECC)، يجب على مقدّم الخدمة السحابية تغطية الضوابط الإضافية التالية لإدارة الأصول بحد أدنى:",
+"e": ""
+},
+"2-1-P-1-1": {
+"d": "حصر جميع الأصول المعلوماتية والتقنية باستخدام تقنيات مناسبة، مثل قاعدة بيانات إدارة الإعدادات (CMDB) أو قدرة مماثلة تتضمن حصرًا لجميع الأصول التقنية.",
+"e": "• Asset inventory techniques identified and utilized.\n• Document outlining the inventory of technical assets specific to cloud systems.\n• Organization information and technology asset information maintained within an asset inventory, such as a CMDB."
+},
+"2-1-P-1-2": {
+"d": "تحديد مالكي الأصول وإشراكهم في دورة حياة إدارة الأصول.",
+"e": "• Document outlining the asset inventory and the owners assigned to the assets.\n• Evidence demonstrating that the roles and responsibilities of asset owners are aligned with their respective assets."
+},
+"2-2-P-1": {
+"d": "إضافة إلى الضوابط الفرعية في الضابط 2-2-3 من الضوابط الأساسية (ECC)، يجب على مقدّم الخدمة السحابية تغطية الضوابط الفرعية الإضافية التالية لإدارة هويات الدخول والصلاحيات بحد أدنى:",
+"e": ""
+},
+"2-2-P-1-1": {
+"d": "إدارة هويات الدخول والصلاحيات لبيانات اعتماد الحسابات العامة التي لا يمكن إسناد المسؤولية عنها لشخص محدد.",
+"e": "• Document outlining the list of users of generic accounts, including service and technical accounts.\n• Technical restrictions applied to the use and management of generic accounts."
+},
+"2-2-P-1-2": {
+"d": "الإدارة الآمنة للجلسات، بما في ذلك موثوقية الجلسة وإقفالها وإنهاؤها عند انتهاء المهلة.",
+"e": "• Evidence demonstrating configurations applied to sessions, including authenticity, lockout, and timeout."
+},
+"2-2-P-1-3": {
+"d": "التحقق من الهوية متعدد العناصر للمستخدمين ذوي الصلاحيات الهامة والمرشحين للعمل ممن لديهم وصول إلى منظومة التقنية السحابية.",
+"e": "• List of privileged accounts with access to Cloud Technology Systems (CTS).\n• Multi-factor authentication technologies implemented for privileged accounts with access to Cloud Technology Systems."
+},
+"2-2-P-1-4": {
+"d": "إجراء رسمي لاكتشاف ومنع الوصول غير المصرّح به، مثل تحديد حد أقصى لمحاولات تسجيل الدخول الفاشلة.",
+"e": "• Authentication and monitoring of access.\n• The number of allowed access attempts is limited and the account is temporarily closed when the limit is exceeded.\n• Sample system configuration and monitoring report.\n• Access-attempt alerts."
+},
+"2-2-P-1-5": {
+"d": "استخدام طرق وخوارزميات آمنة لحفظ كلمات المرور ومعالجتها، مثل دوال التجزئة الآمنة.",
+"e": "• Evidence demonstrating a sample of stored passwords.\n• Document outlining the standard applied to password storage."
+},
+"2-2-P-1-6": {
+"d": "الإدارة الآمنة لحسابات العاملين من الأطراف الخارجية.",
+"e": "• Restrictions implemented for third-party accounts based on approved standards.\n• Procedures adopted for managing third-party accounts during their lifecycle.\n• Sample third-party account requests showing the necessary approvals.\n• Sample third-party account activity-monitoring logs.\n• Defined labels for third-party accounts.\n• Implemented Federated Identities and Authentication.\n• Third-party account and privilege review plan and reports."
+},
+"2-2-P-1-7": {
+"d": "تطبيق التحكم في الوصول على أنظمة الإدارة ولوحات التحكم الإدارية.",
+"e": "• List of management systems and administrative consoles.\n• Sample requests for access to management systems and administrative consoles.\n• Access privilege review plan and review reports for management systems and administrative consoles.\n• Evidence of using Privileged Access Management (PAM) technology.\n• Evidence of encryption for access communications through the network and a list of activated encryption algorithms.\n• Evidence of Multi-Factor Authentication implementation.\n• Sample event monitoring and related alerts from a Security Information and Event Management (SIEM) system.\n• Sample recording of sessions."
+},
+"2-2-P-1-8": {
+"d": "إخفاء مدخلات التحقق من الهوية المعروضة، وخصوصًا كلمات المرور، لمنع التلصص البصري.",
+"e": "• Evidence demonstrating implementation of obfuscation and masking of sensitive and personal information."
+},
+"2-2-P-1-9": {
+"d": "الحصول على موافقة الجهة المستفيدة قبل وصول مقدّم الخدمة السحابية أو أي طرف خارجي تابع له إلى أي أصل أو بيانات تخص الجهة المستفيدة.",
+"e": "• Approved procedures for requesting access to the CST’s assets or data.\n• Sample approval requests."
+},
+"2-2-P-1-10": {
+"d": "القدرة على قطع جلسة الوصول عن بُعد فورًا ومنع أي وصول مستقبلي للمستخدم.",
+"e": "• Controlled remote access sessions established.\n• Sample system or proxy configurations."
+},
+"2-2-P-1-11": {
+"d": "توفير خدمات التحقق من الهوية متعدد العناصر للجهات المستفيدة للمستخدمين السحابيين ذوي الصلاحيات الهامة.",
+"e": "• Evidence demonstrating that cloud services are authenticated using multi-factor authentication."
+},
+"2-2-P-1-12": {
+"d": "ضمان تقييد الوصول إلى أنظمة ووسائط التخزين والتحكم فيه، مثل شبكات تخزين البيانات (SAN).",
+"e": "• Access policy for storage systems.\n• Asset register containing storage systems.\n• Sample access-policy implementation for storage systems.\n• Sample architecture design of storage systems.\n• Sample access requests for storage systems."
+},
+"2-3-P-1": {
+"d": "إضافة إلى الضوابط الفرعية في الضابط 2-3-3 من الضوابط الأساسية (ECC)، يجب على مقدّم الخدمة السحابية تغطية الضوابط الفرعية الإضافية التالية لحماية الأنظمة وأجهزة معالجة المعلومات بحد أدنى:",
+"e": ""
+},
+"2-3-P-1-1": {
+"d": "التأكد من تطبيق جميع الإعدادات وفقًا لمعايير الأمن السيبراني لدى مقدّم الخدمة السحابية.",
+"e": "• Approved cybersecurity standards for information systems.\n• Checklist for applying standards to configurations before deployment and before changes are applied.\n• Review plan for information system configurations and review reports.\n• Sample event logs for monitoring configuration changes.\n• Restrictions applied to configuration modification and the list of personnel permitted to change configurations.\n• Sample configuration-change requests."
+},
+"2-3-P-1-2": {
+"d": "ضمان فصل وعزل البيانات والبيئات وأنظمة المعلومات بين الجهات المستفيدة لمنع اختلاط البيانات.",
+"e": "• Verified separation of data and systems across CSTs.\n• Test reports validating the prevention of data commingling."
+},
+"2-3-P-1-3": {
+"d": "تبنّي مبادئ الأمن السيبراني في إعدادات الأنظمة التقنية وفقًا لمبدأ الحد الأدنى من الوظائف.",
+"e": "• Minimum-functionality requirements defined for the configuration and functionality of technologies, systems, software, and services.\n• Configuration audit reports demonstrating compliance with the specified requirements."
+},
+"2-3-P-1-4": {
+"d": "قدرة منظومة التقنية السحابية على التعامل الآمن مع التحقق من المدخلات والاستثناءات وحالات الفشل.",
+"e": "• Sample configuration for input validation.\n• Sample evidence of automatic monitoring and logging to capture exceptions and failures.\n• Evidence confirming logging and monitoring of alerts and audit reports."
+},
+"2-3-P-1-5": {
+"d": "العزل الكامل لوظائف وتطبيقات الأمن عن باقي الوظائف والتطبيقات في منظومة التقنية السحابية.",
+"e": "• Document demonstrating that security functions and applications are isolated from other functions and applications in the Cloud Technology Stack.\n• Architecture design documentation."
+},
+"2-3-P-1-6": {
+"d": "إشعار الجهات المستفيدة بمتطلبات الأمن السيبراني التي يوفرها مقدّم الخدمة والقابلة للاستخدام من قِبلها.",
+"e": "• Document describing the cybersecurity requirements provided by the service provider and methods of activating them on subscriber services.\n• Evidence demonstrating communication to subscribers of requirements that can be activated upon request."
+},
+"2-3-P-1-7": {
+"d": "اكتشاف ومنع التغييرات غير المصرّح بها على البرمجيات والأنظمة.",
+"e": "• Cybersecurity requirements for change management.\n• Evidence confirming applied restrictions that prevent, detect, and remediate unauthorized changes.\n• Evidence illustrating system configurations for change-prevention tools.\n• Change monitoring reports or alerts."
+},
+"2-3-P-1-8": {
+"d": "العزل الكامل والحماية للبيئات الضيفة المتعددة.",
+"e": "• Guest environments isolated.\n• Architectural design document for hosting environments illustrating isolation.\n• Sample virtual-environment threat model.\n• Sample test report."
+},
+"2-3-P-1-9": {
+"d": "يجب عزل الخدمات السحابية المجتمعية المقدَّمة للجهات المستفيدة، بما فيها الجهات الحكومية وجهات البنية التحتية الوطنية الحساسة، عن أي حوسبة سحابية مقدَّمة خارج نطاق العمل.",
+"e": "• Architectural design documentation.\n• Sample isolation mechanisms implemented between cloud services provided to government and sensitive-infrastructure entities and cloud services provided to other external entities."
+},
+"2-3-P-1-10": {
+"d": "تقديم خدمات الحوسبة السحابية من داخل المملكة العربية السعودية، بما في ذلك الأنظمة المستخدمة للتخزين والمعالجة ومراكز التعافي من الكوارث.",
+"e": "• Cloud data centers located in the Kingdom of Saudi Arabia.\n• Architectural design document for storage systems, processing systems, and disaster recovery centers, including their geographical locations and whether they are leased or owned.\n• Evidence illustrating the addresses of the centers’ locations."
+},
+"2-3-P-1-11": {
+"d": "تقديم خدمات الحوسبة السحابية من داخل المملكة العربية السعودية، بما في ذلك الأنظمة المستخدمة للمراقبة والدعم.",
+"e": "• Evidence that cloud-computing monitoring and support centers are based in the Kingdom of Saudi Arabia.\n• Architectural design document for storage systems, processing systems, and disaster recovery centers, including their geographical locations.\n• Sample contracts showing whether facilities are leased or owned.\n• Evidence illustrating the addresses of the centers’ locations."
+},
+"2-3-P-1-12": {
+"d": "يجب استخدام تقنيات حديثة، مثل الكشف والاستجابة على الأجهزة الطرفية (EDR)، لضمان جاهزية خوادم المعلومات وأجهزة أنظمة المعالجة لدى مقدّم الخدمة للاستجابة السريعة للحوادث.",
+"e": "• EDR systems implemented across all devices and servers.\n• EDR system configuration review plan and reports.\n• EDR system update plan and reports."
+},
+"2-4-P-1": {
+"d": "إضافة إلى الضوابط الفرعية في الضابط 2-5-3 من الضوابط الأساسية (ECC)، يجب على مقدّم الخدمة السحابية تغطية الضوابط الفرعية الإضافية التالية لإدارة أمن الشبكات بحد أدنى:",
+"e": ""
+},
+"2-4-P-1-1": {
+"d": "مراقبة حركة البيانات عبر الشبكات الخارجية والداخلية لاكتشاف الحالات غير الطبيعية.",
+"e": "• Inventory of network flows.\n• Anomaly-detection rules defined on detection tools."
+},
+"2-4-P-1-2": {
+"d": "عزل شبكة منظومة التقنية السحابية وحمايتها عن الشبكات الداخلية والخارجية الأخرى.",
+"e": "• Threat model for the Cloud Technology Stack network.\n• Network-level controls implementation.\n• Architecture design documentation."
+},
+"2-4-P-1-3": {
+"d": "الحماية من هجمات حجب الخدمة، بما في ذلك هجمات حجب الخدمة الموزعة (DDoS).",
+"e": "• Document or report demonstrating that denial-of-service threats are analyzed, detected, and mitigated."
+},
+"2-4-P-1-4": {
+"d": "حماية البيانات المنقولة عبر الشبكة من وإلى منظومة التقنية السحابية باستخدام آليات تشفير قوية للوصول الإداري والتشغيلي.",
+"e": "• Evidence illustrating that Cloud Technology Stack management networks are strongly encrypted."
+},
+"2-4-P-1-5": {
+"d": "التحكم في الوصول بين أجزاء الشبكة المختلفة.",
+"e": "• Network connections assigned to authenticated users or identities.\n• Access-control list."
+},
+"2-4-P-1-6": {
+"d": "العزل بين شبكة تقديم الخدمات السحابية وشبكة إدارة السحابة وشبكة مقدّم الخدمة المؤسسية.",
+"e": "• Isolation mechanisms for networks.\n• Architecture design documentation."
+},
+"2-5-P-1": {
+"d": "إضافة إلى الضوابط الفرعية في الضابط 2-6-3 من الضوابط الأساسية (ECC)، يجب على مقدّم الخدمة السحابية تغطية الضوابط الفرعية الإضافية التالية لأمن الأجهزة المحمولة بحد أدنى:",
+"e": ""
+},
+"2-5-P-1-1": {
+"d": "حصر جميع أجهزة المستخدمين النهائيين والأجهزة المحمولة.",
+"e": "• Maintained inventory of end-user and mobile devices.\n• Periodic review reports."
+},
+"2-5-P-1-2": {
+"d": "الإدارة المركزية لأمن الأجهزة المحمولة.",
+"e": "• All mobile devices centrally managed from a security perspective.\n• Sample system configuration."
+},
+"2-5-P-1-3": {
+"d": "إقفال الشاشة لأجهزة المستخدمين النهائيين.",
+"e": "• Screen-lock policy enforced on user devices.\n• Documents illustrating user-awareness methods for manually locking screens when users are away from their devices."
+},
+"2-5-P-1-4": {
+"d": "تطهير البيانات والتخلص الآمن من أجهزة المستخدمين النهائيين، وخصوصًا الأجهزة المتصلة بمنظومة التقنية السحابية.",
+"e": "• Approved and implemented data-sanitization and device-disposal tools and methods for end-user devices related to the Cloud Technology Stack."
+},
+"2-6-P-1": {
+"d": "إضافة إلى الضوابط الفرعية في الضابط 2-7-3 من الضوابط الأساسية (ECC)، يجب على مقدّم الخدمة السحابية تغطية الضوابط الفرعية الإضافية التالية لحماية البيانات والمعلومات بحد أدنى:",
+"e": ""
+},
+"2-6-P-1-1": {
+"d": "منع استخدام بيانات منظومة التقنية السحابية في أي بيئة غير بيئة الإنتاج، إلا بعد تطبيق ضوابط صارمة مثل إخفاء البيانات أو تشويشها.",
+"e": "• Production data segregated from test data.\n• Architecture design documentation."
+},
+"2-6-P-1-2": {
+"d": "تزويد الجهات المستفيدة بعمليات وإجراءات وتقنيات تخزين آمن للبيانات للالتزام بالمتطلبات التشريعية والتنظيمية ذات العلاقة.",
+"e": "• List of applicable legal and regulatory requirements.\n• Data-storage processes and technologies compliant with legal requirements."
+},
+"2-6-P-1-3": {
+"d": "يجب التخلص من بيانات الجهة المستفيدة بشكل آمن عند إنهاء العقد مع مقدّم الخدمة السحابية أو انتهائه.",
+"e": "• Contract-status monitoring.\n• Records of disposed CST data specifying the disposal methods used."
+},
+"2-6-P-1-4": {
+"d": "الالتزام بالمحافظة على سرية بيانات ومعلومات الجهة المستفيدة وفقًا للمتطلبات التشريعية والتنظيمية ذات العلاقة.",
+"e": "• Evidence that storage and processing of CST data are subject to applicable legal and regulatory requirements."
+},
+"2-6-P-1-5": {
+"d": "تزويد الجهات المستفيدة بوسائل آمنة لتصدير ونقل البيانات والبنية التحتية الافتراضية.",
+"e": "• Secure data and asset export functionality over an encrypted and secure channel or connection."
+},
+"2-7-P-1": {
+"d": "إضافة إلى الضوابط الفرعية في الضابط 2-8-3 من الضوابط الأساسية (ECC)، يجب على مقدّم الخدمة السحابية تغطية الضوابط الفرعية الإضافية التالية للتشفير بحد أدنى:",
+"e": ""
+},
+"2-7-P-1-1": {
+"d": "الآليات التقنية وأوليات التشفير للتشفير القوي، بما يتوافق مع المستوى المتقدم في المعايير الوطنية للتشفير (NCS-1:2020).",
+"e": "• NCS-1:2020-compliant data-encryption mechanisms."
+},
+"2-7-P-1-2": {
+"d": "يجب تطبيق سلطة إصدار الشهادات وقدرة إصدارها بشكل آمن، أو إصدار الشهادات من سلطة إصدار موثوقة.",
+"e": "• Installation and activation of a trusted source or authority for accreditation.\n• Trusted and certified certificates."
+},
+"2-8-P-1": {
+"d": "إضافة إلى الضوابط الفرعية في الضابط 2-9-3 من الضوابط الأساسية (ECC)، يجب على مقدّم الخدمة السحابية تغطية الضوابط الفرعية الإضافية التالية لإدارة النسخ الاحتياطية والاستعادة بحد أدنى:",
+"e": ""
+},
+"2-8-P-1-1": {
+"d": "تأمين الوصول إلى النسخ الاحتياطية لبيانات الجهة المستفيدة ووسائطها وتخزينها ونقلها، وحمايتها من التلف أو التعديل أو الوصول غير المصرّح به.",
+"e": "• List of identified risks.\n• Defined and applied security measures.\n• Regular review reports."
+},
+"2-8-P-1-2": {
+"d": "تأمين الوصول إلى النسخ الاحتياطية لمنظومة التقنية السحابية ووسائطها وتخزينها ونقلها، وحمايتها من التلف أو التعديل أو الوصول غير المصرّح به.",
+"e": "• List of identified risks.\n• Defined and applied security measures.\n• Regular review reports."
+},
+"2-9-P-1": {
+"d": "إضافة إلى الضوابط الفرعية في الضابط 2-10-3 من الضوابط الأساسية (ECC)، يجب على مقدّم الخدمة السحابية تغطية الضوابط الفرعية الإضافية التالية لإدارة الثغرات بحد أدنى:",
+"e": ""
+},
+"2-9-P-1-1": {
+"d": "تقييم الثغرات ومعالجتها على المكونات الخارجية لمنظومة التقنية السحابية شهريًا على الأقل، وعلى المكونات الداخلية كل ثلاثة أشهر على الأقل.",
+"e": "• Threat and Vulnerability Management Policy.\n• Sample vulnerability assessments.\n• Sample remediation plans and actions."
+},
+"2-9-P-1-2": {
+"d": "إشعار الجهات المستفيدة بالثغرات المكتشفة التي قد تؤثر عليها وبالتدابير الوقائية المطبَّقة.",
+"e": "• Reports sent to CSTs regarding detected vulnerabilities that affect them."
+},
+"2-10-P-1": {
+"d": "إضافة إلى الضوابط الفرعية في الضابط 2-11-3 من الضوابط الأساسية (ECC)، يجب على مقدّم الخدمة السحابية تغطية الضابط الفرعي الإضافي التالي لاختبار الاختراق بحد أدنى:",
+"e": ""
+},
+"2-10-P-1-1": {
+"d": "يجب أن يغطي نطاق اختبارات الاختراق منظومة التقنية السحابية بالكامل، وأن تُجرى الاختبارات مرة كل ستة أشهر على الأقل.",
+"e": "• Penetration tests conducted across the entire Cloud Technology Stack."
+},
+"2-11-P-1": {
+"d": "إضافة إلى الضوابط الفرعية في الضابط 2-12-3 من الضوابط الأساسية (ECC)، يجب على مقدّم الخدمة السحابية تغطية الضوابط الفرعية الإضافية التالية لإدارة سجلات أحداث الأمن السيبراني ومراقبتها بحد أدنى:",
+"e": ""
+},
+"2-11-P-1-1": {
+"d": "تفعيل وحماية سجلات الأحداث ومسارات التدقيق لمنظومة التقنية السحابية.",
+"e": "• Log management policy.\n• Centralized and protected log repository."
+},
+"2-11-P-1-2": {
+"d": "تفعيل وجمع سجل محاولات تسجيل الدخول.",
+"e": "• Stored and recorded login attempts.\n• Evidence illustrating mechanisms for verifying login attempts."
+},
+"2-11-P-1-3": {
+"d": "تفعيل وحماية جميع سجلات أحداث الأنشطة والعمليات التي ينفذها مقدّم الخدمة على مستوى الجهة المستفيدة لدعم التحليل الجنائي الرقمي.",
+"e": "• CSP and CST event or activity logs."
+},
+"2-11-P-1-4": {
+"d": "حماية سجلات أحداث الأمن السيبراني من التعديل أو الإفصاح أو الإتلاف أو الوصول غير المصرّح به أو النشر غير المصرّح به وفقًا للمتطلبات التنظيمية أو التشريعية.",
+"e": "• Cybersecurity event logs protected.\n• Restrictions applied to protect the logs.\n• Secure log-destruction methods.\n• List of legal and regulatory requirements for audit logs."
+},
+"2-11-P-1-5": {
+"d": "المراقبة المستمرة لأحداث الأمن السيبراني باستخدام تقنية إدارة معلومات وأحداث الأمن (SIEM) بما يغطي منظومة التقنية السحابية بالكامل.",
+"e": "• Cybersecurity logs monitored in a SIEM system.\n• List of requirements for cybersecurity event monitoring.\n• Sample monitoring reports or alerts."
+},
+"2-11-P-1-6": {
+"d": "مراجعة سجلات أحداث الأمن السيبراني ومسارات التدقيق دوريًا، بما يغطي أحداث مقدّم الخدمة في منظومة التقنية السحابية.",
+"e": "• Cybersecurity event logs reviewed by skilled and independent reviewers.\n• Sample reports, alerts, or use cases."
+},
+"2-11-P-1-7": {
+"d": "المراقبة والتسجيل الآلي لسجلات أحداث جلسات الوصول عن بُعد.",
+"e": "• Remote-access sessions automatically monitored."
+},
+"2-11-P-1-8": {
+"d": "التعامل الآمن مع بيانات المستخدمين الموجودة في مسارات التدقيق وسجلات أحداث الأمن السيبراني.",
+"e": "• Personally Identifiable Information anonymized in logs."
+},
+"2-12-P-1": {
+"d": "إضافة إلى الضوابط الفرعية في الضابط 2-13-3 من الضوابط الأساسية (ECC)، يجب على مقدّم الخدمة السحابية تغطية الضوابط الفرعية الإضافية التالية لإدارة حوادث وتهديدات الأمن السيبراني بحد أدنى:",
+"e": ""
+},
+"2-12-P-1-1": {
+"d": "الاشتراك في الجهات والمجموعات المعتمدة والمتخصصة للبقاء على اطلاع بتهديدات الأمن السيبراني والممارسات الشائعة والمعرفة الأساسية.",
+"e": "• List of trusted external threat-intelligence vendors.\n• Cybersecurity threat intelligence.\n• Knowledge base of common and best practices in cybersecurity."
+},
+"2-12-P-1-2": {
+"d": "تدريب الموظفين والعاملين من الأطراف الخارجية على الاستجابة لحوادث الأمن السيبراني وفقًا لأدوارهم ومسؤولياتهم.",
+"e": "• Cybersecurity training program aligned with the roles and responsibilities of the target groups.\n• Sample training certificates or attendance records."
+},
+"2-12-P-1-3": {
+"d": "الاختبار الدوري لقدرة الاستجابة لحوادث الأمن السيبراني.",
+"e": "• Incident response plan or procedure test schedule.\n• Report outlining the methodology for testing cybersecurity incident-response capabilities.\n• Lessons-learned records."
+},
+"2-12-P-1-4": {
+"d": "إجراء تحليل السبب الجذري لحوادث الأمن السيبراني ووضع خطط لمعالجة النتائج.",
+"e": "• Root-cause analysis established as a mandatory part of incident response.\n• Root-cause analysis conclusions prioritized and addressed.\n• Incident response plan continuously improved based on root-cause analysis conclusions.\n• Sample root-cause analysis."
+},
+"2-12-P-1-5": {
+"d": "دعم الجهة المستفيدة في الإجراءات القانونية والتحليل الجنائي الرقمي مع حماية سلسلة الحيازة تحت إدارة ومسؤولية مقدّم الخدمة.",
+"e": "• Evidence demonstrating knowledge and understanding of legal and regulatory requirements for CSTs.\n• Legal and forensic capabilities established.\n• Movement of evidence tracked and evidence integrity ensured."
+},
+"2-12-P-1-6": {
+"d": "الإبلاغ الفوري للجهة المستفيدة عن الحوادث التي قد تؤثر عليها عند اكتشاف الحادثة.",
+"e": "• Impact on CSTs analyzed for all identified incidents.\n• Incidents affecting CSTs immediately reported to the CSTs with sufficient information.\n• Sample incidents reported to CSTs."
+},
+"2-12-P-1-7": {
+"d": "دعم الجهات المستفيدة في التعامل مع الحوادث الأمنية وفقًا للاتفاقية المبرمة بين مقدّم الخدمة والجهة المستفيدة.",
+"e": "• Incident-handling process agreed between the CSP and CST and formally recognized in the contract.\n• Process established for reporting incidents affecting CSTs."
+},
+"2-12-P-1-8": {
+"d": "قياس ومراقبة مؤشرات حوادث الأمن السيبراني ومراقبة الالتزام بالعقود والمتطلبات التشريعية.",
+"e": "• Contractual and legislative requirements register.\n• Formally approved and tested cybersecurity incident metrics, including KPIs and KCIs.\n• Metrics dashboards and compliance reports.\n• Records of dashboard and compliance-report reviews.\n• Sample dashboard and compliance report."
+},
+"2-13-P-1": {
+"d": "إضافة إلى الضوابط الفرعية في الضابط 2-14-3 من الضوابط الأساسية (ECC)، يجب على مقدّم الخدمة السحابية تغطية الضوابط الفرعية الإضافية التالية للأمن المادي بحد أدنى:",
+"e": ""
+},
+"2-13-P-1-1": {
+"d": "المراقبة المستمرة للدخول إلى مواقع ومباني مقدّم الخدمة السحابية.",
+"e": "• Inventory of site and building gates and access points.\n• Documentation of defined attack vectors, access-monitoring requirements, and the access-monitoring process.\n• Access logs and records.\n• Access-log and record reviews."
+},
+"2-13-P-1-2": {
+"d": "منع الوصول غير المصرّح به إلى الأجهزة في منظومة التقنية السحابية.",
+"e": "• Closed physical perimeter for servers and data storage with access-control points.\n• Devices locked in secure racks to prevent damage and insertion of external portable devices."
+},
+"2-13-P-1-3": {
+"d": "التخلص الآمن من أجهزة البنية التحتية السحابية ومعدات التخزين.",
+"e": "• Applicable legal regulations and best practices for hardware disposal.\n• Formally approved cloud infrastructure hardware-disposal policy.\n• Hardware-disposal records and tracking system."
+},
+"2-14-P-1": {
+"d": "إضافة إلى الضوابط الفرعية في الضابط 2-15-3 من الضوابط الأساسية (ECC)، يجب على مقدّم الخدمة السحابية تغطية الضابط الفرعي الإضافي التالي لأمن تطبيقات الويب بحد أدنى:",
+"e": ""
+},
+"2-14-P-1-1": {
+"d": "حماية المعلومات المتضمنة في معاملات خدمات التطبيقات من مخاطر مثل النقل غير المكتمل أو التوجيه الخاطئ أو التعديل غير المصرّح به أو الإفصاح غير المصرّح به.",
+"e": "• Web application firewalls appropriately configured.\n• Traffic inspection and behavioral monitoring established.\n• Access from known malicious or bad-reputation sources denied.\n• Data-transmission encryption and integrity-protection layer, such as TLS/SSL, applied.\n• Regular review of application exposure to the Internet and detection of unintentional data exposure.\n• Default or common application passwords denied.\n• Detection of malicious or unintentional routing-table changes or service redirections implemented.\n• Ongoing transaction monitoring established."
+},
+"2-15-P-1": {
+"d": "يجب تحديد وتوثيق واعتماد متطلبات الأمن السيبراني لعملية إدارة المفاتيح لدى مقدّم الخدمة السحابية.",
+"e": "• Key Management standard formally approved and periodically reviewed.\n• Regular review reports."
+},
+"2-15-P-2": {
+"d": "يجب تطبيق متطلبات الأمن السيبراني لعملية إدارة المفاتيح لدى مقدّم الخدمة السحابية.",
+"e": "• Cybersecurity requirements for the key management process implemented and followed in accordance with the defined policy and related documentation."
+},
+"2-15-P-3": {
+"d": "إضافة إلى الضابط الفرعي 2-8-3-2 في الضوابط الأساسية (ECC)، يجب أن تغطي متطلبات الأمن السيبراني لإدارة المفاتيح لدى مقدّم الخدمة السحابية بحد أدنى ما يلي:",
+"e": ""
+},
+"2-15-P-3-1": {
+"d": "ضمان تحديد ملكية واضحة لمفاتيح التشفير.",
+"e": "• Identified cryptographic keys and assigned owners."
+},
+"2-15-P-3-2": {
+"d": "آلية آمنة لاستعادة مفتاح التشفير في حال فقدانه، مثل النسخ الاحتياطي وتخزين المفاتيح في مكان موثوق خارج السحابة تمامًا.",
+"e": "• Cryptographic-key retrieval plan."
+},
+"2-15-P-3-3": {
+"d": "تسجيل ومراقبة أنشطة إدارة المفاتيح.",
+"e": "• Comparison of the list of active cloud services with the list of monitored cloud services.\n• Sample SIEM reports, alerts, or use cases."
+},
+"2-15-P-4": {
+"d": "يجب تطبيق متطلبات الأمن السيبراني لإدارة المفاتيح لدى مقدّم الخدمة السحابية ومراجعتها دوريًا.",
+"e": "• Cybersecurity requirements for Key Management reviewed periodically.\n• Periodic review logs."
+},
+"2-16-P-1": {
+"d": "يجب تحديد وتوثيق واعتماد متطلبات الأمن السيبراني لتطوير الأنظمة لدى مقدّم الخدمة السحابية.",
+"e": "• Cybersecurity requirements for system development formally approved and periodically reviewed."
+},
+"2-16-P-2": {
+"d": "يجب تطبيق متطلبات الأمن السيبراني لتطوير الأنظمة لدى مقدّم الخدمة السحابية.",
+"e": "• Enforced cybersecurity requirements for system development.\n• Document outlining implementation of the compliance-measurement tool for the standard.\n• Documents defining violation-escalation procedures."
+},
+"2-16-P-3": {
+"d": "يجب أن تتضمن متطلبات الأمن السيبراني لتطوير الأنظمة لدى مقدّم الخدمة السحابية بحد أدنى ما يلي:",
+"e": ""
+},
+"2-16-P-3-1": {
+"d": "مراعاة متطلبات الأمن السيبراني لمنظومة التقنية السحابية والأنظمة ذات العلاقة في تصميم وتنفيذ خدمات الحوسبة السحابية.",
+"e": "• Sample compliance review.\n• Applied cybersecurity requirements."
+},
+"2-16-P-3-2": {
+"d": "حماية بيئات تطوير الأنظمة وبيئات الاختبار، بما في ذلك البيانات المستخدمة للاختبار، ومنصات التكامل.",
+"e": "• List of identified risks.\n• Evidence confirming identification of preventive measures and protection of data used in the testing environment."
+},
+"2-16-P-4": {
+"d": "يجب تطبيق متطلبات الأمن السيبراني لتطوير الأنظمة لدى مقدّم الخدمة السحابية ومراجعتها دوريًا.",
+"e": "• Current cybersecurity requirements for system development.\n• Sample periodic reviews."
+},
+"2-17-P-1": {
+"d": "يجب تحديد وتوثيق واعتماد متطلبات الأمن السيبراني لاستخدام وسائط المعلومات والبيانات لدى مقدّم الخدمة السحابية.",
+"e": "• Information and Data Media Usage Standard."
+},
+"2-17-P-2": {
+"d": "يجب تطبيق متطلبات الأمن السيبراني لاستخدام وسائط المعلومات والبيانات لدى مقدّم الخدمة السحابية.",
+"e": "• Information and data media labeled, securely stored, and securely disposed."
+},
+"2-17-P-3": {
+"d": "يجب أن تغطي متطلبات الأمن السيبراني لاستخدام وسائط المعلومات والبيانات لدى مقدّم الخدمة السحابية بحد أدنى ما يلي:",
+"e": ""
+},
+"2-17-P-3-1": {
+"d": "إلزامية تطهير الوسائط قبل التخلص منها أو إعادة استخدامها.",
+"e": "• Media-sanitization tools in use."
+},
+"2-17-P-3-2": {
+"d": "استخدام وسائل آمنة عند التخلص من الوسائط.",
+"e": "• Defined requirements and acceptable methods for disposal of media."
+},
+"2-17-P-3-3": {
+"d": "المحافظة على سرية وسلامة البيانات على الوسائط القابلة للإزالة.",
+"e": "• List of identified risks.\n• Defined controls and requirements for data on removable media.\n• Regular review reports."
+},
+"2-17-P-3-4": {
+"d": "وسم الوسائط بشكل مقروء للإنسان لتحديد تصنيفها وحساسية المعلومات التي تحتويها.",
+"e": "• Established labeling rules.\n• Each media item labeled according to the established rules."
+},
+"2-17-P-3-5": {
+"d": "التخزين الآمن للوسائط القابلة للإزالة.",
+"e": "• List of identified risks for storing removable media.\n• Controls and requirements for secure storage of removable media."
+},
+"2-17-P-3-6": {
+"d": "تقييد استخدام الوسائط المحمولة داخل منظومة التقنية السحابية والتحكم فيه.",
+"e": "• List of identified risks for using external storage media on the Cloud Technology Stack.\n• Approved restrictions and controls for using external storage media on the Cloud Technology Stack."
+},
+"2-17-P-4": {
+"d": "يجب تطبيق متطلبات الأمن السيبراني لاستخدام وسائط المعلومات والبيانات لدى مقدّم الخدمة السحابية ومراجعتها دوريًا.",
+"e": "• Current cybersecurity requirements for the use of information and data media.\n• Periodic review logs."
+},
+"3-1-P-1": {
+"d": "إضافة إلى الضوابط الفرعية في الضابط 3-1-3 من الضوابط الأساسية (ECC)، يجب على مقدّم الخدمة السحابية تغطية الضوابط الفرعية الإضافية التالية لجوانب صمود الأمن السيبراني في إدارة استمرارية الأعمال بحد أدنى:",
+"e": ""
+},
+"3-1-P-1-1": {
+"d": "إعداد وتطبيق إجراءات التعافي من الكوارث واستمرارية الأعمال بطريقة آمنة.",
+"e": "• Disaster Recovery Procedure or Plan for cloud computing.\n• Business Continuity Procedure or Plan for cloud computing."
+},
+"3-1-P-1-2": {
+"d": "إعداد وتطبيق إجراءات لضمان صمود واستمرارية أنظمة الأمن السيبراني المخصصة لحماية منظومة التقنية السحابية.",
+"e": "• Document outlining enhanced measures to ensure resilience and continuity of cybersecurity systems dedicated to protecting the Cloud Technology Stack.\n• Periodic review reports and documents.\n• Evidence illustrating techniques and methods ensuring resilience and continuity."
+},
+"4-1-P-1": {
+"d": "إضافة إلى تطبيق الضابطين 4-1-2 و4-1-3 من الضوابط الأساسية (ECC)، يجب على مقدّم الخدمة السحابية تغطية الضوابط الفرعية الإضافية التالية لمتطلبات الأمن السيبراني المتعلقة بالأطراف الخارجية بحد أدنى:",
+"e": ""
+},
+"4-1-P-1-1": {
+"d": "التأكد من استجابة مقدّم الخدمة السحابية لطلبات الهيئة الوطنية للأمن السيبراني بإزالة البرمجيات أو الخدمات المقدَّمة من مزودين خارجيين والتي قد تُعدّ تهديدًا سيبرانيًا للجهات الوطنية من المتجر المتاح للجهات المستفيدة.",
+"e": "• Review of the catalogue of third-party software providers and their software.\n• Document outlining procedures for removing specific software from the marketplace based on legislative requests."
+},
+"4-1-P-1-2": {
+"d": "اشتراط تقديم وثائق أمنية للمعدات أو الخدمات المقدَّمة من الموردين والمزودين الخارجيين.",
+"e": "• Security documentation for equipment or services from suppliers and third-party providers.\n• Periodic review reports and documents."
+},
+"4-1-P-1-3": {
+"d": "التزام المزودين الخارجيين بالأنظمة والمتطلبات التنظيمية ذات العلاقة بنطاق عملهم.",
+"e": "• Relevant laws and regulatory requirements identified for each third-party provider.\n• Proof of compliance with laws and regulatory requirements for each third-party provider."
+},
+"4-1-P-1-4": {
+"d": "دمج إدارة المخاطر وحوكمة الأمن للمزودين الخارجيين ضمن الإدارة العامة لمخاطر الأمن السيبراني وحوكمته.",
+"e": "• Third-party risks embedded in Risk Management processes.\n• Sample risk register that includes identified third-party risks."
+}
+}
