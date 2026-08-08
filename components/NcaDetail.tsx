@@ -167,9 +167,11 @@ export default function NcaDetail({ framework: f }: { framework: NcaFramework })
                   <span className="nca-file-eye">{t.preview}</span>
                 </button>
               )}
-              <a href={file.href} download className="nca-file-dl" title={t.download}>
-                ↓
-              </a>
+              {file.kind === "pdf" && (
+                <a href={file.href} download className="nca-file-dl" title={t.download}>
+                  ↓
+                </a>
+              )}
             </div>
           ))}
         </div>

@@ -19,7 +19,7 @@ const COPY = {
     evidence: "الأدلة المطلوبة",
     objective: "الهدف",
     results: "نتيجة",
-    failed: "تعذّر تحميل المعاينة. جرّب التحميل المباشر.",
+    failed: "تعذّر تحميل المعاينة. أعد المحاولة لاحقًا.",
     openNew: "فتح في تبويب جديد ↗",
   },
   en: {
@@ -32,7 +32,7 @@ const COPY = {
     evidence: "Required evidence",
     objective: "Objective",
     results: "results",
-    failed: "Preview failed to load. Try the direct download.",
+    failed: "Preview failed to load. Please try again later.",
     openNew: "Open in new tab ↗",
   },
 };
@@ -177,12 +177,16 @@ export default function NcaFileViewer({
             </span>
           </div>
           <div className="viewer-actions">
-            <a href={file.href} target="_blank" rel="noreferrer" className="viewer-btn ghost">
-              {t.openNew}
-            </a>
-            <a href={file.href} download className="viewer-btn">
-              ↓ {t.download}
-            </a>
+            {file.kind === "pdf" && (
+              <>
+                <a href={file.href} target="_blank" rel="noreferrer" className="viewer-btn ghost">
+                  {t.openNew}
+                </a>
+                <a href={file.href} download className="viewer-btn">
+                  ↓ {t.download}
+                </a>
+              </>
+            )}
             <button className="viewer-close" onClick={onClose} aria-label={t.close}>
               ✕
             </button>
