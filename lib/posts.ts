@@ -30,12 +30,12 @@ import {
 export const posts: Post[] = [
   {
     slug: "whatsapp-mcp-server",
-    title: "WhatsApp MCP: ربط محادثاتك الشخصية بوكيل ذكاء اصطناعي — والثمن الأمني لذلك",
+    title: "WhatsApp MCP: خادم لربط واتساب بوكلاء الذكاء الاصطناعي",
     titleEn: "WhatsApp MCP: Wiring Your Personal Chats Into an AI Agent — and the Security Price",
     date: "2026-08",
     tag: "AI AGENTS",
     excerpt:
-      "خادم MCP مفتوح المصدر يعطي Claude وصولًا كاملًا لمحادثاتك في واتساب: بحث، قراءة، وإرسال. المشروع نفسه يحذّر من مخاطر أمنية حقيقية — والتحذير يستحق الانتباه أكثر من الميزة نفسها.",
+      "خادم MCP مفتوح المصدر لواتساب. يدعم البحث في المحادثات وقراءة الرسائل والوسائط والإرسال، ويخزّن البيانات محليًا في SQLite. المطوّر ينبّه لمخاطر تسريب البيانات عبر حقن الأوامر.",
     excerptEn:
       "An open-source MCP server gives Claude full access to your WhatsApp conversations: search, read, and send. The project itself warns of a real security risk — one worth more attention than the feature itself.",
     body: [
@@ -113,12 +113,12 @@ export const posts: Post[] = [
   },
   {
     slug: "soup-llm-finetuning-cli",
-    title: "Soup: أمر واحد يحوّل ضبط نماذج اللغة الكبيرة إلى سير عمل بسيط",
+    title: "Soup: أداة سطر أوامر لضبط نماذج اللغة الكبيرة",
     titleEn: "Soup: One Command That Turns LLM Fine-Tuning Into a Simple Workflow",
     date: "2026-08",
     tag: "AI INFRA",
     excerpt:
-      "ضبط نماذج اللغة الكبيرة تقليديًا صراع مع بنية تحتية معقدة — فرق ذات خبرة تقضي حتى 50% من وقتها في إعدادات GPU لا في تحسين النموذج. أداة مفتوحة المصدر تختصر هذا لملف إعداد واحد وأمر واحد.",
+      "أداة سطر أوامر لضبط نماذج اللغة الكبيرة (fine-tuning) برخصة Apache 2.0. تتولى إعداد GPU وحجم الدفعة والضغط تلقائيًا، وتدعم أكثر من 100 وصفة جاهزة والتصدير إلى GGUF وONNX وTensorRT.",
     excerptEn:
       "Fine-tuning LLMs traditionally means fighting complex infrastructure — experienced teams spend up to 50% of their time on GPU setup instead of improving the model. An open-source tool compresses this to one config file and one command.",
     body: [
@@ -188,12 +188,12 @@ export const posts: Post[] = [
   },
   {
     slug: "nvidia-nemotron-voicechat-full-duplex",
-    title: "NemotronLabs VoiceChat: نموذج صوتي مفتوح يسمع ويتكلم في آنٍ واحد",
+    title: "NemotronLabs VoiceChat: نموذج صوتي مزدوج الاتجاه مفتوح الأوزان",
     titleEn: "NemotronLabs VoiceChat: An Open Voice Model That Listens and Speaks Simultaneously",
     date: "2026-08",
     tag: "VOICE AI",
     excerpt:
-      "معظم المساعدات الصوتية سباق تتابع: تفريغ ثم نموذج لغوي ثم تركيب صوت — وكل تسليم يضيف تأخيرًا. نموذج مفتوح الأوزان من NVIDIA يدمج الثلاثة في شبكة واحدة، وهو أول نموذج مزدوج الاتجاه مفتوح يستدعي الأدوات أثناء الحديث.",
+      "نموذج صوتي مزدوج الاتجاه مفتوح الأوزان من NVIDIA بحجم 11 مليار معامل. يدمج التفريغ والاستدلال وتركيب الصوت في شبكة واحدة، ويدعم استدعاء الأدوات أثناء المكالمة. إنجليزي فقط، ويتطلب معالج رسومات بذاكرة 80 جيجابايت.",
     excerptEn:
       "Most voice assistants are a relay race: transcribe, then reason, then speak — each handoff adding latency. An open-weights model from NVIDIA collapses all three into one network, and it's the first open full-duplex model that calls tools mid-conversation.",
     body: [
@@ -305,12 +305,12 @@ export const posts: Post[] = [
   },
   {
     slug: "prime-agent-rlm-self-improving",
-    title: "Prime Agent: وكيل يعامل السياق كمتغيرات والوكلاء الفرعيين كدوال",
+    title: "Prime Agent: وكيل برمجي ببيئة تنفيذ وذاكرة مستمرة",
     titleEn: "Prime Agent: An Agent That Treats Context as Variables and Subagents as Functions",
     date: "2026-08",
     tag: "AI AGENTS",
     excerpt:
-      "أغلب الوكلاء يفقدون كل شيء بانتهاء نافذة المحادثة. مشروع مفتوح المصدر يبني الوكيل حول بيئة Python مستمرة وحالة قابلة للتحسين، فتعيش أنماط العمل المفيدة أطول من الجلسة الواحدة.",
+      "وكيل برمجي مفتوح المصدر (MIT) مبني على بيئة IPython مستمرة. يعامل السياق كمتغيرات والوكلاء الفرعيين كدوال، ويحتفظ بالجلسات والمهارات بين الاستخدامات عبر خدمة خلفية.",
     excerptEn:
       "Most agents lose everything when the chat window ends. An open-source project builds the agent around a persistent Python environment and refinable state, so useful operating patterns outlive a single session.",
     body: [
@@ -456,12 +456,12 @@ export const posts: Post[] = [
   },
   {
     slug: "ego-lite-parallel-agent-browser",
-    title: "ego lite: متصفح واحد تعمل فيه أنت ووكلاؤك بالتوازي",
+    title: "ego lite: متصفح بمساحات معزولة لتشغيل عدة وكلاء بالتوازي",
     titleEn: "ego lite: One Browser Where You and Your Agents Work in Parallel",
     date: "2026-07",
     tag: "AI AGENTS",
     excerpt:
-      "أدوات أتمتة المتصفح الحالية تجعلك تتنازع مع الوكيل على نفس التبويبات، وتفشل في نقل تسجيلات الدخول. متصفح مفتوح المصدر يعطي كل وكيل مساحة معزولة داخل نفس المتصفح، ويمرّر المهام المعقدة أسرع بـ2.5 ضعف بتوكنات أقل.",
+      "متصفح مفتوح المصدر (MIT) لنظام macOS، يمنح كل وكيل ذكاء اصطناعي مساحة معزولة داخل نفس المتصفح. يرث بيانات Chrome، ويعرض قدراته كدوال JavaScript بدل أوامر سطر أوامر.",
     excerptEn:
       "Existing browser automation tools leave you fighting the agent for the same tabs, with logins that never carry cleanly. An open-source browser gives each agent an isolated Space inside the same browser, finishing complex tasks up to 2.5× faster with far fewer tokens.",
     body: [
@@ -563,12 +563,12 @@ export const posts: Post[] = [
   },
   {
     slug: "mcp-vs-api-ai-agents",
-    title: "MCP مقابل API التقليدي: كيف يتصل وكيل الذكاء الاصطناعي بأنظمتك فعليًا",
+    title: "MCP مقابل API التقليدي في ربط وكلاء الذكاء الاصطناعي بالأنظمة",
     titleEn: "MCP vs Traditional APIs: How an AI Agent Actually Connects to Your Systems",
     date: "2026-07",
     tag: "AI AGENTS",
     excerpt:
-      "شرح كامل للفرق بين ربط الوكيل عبر تكامل API مخصص وربطه عبر بروتوكول MCP: مشكلة N×M، البنية، الفوائد، أمثلة كود عملية، والمخاطر الأمنية الموثّقة — مع المراجع.",
+      "مقارنة بين ربط وكلاء الذكاء الاصطناعي عبر تكامل API مخصص وعبر بروتوكول MCP: مشكلة N×M، بنية المضيف والعميل والخادم، أمثلة كود لكل طريقة، والمخاطر الأمنية الموثّقة.",
     excerptEn:
       "A complete breakdown of connecting an agent through custom API integration versus the MCP protocol: the N×M problem, the architecture, the benefits, working code examples, and documented security risks — with references.",
     body: [
@@ -955,12 +955,12 @@ await server.connect(new StdioServerTransport());`,
   },
   {
     slug: "bi-agentic-mcp-power-bi",
-    title: "Power BI ووكلاء الذكاء الاصطناعي: من السؤال إلى التقرير بلا كتابة كود",
+    title: "ربط وكلاء الذكاء الاصطناعي بـ Power BI عبر MCP وFabric Data Agent",
     titleEn: "Power BI and AI Agents: From Question to Report Without Writing Code",
     date: "2026-07",
     tag: "BI & DATA",
     excerpt:
-      "دليل عملي لربط وكيل ذكاء اصطناعي بنماذج Power BI: ما هو بروتوكول MCP، كيف تبدو دورة السؤال والجواب فعليًا، ما الأدوات المتاحة رسميًا ومفتوحة المصدر، وأين تفشل هذي المشاريع عادة.",
+      "دليل تقني لربط وكيل ذكاء اصطناعي بنماذج Power BI الدلالية: خوادم MCP الرسمية، حدود Fabric Data Agent (خمسة مصادر، 25 صفًا)، أدوات مفتوحة المصدر للحوكمة، وترتيب البناء الصحيح.",
     excerptEn:
       "A practical guide to wiring an AI agent into Power BI models: what MCP actually is, what the question-to-answer cycle really looks like, which official and open-source tools exist, and where these projects usually fail.",
     body: [
@@ -1169,12 +1169,12 @@ await server.connect(new StdioServerTransport());`,
   },
   {
     slug: "aiops-root-cause-analysis-stack",
-    title: "AIOps: كيف تنتقل من مراقبة تُنبّهك إلى نظام يشخّص العطل",
+    title: "AIOps: تصنيف أدوات تحليل السبب الجذري وخطة تبنّيها",
     titleEn: "AIOps: Moving From Monitoring That Alerts You to a System That Diagnoses",
     date: "2026-07",
     tag: "OPERATIONS",
     excerpt:
-      "كل منصة مراقبة تدّعي اليوم أنها مدعومة بالذكاء الاصطناعي. لكن الفرق بين كشف الشذوذ وتشخيص السبب الجذري فرق جوهري — هنا شرح للفرق، وتصنيف للأدوات، وخطة تبنٍّ قابلة للتنفيذ.",
+      "تصنيف أدوات AIOps إلى ثلاث فئات: منصات مراقبة، ومنصات تقليل ضجيج التنبيهات، ومنصات تحقيق أصلية. يشمل دور OpenTelemetry، وأدوات مفتوحة المصدر، وخمسة مقاييس لقياس الأثر.",
     excerptEn:
       "Every monitoring platform now claims to be AI-powered. But the gap between flagging an anomaly and diagnosing a root cause is fundamental — here's the difference explained, the tools classified, and an adoption plan you can execute.",
     body: [
@@ -1379,12 +1379,12 @@ await server.connect(new StdioServerTransport());`,
   },
   {
     slug: "ai-voice-chat-internal-systems-integration",
-    title: "بناء وكيل صوت ومحادثة متصل بأنظمتك الداخلية: الدليل الكامل",
+    title: "بناء وكيل صوت ومحادثة متصل بالأنظمة الداخلية",
     titleEn: "Building a Voice and Chat Agent Wired Into Your Internal Systems: The Full Guide",
     date: "2026-07",
     tag: "VOICE AI",
     excerpt:
-      "الوكيل الذي لا يقرأ من أنظمتك ولا يكتب فيها ليس أكثر من IVR بصوت أجمل. هنا شرح للمعمارية الكاملة، وكيف يبدو استدعاء نظام أثناء المكالمة، والأدوات، وميزانية الاستجابة، والمتطلبات النظامية في السعودية.",
+      "دليل تقني لبناء وكيل صوت متصل بأنظمة داخلية: معمارية السلسلة بأربع مراحل، استدعاء الدوال أثناء المكالمة، مقارنة الأدوات، ميزانية زمن الاستجابة، ومتطلبات CST وPDPL في السعودية.",
     excerptEn:
       "An agent that can't read from or write to your systems is just an IVR with a nicer voice. Here's the full architecture explained, what a mid-call system invocation actually looks like, the tools, the latency budget, and the Saudi regulatory requirements.",
     body: [
@@ -1658,12 +1658,12 @@ await server.connect(new StdioServerTransport());`,
   },
   {
     slug: "hermes-vs-openclaw",
-    title: "Hermes مقابل OpenClaw: وكيل يطوّر نفسه أم طبقة تحكم محلية؟",
+    title: "Hermes مقابل OpenClaw: مقارنة بين وكيل متعلّم وطبقة تحكم محلية",
     titleEn: "Hermes vs OpenClaw: A Self-Evolving Agent or a Local Control Plane?",
     date: "2026-07",
     tag: "AI AGENTS",
     excerpt:
-      "الاثنان يشغّلان وكلاء ذكاء اصطناعي محليًا، لكن مركز ثقل كل واحد مختلف تمامًا: Hermes وكيل واحد يتعلّم طريقته مع الوقت، وOpenClaw طبقة تشغيل تدير قنوات وأجهزة ومساحات عمل ووكلاء متعددين.",
+      "مقارنة بين وكيلين مفتوحي المصدر: Hermes يبني ذاكرة إجرائية ويولّد مهاراته بنفسه، وOpenClaw يعمل كطبقة تشغيل حول Gateway تدير القنوات والعقد ومساحات العمل. يشمل جدول مقارنة ورسومًا توضيحية.",
     excerptEn:
       "Both run AI agents locally, but their centers of gravity differ completely: Hermes is one agent that learns its own method over time, while OpenClaw is a runtime layer managing channels, devices, workspaces, and multiple agents.",
     body: [
@@ -1744,12 +1744,12 @@ await server.connect(new StdioServerTransport());`,
   },
   {
     slug: "tencentdb-agent-memory-layered-local-memory",
-    title: "TencentDB Agent Memory: ذاكرة طويلة الأمد محلية بالكامل لوكلاء الذكاء الاصطناعي",
+    title: "TencentDB Agent Memory: ذاكرة هرمية محلية لوكلاء الذكاء الاصطناعي",
     titleEn: "TencentDB Agent Memory: Fully Local Long-Term Memory for AI Agents",
     date: "2026-07",
     tag: "AI AGENTS",
     excerpt:
-      "أغلب أنظمة الذاكرة تكدس كل شيء في مخزن متجهات مسطح وتفقد التتبع عند الاستدعاء. مشروع من Tencent يبني ذاكرة هرمية بأربع طبقات مع رسوم بيانية رمزية (Mermaid) تقلل استهلاك التوكنات بأكثر من 60% وتحسّن دقة استرجاع الشخصية من 48% إلى 76%.",
+      "نظام ذاكرة لوكلاء الذكاء الاصطناعي من Tencent، بأربع طبقات هرمية وخلفية SQLite محلية. يستخدم خرائط Mermaid لضغط سجلات الأدوات، ويعمل كإضافة لمنصتي OpenClaw وHermes.",
     excerptEn:
       "Most memory systems dump everything into a flat vector store and lose traceability on recall. A Tencent project builds a 4-tier hierarchical memory with symbolic (Mermaid) graphs, cutting token usage by over 60% and raising persona-recall accuracy from 48% to 76%.",
     body: [
@@ -1768,12 +1768,12 @@ await server.connect(new StdioServerTransport());`,
   },
   {
     slug: "microsoft-agent-governance-toolkit",
-    title: "Agent Governance Toolkit: طبقة تحكم إلزامية على قرارات وكلاء الذكاء الاصطناعي",
+    title: "Agent Governance Toolkit: فرض سياسات الأمن على وكلاء الذكاء الاصطناعي",
     titleEn: "Agent Governance Toolkit: Enforced Control Over What AI Agents Are Allowed to Do",
     date: "2026-07",
     tag: "AI AGENTS",
     excerpt:
-      "طلب اللطف من نموذج ذكاء اصطناعي بـ«اتبع القواعد» ليس ضابط أمان حقيقي. أداة من مايكروسوفت تفرض السياسات على مستوى الكود قبل أي استدعاء أداة، بحيث تصبح المخالفة مستحيلة هيكليًا لا مجرد نادرة.",
+      "أداة من مايكروسوفت تفرض سياسات الأمن على استدعاءات وكلاء الذكاء الاصطناعي في كود التطبيق. تغطي بنود OWASP Agentic Top 10، ومتاحة لخمس لغات برمجة مع تكامل مع Claude Code وCopilot.",
     excerptEn:
       "Politely asking a model to \"follow the rules\" isn't a real security control. A Microsoft project enforces policy in application code before any tool call, making violations structurally impossible, not just unlikely.",
     body: [
@@ -1792,12 +1792,12 @@ await server.connect(new StdioServerTransport());`,
   },
   {
     slug: "superfile-modern-terminal-file-manager",
-    title: "Superfile: مدير ملفات طرفية عصري وأنيق",
+    title: "Superfile: مدير ملفات يعمل داخل الطرفية",
     titleEn: "Superfile: A Fancy, Modern Terminal File Manager",
     date: "2026-07",
     tag: "TOOLS",
     excerpt:
-      "أوامر ls وcd وcp الكلاسيكية تكفي، لكن مدير ملفات طرفية حديث يجمع سهولة الأدوات الرسومية مع سرعة الطرفية — بواجهة ملونة، لوحات متعددة، وإضافات قابلة للتوسيع.",
+      "مدير ملفات يعمل داخل الطرفية، مكتوب بلغة Go على مكتبة Bubble Tea. يدعم اللوحات المتعددة والألسنة ونظام سمات وإضافات، ويعمل على macOS ولينكس وويندوز.",
     excerptEn:
       "The classic ls, cd, and cp commands are enough, but a modern terminal file manager combines the ease of graphical tools with terminal speed — a colorful interface, multiple panels, and an extensible plugin system.",
     body: [
@@ -1816,12 +1816,12 @@ await server.connect(new StdioServerTransport());`,
   },
   {
     slug: "huggingface-speech-to-speech-local-voice-agent",
-    title: "Speech To Speech: بنية مفتوحة كاملة لوكيل صوتي محلي من Hugging Face",
+    title: "Speech To Speech: خط أنابيب صوتي مفتوح من Hugging Face",
     titleEn: "Speech To Speech: A Full Open Pipeline for a Local Voice Agent from Hugging Face",
     date: "2026-07",
     tag: "AI INFRA",
     excerpt:
-      "أغلب المساعدات الصوتية الفورية تمر عبر خدمات سحابية مغلقة. مشروع من Hugging Face يبني خط أنابيب كامل (كشف صوت → تحويل نص → نموذج لغوي → تحويل صوت) قابل للتبديل مكونًا مكونًا، بواجهة متوافقة مع OpenAI Realtime.",
+      "خط أنابيب صوتي مفتوح من Hugging Face: كشف نشاط صوتي، ثم تفريغ، ثم نموذج لغوي، ثم تركيب صوت. كل مكوّن قابل للاستبدال، والواجهة متوافقة مع بروتوكول OpenAI Realtime.",
     excerptEn:
       "Most real-time voice assistants run through closed cloud services. A Hugging Face project builds a complete pipeline (voice detection → speech-to-text → language model → text-to-speech) with every component swappable, exposed through an OpenAI Realtime-compatible interface.",
     body: [
@@ -1840,12 +1840,12 @@ await server.connect(new StdioServerTransport());`,
   },
   {
     slug: "ecc-agent-harness-operating-system",
-    title: "ECC: طبقة تشغيل موحّدة لأدوات الوكلاء البرمجية عبر Claude Code وCursor وأكثر",
+    title: "ECC: طبقة مهارات وذاكرة موحّدة فوق أدوات الوكلاء البرمجية",
     titleEn: "ECC: An Operating Layer for Coding Agent Tools Across Claude Code, Cursor, and More",
     date: "2026-07",
     tag: "AI AGENTS",
     excerpt:
-      "كل أداة وكيل برمجي (Claude Code، Cursor، Codex...) تبدأ من الصفر بلا ذاكرة ولا معايير موحدة. مشروع مفتوح المصدر يضيف طبقة مهارات وذاكرة وأمان فوق سبع أدوات وكيلة مختلفة دفعة واحدة.",
+      "طبقة تشغيل موحّدة تعمل فوق سبع أدوات وكلاء برمجية (Claude Code وCursor وCodex وغيرها). تضم أكثر من 260 مهارة جاهزة، وأداة فحص أمني للإعدادات بـ102 قاعدة تحليل ثابت.",
     excerptEn:
       "Every coding agent tool (Claude Code, Cursor, Codex...) starts from zero, with no memory and no shared standards. An open-source project adds a skills, memory, and security layer on top of seven different agent tools at once.",
     body: [
@@ -1864,12 +1864,12 @@ await server.connect(new StdioServerTransport());`,
   },
   {
     slug: "meetily-local-ai-meeting-assistant",
-    title: "Meetily: مساعد اجتماعات ذكي يعمل بالكامل على جهازك",
+    title: "Meetily: تفريغ وتلخيص الاجتماعات محليًا بلا سحابة",
     titleEn: "Meetily: An AI Meeting Assistant That Runs Entirely on Your Machine",
     date: "2026-07",
     tag: "SELF-HOSTED",
     excerpt:
-      "أدوات تفريغ الاجتماعات السحابية تعني إرسال نقاشاتك الحساسة لخوادم لا تملكها. مشروع مفتوح المصدر يفرّغ ويلخّص اجتماعاتك بالكامل محليًا — بلا سحابة، بلا اشتراك، وبخصوصية كاملة.",
+      "مساعد اجتماعات يعمل بالكامل على الجهاز، مبني بـ Rust وTauri. يفرّغ الصوت لحظيًا عبر Whisper أو Parakeet، ويلخّص عبر نموذج محلي أو أي نقطة نهاية متوافقة مع OpenAI.",
     excerptEn:
       "Cloud meeting-transcription tools mean sending your sensitive discussions to servers you don't own. An open-source project transcribes and summarizes your meetings entirely locally — no cloud, no subscription, full privacy.",
     body: [
@@ -1888,12 +1888,12 @@ await server.connect(new StdioServerTransport());`,
   },
   {
     slug: "lightpanda-headless-browser-ai-agents",
-    title: "متصفح بلا واجهة مبني من الصفر لوكلاء الذكاء الاصطناعي",
+    title: "Lightpanda: متصفح بلا واجهة مكتوب بلغة Zig لأتمتة الوكلاء",
     titleEn: "A Headless Browser Built From Scratch for AI Agents",
     date: "2026-07",
     tag: "AI AGENTS",
     excerpt:
-      "تشغيل Chrome بلا واجهة لأتمتة الوكلاء مكلف على الذاكرة والمعالج. متصفح مفتوح المصدر جديد مكتوب من الصفر بلغة Zig يعد بأداء أسرع بأضعاف واستهلاك ذاكرة أقل بكثير من Headless Chrome.",
+      "متصفح بلا واجهة رسومية مكتوب من الصفر بلغة Zig، مخصص لأتمتة الوكلاء. يدعم بروتوكول CDP فيعمل مع Puppeteer وPlaywright، ويستهلك ذاكرة أقل بكثير من Headless Chrome.",
     excerptEn:
       "Running headless Chrome for agent automation is expensive on memory and CPU. A new open-source browser written from scratch in Zig promises multiples-faster performance and far lower memory use than headless Chrome.",
     body: [
@@ -1912,12 +1912,12 @@ await server.connect(new StdioServerTransport());`,
   },
   {
     slug: "openworker-ai-desktop-coworker",
-    title: "OpenWorker: زميل عمل بالذكاء الاصطناعي يعيش على سطح مكتبك",
+    title: "OpenWorker: وكيل سطح مكتب ينفّذ المهام عبر ملفاتك وأدواتك",
     titleEn: "OpenWorker: An AI Coworker That Lives on Your Desktop",
     date: "2026-07",
     tag: "AI AGENTS",
     excerpt:
-      "أغلب أدوات الذكاء الاصطناعي تعطيك ردًا نصيًا وتترك التنفيذ لك. مشروع مفتوح المصدر من أندرو إنغ يقلب المعادلة: وكيل يعمل على جهازك فعليًا، ويسلّمك عملًا جاهزًا — مستند، رد Slack بالأرقام، تقويم محدّث — لا مجرد اقتراح.",
+      "تطبيق سطح مكتب مفتوح المصدر من Andrew Ng. ينفّذ المهام عبر ملفاتك وطرفيتك وأدواتك المتصلة، ويطلب موافقتك قبل أي إجراء حساس. يعمل بمفتاحك الخاص أو محليًا عبر Ollama.",
     excerptEn:
       "Most AI tools hand you a text reply and leave execution to you. Andrew Ng's open-source project flips that: an agent that actually runs on your machine and delivers finished work — a document, a Slack reply with the numbers, an updated calendar — not just a suggestion.",
     body: [
@@ -1941,12 +1941,12 @@ await server.connect(new StdioServerTransport());`,
   },
   {
     slug: "portainer-container-management",
-    title: "Portainer: إدارة Docker وKubernetes بواجهة واحدة",
+    title: "Portainer: إدارة Docker وKubernetes من واجهة واحدة",
     titleEn: "Portainer: One Interface for Docker and Kubernetes",
     date: "2026-07",
     tag: "INFRASTRUCTURE",
     excerpt:
-      "عندما تتجاوز حاوياتك العشرة، يصبح سطر الأوامر وحده عبئًا. Portainer يعطيك رؤية كاملة وتحكمًا مركزيًا — سواء في homelab أو بيئة إنتاج.",
+      "واجهة ويب لإدارة Docker وKubernetes وDocker Swarm من مكان واحد. تدعم صلاحيات المستخدمين على مستوى البيئات، وقوالب النشر، ومراجعة استهلاك الموارد والسجلات.",
     excerptEn:
       "Past a handful of containers, the CLI alone becomes a burden. Portainer gives you full visibility and centralized control — whether in a homelab or production.",
     body: [
@@ -1963,12 +1963,12 @@ await server.connect(new StdioServerTransport());`,
   },
   {
     slug: "zero-trust-mesh-ztm",
-    title: "ما بعد الـ VPN التقليدي: Zero Trust Mesh مع مشروع ZTM",
+    title: "ZTM: شبكة Zero Trust لامركزية مفتوحة المصدر",
     titleEn: "Beyond Traditional VPNs: Zero Trust Mesh with ZTM",
     date: "2026-06",
     tag: "NETWORK",
     excerpt:
-      "الشبكات الخاصة التقليدية تفترض أن من دخل المحيط موثوق. نموذج Zero Trust يقلب المعادلة — ومشروع ZTM مفتوح المصدر يطبقه كشبكة مشفرة لامركزية.",
+      "شبكة معرّفة برمجيًا مفتوحة المصدر من Flomesh، مشفّرة من طرف لطرف ومبنية على HTTP/2. تعمل خلف CGNAT وعبر البروكسيات، وتصلح بديلًا لحلول مثل Tailscale.",
     excerptEn:
       "Traditional private networks assume anyone inside the perimeter is trusted. Zero Trust flips that — and the open-source ZTM project implements it as a decentralized encrypted mesh.",
     body: [
@@ -1985,12 +1985,12 @@ await server.connect(new StdioServerTransport());`,
   },
   {
     slug: "pigsty-enterprise-postgres",
-    title: "Pigsty: PostgreSQL بمواصفات مؤسسية دون تكلفة الترخيص",
+    title: "Pigsty: توزيعة PostgreSQL بتوافر عالٍ ومراقبة جاهزة",
     titleEn: "Pigsty: Enterprise-Grade PostgreSQL Without License Costs",
     date: "2026-06",
     tag: "INFRASTRUCTURE",
     excerpt:
-      "توافر عالٍ، نسخ احتياطي بنقطة استعادة زمنية، مراقبة جاهزة، وبنية ككود — توزيعة مفتوحة المصدر تحوّل PostgreSQL إلى منصة بيانات مؤسسية كاملة.",
+      "توزيعة PostgreSQL مفتوحة المصدر تضم أكثر من 500 إضافة جاهزة، مع Patroni للتوافر العالي وGrafana للمراقبة والنسخ الاحتياطي بنقطة استعادة زمنية.",
     excerptEn:
       "High availability, point-in-time recovery, ready-made monitoring, and infrastructure as code — an open-source distribution that turns PostgreSQL into a full enterprise data platform.",
     body: [
@@ -2007,12 +2007,12 @@ await server.connect(new StdioServerTransport());`,
   },
   {
     slug: "vllm-llm-inference-infra",
-    title: "vLLM: عندما يصبح استدلال النموذج مسألة بنية تحتية",
+    title: "vLLM: تقديم النماذج اللغوية وإدارة ذاكرة GPU",
     titleEn: "vLLM: When Model Inference Becomes an Infrastructure Problem",
     date: "2026-05",
     tag: "AI INFRA",
     excerpt:
-      "تشغيل نموذج لغوي شيء، وتقديمه لعشرات المستخدمين بكفاءة شيء آخر تمامًا. vLLM يعالج المشكلة من زاوية هندسة الذاكرة — وهذا درس لكل مهندس بنية تحتية.",
+      "محرك تقديم نماذج لغوية يعالج إدارة ذاكرة GPU عبر تقنية PagedAttention، فيرفع الإنتاجية على نفس العتاد عند خدمة عدة مستخدمين متزامنين.",
     excerptEn:
       "Running a language model is one thing; serving it efficiently to dozens of concurrent users is another. vLLM solves this from a memory-engineering angle — a lesson for every infrastructure engineer.",
     body: [
@@ -2029,12 +2029,12 @@ await server.connect(new StdioServerTransport());`,
   },
   {
     slug: "selfhosted-toolbox",
-    title: "عدة الاستضافة الذاتية: أدوات صغيرة تصنع فرقًا كبيرًا",
+    title: "أربع أدوات مفتوحة المصدر للاستضافة الذاتية",
     titleEn: "The Self-Hosting Toolbox: Small Tools, Big Difference",
     date: "2026-05",
     tag: "SELF-HOSTED",
     excerpt:
-      "Dashy للوحة موحدة، Neko لمتصفح معزول، Pluton للنسخ الاحتياطي المشفر، وStressdisk لاختبار الأقراس قبل الثقة بها — جولة في أدوات تستحق مكانًا في بنيتك.",
+      "أربع أدوات مفتوحة المصدر للاستضافة الذاتية: Dashy للوحة تحكم موحدة، وNeko لمتصفح معزول في حاوية، وPluton للنسخ الاحتياطي المشفّر، وStressdisk لاختبار الأقراص.",
     excerptEn:
       "Dashy for a unified dashboard, Neko for an isolated browser, Pluton for encrypted backups, and Stressdisk for testing disks before trusting them — a tour of tools worth a place in your stack.",
     body: [
@@ -2058,12 +2058,12 @@ await server.connect(new StdioServerTransport());`,
   },
   {
     slug: "aws-local-emulator-cloud-testing",
-    title: "قبل أن تدفع فلسًا للسحابة: المحاكاة المحلية لبيئات AWS",
+    title: "محاكاة خدمات AWS محليًا لاختبار البنية قبل النشر",
     titleEn: "Before You Spend a Cent on Cloud: Local AWS Emulation",
     date: "2026-07",
     tag: "CLOUD",
     excerpt:
-      "كل تجربة على بيئة سحابية حقيقية لها فاتورة وزمن انتظار. أدوات محاكاة السحابة محليًا تقلب المعادلة: طوّر واختبر بسرعة الحاسوب المحلي، وادفع فقط عند اليقين.",
+      "أدوات تحاكي خدمات AWS على الجهاز المحلي أو في بيئة التكامل المستمر، فتتيح اختبار سكربتات النشر وسيناريوهات الفشل قبل استخدام بيئة سحابية حقيقية.",
     excerptEn:
       "Every test on a real cloud environment carries a bill and a wait. Local cloud emulation flips that: develop and test at local-machine speed, and pay only once you're sure.",
     body: [
@@ -2080,12 +2080,12 @@ await server.connect(new StdioServerTransport());`,
   },
   {
     slug: "ai-agent-goose-beyond-suggestions",
-    title: "وكيل الذكاء الاصطناعي الذي ينفّذ لا يقترح فقط",
+    title: "Goose: وكيل برمجي ينفّذ الأوامر ويتحقق من النتيجة",
     titleEn: "The AI Agent That Executes, Not Just Suggests",
     date: "2026-07",
     tag: "AI AGENTS",
     excerpt:
-      "أغلب أدوات الذكاء الاصطناعي للمطورين تقترح كودًا وتترك التنفيذ لك. جيل جديد من الوكلاء مفتوحة المصدر يتجاوز الاقتراح إلى التثبيت والتنفيذ والتعديل والاختبار — بأي نموذج لغوي تختاره.",
+      "وكيل برمجي مفتوح المصدر ينفّذ دورة كاملة: يفهم الهدف، ويخطط، وينفّذ الأوامر، ويتحقق من النتيجة. يعمل مع أي نموذج لغوي محلي أو عبر واجهة برمجية.",
     excerptEn:
       "Most AI dev tools suggest code and leave execution to you. A new generation of open-source agents goes beyond suggestion to installing, running, editing, and testing — with any language model you choose.",
     body: [
@@ -2102,12 +2102,12 @@ await server.connect(new StdioServerTransport());`,
   },
   {
     slug: "agentic-ai-infrastructure-mcp",
-    title: "Agentic AI تدير البنية التحتية: عندما يتحدث الوكيل مباشرة مع خوادمك",
+    title: "إدارة البنية التحتية عبر MCP: خوادم Proxmox كمثال",
     titleEn: "Agentic AI Runs Infrastructure: When the Agent Talks to Your Servers Directly",
     date: "2026-06",
     tag: "AI AGENTS",
     excerpt:
-      "بروتوكول MCP فتح الباب لوكلاء الذكاء الاصطناعي للتحدث مباشرة مع أدوات إدارة البنية التحتية — من تشغيل خادم افتراضي إلى إدارة حاوية، بلغة طبيعية وصلاحيات محكومة.",
+      "خوادم MCP لمنصات إدارة البنية التحتية مثل Proxmox، تتيح لوكيل الذكاء الاصطناعي إدارة الأجهزة الافتراضية والحاويات عبر أوامر بلغة طبيعية ضمن صلاحيات محددة.",
     excerptEn:
       "The MCP protocol opened the door for AI agents to talk directly to infrastructure management tools — from spinning up a VM to managing a container — in natural language, under governed permissions.",
     body: [
@@ -2127,12 +2127,12 @@ await server.connect(new StdioServerTransport());`,
   },
   {
     slug: "ai-pentest-strix-security-agent",
-    title: "وكيل ذكاء اصطناعي يخترق تطبيقك قبل أن يخترقه أحد آخر",
+    title: "Strix: اختبار اختراق آلي بوكيل ذكاء اصطناعي",
     titleEn: "An AI Agent Breaks Into Your App Before Someone Else Does",
     date: "2026-07",
     tag: "AI AGENTS",
     excerpt:
-      "اختبار الاختراق التقليدي يستغرق أسابيع وفريقًا متخصصًا. أداة مفتوحة المصدر جديدة تستخدم وكيل ذكاء اصطناعي لمحاكاة هجوم حقيقي على تطبيقك تلقائيًا، وتكتسب زخمًا سريعًا هذا الشهر.",
+      "أداة اختبار اختراق مفتوحة المصدر تستخدم وكيل ذكاء اصطناعي يتصفح التطبيق كمهاجم، ويخطط سلسلة هجوم وينفّذها فعليًا بدل إخراج قائمة تنبيهات.",
     excerptEn:
       "Traditional penetration testing takes weeks and a specialized team. A new open-source tool uses an AI agent to automatically simulate a real attack on your app — and it's gaining fast momentum this month.",
     body: [
@@ -2149,12 +2149,12 @@ await server.connect(new StdioServerTransport());`,
   },
   {
     slug: "pulumi-infrastructure-as-real-code",
-    title: "البنية التحتية بلغة برمجة حقيقية لا ملفات YAML",
+    title: "Pulumi: تعريف البنية التحتية بلغات برمجة عامة",
     titleEn: "Infrastructure in a Real Programming Language, Not YAML Files",
     date: "2026-07",
     tag: "CLOUD",
     excerpt:
-      "أغلب أدوات البنية ككود تجبرك على تعلم لغة تعريفية جديدة. أداة مفتوحة المصدر راسخة تتيح لك كتابة بنيتك التحتية بلغة البرمجة التي تعرفها فعلًا — Python أو TypeScript أو Go.",
+      "أداة بنية تحتية ككود تتيح تعريف الموارد بلغات برمجة عامة مثل Python وTypeScript وGo، مع إمكانية استخدام الدوال وفحص الأنواع ومكتبات الاختبار المعتادة.",
     excerptEn:
       "Most Infrastructure-as-Code tools force you to learn a new declarative syntax. An established open-source tool lets you write your infrastructure in a language you already know — Python, TypeScript, or Go.",
     body: [
@@ -2171,12 +2171,12 @@ await server.connect(new StdioServerTransport());`,
   },
   {
     slug: "dokploy-self-hosted-paas",
-    title: "منصتك السحابية الخاصة: بديل ذاتي الاستضافة لـ Heroku وVercel",
+    title: "Dokploy: منصة PaaS ذاتية الاستضافة بديلة لـ Heroku وVercel",
     titleEn: "Your Own Cloud Platform: A Self-Hosted Alternative to Heroku and Vercel",
     date: "2026-07",
     tag: "SELF-HOSTED",
     excerpt:
-      "منصات النشر الجاهزة مريحة لكن مكلفة على المدى الطويل وتحبسك بمزود واحد. منصة PaaS مفتوحة المصدر تتيح لك نشر تطبيقاتك بنقرة واحدة على خادمك الخاص، بلا رسوم شهرية متصاعدة.",
+      "منصة PaaS مفتوحة المصدر تعمل على خادمك عبر Docker. تدعم نشر تطبيقات Node وPython وDocker بإعداد شبه صفري، مع شهادات SSL تلقائية وواجهة إدارة مرئية.",
     excerptEn:
       "Ready-made deployment platforms are convenient but grow costly over time and lock you to one vendor. An open-source PaaS lets you deploy apps with one click on your own server, with no escalating monthly fees.",
     body: [
@@ -2193,12 +2193,12 @@ await server.connect(new StdioServerTransport());`,
   },
   {
     slug: "browser-use-agentic-web-automation",
-    title: "عندما يتصفح وكيل الذكاء الاصطناعي الإنترنت بدلًا عنك",
+    title: "Browser-Use: منح الوكيل تحكمًا كاملًا في متصفح حقيقي",
     titleEn: "When an AI Agent Browses the Web on Your Behalf",
     date: "2026-07",
     tag: "AI AGENTS",
     excerpt:
-      "أغلب وكلاء الذكاء الاصطناعي مقيدون بواجهات برمجية جاهزة. مكتبة مفتوحة المصدر تكتسب زخمًا سريعًا تمنح الوكيل تحكمًا كاملًا في متصفح حقيقي — يضغط، يملأ نماذج، ويقرأ الصفحة كإنسان.",
+      "مكتبة مفتوحة المصدر تمنح النموذج اللغوي رؤية منظمة لعناصر صفحة الويب الحقيقية، فيقرر بنفسه أين يضغط وماذا يكتب بدل الاعتماد على محددات HTML ثابتة.",
     excerptEn:
       "Most AI agents are limited to pre-built APIs. A fast-growing open-source library gives an agent full control of a real browser — clicking, filling forms, and reading the page like a human would.",
     body: [
@@ -2215,12 +2215,12 @@ await server.connect(new StdioServerTransport());`,
   },
   {
     slug: "n8n-self-hosted-workflow-automation",
-    title: "أتمتة سير العمل بدون رسوم شهرية: n8n على خادمك الخاص",
+    title: "n8n: أتمتة سير العمل ذاتية الاستضافة",
     titleEn: "Workflow Automation Without a Monthly Fee: n8n on Your Own Server",
     date: "2026-07",
     tag: "SELF-HOSTED",
     excerpt:
-      "أدوات الأتمتة السحابية الجاهزة رائعة حتى تصل الفاتورة الشهرية إلى مبلغ يفوق قيمة ما توفره. منصة أتمتة مفتوحة المصدر تجمع مئات التكاملات مع عقد ذكاء اصطناعي جاهزة، وتعمل بالكامل على بنيتك الخاصة.",
+      "منصة أتمتة سير عمل مفتوحة المصدر بمحرر مرئي، تضم مئات التكاملات وعقد ذكاء اصطناعي مدمجة. تعمل على خادمك الخاص بلا حد أقصى لعدد الأحداث.",
     excerptEn:
       "Cloud automation tools are great until the monthly bill outgrows the value they save. An open-source automation platform bundles hundreds of integrations with ready AI nodes — and runs entirely on your own infrastructure.",
     body: [
@@ -2237,11 +2237,12 @@ await server.connect(new StdioServerTransport());`,
   },
   {
     slug: "e2b-sandboxes-agent-code-execution",
-    title: "قبل أن تدع وكيل الذكاء الاصطناعي ينفّذ كودًا: بيئات معزولة آمنة",
+    title: "E2B: بيئات تنفيذ معزولة لكود وكلاء الذكاء الاصطناعي",
     titleEn: "Before You Let an AI Agent Execute Code: Secure Sandboxes",
     date: "2026-07",
     tag: "AI AGENTS",
-    excerpt: "وكيل ذكاء اصطناعي يكتب كودًا شيء، ووكيل ينفّذ ذلك الكود فعليًا على جهازك شيء مختلف تمامًا في المخاطر. مشروع مفتوح المصدر يوفر بيئات معزولة سريعة الإنشاء مصممة خصيصًا لتشغيل كود الوكلاء بأمان.",
+    excerpt:
+      "بيئات تنفيذ معزولة سريعة الإنشاء (ثوانٍ) مخصصة لتشغيل الكود الذي تولّده وكلاء الذكاء الاصطناعي. لكل بيئة نظام ملفات وشبكة وموارد خاصة، وتُحذف بعد المهمة.",
     excerptEn: "An AI agent that writes code is one thing; an agent that actually executes that code on your machine is a different risk category entirely. An open-source project provides fast, disposable sandboxes built specifically for running agent-generated code safely.",
     body: [
       { p: "وكيل ذكاء اصطناعي قادر على كتابة الكود شيء مفيد، لكن السؤال الأخطر هو: أين يُنفّذ هذا الكود؟ تنفيذه مباشرة على جهازك أو خادمك الفعلي يعني أن أي خطأ في منطق الوكيل — أو أي محاولة اختراق ناجحة عبر حقن أوامر — قد يطال بيانات حقيقية وأنظمة حقيقية." },
@@ -2257,11 +2258,12 @@ await server.connect(new StdioServerTransport());`,
   },
   {
     slug: "omniroute-multi-provider-ai-gateway",
-    title: "بوابة واحدة إلى 290 مزود ذكاء اصطناعي: نهاية الارتباط بمزود واحد",
+    title: "OmniRoute: بوابة موحّدة لأكثر من 290 مزود نماذج",
     titleEn: "One Gateway to 290 AI Providers: The End of Vendor Lock-In",
     date: "2026-07",
     tag: "AI INFRA",
-    excerpt: "كل مزود ذكاء اصطناعي له مفتاحه الخاص وواجهته الخاصة وحدوده الخاصة. بوابة ذكاء اصطناعي مفتوحة المصدر تكتسب زخمًا سريعًا توحّد الوصول إلى أكثر من 290 مزودًا خلف نقطة نهاية واحدة، مع تبديل تلقائي عند انقطاع أي مزود.",
+    excerpt:
+      "بوابة ذكاء اصطناعي مفتوحة المصدر توحّد الوصول إلى أكثر من 290 مزود نماذج خلف نقطة نهاية واحدة، مع تبديل تلقائي عند فشل الطلب أو نفاد الحصة.",
     excerptEn: "Every AI provider has its own key, its own API shape, its own limits. A fast-growing open-source AI gateway unifies access to 290+ providers behind a single endpoint, with automatic fallback when any one goes down.",
     body: [
       { p: "من بنى منصة محادثة متعددة النماذج يعرف الألم جيدًا: كل مزود نموذج له مفتاح API مختلف، وصيغة طلب مختلفة، وحدود استخدام مختلفة تتغير دون إشعار مسبق. بوابة الذكاء الاصطناعي الموحدة تختصر هذا كله في نقطة نهاية واحدة." },
@@ -2277,12 +2279,12 @@ await server.connect(new StdioServerTransport());`,
   },
   {
     slug: "agent-reach-internet-access-for-agents",
-    title: "عيون لوكيل الذكاء الاصطناعي: قراءة الإنترنت كله بأمر واحد",
+    title: "Agent-Reach: تمكين الوكلاء من قراءة محتوى الإنترنت",
     titleEn: "Eyes for Your AI Agent: Reading the Whole Internet with One Command",
     date: "2026-07",
     tag: "AI AGENTS",
     excerpt:
-      "وكلاء الذكاء الاصطناعي يكتبون الكود ويديرون المشاريع، لكن يعجزون غالبًا عن قراءة تغريدة أو منشور Reddit أو ترجمة فيديو يوتيوب. أداة مفتوحة المصدر تحل هذه الفجوة بأمر تثبيت واحد، بلا رسوم API.",
+      "أداة تثبيت واحدة تمنح وكلاء الذكاء الاصطناعي قدرة قراءة صفحات الويب وترجمات يوتيوب ومحتوى Reddit وتغريدات X، عبر أدوات مفتوحة المصدر لكل منصة.",
     excerptEn:
       "AI agents can write code and manage projects, but they usually can't read a tweet, a Reddit post, or a YouTube transcript. An open-source tool closes that gap with a single install command — no API fees.",
     body: [
