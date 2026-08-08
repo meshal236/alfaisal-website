@@ -28,7 +28,8 @@ const COPY = {
     none: "لا توجد نتائج مطابقة. جرّب كلمة أخرى أو رقم ضابط.",
     empty: "اكتب كلمة للبحث في الضوابط.",
     evidence: "الأدلة المطلوبة",
-    showOther: "عرض النسخة الإنجليزية",
+    showOtherAr: "عرض النسخة العربية",
+    showOtherEn: "عرض النسخة الإنجليزية",
     all: "كل الأطر",
     more: "عرض المزيد",
     showing: "معروض",
@@ -42,7 +43,8 @@ const COPY = {
     none: "No matching results. Try another keyword or a control number.",
     empty: "Type a keyword to search the controls.",
     evidence: "Required evidence",
-    showOther: "Show Arabic version",
+    showOtherAr: "Show Arabic version",
+    showOtherEn: "Show English version",
     all: "All frameworks",
     more: "Show more",
     showing: "Showing",
@@ -188,7 +190,7 @@ export default function ControlSearch({
                 )}
                 {other(r) && (
                   <details className="cres-alt">
-                    <summary>{t.showOther}</summary>
+                    <summary>{wantAr ? t.showOtherEn : t.showOtherAr}</summary>
                     <p className="cres-desc">{other(r)!.desc}</p>
                     {other(r)!.ev && (
                       <div className="cres-ev">
