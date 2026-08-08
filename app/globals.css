@@ -920,6 +920,25 @@ h1, h2, h3 {
   line-height: 1.8;
   white-space: pre-line;
 }
+.cres-alt {
+  margin-top: 12px;
+  border-top: 1px solid var(--line);
+  padding-top: 10px;
+}
+.cres-alt summary {
+  font-size: 0.78rem;
+  color: var(--copper);
+  cursor: pointer;
+  list-style: none;
+}
+.cres-alt summary::-webkit-details-marker { display: none; }
+.cres-alt summary::before { content: "+ "; }
+.cres-alt[open] summary::before { content: "− "; }
+.cres-alt summary:hover { color: var(--copper-bright); }
+.cres-alt > p,
+.cres-alt .cres-ev { margin-top: 10px; }
+.cres-alt .cres-desc { font-size: 0.9rem; color: var(--ink-dim); }
+
 .csearch-more {
   display: flex;
   align-items: center;

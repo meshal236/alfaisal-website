@@ -27,6 +27,7 @@ const COPY = {
     none: "لا توجد نتائج مطابقة. جرّب كلمة أخرى أو رقم ضابط.",
     empty: "اكتب كلمة للبحث في الضوابط.",
     evidence: "الأدلة المطلوبة",
+    showOther: "عرض النسخة الإنجليزية",
     all: "كل الأطر",
     more: "عرض المزيد",
     showing: "معروض",
@@ -40,6 +41,7 @@ const COPY = {
     none: "No matching results. Try another keyword or a control number.",
     empty: "Type a keyword to search the controls.",
     evidence: "Required evidence",
+    showOther: "Show Arabic version",
     all: "All frameworks",
     more: "Show more",
     showing: "Showing",
@@ -48,6 +50,8 @@ const COPY = {
 };
 
 const PAGE = 40;
+
+const hasArabic = (s: string) => /[\u0600-\u06FF]/.test(s);
 
 function mark(text: string, q: string) {
   if (!q.trim()) return text;
@@ -113,6 +117,20 @@ export default function ControlSearch({
 
   useEffect(() => setLimit(PAGE), [q, fw]);
 
+  // language shown follows the query language, falling back to the UI language
+  const wantAr = q.trim() ? hasArabic(q) : lang === "ar";
+  const pick = (r: ControlRow) =>
+    wantAr && r.descAr
+      ? { desc: r.descAr, ev: r.evAr ?? "" }
+      : { desc: r.desc, ev: r.ev };
+  const other = (r: ControlRow) => {
+    if (!r.descAr) return null;
+    const showingAr = wantAr;
+    return showingAr
+      ? { desc: r.desc, ev: r.ev }
+      : { desc: r.descAr, ev: r.evAr ?? "" };
+  };
+
   if (failed) return <div className="viewer-msg">{t.failed}</div>;
 
   return (
@@ -159,14 +177,24 @@ export default function ControlSearch({
                     <span className="cres-sub">{r.sub} · {r.subT}</span>
                   </span>
                 </div>
-                <p className="cres-desc">
-                  {mark(lang === "ar" && r.descAr ? r.descAr : r.desc, q)}
-                </p>
-                {(lang === "ar" && r.descAr ? r.evAr : r.ev) && (
+                <p className="cres-desc">{mark(pick(r).desc, q)}</p>
+                {pick(r).ev && (
                   <div className="cres-ev">
                     <span className="cres-ev-label">{t.evidence}</span>
-                    <p>{mark((lang === "ar" && r.descAr ? r.evAr : r.ev) ?? "", q)}</p>
+                    <p>{mark(pick(r).ev, q)}</p>
                   </div>
+                )}
+                {other(r) && (
+                  <details className="cres-alt">
+                    <summary>{t.showOther}</summary>
+                    <p className="cres-desc">{other(r)!.desc}</p>
+                    {other(r)!.ev && (
+                      <div className="cres-ev">
+                        <span className="cres-ev-label">{t.evidence}</span>
+                        <p>{other(r)!.ev}</p>
+                      </div>
+                    )}
+                  </details>
                 )}
               </div>
             ))}
