@@ -11,8 +11,20 @@ export async function generateMetadata({
 }) {
   const { slug } = await params;
   const post = getPost(slug);
-  return { title: post ? `${post.title} — مشعل الفيصل` : "مقال" };
+  if (!post) return { title: "مقال غير موجود" };
+  return {
+    title: post.title,
+    description: post.excerpt,
+    alternates: { canonical: `/blog/${slug}` },
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      url: `https://alfaisal.ai/blog/${slug}`,
+      type: "article",
+    },
+  };
 }
+
 export default async function PostPage({
   params,
 }: {

@@ -16,6 +16,7 @@ export type ControlRow = {
   domAr: string;
   sub: string;
   subT: string;
+  subTAr?: string;
 };
 
 const COPY = {
@@ -109,6 +110,7 @@ export default function ControlSearch({
         r.desc.toLowerCase().includes(n) ||
         r.ev.toLowerCase().includes(n) ||
         r.subT.toLowerCase().includes(n) ||
+        (r.subTAr ?? "").includes(q.trim()) ||
         (r.descAr ?? "").includes(q.trim()) ||
         (r.evAr ?? "").includes(q.trim())
       );
@@ -174,7 +176,7 @@ export default function ControlSearch({
                   <span className="cres-tags">
                     <span className="cres-fw">{r.fw}{r.var && ` · ${r.var}`}</span>
                     <span className="cres-dom">{lang === "ar" ? r.domAr : r.dom}</span>
-                    <span className="cres-sub">{r.sub} · {r.subT}</span>
+                    <span className="cres-sub">{r.sub} · {wantAr && r.subTAr ? r.subTAr : r.subT}</span>
                   </span>
                 </div>
                 <p className="cres-desc">{mark(pick(r).desc, q)}</p>

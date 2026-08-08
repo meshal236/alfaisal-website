@@ -16,10 +16,26 @@ const mono = IBM_Plex_Mono({
   variable: "--font-mono",
 });
 export const metadata: Metadata = {
-  title: "مشعل الفيصل — Infrastructure & AI",
+  metadataBase: new URL("https://alfaisal.ai"),
+  title: {
+    default: "مشعل الفيصل — البنية التحتية والأمن السيبراني والذكاء الاصطناعي",
+    template: "%s | مشعل الفيصل",
+  },
   description:
-    "خبير بنية تحتية وعمليات تقنية — قيادة فرق، رفع كفاءة، وإدارة مشاريع البنية التحتية.",
+    "قيادة البنية التحتية والعمليات التقنية — الشبكات ومراكز البيانات والحوسبة السحابية ووكلاء الذكاء الاصطناعي، مع مرجع منظّم لأطر الأمن السيبراني الوطنية (NCA).",
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: "مشعل الفيصل — البنية التحتية والأمن السيبراني والذكاء الاصطناعي",
+    description:
+      "قيادة البنية التحتية والعمليات التقنية، ومرجع منظّم لأطر الأمن السيبراني الوطنية (NCA).",
+    url: "https://alfaisal.ai",
+    siteName: "alfaisal.ai",
+    locale: "ar_SA",
+    type: "website",
+  },
+  robots: { index: true, follow: true },
 };
+
 export default function RootLayout({
   children,
 }: {

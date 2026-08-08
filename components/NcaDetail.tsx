@@ -122,7 +122,7 @@ export default function NcaDetail({ framework: f }: { framework: NcaFramework })
                   {d.subdomains.map((s) => (
                     <tr key={s.id}>
                       <td className="mono" style={{ fontSize: "0.8rem" }}>{s.id}</td>
-                      <td>{s.titleEn}</td>
+                      <td>{lang === "ar" ? s.titleAr : s.titleEn}</td>
                       <td>{s.controls}</td>
                     </tr>
                   ))}

@@ -459,7 +459,7 @@ export const posts: Post[] = [
     title: "ego lite: متصفح واحد تعمل فيه أنت ووكلاؤك بالتوازي",
     titleEn: "ego lite: One Browser Where You and Your Agents Work in Parallel",
     date: "2026-07",
-    tag: "AGENTIC AI",
+    tag: "AI AGENTS",
     excerpt:
       "أدوات أتمتة المتصفح الحالية تجعلك تتنازع مع الوكيل على نفس التبويبات، وتفشل في نقل تسجيلات الدخول. متصفح مفتوح المصدر يعطي كل وكيل مساحة معزولة داخل نفس المتصفح، ويمرّر المهام المعقدة أسرع بـ2.5 ضعف بتوكنات أقل.",
     excerptEn:
@@ -958,7 +958,7 @@ await server.connect(new StdioServerTransport());`,
     title: "Power BI ووكلاء الذكاء الاصطناعي: من السؤال إلى التقرير بلا كتابة كود",
     titleEn: "Power BI and AI Agents: From Question to Report Without Writing Code",
     date: "2026-07",
-    tag: "BI / AGENTIC",
+    tag: "BI & DATA",
     excerpt:
       "دليل عملي لربط وكيل ذكاء اصطناعي بنماذج Power BI: ما هو بروتوكول MCP، كيف تبدو دورة السؤال والجواب فعليًا، ما الأدوات المتاحة رسميًا ومفتوحة المصدر، وأين تفشل هذي المشاريع عادة.",
     excerptEn:
@@ -1795,7 +1795,7 @@ await server.connect(new StdioServerTransport());`,
     title: "Superfile: مدير ملفات طرفية عصري وأنيق",
     titleEn: "Superfile: A Fancy, Modern Terminal File Manager",
     date: "2026-07",
-    tag: "CLI TOOLS",
+    tag: "TOOLS",
     excerpt:
       "أوامر ls وcd وcp الكلاسيكية تكفي، لكن مدير ملفات طرفية حديث يجمع سهولة الأدوات الرسومية مع سرعة الطرفية — بواجهة ملونة، لوحات متعددة، وإضافات قابلة للتوسيع.",
     excerptEn:
@@ -1891,7 +1891,7 @@ await server.connect(new StdioServerTransport());`,
     title: "متصفح بلا واجهة مبني من الصفر لوكلاء الذكاء الاصطناعي",
     titleEn: "A Headless Browser Built From Scratch for AI Agents",
     date: "2026-07",
-    tag: "AGENTIC AI",
+    tag: "AI AGENTS",
     excerpt:
       "تشغيل Chrome بلا واجهة لأتمتة الوكلاء مكلف على الذاكرة والمعالج. متصفح مفتوح المصدر جديد مكتوب من الصفر بلغة Zig يعد بأداء أسرع بأضعاف واستهلاك ذاكرة أقل بكثير من Headless Chrome.",
     excerptEn:
@@ -1944,7 +1944,7 @@ await server.connect(new StdioServerTransport());`,
     title: "Portainer: إدارة Docker وKubernetes بواجهة واحدة",
     titleEn: "Portainer: One Interface for Docker and Kubernetes",
     date: "2026-07",
-    tag: "CONTAINERS",
+    tag: "INFRASTRUCTURE",
     excerpt:
       "عندما تتجاوز حاوياتك العشرة، يصبح سطر الأوامر وحده عبئًا. Portainer يعطيك رؤية كاملة وتحكمًا مركزيًا — سواء في homelab أو بيئة إنتاج.",
     excerptEn:
@@ -1988,7 +1988,7 @@ await server.connect(new StdioServerTransport());`,
     title: "Pigsty: PostgreSQL بمواصفات مؤسسية دون تكلفة الترخيص",
     titleEn: "Pigsty: Enterprise-Grade PostgreSQL Without License Costs",
     date: "2026-06",
-    tag: "DATABASES",
+    tag: "INFRASTRUCTURE",
     excerpt:
       "توافر عالٍ، نسخ احتياطي بنقطة استعادة زمنية، مراقبة جاهزة، وبنية ككود — توزيعة مفتوحة المصدر تحوّل PostgreSQL إلى منصة بيانات مؤسسية كاملة.",
     excerptEn:
@@ -2105,7 +2105,7 @@ await server.connect(new StdioServerTransport());`,
     title: "Agentic AI تدير البنية التحتية: عندما يتحدث الوكيل مباشرة مع خوادمك",
     titleEn: "Agentic AI Runs Infrastructure: When the Agent Talks to Your Servers Directly",
     date: "2026-06",
-    tag: "AGENTIC AI",
+    tag: "AI AGENTS",
     excerpt:
       "بروتوكول MCP فتح الباب لوكلاء الذكاء الاصطناعي للتحدث مباشرة مع أدوات إدارة البنية التحتية — من تشغيل خادم افتراضي إلى إدارة حاوية، بلغة طبيعية وصلاحيات محكومة.",
     excerptEn:
@@ -2196,7 +2196,7 @@ await server.connect(new StdioServerTransport());`,
     title: "عندما يتصفح وكيل الذكاء الاصطناعي الإنترنت بدلًا عنك",
     titleEn: "When an AI Agent Browses the Web on Your Behalf",
     date: "2026-07",
-    tag: "AGENTIC AI",
+    tag: "AI AGENTS",
     excerpt:
       "أغلب وكلاء الذكاء الاصطناعي مقيدون بواجهات برمجية جاهزة. مكتبة مفتوحة المصدر تكتسب زخمًا سريعًا تمنح الوكيل تحكمًا كاملًا في متصفح حقيقي — يضغط، يملأ نماذج، ويقرأ الصفحة كإنسان.",
     excerptEn:
@@ -2280,7 +2280,7 @@ await server.connect(new StdioServerTransport());`,
     title: "عيون لوكيل الذكاء الاصطناعي: قراءة الإنترنت كله بأمر واحد",
     titleEn: "Eyes for Your AI Agent: Reading the Whole Internet with One Command",
     date: "2026-07",
-    tag: "AGENTIC AI",
+    tag: "AI AGENTS",
     excerpt:
       "وكلاء الذكاء الاصطناعي يكتبون الكود ويديرون المشاريع، لكن يعجزون غالبًا عن قراءة تغريدة أو منشور Reddit أو ترجمة فيديو يوتيوب. أداة مفتوحة المصدر تحل هذه الفجوة بأمر تثبيت واحد، بلا رسوم API.",
     excerptEn:
